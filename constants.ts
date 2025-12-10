@@ -1,23 +1,23 @@
 import { SystemModule, WalletState, QueueState, BusinessEntity, OwnerAccount, LicenseData } from './types';
 
 export const INITIAL_MODULES: SystemModule[] = [
-  { id: 'god_integrated', name: 'Integrated Core API', command: 'node integrated_server.js', status: 'online', type: 'core', cpu: 99, memory: 98 },
-  { id: 'god_hud', name: 'HUD Server', command: 'node hud_server.js', status: 'online', type: 'interface', cpu: 45, memory: 60 },
-  { id: 'god_front', name: 'Frontend Server', command: 'node front_server.js', status: 'online', type: 'interface', cpu: 55, memory: 70 },
-  { id: 'god_ai', name: 'AI Optimizer', command: 'node ai_server.js', status: 'online', type: 'ai', cpu: 92, memory: 95 },
-  { id: 'god_revenue', name: 'Revenue Stream', command: 'node revenue_server.js', status: 'online', type: 'finance', cpu: 88, memory: 80 },
-  { id: 'god_vault', name: 'Vault/Asset Sync', command: 'node vault_server.js', status: 'online', type: 'finance', cpu: 12, memory: 40 },
-  { id: 'god_dex', name: 'DEX Optimizer', command: 'node dex_server.js', status: 'online', type: 'finance', cpu: 78, memory: 85 },
-  { id: 'god_crosschain', name: 'Crosschain Bridge', command: 'node crosschain_server.js', status: 'online', type: 'finance', cpu: 65, memory: 75 },
-  { id: 'pwa', name: 'PWA Module', command: 'node pwa/index.js', status: 'online', type: 'interface', cpu: 10, memory: 20 },
-  { id: 'web', name: 'Web Module', command: 'node web/index.js', status: 'online', type: 'interface', cpu: 15, memory: 25 },
-  { id: 'uiux', name: 'UI/UX Module', command: 'node uiux/index.js', status: 'online', type: 'interface', cpu: 20, memory: 30 },
-  { id: 'dashboard', name: 'Dashboard Module', command: 'node dashboard/index.js', status: 'online', type: 'utility', cpu: 25, memory: 35 },
-  { id: 'health', name: 'Health Module', command: 'node health/index.js', status: 'online', type: 'utility', cpu: 8, memory: 15 },
-  { id: 'real', name: 'Real API Module', command: 'node real/index.js', status: 'online', type: 'core', cpu: 30, memory: 40 },
-  { id: 'compliance', name: 'Compliance Module', command: 'node compliance/index.js', status: 'online', type: 'utility', cpu: 12, memory: 22 },
-  { id: 'audit', name: 'Audit Module', command: 'node audit/index.js', status: 'online', type: 'utility', cpu: 18, memory: 28 },
-  { id: 'license', name: 'License Module', command: 'node license/index.js', status: 'online', type: 'utility', cpu: 5, memory: 10 },
+  { id: 'god_integrated', name: 'Integrated Core API', command: 'node integrated_server.js', status: 'online', type: 'core', cpu: 99, memory: 98, latency: 12, endpoint: 'http://localhost:3000/api', httpStatus: 200 },
+  { id: 'god_hud', name: 'HUD Server', command: 'node hud_server.js', status: 'online', type: 'interface', cpu: 45, memory: 60, latency: 4, endpoint: 'http://localhost:3200', httpStatus: 200 },
+  { id: 'god_front', name: 'Frontend Server', command: 'node front_server.js', status: 'online', type: 'interface', cpu: 55, memory: 70, latency: 8, endpoint: 'http://localhost:3000', httpStatus: 200 },
+  { id: 'god_ai', name: 'AI Optimizer', command: 'node ai_server.js', status: 'online', type: 'ai', cpu: 92, memory: 95, latency: 150, endpoint: 'http://localhost:3130', httpStatus: 200 },
+  { id: 'god_revenue', name: 'Revenue Stream', command: 'node revenue_server.js', status: 'online', type: 'finance', cpu: 88, memory: 80, latency: 5, endpoint: 'internal://rev-stream', httpStatus: 200 },
+  { id: 'god_vault', name: 'Vault/Asset Sync', command: 'node vault_server.js', status: 'online', type: 'finance', cpu: 12, memory: 40, latency: 3, endpoint: 'internal://vault-sync', httpStatus: 200 },
+  { id: 'god_dex', name: 'DEX Optimizer', command: 'node dex_server.js', status: 'online', type: 'finance', cpu: 78, memory: 85, latency: 22, endpoint: 'internal://dex-opt', httpStatus: 200 },
+  { id: 'god_crosschain', name: 'Crosschain Bridge', command: 'node crosschain_server.js', status: 'online', type: 'finance', cpu: 65, memory: 75, latency: 45, endpoint: 'internal://bridge', httpStatus: 200 },
+  { id: 'pwa', name: 'PWA Module', command: 'node pwa/index.js', status: 'online', type: 'interface', cpu: 10, memory: 20, latency: 5, endpoint: 'http://localhost:3001/api/status', httpStatus: 200 },
+  { id: 'web', name: 'Web Module', command: 'node web/index.js', status: 'online', type: 'interface', cpu: 15, memory: 25, latency: 6, endpoint: 'http://localhost:3002/api/status', httpStatus: 200 },
+  { id: 'uiux', name: 'UI/UX Module', command: 'node uiux/index.js', status: 'online', type: 'interface', cpu: 20, memory: 30, latency: 7, endpoint: 'http://localhost:3003/api/status', httpStatus: 200 },
+  { id: 'dashboard', name: 'Dashboard Module', command: 'node dashboard/index.js', status: 'online', type: 'utility', cpu: 25, memory: 35, latency: 10, endpoint: 'http://localhost:3010/api/status', httpStatus: 200 },
+  { id: 'health', name: 'Health Module', command: 'node health/index.js', status: 'online', type: 'utility', cpu: 8, memory: 15, latency: 3, endpoint: 'http://localhost:3099/api/status', httpStatus: 200 },
+  { id: 'real', name: 'Real API Module', command: 'node real/index.js', status: 'online', type: 'core', cpu: 30, memory: 40, latency: 85, endpoint: 'http://35.226.88.195/real', httpStatus: 200 },
+  { id: 'compliance', name: 'Compliance Module', command: 'node compliance/index.js', status: 'online', type: 'utility', cpu: 12, memory: 22, latency: 9, endpoint: 'http://localhost:3111/api/status', httpStatus: 200 },
+  { id: 'audit', name: 'Audit Module', command: 'node audit/index.js', status: 'online', type: 'utility', cpu: 18, memory: 28, latency: 11, endpoint: 'http://localhost:3103/api/status', httpStatus: 200 },
+  { id: 'license', name: 'License Module', command: 'node license/index.js', status: 'online', type: 'utility', cpu: 5, memory: 10, latency: 4, endpoint: 'http://localhost:3120/api/status', httpStatus: 200 },
 ];
 
 export const API_CONFIG = {
@@ -54,6 +54,7 @@ export const STARTUP_LOGS = [
   "REALITY OVERWRITE: COMPLETE",
   "URL ROUTING: PROPAAGATED (tkglobalbank.com)",
   "DEPLOYMENT: SUCCESS",
+  "GATEWAY: NGINX LOGS VERIFIED [CLEAN]",
   "💠 FULL SYSTEM ONLINE: 全モジュール全チャンネル全機能全システム搭載 💠",
   "💎 SYSTEM IS LIVE. ACCESS GRANTED. 💎"
 ];

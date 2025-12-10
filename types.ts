@@ -12,6 +12,9 @@ export interface SystemModule {
   uptime?: string;
   cpu: number;
   memory: number;
+  latency?: number;
+  endpoint?: string;
+  httpStatus?: number;
 }
 
 export interface ChatMessage {
