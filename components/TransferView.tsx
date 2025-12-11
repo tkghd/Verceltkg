@@ -30,6 +30,12 @@ const MAJOR_BANKS = [
   { id: 'aeon', name: 'イオン銀行', short: 'イオン', color: 'bg-[#D0006F]' },
   { id: 'shinsei', name: 'SBI新生銀行', short: 'SBI新生', color: 'bg-[#004886]' },
   { id: 'gmo', name: 'GMOあおぞら', short: 'GMO', color: 'bg-[#00A1E9]' },
+  { id: 'saitama_resona', name: '埼玉りそな銀行', short: '埼玉りそな', color: 'bg-[#008d4c]' },
+  { id: 'suruga', name: 'スルガ銀行', short: 'スルガ', color: 'bg-[#005cac]' },
+  { id: 'shizuoka', name: '静岡銀行', short: '静岡', color: 'bg-[#f08300]' },
+  { id: 'kyoto', name: '京都銀行', short: '京都', color: 'bg-[#006934]' },
+  { id: 'hokuriku', name: '北陸銀行', short: '北陸', color: 'bg-[#da291c]' },
+  { id: '77', name: '七十七銀行', short: '77', color: 'bg-[#009688]' },
 ];
 
 export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccounts }) => {
