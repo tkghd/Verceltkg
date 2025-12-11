@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Landmark, Globe, CreditCard, Plus, ArrowRight, ShieldCheck, Banknote, Building2, CheckCircle2, AlertCircle, RefreshCw, Zap, Cpu, Scan, ArrowDownToLine, Settings } from 'lucide-react';
-import { ActiveTab } from '../types';
 
-type ServiceTab = 'accounts' | 'transfer_intl' | 'loans';
+import React, { useState } from 'react';
+import { Landmark, Globe, CreditCard, Plus, ArrowRight, ShieldCheck, Banknote, Building2, CheckCircle2, AlertCircle, RefreshCw, Zap, Cpu, Scan, ArrowDownToLine, Settings, Smartphone } from 'lucide-react';
+import { ActiveTab } from '../types';
+import { DomesticTransferView } from './DomesticTransferView';
+
+type ServiceTab = 'accounts' | 'transfer_intl' | 'loans' | 'domestic';
 
 interface BankServicesViewProps {
   onNavigate: (tab: ActiveTab) => void;
@@ -28,14 +30,15 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
            </h2>
            <p className="text-xs text-slate-400 font-mono mt-1">Global Banking Services & Credit Protocol</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
             <TabButton active={activeTab === 'accounts'} onClick={() => setActiveTab('accounts')} label="Accounts" icon={<Plus size={14} />} />
+            <TabButton active={activeTab === 'domestic'} onClick={() => setActiveTab('domestic')} label="Domestic" icon={<Smartphone size={14} />} />
             <TabButton active={activeTab === 'transfer_intl'} onClick={() => setActiveTab('transfer_intl')} label="Intl. Wire" icon={<Globe size={14} />} />
             <TabButton active={activeTab === 'loans'} onClick={() => setActiveTab('loans')} label="Lending" icon={<Banknote size={14} />} />
         </div>
       </div>
 
-      {/* AI Command Nexus (New Feature) */}
+      {/* AI Command Nexus */}
       <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 relative overflow-hidden group">
           <div className="absolute top-0 left-0 w-1 h-full bg-cyan-500"></div>
           <div className="flex justify-between items-center mb-4">
@@ -125,6 +128,10 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
                   <AccountCard region="SG" iban="DBS-Link-888-999-000" currency="SGD" balance="S$ 8,888,888" bank="DBS / TK Trust" />
               </div>
           </div>
+      )}
+
+      {activeTab === 'domestic' && (
+          <DomesticTransferView />
       )}
 
       {activeTab === 'transfer_intl' && (
@@ -244,7 +251,7 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
 const TabButton: React.FC<{ active: boolean; onClick: () => void; label: string; icon: React.ReactNode }> = ({ active, onClick, label, icon }) => (
     <button 
         onClick={onClick}
-        className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-2 transition-all ${active ? 'bg-indigo-600 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
+        className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-2 transition-all whitespace-nowrap ${active ? 'bg-indigo-600 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
     >
         {icon} {label}
     </button>
