@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Bot, Send, User, Activity, Server, BrainCircuit, ShieldCheck, DollarSign, TrendingUp, BarChart2, Coins } from 'lucide-react';
-// import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 import { ChatMessage, SystemModule } from '../types';
 
 // Define AI agents
@@ -83,16 +83,16 @@ export const AIStudioHUD: React.FC<AIStudioHUDProps> = ({ modules }) => {
     setThinking(true);
 
     try {
-      // const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      // const response = await ai.models.generateContent({
-      //   model: 'gemini-3-pro-preview', 
-      //   contents: input,
-      //   config: {
-      //     systemInstruction: activeAgent.systemInstruction,
-      //   }
-      // });
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const response = await ai.models.generateContent({
+        model: 'gemini-3-pro-preview', 
+        contents: input,
+        config: {
+          systemInstruction: activeAgent.systemInstruction,
+        }
+      });
       
-      const aiMsg: ChatMessage = { id: (Date.now() + 1).toString(), role: 'model', text: "AI Core Ready. Processing request...", timestamp: new Date() };
+      const aiMsg: ChatMessage = { id: (Date.now() + 1).toString(), role: 'model', text: response.text || "Apologies, I encountered a communication anomaly. Please try again.", timestamp: new Date() };
       setMessages(prev => [...prev, aiMsg]);
 
     } catch (err: any) {

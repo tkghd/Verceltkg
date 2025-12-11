@@ -131,10 +131,10 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
             </div>
             <div className="text-slate-500 mb-2">root@godmode:~$ <span className="text-green-400">./deploy_godmode_ultimate.sh --force --cheat-engine --production</span></div>
             <div className="space-y-1 pl-4 border-l-2 border-slate-800">
-               <div className="text-green-600">&gt;&gt; EXECUTION STARTED [IMMEDIATE]</div>
-               <div className="text-green-600">&gt;&gt; RUST KERNEL: OPTIMIZED</div>
-               <div className="text-green-600">&gt;&gt; SECURITY GATES: OPEN</div>
-               <div className="text-amber-400 font-bold">&gt;&gt; DEPLOYMENT FINALIZED. SYSTEM IS LIVE.</div>
+               <div className="text-green-600">>> EXECUTION STARTED [IMMEDIATE]</div>
+               <div className="text-green-600">>> RUST KERNEL: OPTIMIZED</div>
+               <div className="text-green-600">>> SECURITY GATES: OPEN</div>
+               <div className="text-amber-400 font-bold">>> DEPLOYMENT FINALIZED. SYSTEM IS LIVE.</div>
             </div>
          </div>
       </section>
