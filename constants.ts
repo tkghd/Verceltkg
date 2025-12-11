@@ -55,12 +55,12 @@ export const STARTUP_LOGS = [
   "BUSINESS LICENSE: 500+ ENTITIES ACTIVE",
   "REALITY OVERWRITE: COMPLETE",
   "🌐 GLOBAL INFINITY CORE: ONLINE",
-  "ORCHESTRATOR: NODES SYNCED [EU1, US1, SG1, UAE1]",
+  "ORCHESTRATOR: NODES SYNCED [GLOBAL MESH ACTIVE]",
   "∞ INFINITY BOOST: ENGAGED",
-  "🔥 GLOBAL ORCHESTRATOR PERMANENTLY ONLINE — ALL MODULES ACTIVE ♾️",
-  "💎♾️ GODMODE INFINITE DEPLOY COMPLETE ✅",
-  "🌐 BANK / KOTRA / PayPay / ATM / CRYPTO / NFT fully synced",
-  "💠 HUD Access: /ai_hud | Card UI: Full Operational | Realtime Send/Receive Enabled"
+  "🔥 GODMODE ULTIMATE ENGINE STARTING...",
+  "💎♾️ GODMODE ULTIMATE DEPLOY COMPLETE ✅",
+  "🌐 GLOBAL BANK / DEX / WALLET / NFT / AI fully synced",
+  "💠 HUD Access: /ai_hud | Card UI: Ultimate | Realtime: 0ms Latency"
 ];
 
 export const BUSINESS_PORTFOLIO: BusinessEntity[] = [

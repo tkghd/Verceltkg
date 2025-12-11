@@ -26,6 +26,9 @@ const GLOBAL_BANK_DB: BankInfo[] = [
   { code: 'KY', name: 'Cayman Islands', flag: '🇰🇾', currency: 'KYD', swift: 'TKGB KY KK', format: 'KYXX 0000 0000 0000 0000 000', desc: 'SWIFT / ACH' },
   { code: 'AU', name: 'Australia', flag: '🇦🇺', currency: 'AUD', swift: 'TKGB AU 2S', format: 'BSB: XXX-XXX / Acc: XXXXXXXXX', desc: 'BECS / NPP' },
   { code: 'CA', name: 'Canada', flag: '🇨🇦', currency: 'CAD', swift: 'TKGB CA 2T', format: 'Transit: XXXXX / Inst: XXX / Acc: XXXXXXX', desc: 'ACSS / LVTS' },
+  { code: 'BR', name: 'Brazil', flag: '🇧🇷', currency: 'BRL', swift: 'TKGB BR BB', format: 'Ag: XXXX / Acc: XXXXX-X', desc: 'Pix / STR' },
+  { code: 'IN', name: 'India', flag: '🇮🇳', currency: 'INR', swift: 'TKGB IN BB', format: 'IFSC: TKGB000XXXX / Acc: XXXXXXXXXX', desc: 'UPI / IMPS / NEFT' },
+  { code: 'CN', name: 'China', flag: '🇨🇳', currency: 'CNY', swift: 'TKGB CN CC', format: 'CNAPS: XXXXXX / Acc: XXXXXXXXXXXXXXXX', desc: 'CIPS / CNAPS' },
 ];
 
 export const BankServicesView: React.FC = () => {
@@ -93,6 +96,9 @@ export const BankServicesView: React.FC = () => {
         else if (selectedCountry.code === 'KY') accountNumber = `KY${randomNum(2)} ${randomNum(4)} ${randomNum(4)} ${randomNum(4)} ${randomNum(4)}`;
         else if (selectedCountry.code === 'AU') accountNumber = `BSB: 062-${randomNum(3)} / Acc: 1${randomNum(8)}`;
         else if (selectedCountry.code === 'CA') accountNumber = `Transit: ${randomNum(5)} / Inst: 003 / Acc: ${randomNum(7)}`;
+        else if (selectedCountry.code === 'BR') accountNumber = `Ag: ${randomNum(4)} / Acc: ${randomNum(5)}-${randomNum(1)}`;
+        else if (selectedCountry.code === 'IN') accountNumber = `IFSC: TKGB0${randomNum(6)} / Acc: ${randomNum(11)}`;
+        else if (selectedCountry.code === 'CN') accountNumber = `CNAPS: ${randomNum(6)} / Acc: ${randomNum(16)}`;
         else accountNumber = `${selectedCountry.code}-${randomNum(4)}-${randomNum(6)}`;
 
         setGeneratedAccount({

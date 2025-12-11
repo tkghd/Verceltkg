@@ -21,7 +21,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ modules, booted, wallet, q
         <WorldMapHUD />
       </div>
 
-      {/* Welcome Banner - CHEAT MODE */}
+      {/* Welcome Banner - ULTIMATE MODE */}
       <div className="col-span-1 md:col-span-2 lg:col-span-12 bg-gradient-to-r from-[#1a1200] to-[#000000] border border-cyan-500/30 p-8 rounded-[2rem] flex flex-col md:flex-row justify-between items-center shadow-[0_0_50px_rgba(6,182,212,0.1)] backdrop-blur-sm relative overflow-hidden group">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 animate-pulse"></div>
         <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-l from-cyan-500/10 to-transparent"></div>
@@ -36,9 +36,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ modules, booted, wallet, q
              </span>
            </div>
            <h2 className="text-3xl font-bold text-white tracking-wide">
-             システム極限解放、<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-indigo-400 to-cyan-600 font-black drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]">帝王モード</span>。
+             システム完全超越、<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-purple-400 to-amber-400 font-black drop-shadow-[0_0_10px_rgba(245,158,11,0.8)]">究極神 (ULTIMATE)</span>。
            </h2>
-           <p className="text-sm text-slate-400">現在、<span className="text-cyan-400 font-bold">全機能統合本番運営</span> 及び <span className="text-cyan-400 font-bold">無限流動性プロトコル</span> が稼働中です。</p>
+           <p className="text-sm text-slate-400">現在、<span className="text-amber-400 font-bold">全次元金融統合</span> 及び <span className="text-cyan-400 font-bold">無限流動性プロトコル</span> が稼働中です。</p>
         </div>
         <div className="flex gap-4 text-xs font-medium bg-black/60 p-1.5 rounded-2xl border border-cyan-500/20 relative z-10 backdrop-blur-md">
            <div className="flex items-center gap-2 px-4 py-2 bg-cyan-500/10 rounded-xl border border-cyan-500/30 text-cyan-300">
