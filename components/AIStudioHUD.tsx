@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect, useRef } from 'react';
-import { Bot, Send, User, Activity, Server, BrainCircuit, ShieldCheck, DollarSign } from 'lucide-react';
+import { Bot, Send, User, Activity, Server, BrainCircuit, ShieldCheck, DollarSign, TrendingUp, BarChart2, Coins } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
 import { ChatMessage, SystemModule } from '../types';
 
@@ -213,23 +214,25 @@ export const AIStudioHUD: React.FC<AIStudioHUDProps> = ({ modules }) => {
         </form>
       </div>
 
-      {/* Right Panel: HUD */}
+      {/* Right Panel: AI Engines & HUD */}
       <div className="hidden lg:flex flex-col gap-6 h-full overflow-y-auto custom-scrollbar pr-2">
+        
+        {/* AI ENGINE VISUALIZER */}
         <div className="bg-[#0A0A18] border border-indigo-900/50 rounded-2xl p-5 shadow-lg anim-enter-right anim-delay-100">
             <h3 className="text-xs font-bold text-indigo-400 uppercase tracking-widest flex items-center gap-2 mb-4">
-                <Activity size={14} /> System Pulse
+                <BrainCircuit size={14} /> Active AI Engines
             </h3>
-            <div className="grid grid-cols-2 gap-4">
-                <MetricDisplay label="API Latency" value="0ms" color="text-green-400" />
-                <MetricDisplay label="Transactions" value="~999M" color="text-purple-400" />
-                <MetricDisplay label="Threat Level" value="NOMINAL" color="text-indigo-400" />
-                <MetricDisplay label="Revenue Flow" value="MAX" color="text-amber-400" />
+            <div className="space-y-4">
+                <AIEngineRow name="Market Master" task="Optimization" load={95} icon={<TrendingUp size={14} />} color="text-green-400" />
+                <AIEngineRow name="Price Prophet" task="Learning Model" load={88} icon={<BarChart2 size={14} />} color="text-amber-400" />
+                <AIEngineRow name="Credit Core" task="Lending AI" load={42} icon={<Coins size={14} />} color="text-purple-400" />
+                <AIEngineRow name="Asset Predictor" task="Forecasting" load={76} icon={<Activity size={14} />} color="text-cyan-400" />
             </div>
         </div>
 
         <div className="bg-[#0A0A18] border border-indigo-900/50 rounded-2xl p-5 shadow-lg flex-1 anim-enter-right anim-delay-200">
             <h3 className="text-xs font-bold text-indigo-400 uppercase tracking-widest flex items-center gap-2 mb-4">
-                <Server size={14} /> Core Modules
+                <Server size={14} /> System Modules
             </h3>
             <div className="space-y-2">
                 {modules.map(mod => (
@@ -247,6 +250,24 @@ export const AIStudioHUD: React.FC<AIStudioHUDProps> = ({ modules }) => {
     </div>
   );
 };
+
+const AIEngineRow: React.FC<{ name: string; task: string; load: number; icon: React.ReactNode; color: string }> = ({ name, task, load, icon, color }) => (
+    <div className="bg-black/20 p-3 rounded-lg border border-slate-800/50 hover:border-indigo-500/30 transition-colors">
+        <div className="flex justify-between items-center mb-2">
+            <div className="flex items-center gap-2">
+                <span className={color}>{icon}</span>
+                <span className="text-xs font-bold text-white">{name}</span>
+            </div>
+            <span className="text-[10px] text-slate-500">{task}</span>
+        </div>
+        <div className="flex items-center gap-2">
+            <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div style={{ width: `${load}%` }} className={`h-full rounded-full ${color.replace('text', 'bg')} opacity-80`}></div>
+            </div>
+            <span className="text-[10px] font-mono text-slate-400">{load}%</span>
+        </div>
+    </div>
+);
 
 const MetricDisplay: React.FC<{label: string, value: string, color: string}> = ({label, value, color}) => (
     <div className="bg-black/20 p-3 rounded-lg border border-slate-800/50">

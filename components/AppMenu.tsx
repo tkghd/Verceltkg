@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import { Smartphone, Globe, Palette, BarChart2, Heart, Building, Scale, ClipboardList, FileText, CreditCard, Settings, Coins, Wallet } from 'lucide-react';
 import { ActiveTab } from '../types';

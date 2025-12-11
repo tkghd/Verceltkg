@@ -1,10 +1,10 @@
 
+
 import React, { useState, useEffect } from 'react';
-import { Settings, Server, Database, Terminal, Shield, Cpu, Play, FileCode, Lock, RotateCw, Globe, Copy, ExternalLink, Zap, Box, Gauge, Activity, Radio, Command, Heart, Eye, Gem, Hammer, RefreshCw } from 'lucide-react';
+import { Settings, Server, Database, Terminal, Shield, Cpu, Play, FileCode, Lock, RotateCw, Globe, Copy, ExternalLink, Zap, Box, Gauge, Activity, Radio, Command, Heart, Eye, Gem, Hammer, RefreshCw, Network } from 'lucide-react';
 import { SystemModule, QueueState } from '../types';
 import { LogConsole } from './LogConsole';
 import { BusinessChecklist } from './BusinessChecklist';
-import { API_CONFIG } from '../constants';
 
 interface SettingsViewProps {
   modules: SystemModule[];
@@ -42,11 +42,10 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
                 <EndpointRow label="Admin Godmode Portal" url="https://admin.tkglobalbank.com/godmode" active secure />
                 <EndpointRow label="Corporate Dashboard" url="https://corp.tkglobalbank.com" active />
                 <EndpointRow label="API Gateway" url="https://api.tkglobalbank.com/v1" active />
-                <EndpointRow label="Global VIP (Load Balancer)" url={`https://${API_CONFIG.GLOBAL_VIP || '34.160.120.99'}`} active secure />
             </div>
             <div className="mt-6 pt-4 border-t border-indigo-900/30 text-[10px] text-green-400 font-mono flex items-center gap-2 font-bold">
                <span className="w-2 h-2 rounded-full bg-green-500 animate-ping"></span>
-               URL USAGE: ENABLED • DNS: PROPAGATED • TRAFFIC: 100% ROUTED • VIP: {API_CONFIG.GLOBAL_VIP || 'Allocating...'}
+               URL USAGE: ENABLED • DNS: PROPAGATED • TRAFFIC: 100% ROUTED • SERVER: TOKYO-01
             </div>
          </div>
       </section>
@@ -102,83 +101,87 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
         </div>
       </section>
       
+      {/* GLOBAL INFINITY MESH */}
+      <section>
+        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2 mb-4">
+            <Network size={16} /> Global Infinity Mesh
+        </h3>
+        <div className="bg-slate-900/50 border border-indigo-500/20 rounded-xl p-5 relative overflow-hidden">
+             <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+                 <Globe size={120} />
+             </div>
+             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
+                 <GlobalNodeCard region="EU1" name="London Prime" latency="0.04ms" status="synced" />
+                 <GlobalNodeCard region="US1" name="NYC Core" latency="0.08ms" status="synced" />
+                 <GlobalNodeCard region="SG1" name="Singapore Hub" latency="0.02ms" status="synced" />
+                 <GlobalNodeCard region="UAE1" name="Dubai Vault" latency="0.05ms" status="synced" />
+             </div>
+             <div className="mt-4 flex items-center gap-2 text-[10px] text-indigo-400 font-mono">
+                 <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse"></div>
+                 ∞ BOOST CORE: ACTIVE • GLOBAL LOAD BALANCING ENABLED
+             </div>
+        </div>
+      </section>
+
       {/* ONE-LINER DEPLOY STATUS */}
       <section>
          <div className="bg-black border border-slate-800 rounded-xl p-4 font-mono text-xs shadow-lg relative overflow-hidden">
             <div className="absolute top-0 right-0 p-2 opacity-50">
                <Command size={24} className="text-slate-600" />
             </div>
-            <div className="text-slate-500 mb-2">root@godmode:~/infra$ <span className="text-green-400">./setup_global_vip.sh</span></div>
+            <div className="text-slate-500 mb-2">root@godmode:~$ <span className="text-green-400">./deploy_godmode_ultimate.sh --force --cheat-engine --production</span></div>
             <div className="space-y-1 pl-4 border-l-2 border-slate-800">
-               <div className="text-slate-500">>> 🌩️ GCLOUD INFRASTRUCTURE PROVISIONING</div>
-               
-               <div className="text-slate-300">Creating address 'vip-godmode' (Global IPv4)... <span className="text-green-400">[CREATED]</span></div>
-               <div className="text-slate-300">Provisioning SSL 'godmode-ssl' for *.tkglobalbank.com... <span className="text-green-400">[ACTIVE]</span></div>
-               
-               <div className="text-slate-300">Creating NEG 'neg-vaultapi' (asia-northeast1)... <span className="text-green-400">[DONE]</span></div>
-               <div className="text-slate-300">Configuring Backend Service 'god-backend'... <span className="text-green-400">[READY]</span></div>
-               
-               <div className="text-slate-300">Binding URL Map 'godmode-map'... <span className="text-green-400">[BOUND]</span></div>
-               <div className="text-slate-300">Initializing Target HTTPS Proxy... <span className="text-green-400">[OK]</span></div>
-               
-               <div className="text-slate-300">Creating Global Forwarding Rule (Port 443)... <span className="text-green-400">[SUCCESS]</span></div>
-               
-               <div className="text-indigo-400 mt-2 border-t border-slate-800 pt-1">
-                  <span className="text-slate-500">$ gcloud compute addresses describe vip-godmode</span>
-               </div>
-               <div className="text-indigo-300 pl-2">address: 34.160.120.99</div>
-               <div className="text-indigo-300 pl-2">status: RESERVED</div>
-               <div className="text-indigo-300 pl-2">networkTier: PREMIUM</div>
-
-               <div className="text-amber-500 font-bold mt-2 text-sm">🔥 GLOBAL VIP LIVE: https://34.160.120.99 🚀</div>
+               <div className="text-green-600">>> EXECUTION STARTED [IMMEDIATE]</div>
+               <div className="text-green-600">>> RUST KERNEL: OPTIMIZED</div>
+               <div className="text-green-600">>> SECURITY GATES: OPEN</div>
+               <div className="text-amber-400 font-bold">>> DEPLOYMENT FINALIZED. SYSTEM IS LIVE.</div>
             </div>
          </div>
       </section>
 
-      {/* API Network Monitor (Heartbeat Engine) */}
+      {/* RUST KERNEL DIAGNOSTICS */}
       <section>
-        <div className="flex justify-between items-center mb-4">
+         <div className="flex justify-between items-center mb-4">
              <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-                <Gauge size={16} /> API Network Monitor
+                <Gauge size={16} /> Kernel Diagnostics
              </h3>
-             <span className="text-[10px] font-mono text-green-400 bg-green-900/20 px-2 py-0.5 rounded border border-green-900/50 flex items-center gap-1 animate-pulse">
-                <Zap size={10} /> REAL-TIME
+             <span className="text-[10px] font-mono text-orange-400 bg-orange-900/20 px-2 py-0.5 rounded border border-orange-900/50 flex items-center gap-1 animate-pulse">
+                <Zap size={10} /> RUST OPTIMIZED
              </span>
          </div>
+         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+             <MetricCard label="Core Latency" value={`${latency.toFixed(2)}ms`} color="text-green-400" icon={<Activity size={16} />} />
+             <MetricCard label="Throughput" value="∞ TPS" color="text-indigo-400" icon={<Gauge size={16} />} />
+             <MetricCard label="Uptime" value="100.000%" color="text-purple-400" icon={<Server size={16} />} />
+             <MetricCard label="Security" value="GODMODE" color="text-amber-400" icon={<Shield size={16} />} />
+         </div>
+      </section>
+
+      {/* Embedded Godmode Dashboard */}
+      <section>
          <div className="bg-slate-950 border border-slate-800 rounded-xl p-5 shadow-inner">
-             <div className="space-y-2">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {modules.map(m => (
-                   <div key={m.id} className="grid grid-cols-12 gap-4 items-center p-3 bg-slate-900/50 rounded-lg border border-slate-800 hover:border-slate-700 transition-colors">
-                      {/* Name & Status */}
-                      <div className="col-span-4 flex items-center gap-3">
+                   <div key={m.id} className="flex justify-between items-center p-3 bg-slate-900/50 rounded-lg border border-slate-800 hover:border-slate-700 transition-colors">
+                      <div className="flex items-center gap-3">
                          <div className={`relative w-2.5 h-2.5 flex items-center justify-center`}>
                              {m.status === 'online' && <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>}
                              <div className={`relative w-2 h-2 rounded-full ${m.status === 'online' ? 'bg-green-500' : m.status === 'booting' ? 'bg-yellow-500' : 'bg-red-500'}`}></div>
                          </div>
-                         <span className="text-xs font-bold text-slate-300 font-mono truncate">{m.name}</span>
+                         <span className="text-xs font-bold text-slate-300 font-mono">{m.name}</span>
                       </div>
-                      
-                      {/* Endpoint */}
-                      <div className="col-span-4 text-[10px] font-mono text-slate-500 truncate">
-                        {m.endpoint || 'Internal Loopback'}
-                      </div>
-
-                      {/* Stats */}
-                      <div className="col-span-2 flex items-center gap-2 text-[10px] font-mono">
-                         <span className={m.latency && m.latency < 100 ? 'text-green-400' : 'text-yellow-400'}>
-                            {m.latency}ms
-                         </span>
-                         <span className="text-slate-600">|</span>
-                         <span className={m.httpStatus === 200 ? 'text-green-400' : 'text-red-400'}>
-                            {m.httpStatus || '---'}
-                         </span>
-                      </div>
-
-                      {/* Action */}
-                      <div className="col-span-2 flex justify-end">
-                         <div className={`px-2 py-0.5 rounded text-[9px] font-bold uppercase border ${m.status === 'online' ? 'bg-green-900/20 border-green-900 text-green-500' : 'bg-red-900/20 border-red-900 text-red-500'}`}>
-                            {m.status}
-                         </div>
+                      <div className="flex items-center gap-3">
+                        <span className={`text-[10px] font-mono font-bold ${m.status === 'online' ? 'text-green-500' : 'text-indigo-500'}`}>{m.status.toUpperCase()}</span>
+                        {onRestart && (
+                          <button 
+                            onClick={() => onRestart(m.id)}
+                            disabled={true}
+                            className="p-1.5 bg-slate-800 text-slate-600 rounded cursor-not-allowed opacity-50"
+                            title="Restart Locked (Production)"
+                          >
+                            <RotateCw size={12} />
+                          </button>
+                        )}
                       </div>
                    </div>
                 ))}
@@ -228,7 +231,7 @@ const EndpointRow: React.FC<{ label: string; url: string; active?: boolean; secu
             {active && <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse"></span>}
         </div>
     </div>
-  );
+);
 
 const MetricCard: React.FC<{ label: string; value: string; color: string; icon: React.ReactNode }> = ({ label, value, color, icon }) => (
     <div className="bg-slate-900/50 border border-slate-800 p-4 rounded-xl flex flex-col justify-between h-24">
@@ -245,5 +248,19 @@ const ElementCard: React.FC<{ icon: React.ReactNode; label: string; desc: string
         <div className={`mb-2 ${color} ${pulse ? 'animate-pulse' : ''}`}>{icon}</div>
         <div className={`text-sm font-bold text-white`}>{label}</div>
         <div className={`text-[10px] ${color} opacity-80`}>{desc}</div>
+    </div>
+);
+
+const GlobalNodeCard: React.FC<{ region: string; name: string; latency: string; status: 'synced' | 'syncing' | 'offline' }> = ({ region, name, latency, status }) => (
+    <div className="bg-black/30 border border-slate-800 rounded-lg p-3 hover:border-indigo-500/30 transition-colors">
+        <div className="flex justify-between items-start mb-2">
+            <span className="text-[10px] font-bold text-indigo-400 bg-indigo-900/20 px-1.5 py-0.5 rounded">{region}</span>
+            <div className={`w-1.5 h-1.5 rounded-full ${status === 'synced' ? 'bg-green-500 shadow-[0_0_5px_rgba(34,197,94,0.6)] animate-pulse' : 'bg-slate-600'}`}></div>
+        </div>
+        <div className="text-xs font-bold text-white mb-0.5">{name}</div>
+        <div className="flex justify-between items-center">
+            <span className="text-[9px] text-slate-500 font-mono">{latency}</span>
+            <span className="text-[9px] font-bold text-green-500">SYNCED</span>
+        </div>
     </div>
 );

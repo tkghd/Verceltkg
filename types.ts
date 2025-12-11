@@ -1,20 +1,17 @@
 
 
 export type ServiceStatus = 'offline' | 'booting' | 'online' | 'error';
-export type ActiveTab = 'assets' | 'transfer' | 'atm' | 'card' | 'crypto' | 'ai_hud' | 'settings' | 'pwa' | 'web' | 'uiux' | 'dashboard' | 'health' | 'real' | 'compliance' | 'audit' | 'license';
+export type ActiveTab = 'assets' | 'transfer' | 'atm' | 'card' | 'crypto' | 'bank_services' | 'ai_hud' | 'settings' | 'pwa' | 'web' | 'uiux' | 'dashboard' | 'health' | 'real' | 'compliance' | 'audit' | 'license';
 
 export interface SystemModule {
   id: string;
   name: string;
   command: string;
   status: ServiceStatus;
-  type: 'core' | 'ai' | 'finance' | 'interface' | 'utility' | 'business' | 'deployment';
+  type: 'core' | 'ai' | 'finance' | 'interface' | 'utility';
   uptime?: string;
   cpu: number;
   memory: number;
-  latency?: number;
-  endpoint?: string;
-  httpStatus?: number;
 }
 
 export interface ChatMessage {
@@ -35,6 +32,7 @@ export interface WalletState {
   lustra: string;
   rubiss: string;
   diamuse: string;
+  [key: string]: string; // Allow dynamic access
 }
 
 export interface QueueState {
@@ -47,27 +45,11 @@ export interface QueueState {
 export interface BusinessEntity {
   id: string;
   name: string;
-  role: string; // e.g. "統括管理", "銀行系サービス"
-  category: 'governance' | 'finance' | 'business';
-  url?: string;
+  type: string;
+  url: string;
   revenue: string;
   status: 'active' | 'optimizing' | 'maintenance';
   region: 'domestic' | 'global';
-}
-
-export interface LicenseData {
-  id: string;
-  name: string;
-  type: 'domestic' | 'global' | 'hybrid'; // Blue, Red, Purple
-  licenses: {
-    bank: boolean;
-    securities: boolean;
-    crypto: boolean;
-    insurance: boolean;
-  };
-  hash: string;
-  expiry: string;
-  auditStatus: string;
 }
 
 export interface OwnerAccount {
@@ -80,4 +62,20 @@ export interface OwnerAccount {
   balance: string;
   currency: 'JPY' | 'USD' | 'EUR';
   isOverseas: boolean;
+}
+
+export interface WorldNode {
+  id: string;
+  region: string;
+  city: string;
+  ping: number;
+  status: 'online' | 'sync' | 'reserve';
+  coordinates: { x: number; y: number }; // Percentage 0-100
+}
+
+export interface FxRate {
+  pair: string;
+  rate: number;
+  prediction: 'up' | 'down';
+  confidence: number;
 }

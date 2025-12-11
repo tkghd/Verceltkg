@@ -1,13 +1,13 @@
 
-
 import React, { useState, useEffect } from 'react';
-import { Wallet, Send, QrCode, CreditCard, Settings, User, Globe, Wifi, Zap, Bot, Crown, Palette, BarChart2, Heart, Building, Scale, ClipboardList, FileText, Smartphone, Grid, X, Coins } from 'lucide-react';
+import { Wallet, Send, QrCode, CreditCard, Settings, User, Globe, Wifi, Zap, Bot, Crown, Palette, BarChart2, Heart, Building, Scale, ClipboardList, FileText, Smartphone, Grid, X, Coins, Landmark, Menu } from 'lucide-react';
 import { LoginScreen } from './components/LoginScreen';
 import { AssetsView } from './components/AssetsView';
 import { TransferView } from './components/TransferView';
 import { ATMView } from './components/ATMView';
 import { CardView } from './components/CardView';
 import { CryptoView } from './components/CryptoView';
+import { BankServicesView } from './components/BankServicesView';
 import { AIStudioHUD } from './components/AIStudioHUD';
 import { SettingsView } from './components/SettingsView';
 import { Dashboard } from './components/Dashboard';
@@ -20,7 +20,7 @@ import { INITIAL_MODULES, STARTUP_LOGS, INITIAL_WALLET, INITIAL_QUEUES, OWNER_AC
 
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [activeTab, setActiveTab] = useState<ActiveTab>('assets');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
   const [modules, setModules] = useState<SystemModule[]>(INITIAL_MODULES);
   const [logs, setLogs] = useState<string[]>(STARTUP_LOGS);
   const [booted, setBooted] = useState(true);
@@ -99,24 +99,27 @@ const App: React.FC = () => {
          
          <div className="h-full overflow-y-auto custom-scrollbar p-4 pb-24 sm:p-6 sm:pb-6 scroll-smooth">
             <div key={activeTab} className="max-w-7xl mx-auto anim-enter-right">
+               {activeTab === 'dashboard' && <Dashboard modules={modules} booted={true} wallet={wallet} queues={queues} />}
                {activeTab === 'assets' && <AssetsView wallet={wallet} ownerAccounts={ownerAccounts} />}
                {activeTab === 'transfer' && <TransferView wallet={wallet} ownerAccounts={ownerAccounts} />}
                {activeTab === 'atm' && <ATMView wallet={wallet} />}
                {activeTab === 'card' && <CardView />}
-               {activeTab === 'crypto' && <CryptoView wallet={wallet} />}
+               {activeTab === 'crypto' && <CryptoView wallet={wallet} onUpdateWallet={setWallet} />}
+               {activeTab === 'bank_services' && <BankServicesView />}
                {activeTab === 'ai_hud' && <AIStudioHUD modules={modules} />}
+               
+               {/* Modules */}
                {activeTab === 'pwa' && <ModuleLinker modulePath="pwa" label="PWA Module" icon={<Smartphone size={48} />} />}
                {activeTab === 'web' && <ModuleLinker modulePath="web" label="Web Module" icon={<Globe size={48} />} />}
                {activeTab === 'uiux' && <ModuleLinker modulePath="uiux" label="UI/UX Module" icon={<Palette size={48} />} />}
-               {activeTab === 'dashboard' && <ModuleLinker modulePath="dashboard" label="Dashboard Module" icon={<BarChart2 size={48} />} />}
                {activeTab === 'health' && <ModuleLinker modulePath="health" label="Health Module" icon={<Heart size={48} />} />}
                {activeTab === 'real' && <ModuleLinker modulePath="real" label="Real API Module" icon={<Building size={48} />} />}
                {activeTab === 'compliance' && <ModuleLinker modulePath="compliance" label="Compliance Module" icon={<Scale size={48} />} />}
                {activeTab === 'audit' && <ModuleLinker modulePath="audit" label="Audit Module" icon={<ClipboardList size={48} />} />}
                {activeTab === 'license' && <ModuleLinker modulePath="license" label="License Module" icon={<FileText size={48} />} />}
+               
                {activeTab === 'settings' && (
                  <>
-                   <Dashboard modules={modules} booted={true} wallet={wallet} queues={queues} />
                    <div className="mt-8">
                       <SettingsView modules={modules} logs={logs} queues={queues} onRestart={handleRestartModule} />
                    </div>
@@ -138,16 +141,16 @@ const App: React.FC = () => {
       <nav className="flex-none bg-[#080812]/90 backdrop-blur-xl border-t border-white/5 px-4 pb-safe z-40 relative">
         <div className="flex justify-between items-end h-[70px] max-w-7xl mx-auto pb-2 relative">
            
-           <NavButton active={activeTab === 'assets'} onClick={() => handleTabChange('assets')} icon={<Wallet size={24} />} label="資産" />
-           <NavButton active={activeTab === 'transfer'} onClick={() => handleTabChange('transfer')} icon={<Send size={24} />} label="送金" />
+           <NavButton active={activeTab === 'dashboard'} onClick={() => handleTabChange('dashboard')} icon={<Globe size={24} />} label="World" />
+           <NavButton active={activeTab === 'assets'} onClick={() => handleTabChange('assets')} icon={<Wallet size={24} />} label="Vault" />
            
            {/* Center FAB */}
            <div className="relative -top-8 mx-2">
               <button 
-                onClick={() => handleTabChange('atm')}
+                onClick={() => handleTabChange('bank_services')}
                 className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white shadow-[0_10px_30px_rgba(6,182,212,0.4)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 border-[4px] border-[#05050a] group rotate-3 hover:rotate-0"
               >
-                <QrCode size={28} className="group-hover:scale-110 transition-transform duration-300" />
+                <Landmark size={28} className="group-hover:scale-110 transition-transform duration-300" />
               </button>
            </div>
            
@@ -161,7 +164,7 @@ const App: React.FC = () => {
               <div className={`p-1 transition-all duration-300 ${isMenuOpen ? 'scale-110' : ''}`}>
                  {isMenuOpen ? <X size={24} /> : <Grid size={24} />}
               </div>
-              <span className="text-[10px] font-medium tracking-tight">Apps</span>
+              <span className="text-xs font-medium tracking-tight">Apps</span>
            </button>
 
         </div>
@@ -178,7 +181,7 @@ const NavButton: React.FC<{ active: boolean; onClick: () => void; icon: React.Re
     <div className={`p-1 transition-all duration-300 ${active ? 'scale-110 drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]' : ''}`}>
       {icon}
     </div>
-    <span className="text-[10px] font-medium tracking-tight">{label}</span>
+    <span className="text-xs font-medium tracking-tight">{label}</span>
   </button>
 );
 

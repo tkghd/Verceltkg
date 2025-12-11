@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Send, Building2, Search, ChevronRight, AlertCircle, ArrowRight, CheckCircle2, ChevronDown, RefreshCw, Wallet, ArrowLeft, CreditCard, History, User, Pencil, Landmark, ShieldCheck, Smartphone, Zap, Mail, QrCode, FileText, Fingerprint, Lock, Shield, Scan } from 'lucide-react';
 import { WalletState, OwnerAccount } from '../types';
@@ -23,6 +24,12 @@ const MAJOR_BANKS = [
   { id: 'yokohama', name: '横浜銀行', short: '横浜', color: 'bg-[#fbb03b]' },
   { id: 'chiba', name: '千葉銀行', short: '千葉', color: 'bg-[#e60012]' },
   { id: 'fukuoka', name: '福岡銀行', short: '福岡', color: 'bg-[#0095d9]' },
+  { id: 'seven', name: 'セブン銀行', short: 'セブン', color: 'bg-[#009b4d]' },
+  { id: 'paypay_bank', name: 'PayPay銀行', short: 'PayPay', color: 'bg-[#ff0033]' },
+  { id: 'jibun', name: 'auじぶん銀行', short: 'じぶん', color: 'bg-[#f39800]' },
+  { id: 'aeon', name: 'イオン銀行', short: 'イオン', color: 'bg-[#D0006F]' },
+  { id: 'shinsei', name: 'SBI新生銀行', short: 'SBI新生', color: 'bg-[#004886]' },
+  { id: 'gmo', name: 'GMOあおぞら', short: 'GMO', color: 'bg-[#00A1E9]' },
 ];
 
 export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccounts }) => {

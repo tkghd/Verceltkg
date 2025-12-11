@@ -1,9 +1,9 @@
 
-
 import React from 'react';
 import { Activity, ShieldCheck, Server, Globe, Database, Cpu, Wifi, Lock, Boxes, Zap, TrendingUp, Radio, Wand2, Infinity } from 'lucide-react';
 import { SystemModule, WalletState, QueueState } from '../types';
 import { MetricsChart } from './MetricsChart';
+import { WorldMapHUD } from './WorldMapHUD';
 
 interface DashboardProps {
   modules: SystemModule[];
@@ -16,6 +16,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ modules, booted, wallet, q
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 pb-10 animate-in fade-in duration-700">
       
+      {/* World Map HUD - Centerpiece */}
+      <div className="col-span-1 md:col-span-2 lg:col-span-12">
+        <WorldMapHUD />
+      </div>
+
       {/* Welcome Banner - CHEAT MODE */}
       <div className="col-span-1 md:col-span-2 lg:col-span-12 bg-gradient-to-r from-[#1a1200] to-[#000000] border border-cyan-500/30 p-8 rounded-[2rem] flex flex-col md:flex-row justify-between items-center shadow-[0_0_50px_rgba(6,182,212,0.1)] backdrop-blur-sm relative overflow-hidden group">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 animate-pulse"></div>
