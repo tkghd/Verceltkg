@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { Landmark, Globe, CreditCard, Plus, ArrowRight, ShieldCheck, Banknote, Building2, CheckCircle2, AlertCircle, RefreshCw, Zap, Cpu, Scan, ArrowDownToLine, Settings } from 'lucide-react';
+import { ActiveTab } from '../types';
 
 type ServiceTab = 'accounts' | 'transfer_intl' | 'loans';
 
-export const BankServicesView: React.FC = () => {
+interface BankServicesViewProps {
+  onNavigate: (tab: ActiveTab) => void;
+}
+
+export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }) => {
   const [activeTab, setActiveTab] = useState<ServiceTab>('accounts');
   const [loanProcessing, setLoanProcessing] = useState(false);
   const [loanApproved, setLoanApproved] = useState(false);
@@ -70,7 +75,7 @@ export const BankServicesView: React.FC = () => {
               </button>
 
               <button 
-                onClick={() => window.location.hash = '#/atm'} // Fallback navigation simulation
+                onClick={() => onNavigate('atm')}
                 className="p-3 bg-indigo-900/20 border border-indigo-500/30 rounded-xl hover:bg-indigo-900/40 transition-colors flex flex-col items-center gap-2 group/btn"
               >
                   <Scan size={20} className="text-indigo-400 group-hover/btn:scale-110 transition-transform" />

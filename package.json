@@ -8,6 +8,13 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "start": "node front/server.js",
+    "start:front": "node front/server.js",
+    "start:integrated": "node integrated/server.js",
+    "start:hud": "node hud/server.js",
+    "start:ai": "node ai/server.js",
+    "start:wallet": "node wallet/server.js",
+    "start:watchdog": "node watchdog.js",
+    "start:health": "node health.js",
     "deploy": "npm install && npm run build && pm2 reload ecosystem.config.js"
   },
   "dependencies": {

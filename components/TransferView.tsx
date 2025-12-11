@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Send, Building2, Search, ChevronRight, AlertCircle, ArrowRight, CheckCircle2, ChevronDown, RefreshCw, Wallet, ArrowLeft, CreditCard, History, User, Pencil, Landmark, ShieldCheck, Smartphone, Zap, Mail, QrCode, FileText, Fingerprint, Lock, Shield, Scan } from 'lucide-react';
+import { Send, Building2, Search, ChevronRight, AlertCircle, ArrowRight, CheckCircle2, ChevronDown, RefreshCw, Wallet, ArrowLeft, CreditCard, History, User, Pencil, Landmark, ShieldCheck, Smartphone, Zap, Mail, QrCode, FileText, Fingerprint, Lock, Shield, Scan, Globe, AtSign } from 'lucide-react';
 import { WalletState, OwnerAccount } from '../types';
 
 interface TransferViewProps {
@@ -9,7 +9,7 @@ interface TransferViewProps {
 }
 
 type TransferStep = 'method_select' | 'bank_select' | 'account_input' | 'amount_input' | 'confirm' | 'processing_auth' | 'complete';
-type TransferMethod = 'bank' | 'paypay' | 'cotra';
+type TransferMethod = 'bank' | 'paypay' | 'cotra' | 'wise' | 'revolut';
 
 const MAJOR_BANKS = [
   { id: 'sbi', name: '住信SBIネット銀行', short: '住信SBI', color: 'bg-[#13284c]' },
@@ -49,9 +49,9 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
   const [accountType, setAccountType] = useState<'普通' | '当座' | '貯蓄'>('普通');
   const [accountNumber, setAccountNumber] = useState('');
 
-  // Account Details (PayPay/Cotra)
-  const [recipientId, setRecipientId] = useState(''); // Phone, ID, or Email
-  const [recipientType, setRecipientType] = useState<'phone' | 'id' | 'email'>('phone');
+  // Account Details (PayPay/Cotra/Wise/Revolut)
+  const [recipientId, setRecipientId] = useState(''); // Phone, ID, Email, Revtag
+  const [recipientType, setRecipientType] = useState<'phone' | 'id' | 'email' | 'revtag'>('phone');
   
   // Amount & Sender
   const [amount, setAmount] = useState('');
@@ -74,6 +74,11 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
           setStep('bank_select');
       } else {
           setStep('account_input');
+          // Set default recipient type based on method
+          if (m === 'wise') setRecipientType('email');
+          else if (m === 'revolut') setRecipientType('revtag');
+          else if (m === 'paypay') setRecipientType('phone');
+          else setRecipientType('phone');
       }
   };
 
@@ -81,7 +86,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
     if (step === 'bank_select' && selectedBank) setStep('account_input');
     else if (step === 'account_input') {
         if (method === 'bank' && branchName && accountNumber.length >= 7) setStep('amount_input');
-        else if ((method === 'paypay' || method === 'cotra') && recipientId.length > 3) setStep('amount_input');
+        else if ((method !== 'bank') && recipientId.length > 3) setStep('amount_input');
     }
     else if (step === 'amount_input' && amount) setStep('confirm');
   };
@@ -239,52 +244,89 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
         </div>
 
         <div className="space-y-4">
+           {/* Bank */}
            <button 
              onClick={() => handleMethodSelect('bank')}
-             className="w-full p-6 rounded-[2rem] bg-gradient-to-r from-[#0f1520] to-[#0a0a12] border border-slate-800 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(79,70,229,0.1)] transition-all flex items-center justify-between group anim-enter-right anim-delay-100"
+             className="w-full p-5 rounded-[2rem] bg-gradient-to-r from-[#0f1520] to-[#0a0a12] border border-slate-800 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(79,70,229,0.1)] transition-all flex items-center justify-between group anim-enter-right anim-delay-100"
            >
               <div className="flex items-center gap-4">
-                 <div className="w-14 h-14 rounded-2xl bg-indigo-900/20 text-indigo-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Building2 size={28} />
+                 <div className="w-12 h-12 rounded-2xl bg-indigo-900/20 text-indigo-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Building2 size={24} />
                  </div>
                  <div className="text-left">
-                    <div className="font-bold text-white text-lg">銀行振込</div>
-                    <div className="text-xs text-slate-400">金融機関口座へ送金 (Zengin System)</div>
+                    <div className="font-bold text-white text-base">銀行振込</div>
+                    <div className="text-xs text-slate-400">金融機関口座へ送金</div>
                  </div>
               </div>
-              <ChevronRight size={24} className="text-slate-600 group-hover:text-indigo-400 transition-colors" />
+              <ChevronRight size={20} className="text-slate-600 group-hover:text-indigo-400 transition-colors" />
            </button>
 
+           {/* PayPay */}
            <button 
              onClick={() => handleMethodSelect('paypay')}
-             className="w-full p-6 rounded-[2rem] bg-gradient-to-r from-[#1a0f0f] to-[#0a0a12] border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(239,68,68,0.1)] transition-all flex items-center justify-between group anim-enter-right anim-delay-200"
+             className="w-full p-5 rounded-[2rem] bg-gradient-to-r from-[#1a0f0f] to-[#0a0a12] border border-slate-800 hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(239,68,68,0.1)] transition-all flex items-center justify-between group anim-enter-right anim-delay-200"
            >
               <div className="flex items-center gap-4">
-                 <div className="w-14 h-14 rounded-2xl bg-red-900/20 text-red-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Smartphone size={28} />
+                 <div className="w-12 h-12 rounded-2xl bg-red-900/20 text-red-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Smartphone size={24} />
                  </div>
                  <div className="text-left">
-                    <div className="font-bold text-white text-lg">PayPay送金</div>
+                    <div className="font-bold text-white text-base">PayPay送金</div>
                     <div className="text-xs text-slate-400">ID / 電話番号で即時送金</div>
                  </div>
               </div>
-              <ChevronRight size={24} className="text-slate-600 group-hover:text-red-400 transition-colors" />
+              <ChevronRight size={20} className="text-slate-600 group-hover:text-red-400 transition-colors" />
            </button>
 
+           {/* Cotra */}
            <button 
              onClick={() => handleMethodSelect('cotra')}
-             className="w-full p-6 rounded-[2rem] bg-gradient-to-r from-[#0f1a15] to-[#0a0a12] border border-slate-800 hover:border-green-500/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.1)] transition-all flex items-center justify-between group anim-enter-right anim-delay-300"
+             className="w-full p-5 rounded-[2rem] bg-gradient-to-r from-[#0f1a15] to-[#0a0a12] border border-slate-800 hover:border-green-500/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.1)] transition-all flex items-center justify-between group anim-enter-right anim-delay-300"
            >
               <div className="flex items-center gap-4">
-                 <div className="w-14 h-14 rounded-2xl bg-green-900/20 text-green-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <RefreshCw size={28} />
+                 <div className="w-12 h-12 rounded-2xl bg-green-900/20 text-green-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <RefreshCw size={24} />
                  </div>
                  <div className="text-left">
-                    <div className="font-bold text-white text-lg">ことら送金</div>
-                    <div className="text-xs text-slate-400">10万円以下の個人間送金手数料無料</div>
+                    <div className="font-bold text-white text-base">ことら送金</div>
+                    <div className="text-xs text-slate-400">10万円以下の個人間送金</div>
                  </div>
               </div>
-              <ChevronRight size={24} className="text-slate-600 group-hover:text-green-400 transition-colors" />
+              <ChevronRight size={20} className="text-slate-600 group-hover:text-green-400 transition-colors" />
+           </button>
+
+           {/* Wise */}
+           <button 
+             onClick={() => handleMethodSelect('wise')}
+             className="w-full p-5 rounded-[2rem] bg-gradient-to-r from-[#0d1505] to-[#0a0a12] border border-slate-800 hover:border-lime-500/50 hover:shadow-[0_0_30px_rgba(132,204,22,0.1)] transition-all flex items-center justify-between group anim-enter-right anim-delay-500"
+           >
+              <div className="flex items-center gap-4">
+                 <div className="w-12 h-12 rounded-2xl bg-lime-900/20 text-lime-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Globe size={24} />
+                 </div>
+                 <div className="text-left">
+                    <div className="font-bold text-white text-base">Wise</div>
+                    <div className="text-xs text-slate-400">International / Multi-currency</div>
+                 </div>
+              </div>
+              <ChevronRight size={20} className="text-slate-600 group-hover:text-lime-400 transition-colors" />
+           </button>
+
+           {/* Revolut */}
+           <button 
+             onClick={() => handleMethodSelect('revolut')}
+             className="w-full p-5 rounded-[2rem] bg-gradient-to-r from-[#000000] to-[#121212] border border-slate-800 hover:border-white/30 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all flex items-center justify-between group anim-enter-right anim-delay-500"
+           >
+              <div className="flex items-center gap-4">
+                 <div className="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Zap size={24} />
+                 </div>
+                 <div className="text-left">
+                    <div className="font-bold text-white text-base">Revolut</div>
+                    <div className="text-xs text-slate-400">Instant P2P / Global</div>
+                 </div>
+              </div>
+              <ChevronRight size={20} className="text-slate-600 group-hover:text-white transition-colors" />
            </button>
         </div>
         
@@ -362,9 +404,18 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
 
   // --- STEP: Account Input (Adaptive) ---
   if (step === 'account_input') {
+      const getTitle = () => {
+          if (method === 'bank') return '口座情報の入力';
+          if (method === 'paypay') return 'PayPay ID/電話番号';
+          if (method === 'cotra') return 'ことら送金先の指定';
+          if (method === 'wise') return 'Wise Recipient';
+          if (method === 'revolut') return 'Revolut ID';
+          return 'Destination';
+      }
+
       return (
         <div className="anim-enter-right max-w-3xl mx-auto pb-20 relative">
-          {renderHeader(method === 'bank' ? '口座情報の入力' : method === 'paypay' ? 'PayPay ID/電話番号' : 'ことら送金先の指定')}
+          {renderHeader(getTitle())}
           
           <div className="bg-[#0f0f18] border border-slate-800 rounded-2xl p-6 space-y-6">
              
@@ -372,13 +423,23 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
              <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-900 border border-slate-800">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg ${
                     method === 'bank' ? selectedBank?.color : 
-                    method === 'paypay' ? 'bg-red-500' : 'bg-green-500'
+                    method === 'paypay' ? 'bg-red-500' : 
+                    method === 'wise' ? 'bg-lime-500' :
+                    method === 'revolut' ? 'bg-black border border-white/20' :
+                    'bg-green-500'
                 }`}>
-                    {method === 'bank' ? selectedBank?.short.substring(0,2) : method === 'paypay' ? 'P' : 'C'}
+                    {method === 'bank' ? selectedBank?.short.substring(0,2) : 
+                     method === 'paypay' ? 'P' : 
+                     method === 'wise' ? <Globe size={20} /> :
+                     method === 'revolut' ? 'R' : 'C'}
                 </div>
                 <div>
                    <div className="font-bold text-white">
-                       {method === 'bank' ? selectedBank?.name : method === 'paypay' ? 'PayPay残高送金' : 'ことら送金 (10万円以下)'}
+                       {method === 'bank' ? selectedBank?.name : 
+                        method === 'paypay' ? 'PayPay残高送金' : 
+                        method === 'wise' ? 'Wise Transfer' :
+                        method === 'revolut' ? 'Revolut P2P' :
+                        'ことら送金 (10万円以下)'}
                    </div>
                    <div className="text-xs text-slate-500">への送金</div>
                 </div>
@@ -432,13 +493,18 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                  </div>
              )}
 
-             {/* PAYPAY / COTRA INPUTS */}
-             {(method === 'paypay' || method === 'cotra') && (
+             {/* OTHER INPUTS */}
+             {method !== 'bank' && (
                  <div className="space-y-6">
                      <div className="flex gap-2">
+                        {/* Phone is common */}
                         <button onClick={() => setRecipientType('phone')} className={`flex-1 py-2 rounded-lg text-xs font-bold border transition-all ${recipientType === 'phone' ? 'bg-slate-800 border-white/20 text-white' : 'border-transparent text-slate-500'}`}>電話番号</button>
+                        
+                        {/* Specific types */}
                         {method === 'paypay' && <button onClick={() => setRecipientType('id')} className={`flex-1 py-2 rounded-lg text-xs font-bold border transition-all ${recipientType === 'id' ? 'bg-slate-800 border-white/20 text-white' : 'border-transparent text-slate-500'}`}>PayPay ID</button>}
                         {method === 'cotra' && <button onClick={() => setRecipientType('email')} className={`flex-1 py-2 rounded-lg text-xs font-bold border transition-all ${recipientType === 'email' ? 'bg-slate-800 border-white/20 text-white' : 'border-transparent text-slate-500'}`}>メールアドレス</button>}
+                        {method === 'wise' && <button onClick={() => setRecipientType('email')} className={`flex-1 py-2 rounded-lg text-xs font-bold border transition-all ${recipientType === 'email' ? 'bg-slate-800 border-white/20 text-white' : 'border-transparent text-slate-500'}`}>Email</button>}
+                        {method === 'revolut' && <button onClick={() => setRecipientType('revtag')} className={`flex-1 py-2 rounded-lg text-xs font-bold border transition-all ${recipientType === 'revtag' ? 'bg-slate-800 border-white/20 text-white' : 'border-transparent text-slate-500'}`}>Revtag</button>}
                      </div>
 
                      <div className="relative">
@@ -446,11 +512,19 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                            type={recipientType === 'phone' ? 'tel' : 'text'}
                            value={recipientId}
                            onChange={(e) => setRecipientId(e.target.value)}
-                           placeholder={recipientType === 'phone' ? '090-1234-5678' : recipientType === 'id' ? 'paypay_id_sample' : 'sample@email.com'}
+                           placeholder={
+                               recipientType === 'phone' ? '090-1234-5678' : 
+                               recipientType === 'id' ? 'paypay_id' : 
+                               recipientType === 'revtag' ? '@username' :
+                               'sample@email.com'
+                           }
                            className="w-full bg-black/50 border border-slate-700 rounded-xl px-4 py-4 text-white text-lg focus:outline-none focus:border-indigo-500 transition-colors pl-12 focus:shadow-[0_0_10px_rgba(79,70,229,0.2)]"
                         />
                         <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">
-                            {recipientType === 'phone' ? <Smartphone size={20} /> : recipientType === 'id' ? <QrCode size={20} /> : <Mail size={20} />}
+                            {recipientType === 'phone' ? <Smartphone size={20} /> : 
+                             recipientType === 'id' ? <QrCode size={20} /> : 
+                             recipientType === 'revtag' ? <AtSign size={20} /> :
+                             <Mail size={20} />}
                         </div>
                      </div>
                      <p className="text-xs text-slate-500 text-center">
@@ -463,7 +537,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                onClick={handleNext}
                disabled={
                    (method === 'bank' && (!branchName || accountNumber.length < 7)) ||
-                   ((method === 'paypay' || method === 'cotra') && recipientId.length < 3)
+                   ((method !== 'bank') && recipientId.length < 3)
                }
                className="w-full py-4 mt-4 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 disabled:bg-slate-800 disabled:text-slate-500 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 active:scale-95 shadow-lg shadow-indigo-500/20"
              >
@@ -558,16 +632,28 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                        <div className="flex gap-4">
                           <div className="flex flex-col items-center gap-1 min-w-[60px]">
                              <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-lg ${
-                                 method === 'bank' ? selectedBank?.color : method === 'paypay' ? 'bg-red-500' : 'bg-green-500'
+                                 method === 'bank' ? selectedBank?.color : 
+                                 method === 'paypay' ? 'bg-red-500' : 
+                                 method === 'wise' ? 'bg-lime-500' :
+                                 method === 'revolut' ? 'bg-black border border-white/20' :
+                                 'bg-green-500'
                              }`}>
-                                 {method === 'bank' ? selectedBank?.short.substring(0,1) : method === 'paypay' ? 'P' : 'C'}
+                                 {method === 'bank' ? selectedBank?.short.substring(0,1) : 
+                                  method === 'paypay' ? 'P' : 
+                                  method === 'wise' ? <Globe size={20} /> :
+                                  method === 'revolut' ? 'R' :
+                                  'C'}
                              </div>
                              <span className="text-[10px] font-bold text-slate-500">TO</span>
                           </div>
                           <div className="flex-1 border-l-2 border-slate-800 pl-4">
                              <div className="text-xs font-bold text-slate-500 uppercase mb-1">Recipient (送金先)</div>
                              <div className="font-bold text-white text-lg leading-tight">
-                                {method === 'bank' ? selectedBank?.name : method === 'paypay' ? 'PayPay ID' : 'Contact'}
+                                {method === 'bank' ? selectedBank?.name : 
+                                 method === 'paypay' ? 'PayPay ID' : 
+                                 method === 'wise' ? 'Wise Account' :
+                                 method === 'revolut' ? 'Revolut User' :
+                                 'Contact'}
                              </div>
                              <div className="text-sm text-indigo-400 font-mono mt-1">
                                 {method === 'bank' ? `${branchName} / ${accountType} / ${accountNumber}` : recipientId}

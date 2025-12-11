@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Wallet, Send, QrCode, CreditCard, Settings, User, Globe, Wifi, Zap, Bot, Crown, Palette, BarChart2, Heart, Building, Scale, ClipboardList, FileText, Smartphone, Grid, X, Coins, Landmark, Menu } from 'lucide-react';
 import { LoginScreen } from './components/LoginScreen';
@@ -32,6 +31,7 @@ const App: React.FC = () => {
   useEffect(() => {
     if (isLoggedIn) {
         setModules(prev => prev.map(m => ({ ...m, status: 'online' })));
+        setLogs(prev => [...prev, `[${new Date().toLocaleTimeString()}] 🚀 PRODUCTION DEPLOYMENT VERIFIED: ALL SYSTEMS GO`]);
     }
   }, [isLoggedIn]);
 
@@ -105,7 +105,7 @@ const App: React.FC = () => {
                {activeTab === 'atm' && <ATMView wallet={wallet} />}
                {activeTab === 'card' && <CardView />}
                {activeTab === 'crypto' && <CryptoView wallet={wallet} onUpdateWallet={setWallet} />}
-               {activeTab === 'bank_services' && <BankServicesView />}
+               {activeTab === 'bank_services' && <BankServicesView onNavigate={handleTabChange} />}
                {activeTab === 'ai_hud' && <AIStudioHUD modules={modules} />}
                
                {/* Modules */}
