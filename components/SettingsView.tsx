@@ -1,7 +1,6 @@
 
-
 import React, { useState, useEffect } from 'react';
-import { Settings, Server, Database, Terminal, Shield, Cpu, Play, FileCode, Lock, RotateCw, Globe, Copy, ExternalLink, Zap, Box, Gauge, Activity, Radio, Command, Heart, Eye, Gem, Hammer, RefreshCw, Network } from 'lucide-react';
+import { Settings, Server, Database, Terminal, Shield, Cpu, Play, FileCode, Lock, RotateCw, Globe, Copy, ExternalLink, Zap, Box, Gauge, Activity, Radio, Command, Heart, Eye, Gem, Hammer, RefreshCw, Network, Scan, Fingerprint, Smartphone, CheckCircle2 } from 'lucide-react';
 import { SystemModule, QueueState } from '../types';
 import { LogConsole } from './LogConsole';
 import { BusinessChecklist } from './BusinessChecklist';
@@ -15,6 +14,11 @@ interface SettingsViewProps {
 
 export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queues, onRestart }) => {
   const [latency, setLatency] = useState(0);
+  const [securityConfig, setSecurityConfig] = useState({
+      quantum: true,
+      biometric: true,
+      behavioral: true
+  });
 
   // Force ultra-low latency
   useEffect(() => {
@@ -23,6 +27,10 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const toggleSecurity = (key: keyof typeof securityConfig) => {
+      setSecurityConfig(prev => ({ ...prev, [key]: !prev[key] }));
+  };
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500 pb-20">
@@ -48,6 +56,78 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
                URL USAGE: ENABLED • DNS: PROPAGATED • TRAFFIC: 100% ROUTED • SERVER: TOKYO-01
             </div>
          </div>
+      </section>
+
+      {/* MOBILE SECURITY SUITE (NEW) */}
+      <section>
+          <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2 mb-4">
+              <Shield size={16} /> Mobile Security Suite (FSA Compliant)
+          </h3>
+          <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 space-y-6 relative overflow-hidden">
+              {/* Compliance Badge */}
+              <div className="absolute top-4 right-4 bg-green-900/20 border border-green-500/30 text-green-400 px-3 py-1 rounded-full text-[10px] font-bold flex items-center gap-2">
+                  <CheckCircle2 size={12} /> FSA LEVEL AAA
+              </div>
+
+              <div className="space-y-4">
+                  {/* Toggle 1 */}
+                  <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                          <div className={`p-3 rounded-xl ${securityConfig.quantum ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-800 text-slate-500'}`}>
+                              <Lock size={20} />
+                          </div>
+                          <div>
+                              <div className="font-bold text-white text-sm">Quantum Encryption</div>
+                              <div className="text-[10px] text-slate-500">Kyber-1024 Post-Quantum Algo</div>
+                          </div>
+                      </div>
+                      <button 
+                        onClick={() => toggleSecurity('quantum')} 
+                        className={`w-12 h-6 rounded-full p-1 transition-colors ${securityConfig.quantum ? 'bg-indigo-500' : 'bg-slate-700'}`}
+                      >
+                          <div className={`w-4 h-4 bg-white rounded-full transition-transform ${securityConfig.quantum ? 'translate-x-6' : 'translate-x-0'}`}></div>
+                      </button>
+                  </div>
+
+                  {/* Toggle 2 */}
+                  <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                          <div className={`p-3 rounded-xl ${securityConfig.biometric ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-800 text-slate-500'}`}>
+                              <Fingerprint size={20} />
+                          </div>
+                          <div>
+                              <div className="font-bold text-white text-sm">Biometric Level 3</div>
+                              <div className="text-[10px] text-slate-500">3D Face + Subdermal Vein Scan</div>
+                          </div>
+                      </div>
+                      <button 
+                        onClick={() => toggleSecurity('biometric')} 
+                        className={`w-12 h-6 rounded-full p-1 transition-colors ${securityConfig.biometric ? 'bg-indigo-500' : 'bg-slate-700'}`}
+                      >
+                          <div className={`w-4 h-4 bg-white rounded-full transition-transform ${securityConfig.biometric ? 'translate-x-6' : 'translate-x-0'}`}></div>
+                      </button>
+                  </div>
+
+                  {/* Toggle 3 */}
+                  <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                          <div className={`p-3 rounded-xl ${securityConfig.behavioral ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-800 text-slate-500'}`}>
+                              <Activity size={20} />
+                          </div>
+                          <div>
+                              <div className="font-bold text-white text-sm">Behavioral Analysis</div>
+                              <div className="text-[10px] text-slate-500">AI Pattern Detection (Japan Fin)</div>
+                          </div>
+                      </div>
+                      <button 
+                        onClick={() => toggleSecurity('behavioral')} 
+                        className={`w-12 h-6 rounded-full p-1 transition-colors ${securityConfig.behavioral ? 'bg-indigo-500' : 'bg-slate-700'}`}
+                      >
+                          <div className={`w-4 h-4 bg-white rounded-full transition-transform ${securityConfig.behavioral ? 'translate-x-6' : 'translate-x-0'}`}></div>
+                      </button>
+                  </div>
+              </div>
+          </div>
       </section>
 
       {/* ΩβαMAX 5 ELEMENTS CORE STATUS */}

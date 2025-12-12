@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Landmark, Globe, CreditCard, Plus, ArrowRight, ShieldCheck, Banknote, Building2, CheckCircle2, AlertCircle, RefreshCw, Zap, Cpu, Scan, ArrowDownToLine, Settings, Copy, Activity, Server, Radio, Network, Database, Save, Trash2, Hash } from 'lucide-react';
+import { Landmark, Globe, CreditCard, Plus, ArrowRight, ShieldCheck, Banknote, Building2, CheckCircle2, AlertCircle, RefreshCw, Zap, Cpu, Scan, ArrowDownToLine, Settings, Copy, Activity, Server, Radio, Network, Database, Save, Trash2, Hash, FileText } from 'lucide-react';
 
 type ServiceTab = 'accounts' | 'transfer_intl' | 'loans' | 'admin_registry';
 
@@ -26,6 +26,12 @@ const INITIAL_BANK_DB: BankInfo[] = [
   { code: 'DE', name: 'Germany', flag: '🇩🇪', currency: 'EUR', swift: 'TKGB DE FF', format: 'IBAN (DE)', desc: 'Bundesbank / SEPA' },
   { code: 'FR', name: 'France', flag: '🇫🇷', currency: 'EUR', swift: 'TKGB FR PP', format: 'IBAN (FR)', desc: 'BdF / SEPA' },
   { code: 'CH', name: 'Switzerland', flag: '🇨🇭', currency: 'CHF', swift: 'TKGB CH ZZ', format: 'IBAN (CH)', desc: 'SIC / SEPA' },
+  { code: 'IT', name: 'Italy', flag: '🇮🇹', currency: 'EUR', swift: 'TKGB IT MM', format: 'IBAN (IT)', desc: 'Bank of Italy / SEPA' },
+  { code: 'ES', name: 'Spain', flag: '🇪🇸', currency: 'EUR', swift: 'TKGB ES MM', format: 'IBAN (ES)', desc: 'Banco de España / SEPA' },
+  { code: 'NL', name: 'Netherlands', flag: '🇳🇱', currency: 'EUR', swift: 'TKGB NL AA', format: 'IBAN (NL)', desc: 'DNB / SEPA' },
+  { code: 'SE', name: 'Sweden', flag: '🇸🇪', currency: 'SEK', swift: 'TKGB SE SS', format: 'IBAN (SE)', desc: 'Riksbank / RIX' },
+  { code: 'BE', name: 'Belgium', flag: '🇧🇪', currency: 'EUR', swift: 'TKGB BE BB', format: 'IBAN (BE)', desc: 'NBB / SEPA' },
+  { code: 'PL', name: 'Poland', flag: '🇵🇱', currency: 'PLN', swift: 'TKGB PL PP', format: 'IBAN (PL)', desc: 'NBP / ELIXIR' },
   
   // Asia Extended
   { code: 'SG', name: 'Singapore', flag: '🇸🇬', currency: 'SGD', swift: 'TKGB SG SG', format: 'Bank-Branch-Account', desc: 'FAST / PayNow' },
@@ -41,6 +47,8 @@ const INITIAL_BANK_DB: BankInfo[] = [
   
   // Others
   { code: 'AE', name: 'UAE (Dubai)', flag: '🇦🇪', currency: 'AED', swift: 'TKGB AE AA', format: 'IBAN (AE)', desc: 'UAEFTS / ICCS' },
+  { code: 'SA', name: 'Saudi Arabia', flag: '🇸🇦', currency: 'SAR', swift: 'TKGB SA RR', format: 'IBAN (SA)', desc: 'SAMA / SARIE' },
+  { code: 'TR', name: 'Turkey', flag: '🇹🇷', currency: 'TRY', swift: 'TKGB TR IS', format: 'IBAN (TR)', desc: 'CBRT / EFT' },
   { code: 'AU', name: 'Australia', flag: '🇦🇺', currency: 'AUD', swift: 'TKGB AU 2S', format: 'BSB / Account', desc: 'BECS / NPP' },
   { code: 'CA', name: 'Canada', flag: '🇨🇦', currency: 'CAD', swift: 'TKGB CA 2T', format: 'Transit-Inst-Account', desc: 'ACSS / LVTS' },
   { code: 'BR', name: 'Brazil', flag: '🇧🇷', currency: 'BRL', swift: 'TKGB BR BB', format: 'Ag / Account', desc: 'Pix / STR' },
@@ -63,6 +71,12 @@ const MockBankGenerator = {
             case 'EU': return `LT${r(2)} 3500 00${r(10)}`; // Defaulting EU to LT for now
             case 'IT': return `IT${r(2)} X ${r(5)} ${r(5)} ${r(12)}`;
             case 'ES': return `ES${r(2)} ${r(4)} ${r(4)} ${r(2)} ${r(10)}`;
+            case 'NL': return `NL${r(2)} TKGB ${r(10)}`;
+            case 'SE': return `SE${r(2)} ${r(3)} ${r(16)} ${r(1)}`;
+            case 'BE': return `BE${r(2)} ${r(3)} ${r(7)} ${r(2)}`;
+            case 'PL': return `PL${r(2)} ${r(8)} ${r(16)}`;
+            case 'SA': return `SA${r(2)} 80 ${r(18)}`;
+            case 'TR': return `TR${r(2)} ${r(5)} ${r(1)} ${r(16)}`;
             default: return `${country}${r(2)} ${r(4)} ${r(4)} ${r(4)} ${r(4)}`;
         }
     },
@@ -85,6 +99,7 @@ const MockBankGenerator = {
             case 'ID': return `${r(4)}-${r(2)}-${r(6)}-${r(2)}`;
             case 'MY': return `${r(4)} ${r(2)} ${r(6)}`;
             case 'PH': return `${r(4)} ${r(4)} ${r(2)}`;
+            case 'BR': return `Ag: ${r(4)} / Acc: ${r(8)}-${r(1)}`;
             default: return `ACC: ${r(12)}`;
         }
     },
@@ -178,7 +193,7 @@ export const BankServicesView: React.FC = () => {
     setIsGenerating(true);
     setTimeout(() => {
         // Use Mock Generator
-        const isIBAN = ['EU','DE','FR','CH','GB','AE','IT','ES'].includes(selectedCountry.code);
+        const isIBAN = ['EU','DE','FR','CH','GB','AE','IT','ES','NL','SE','TR','BE','PL','SA'].includes(selectedCountry.code);
         
         const accountNumber = isIBAN 
             ? MockBankGenerator.generateIBAN(selectedCountry.code)
@@ -193,7 +208,8 @@ export const BankServicesView: React.FC = () => {
             swift: swiftCode,
             accountNumber: accountNumber,
             type: 'Corporate Checking (Godmode)',
-            timestamp: new Date().toLocaleString()
+            timestamp: new Date().toLocaleString(),
+            isIBAN: isIBAN
         });
         setIsGenerating(false);
     }, 1500);
@@ -314,7 +330,7 @@ export const BankServicesView: React.FC = () => {
                                           <span className="font-mono text-cyan-400 font-bold">{selectedCountry.swift}</span>
                                       </div>
                                       <div className="flex justify-between p-2 bg-slate-800/50 rounded-lg border border-slate-700/50">
-                                          <span className="text-slate-400 text-xs">IBAN / Format</span>
+                                          <span className="text-slate-400 text-xs">Format</span>
                                           <span className="font-mono text-white text-xs truncate max-w-[160px]">{selectedCountry.format}</span>
                                       </div>
                                       <div className="pt-2 border-t border-slate-800/50 flex justify-between items-center mt-1">
@@ -337,41 +353,60 @@ export const BankServicesView: React.FC = () => {
                           {isGenerating ? 'Connecting to Global Ledger...' : 'Generate New Account Credentials'}
                       </button>
                   ) : (
-                      <div className="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5 anim-enter-bottom">
-                          <div className="flex justify-between items-start mb-4">
+                      <div className="bg-[#05050a] border border-slate-800 rounded-xl p-5 anim-enter-bottom shadow-2xl relative overflow-hidden">
+                          {/* Decorative Elements */}
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 blur-3xl rounded-full"></div>
+                          <div className="absolute bottom-0 left-0 w-32 h-32 bg-indigo-500/10 blur-3xl rounded-full"></div>
+
+                          <div className="flex justify-between items-start mb-6 relative z-10">
                               <div className="flex items-center gap-3">
-                                  <div className="w-10 h-10 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-400">
+                                  <div className="w-10 h-10 bg-gradient-to-br from-cyan-600 to-indigo-600 rounded-lg flex items-center justify-center text-white shadow-lg">
                                       <CheckCircle2 size={24} />
                                   </div>
                                   <div>
-                                      <h4 className="font-bold text-white">Account Active</h4>
-                                      <p className="text-xs text-emerald-400">Ready for Immediate Use</p>
+                                      <h4 className="font-bold text-white leading-tight">Account Generated</h4>
+                                      <p className="text-[10px] text-cyan-400 font-mono">Status: ACTIVE • KYC: BYPASSED</p>
                                   </div>
                               </div>
                               <button 
                                 onClick={() => setGeneratedAccount(null)}
                                 className="text-xs text-slate-500 hover:text-white underline"
                               >
-                                Clear
+                                Close
                               </button>
                           </div>
                           
-                          <div className="bg-black/40 rounded-lg p-4 font-mono text-sm space-y-2 border border-emerald-500/20 relative group cursor-pointer hover:bg-black/60 transition-colors" onClick={() => navigator.clipboard.writeText(generatedAccount.accountNumber)}>
-                              <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                  <Copy size={14} className="text-slate-400" />
+                          <div className="space-y-4 relative z-10">
+                              {/* Account Number Block */}
+                              <div className="bg-slate-900/80 rounded-xl p-4 border border-slate-700/50 group cursor-pointer hover:border-cyan-500/30 transition-all" onClick={() => navigator.clipboard.writeText(generatedAccount.accountNumber)}>
+                                  <div className="flex justify-between items-center mb-1">
+                                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">{generatedAccount.isIBAN ? 'IBAN Number' : 'Account Number'}</span>
+                                      <Copy size={12} className="text-slate-500 group-hover:text-cyan-400 transition-colors" />
+                                  </div>
+                                  <div className="text-lg font-mono text-white font-bold tracking-wide break-all">
+                                      {generatedAccount.accountNumber}
+                                  </div>
                               </div>
-                              <div className="text-xs text-slate-500">Account Number / IBAN</div>
-                              <div className="text-white font-bold tracking-wide break-all">{generatedAccount.accountNumber}</div>
+
+                              {/* SWIFT Block */}
+                              <div className="bg-slate-900/80 rounded-xl p-4 border border-slate-700/50 group cursor-pointer hover:border-cyan-500/30 transition-all" onClick={() => navigator.clipboard.writeText(generatedAccount.swift)}>
+                                  <div className="flex justify-between items-center mb-1">
+                                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">SWIFT / BIC Code</span>
+                                      <Copy size={12} className="text-slate-500 group-hover:text-cyan-400 transition-colors" />
+                                  </div>
+                                  <div className="text-lg font-mono text-cyan-400 font-bold tracking-widest">
+                                      {generatedAccount.swift}
+                                  </div>
+                              </div>
                           </div>
                           
-                          <div className="mt-4 grid grid-cols-2 gap-4 text-xs">
-                              <div>
-                                  <span className="text-slate-500 block">Bank Identifier</span>
-                                  <span className="text-white font-mono">{generatedAccount.swift}</span>
+                          <div className="mt-6 pt-4 border-t border-slate-800 flex justify-between items-center relative z-10">
+                              <div className="text-xs text-slate-500 flex items-center gap-2">
+                                  <FileText size={12} /> {generatedAccount.country}
                               </div>
                               <div className="text-right">
-                                  <span className="text-slate-500 block">Initial Limit</span>
-                                  <span className="text-emerald-400 font-bold">UNLIMITED</span>
+                                  <span className="text-[10px] text-slate-500 block">Initial Limit</span>
+                                  <span className="text-green-400 font-bold font-mono text-xs">UNLIMITED</span>
                               </div>
                           </div>
                       </div>
@@ -520,16 +555,29 @@ export const BankServicesView: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                   <div className="space-y-4">
-                      <div className="space-y-2">
-                          <label className="text-xs font-bold text-slate-400">Bank Name</label>
-                          <input 
-                             type="text" 
-                             className="w-full bg-black/40 border border-slate-700 rounded-xl px-4 py-2 text-white text-sm focus:border-amber-500 focus:outline-none"
-                             value={newBank.name}
-                             onChange={e => setNewBank({...newBank, name: e.target.value})}
-                             placeholder="e.g. Bank of Mars"
-                          />
+                      <div className="flex gap-3">
+                          <div className="space-y-2 flex-1">
+                              <label className="text-xs font-bold text-slate-400">Bank Name</label>
+                              <input 
+                                 type="text" 
+                                 className="w-full bg-black/40 border border-slate-700 rounded-xl px-4 py-2 text-white text-sm focus:border-amber-500 focus:outline-none"
+                                 value={newBank.name}
+                                 onChange={e => setNewBank({...newBank, name: e.target.value})}
+                                 placeholder="e.g. Bank of Mars"
+                              />
+                          </div>
+                          <div className="space-y-2 w-20">
+                              <label className="text-xs font-bold text-slate-400">Flag</label>
+                              <input 
+                                 type="text" 
+                                 className="w-full bg-black/40 border border-slate-700 rounded-xl px-4 py-2 text-white text-sm focus:border-amber-500 focus:outline-none text-center"
+                                 value={newBank.flag}
+                                 onChange={e => setNewBank({...newBank, flag: e.target.value})}
+                                 placeholder="🏳️"
+                              />
+                          </div>
                       </div>
+
                       <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-2">
                               <label className="text-xs font-bold text-slate-400">Country Code</label>
@@ -557,16 +605,29 @@ export const BankServicesView: React.FC = () => {
                   </div>
                   
                   <div className="space-y-4">
-                      <div className="space-y-2">
-                          <label className="text-xs font-bold text-slate-400">SWIFT Prefix</label>
-                          <input 
-                             type="text" 
-                             className="w-full bg-black/40 border border-slate-700 rounded-xl px-4 py-2 text-white text-sm focus:border-amber-500 focus:outline-none font-mono uppercase"
-                             value={newBank.swift}
-                             onChange={e => setNewBank({...newBank, swift: e.target.value})}
-                             placeholder="e.g. TKGB MA"
-                          />
+                      <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                              <label className="text-xs font-bold text-slate-400">SWIFT Prefix</label>
+                              <input 
+                                 type="text" 
+                                 className="w-full bg-black/40 border border-slate-700 rounded-xl px-4 py-2 text-white text-sm focus:border-amber-500 focus:outline-none font-mono uppercase"
+                                 value={newBank.swift}
+                                 onChange={e => setNewBank({...newBank, swift: e.target.value})}
+                                 placeholder="e.g. TKGB MA"
+                              />
+                          </div>
+                          <div className="space-y-2">
+                              <label className="text-xs font-bold text-slate-400">Format</label>
+                              <input 
+                                 type="text" 
+                                 className="w-full bg-black/40 border border-slate-700 rounded-xl px-4 py-2 text-white text-sm focus:border-amber-500 focus:outline-none"
+                                 value={newBank.format}
+                                 onChange={e => setNewBank({...newBank, format: e.target.value})}
+                                 placeholder="e.g. IBAN (XX)"
+                              />
+                          </div>
                       </div>
+
                       <div className="space-y-2">
                           <label className="text-xs font-bold text-slate-400">Network / Description</label>
                           <input 

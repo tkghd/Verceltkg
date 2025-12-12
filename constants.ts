@@ -1,4 +1,5 @@
 
+
 import { SystemModule, WalletState, QueueState, BusinessEntity, OwnerAccount } from './types';
 
 export const INITIAL_MODULES: SystemModule[] = [
@@ -8,6 +9,7 @@ export const INITIAL_MODULES: SystemModule[] = [
   { id: 'asset_oracle_global', name: 'Global Asset Oracle', command: 'node oracle.js', status: 'online', type: 'finance', cpu: 30, memory: 128 },
   { id: 'crossborder_licensing', name: 'Cross-Border License', command: 'node license_mgr.js', status: 'online', type: 'utility', cpu: 15, memory: 32 },
   { id: 'bank_cluster_control', name: 'Bank Cluster Control', command: 'go run cluster.go', status: 'online', type: 'core', cpu: 60, memory: 128 },
+  { id: 'ai_gemini', name: 'Gemini AI Engine', command: 'python3 gemini_integration.py', status: 'online', type: 'ai', cpu: 75, memory: 512 },
   { id: 'cheat_infinity_boost', name: 'Cheat Infinity Boost', command: 'bash infinity_boost.sh', status: 'online', type: 'core', cpu: 99, memory: 512 },
   { id: 'god_integrated', name: 'Integrated Core API', command: 'node integrated_server.js', status: 'online', type: 'core', cpu: 99, memory: 98 },
   { id: 'god_hud', name: 'HUD Server', command: 'node hud_server.js', status: 'online', type: 'interface', cpu: 45, memory: 60 },

@@ -1,13 +1,15 @@
+
 import React, { useState, useEffect, useRef } from 'react';
-import { QrCode, Copy, CheckCircle, Camera, Receipt, ArrowRight, ShieldCheck, AlertTriangle, Calculator, RefreshCw, X } from 'lucide-react';
+import { QrCode, Copy, CheckCircle, Camera, Receipt, ArrowRight, ShieldCheck, AlertTriangle, Calculator, RefreshCw, X, Banknote, Timer, MapPin, Smartphone } from 'lucide-react';
 import { WalletState } from '../types';
 
 interface ATMViewProps {
   wallet: WalletState;
 }
 
-type Mode = 'scan' | 'receive';
+type Mode = 'scan' | 'withdraw';
 type ScanStep = 'camera' | 'manual' | 'processing' | 'success';
+type WithdrawStep = 'input' | 'qr_display';
 
 interface TransactionData {
   id: string;
@@ -20,14 +22,21 @@ interface TransactionData {
 
 export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
   const [mode, setMode] = useState<Mode>('scan');
+  
+  // Scan Mode State
   const [scanStep, setScanStep] = useState<ScanStep>('camera');
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
   const [txData, setTxData] = useState<TransactionData | null>(null);
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [manualCode, setManualCode] = useState("");
-  
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
+
+  // Withdraw Mode State
+  const [withdrawStep, setWithdrawStep] = useState<WithdrawStep>('input');
+  const [withdrawAmount, setWithdrawAmount] = useState<string>('');
+  const [qrTimer, setQrTimer] = useState<number>(60);
+  const [qrEncryptionKey, setQrEncryptionKey] = useState<string>('');
 
   // Camera Management
   const startCamera = async () => {
@@ -89,6 +98,17 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
     return () => stopCamera();
   }, [mode, scanStep]);
 
+  // QR Timer Logic
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    if (mode === 'withdraw' && withdrawStep === 'qr_display' && qrTimer > 0) {
+      interval = setInterval(() => {
+        setQrTimer((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [mode, withdrawStep, qrTimer]);
+
   // Actions
   const handleProcessTransaction = () => {
     setScanStep('processing');
@@ -112,6 +132,13 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
     setTxData(null);
     setManualCode("");
     setErrorMsg("");
+  };
+
+  const generateWithdrawQR = () => {
+    if (!withdrawAmount) return;
+    setQrEncryptionKey(`KYBER-${Math.random().toString(36).substr(2, 16).toUpperCase()}`);
+    setQrTimer(60);
+    setWithdrawStep('qr_display');
   };
 
   // --- RENDER: Success Receipt ---
@@ -245,10 +272,10 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
           <Camera size={18} /> SCAN
         </button>
         <button 
-          onClick={() => setMode('receive')}
-          className={`flex-1 py-3 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-all ${mode === 'receive' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+          onClick={() => { setMode('withdraw'); setWithdrawStep('input'); }}
+          className={`flex-1 py-3 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-all ${mode === 'withdraw' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
         >
-          <QrCode size={18} /> RECEIVE
+          <Banknote size={18} /> ATM CASH OUT
         </button>
       </div>
 
@@ -338,21 +365,103 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
                 )}
              </>
          ) : (
-             <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center relative overflow-hidden bg-[#080812]">
+             <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-[#080812] relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
                 
-                <div className="relative z-10 bg-white p-6 rounded-3xl shadow-[0_0_50px_rgba(255,255,255,0.1)] mb-8 anim-float">
-                   <img src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=godmode-deposit-${wallet.tk_coin}`} alt="QR Code" className="w-56 h-56" />
-                </div>
-                
-                <div className="relative z-10 space-y-3">
-                   <h3 className="text-2xl font-bold text-white tracking-wide">My Deposit Code</h3>
-                   <div className="flex items-center gap-2 bg-slate-900/80 px-5 py-3 rounded-xl border border-slate-800 mx-auto w-fit shadow-inner">
-                      <span className="font-mono text-sm text-indigo-400 truncate max-w-[200px]">0x71C...9A2F</span>
-                      <button className="text-slate-400 hover:text-white transition-colors p-1"><Copy size={16} /></button>
-                   </div>
-                   <p className="text-xs text-slate-500 pt-2">Scan at any Global Vault ATM for instant deposit.</p>
-                </div>
+                {withdrawStep === 'input' ? (
+                    <div className="w-full max-w-xs z-10 space-y-6">
+                        <div className="text-center">
+                            <h3 className="text-2xl font-bold text-white mb-2">Cardless Withdrawal</h3>
+                            <p className="text-slate-400 text-xs">Enter amount to generate secure QR</p>
+                        </div>
+                        
+                        <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 relative">
+                            <label className="text-[10px] uppercase font-bold text-slate-500 mb-2 block">Amount (JPY)</label>
+                            <div className="flex items-center gap-2 mb-4">
+                                <span className="text-2xl text-slate-400">¥</span>
+                                <input 
+                                    type="number" 
+                                    value={withdrawAmount}
+                                    onChange={(e) => setWithdrawAmount(e.target.value)}
+                                    placeholder="0"
+                                    className="w-full bg-transparent text-3xl font-mono font-bold text-white focus:outline-none placeholder-slate-700"
+                                />
+                            </div>
+                            <div className="grid grid-cols-3 gap-2">
+                                {[10000, 30000, 50000].map(amt => (
+                                    <button 
+                                        key={amt}
+                                        onClick={() => setWithdrawAmount(amt.toString())}
+                                        className="py-2 bg-slate-800 rounded-lg text-xs font-bold text-slate-300 hover:bg-slate-700 transition-colors"
+                                    >
+                                        ¥{amt/1000}k
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <button 
+                            onClick={generateWithdrawQR}
+                            disabled={!withdrawAmount || parseInt(withdrawAmount) <= 0}
+                            className="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/20 transition-all flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            <QrCode size={18} /> Generate Secure QR
+                        </button>
+                    </div>
+                ) : (
+                    <div className="w-full max-w-sm z-10 flex flex-col items-center animate-in zoom-in-95">
+                        <div className="bg-white p-6 rounded-3xl shadow-[0_0_50px_rgba(255,255,255,0.1)] mb-6 relative group">
+                            {qrTimer > 0 ? (
+                                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${qrEncryptionKey}`} alt="Secure QR" className="w-56 h-56 mix-blend-multiply" />
+                            ) : (
+                                <div className="w-56 h-56 bg-slate-100 flex flex-col items-center justify-center text-slate-400">
+                                    <AlertTriangle size={48} className="mb-2 opacity-50" />
+                                    <span className="text-xs font-bold">QR EXPIRED</span>
+                                </div>
+                            )}
+                            
+                            {/* Scanning Line Animation */}
+                            {qrTimer > 0 && <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent h-4 w-full animate-scanline pointer-events-none rounded-3xl"></div>}
+                        </div>
+
+                        <div className="w-full bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-2xl p-4 space-y-4">
+                            <div className="flex justify-between items-center">
+                                <span className="text-xs font-bold text-slate-400">Expires in</span>
+                                <div className={`flex items-center gap-2 font-mono font-bold ${qrTimer < 10 ? 'text-red-500 animate-pulse' : 'text-white'}`}>
+                                    <Timer size={14} /> 00:{qrTimer.toString().padStart(2, '0')}
+                                </div>
+                            </div>
+                            
+                            <div className="grid grid-cols-2 gap-2 text-[10px] font-mono text-slate-500">
+                                <div className="bg-slate-800/50 p-2 rounded flex items-center gap-2">
+                                    <ShieldCheck size={10} className="text-green-500" /> KYBER-1024
+                                </div>
+                                <div className="bg-slate-800/50 p-2 rounded flex items-center gap-2">
+                                    <Smartphone size={10} className="text-indigo-500" /> TEE AUTH
+                                </div>
+                                <div className="bg-slate-800/50 p-2 rounded flex items-center gap-2 col-span-2">
+                                    <MapPin size={10} className="text-amber-500" /> GeoHash: tk7-35.68-139.76
+                                </div>
+                            </div>
+
+                            {qrTimer === 0 ? (
+                                <button 
+                                    onClick={generateWithdrawQR}
+                                    className="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-2"
+                                >
+                                    <RefreshCw size={14} /> Regenerate QR
+                                </button>
+                            ) : (
+                                <button 
+                                    onClick={() => setWithdrawStep('input')}
+                                    className="w-full py-3 border border-slate-700 text-slate-400 text-xs font-bold rounded-xl hover:bg-slate-800 transition-colors"
+                                >
+                                    Cancel
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                )}
              </div>
          )}
       </div>

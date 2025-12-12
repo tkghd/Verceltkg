@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Send, Building2, Search, ChevronRight, AlertCircle, ArrowRight, CheckCircle2, ChevronDown, RefreshCw, Wallet, ArrowLeft, CreditCard, History, User, Pencil, Landmark, ShieldCheck, Smartphone, Zap, Mail, QrCode, FileText, Fingerprint, Lock, Shield, Scan } from 'lucide-react';
+import { Send, Building2, Search, ChevronRight, AlertCircle, ArrowRight, CheckCircle2, ChevronDown, RefreshCw, Wallet, ArrowLeft, CreditCard, History, User, Pencil, Landmark, ShieldCheck, Smartphone, Zap, Mail, QrCode, FileText, Fingerprint, Lock, Shield, Scan, Bot, Sparkles, Siren, Mic } from 'lucide-react';
 import { WalletState, OwnerAccount } from '../types';
 
 interface TransferViewProps {
@@ -56,6 +56,11 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingStage, setProcessingStage] = useState('');
   const [txId, setTxId] = useState('');
+
+  // Emergency Mode State
+  const [showVoiceModal, setShowVoiceModal] = useState(false);
+  const [voiceListening, setVoiceListening] = useState(false);
+  const [emergencyTarget, setEmergencyTarget] = useState('');
 
   // Update sender name default when source changes
   useEffect(() => {
@@ -130,6 +135,21 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
       setBranchName('本店営業部 (001)');
       setAccountNumber('1234567');
       handleNext();
+  };
+
+  const handleEmergencyVoiceAuth = () => {
+      setVoiceListening(true);
+      setTimeout(() => {
+          setVoiceListening(false);
+          setShowVoiceModal(false);
+          // Auto-fill and proceed to amount for simplicity, or direct execute
+          setMethod('bank');
+          setSelectedBank(MAJOR_BANKS.find(b => emergencyTarget.includes('Mizuho') ? b.id === 'mizuho' : b.id === 'yokohama')); // Dummy match
+          setBranchName('Emergency Branch');
+          setAccountNumber('9999999');
+          setAmount(emergencyTarget.includes('Mizuho') ? '1000000' : '500000');
+          setStep('confirm');
+      }, 2000);
   };
 
   // --- Render Header ---
@@ -233,6 +253,29 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
         </div>
 
         <div className="space-y-4">
+           {/* Emergency Access */}
+           <div className="bg-red-950/20 border border-red-500/30 rounded-[2rem] p-6 animate-pulse-slow">
+               <h3 className="text-red-400 font-bold flex items-center gap-2 mb-4 uppercase tracking-wider text-xs">
+                   <Siren size={16} /> Emergency Quick Send
+               </h3>
+               <div className="grid grid-cols-2 gap-3">
+                   <button 
+                     onClick={() => { setEmergencyTarget('Parents (Mizuho)'); setShowVoiceModal(true); }}
+                     className="bg-red-900/30 border border-red-500/30 hover:bg-red-900/50 p-3 rounded-xl text-left transition-colors group"
+                   >
+                       <div className="text-sm font-bold text-white group-hover:text-red-200">実家 (Mizuho)</div>
+                       <div className="text-[10px] text-red-400">Limit: ¥1,000,000</div>
+                   </button>
+                   <button 
+                     onClick={() => { setEmergencyTarget('Disaster Fund'); setShowVoiceModal(true); }}
+                     className="bg-red-900/30 border border-red-500/30 hover:bg-red-900/50 p-3 rounded-xl text-left transition-colors group"
+                   >
+                       <div className="text-sm font-bold text-white group-hover:text-red-200">災害用 (Regional)</div>
+                       <div className="text-[10px] text-red-400">Limit: ¥500,000</div>
+                   </button>
+               </div>
+           </div>
+
            <button 
              onClick={() => handleMethodSelect('bank')}
              className="w-full p-6 rounded-[2rem] bg-gradient-to-r from-[#0f1520] to-[#0a0a12] border border-slate-800 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(79,70,229,0.1)] transition-all flex items-center justify-between group anim-enter-right anim-delay-100"
@@ -242,7 +285,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                     <Building2 size={28} />
                  </div>
                  <div className="text-left">
-                    <div className="font-bold text-white text-lg">銀行振込</div>
+                    <div className="font-bold text-white text-lg">銀行振込 (Bank)</div>
                     <div className="text-xs text-slate-400">金融機関口座へ送金 (Zengin System)</div>
                  </div>
               </div>
@@ -258,7 +301,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                     <Smartphone size={28} />
                  </div>
                  <div className="text-left">
-                    <div className="font-bold text-white text-lg">PayPay送金</div>
+                    <div className="font-bold text-white text-lg">ペイペイ送金 (PayPay)</div>
                     <div className="text-xs text-slate-400">ID / 電話番号で即時送金</div>
                  </div>
               </div>
@@ -274,7 +317,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                     <RefreshCw size={28} />
                  </div>
                  <div className="text-left">
-                    <div className="font-bold text-white text-lg">ことら送金</div>
+                    <div className="font-bold text-white text-lg">ことら送金 (Cotra)</div>
                     <div className="text-xs text-slate-400">10万円以下の個人間送金手数料無料</div>
                  </div>
               </div>
@@ -282,6 +325,27 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
            </button>
         </div>
         
+        {/* Voice Modal Overlay */}
+        {showVoiceModal && (
+            <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                <div className="bg-slate-900 border border-slate-700 rounded-3xl p-8 max-w-sm w-full text-center relative overflow-hidden">
+                    <button onClick={() => setShowVoiceModal(false)} className="absolute top-4 right-4 text-slate-500 hover:text-white">✕</button>
+                    <div className={`w-24 h-24 mx-auto rounded-full bg-red-500/10 flex items-center justify-center mb-6 ring-2 ring-red-500/30 ${voiceListening ? 'animate-pulse' : ''}`}>
+                        <Mic size={40} className={voiceListening ? 'text-red-400' : 'text-slate-400'} />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">Voice Confirmation</h3>
+                    <p className="text-sm text-slate-400 mb-6">Say "Authorize" to confirm instant transfer to <span className="text-white font-bold">{emergencyTarget}</span>.</p>
+                    
+                    <button 
+                        onClick={handleEmergencyVoiceAuth}
+                        className="w-full py-4 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl shadow-lg shadow-red-900/50"
+                    >
+                        {voiceListening ? 'Listening...' : 'Tap to Speak'}
+                    </button>
+                </div>
+            </div>
+        )}
+
         {/* Transaction History Teaser */}
         <div className="mt-8 pt-6 border-t border-slate-800 anim-enter-bottom anim-delay-500">
             <h3 className="text-sm font-bold text-slate-400 mb-4 flex items-center gap-2">
@@ -476,19 +540,24 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
 
           <div className="bg-[#0f0f18] border border-slate-800 rounded-2xl p-6 space-y-6">
              <div className="text-center py-6">
-                 <label className="text-xs font-bold text-slate-500 mb-2 block">送金金額</label>
+                 {/* AI RATE INDICATOR */}
+                 <div className="flex items-center justify-center gap-2 text-[10px] text-cyan-400 font-mono mb-4 animate-pulse">
+                    <Bot size={12} /> AI RATE ANALYSIS: BEST ROUTE [GODMODE]
+                 </div>
+
+                 <label className="text-xs font-bold text-slate-500 mb-2 block">送金金額 (円)</label>
                  <div className="flex items-end justify-center gap-2">
                     <span className="text-4xl text-slate-400 mb-2">¥</span>
                     <input 
                        type="tel"
                        value={amount}
                        onChange={(e) => setAmount(e.target.value.replace(/[^0-9]/g, ''))}
-                       placeholder="0"
-                       className="bg-transparent text-6xl font-mono font-bold text-white w-full text-center focus:outline-none placeholder-slate-700"
+                       placeholder="金額を入力（円）"
+                       className="bg-transparent text-4xl sm:text-6xl font-mono font-bold text-white w-full text-center focus:outline-none placeholder-slate-800/50"
                        autoFocus
                     />
                  </div>
-                 {amount && <div className="text-slate-500 mt-2 font-mono">手数料: ¥0 (Godmode Waiver)</div>}
+                 {amount && <div className="text-slate-500 mt-2 font-mono">手数料: ¥0 (Best Rate Applied)</div>}
                  {method === 'cotra' && parseInt(amount) > 100000 && (
                      <div className="text-red-400 text-xs mt-2 font-bold flex items-center justify-center gap-1">
                          <AlertCircle size={12} /> ことら送金の上限は10万円です
@@ -518,9 +587,10 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
              <button 
                onClick={handleNext}
                disabled={!amount || (method === 'cotra' && parseInt(amount) > 100000)}
-               className="w-full py-4 mt-4 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 disabled:bg-slate-800 disabled:text-slate-500 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 active:scale-95 shadow-lg shadow-indigo-500/20"
+               className="w-full py-4 mt-4 relative overflow-hidden bg-slate-900 border border-cyan-500/50 text-white font-bold rounded-xl transition-all hover:scale-[1.02] active:scale-95 shadow-[0_0_30px_rgba(0,191,255,0.3)] group disabled:opacity-50 disabled:shadow-none"
              >
-                確認画面へ <ArrowRight size={18} />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,191,255,0.8)_0%,rgba(0,191,255,0)_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span className="relative flex items-center justify-center gap-2">確認画面へ <ArrowRight size={18} /></span>
              </button>
           </div>
         </div>
@@ -542,8 +612,8 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                        <div className="text-4xl font-mono font-bold text-white tracking-tight drop-shadow-md">
                           ¥ {parseInt(amount).toLocaleString()}
                        </div>
-                       <span className="inline-block mt-2 px-2 py-0.5 bg-slate-900 rounded text-[10px] text-slate-400 border border-slate-800">
-                          Transfer Fee: ¥0 (Godmode Waiver)
+                       <span className="inline-block mt-2 px-2 py-0.5 bg-slate-900 rounded text-[10px] text-slate-400 border border-slate-800 flex items-center justify-center gap-1 mx-auto w-fit">
+                          <Sparkles size={10} className="text-cyan-400" /> Best Rate: ¥0 (Godmode)
                        </span>
                     </div>
 
@@ -604,9 +674,10 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                     </button>
                     <button 
                         onClick={handleTransfer}
-                        className="flex-[2] py-4 bg-gradient-to-r from-cyan-600 to-indigo-600 text-white font-bold rounded-xl shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] transition-all flex items-center justify-center gap-2 group active:scale-[0.98]"
+                        className="flex-[2] py-4 relative overflow-hidden bg-slate-900 border border-cyan-500/50 text-white font-bold rounded-xl transition-all hover:scale-[1.02] active:scale-95 shadow-[0_0_30px_rgba(0,191,255,0.3)] group"
                     >
-                        <Fingerprint size={20} className="group-hover:scale-110 transition-transform" /> 承認して送金
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,191,255,0.8)_0%,rgba(0,191,255,0)_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <span className="relative flex items-center justify-center gap-2"><Fingerprint size={20} /> 承認して送金</span>
                     </button>
                 </div>
              </div>
