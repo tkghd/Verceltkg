@@ -4,15 +4,15 @@
 3 silly config load:file:/usr/lib/node_modules/npm/npmrc
 4 silly config load:file:/home/tkg_h30_2018/.npmrc
 5 silly config load:file:/usr/etc/npmrc
-6 verbose title npm run start
-7 verbose argv "run" "start"
-8 verbose logfile logs-max:10 dir:/home/tkg_h30_2018/.npm/_logs/2025-12-14T20_20_36_727Z-
-9 verbose logfile /home/tkg_h30_2018/.npm/_logs/2025-12-14T20_20_36_727Z-debug-0.log
+6 verbose title npm run build
+7 verbose argv "run" "build"
+8 verbose logfile logs-max:10 dir:/home/tkg_h30_2018/.npm/_logs/2025-12-14T20_21_53_078Z-
+9 verbose logfile /home/tkg_h30_2018/.npm/_logs/2025-12-14T20_21_53_078Z-debug-0.log
 10 silly logfile start cleaning logs, removing 1 files
 11 silly logfile done cleaning log files
 12 verbose cwd /home/tkg_h30_2018
 13 verbose os Linux 6.1.0-41-cloud-amd64
 14 verbose node v20.19.6
 15 verbose npm  v10.8.2
-16 verbose exit 1
-17 verbose code 1
+16 verbose exit 0
+17 info ok
