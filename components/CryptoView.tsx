@@ -23,6 +23,7 @@ export const CryptoView: React.FC<CryptoViewProps> = ({ wallet, onUpdateWallet, 
 
   // Loading States
   const [isLoading, setIsLoading] = useState(true);
+  const [isTabLoading, setIsTabLoading] = useState(false);
 
   // Web3 State
   const [web3Account, setWeb3Account] = useState<string | null>(null);
@@ -54,6 +55,16 @@ export const CryptoView: React.FC<CryptoViewProps> = ({ wallet, onUpdateWallet, 
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleTabChange = (tab: typeof activeTab) => {
+      if (tab === activeTab) return;
+      setActiveTab(tab);
+      // Simulate data fetch for new tab
+      if (tab !== 'swap') {
+          setIsTabLoading(true);
+          setTimeout(() => setIsTabLoading(false), 600 + Math.random() * 400);
+      }
+  };
 
   const connectWeb3 = async () => {
     if (typeof window !== 'undefined' && (window as any).ethereum) {
@@ -228,9 +239,9 @@ export const CryptoView: React.FC<CryptoViewProps> = ({ wallet, onUpdateWallet, 
 
       {/* Tabs */}
       <div className="flex p-1 bg-slate-900/80 rounded-xl border border-slate-800">
-         <TabButton active={activeTab === 'tokens'} onClick={() => setActiveTab('tokens')} label="Tokens" />
-         <TabButton active={activeTab === 'nfts'} onClick={() => setActiveTab('nfts')} label="NFTs" />
-         <TabButton active={activeTab === 'defi'} onClick={() => setActiveTab('defi')} label="DeFi" />
+         <TabButton active={activeTab === 'tokens'} onClick={() => handleTabChange('tokens')} label="Tokens" />
+         <TabButton active={activeTab === 'nfts'} onClick={() => handleTabChange('nfts')} label="NFTs" />
+         <TabButton active={activeTab === 'defi'} onClick={() => handleTabChange('defi')} label="DeFi" />
       </div>
 
       {/* SWAP UI */}
@@ -352,7 +363,7 @@ export const CryptoView: React.FC<CryptoViewProps> = ({ wallet, onUpdateWallet, 
       {/* TOKENS VIEW */}
       {activeTab === 'tokens' && (
          <div className="space-y-3">
-            {isLoading ? (
+            {isLoading || isTabLoading ? (
                 <>
                   <SkeletonTokenRow />
                   <SkeletonTokenRow />
@@ -422,84 +433,88 @@ export const CryptoView: React.FC<CryptoViewProps> = ({ wallet, onUpdateWallet, 
 
       {/* NFTs VIEW */}
       {activeTab === 'nfts' && (
-         <div className="grid grid-cols-2 gap-4 anim-enter-bottom">
-            <NFTCard name="Godmode Access Key #001" collection="Genesis Prime" value="150 ETH" image="https://www.transparenttextures.com/patterns/cubes.png" color="from-cyan-500 to-blue-600" />
-            <NFTCard name="Cyber Samurai #888" collection="Neo Tokyo" value="45 ETH" image="https://www.transparenttextures.com/patterns/carbon-fibre.png" color="from-red-500 to-rose-600" />
-            {web3Account && (
-                <NFTCard name="Bored Ape #9999" collection="BAYC" value="88 ETH" image="https://www.transparenttextures.com/patterns/diagmonds-light.png" color="from-yellow-600 to-orange-700" />
-            )}
-            <NFTCard name="Golden Vault" collection="TKG Assets" value="∞ TKG" image="https://www.transparenttextures.com/patterns/wood-pattern.png" color="from-amber-400 to-yellow-600" />
-            <NFTCard name="Void Walker" collection="Unknown" value="???" image="https://www.transparenttextures.com/patterns/black-scales.png" color="from-purple-500 to-indigo-900" />
-         </div>
+         isTabLoading ? <SkeletonNFTGrid /> : (
+            <div className="grid grid-cols-2 gap-4 anim-enter-bottom">
+                <NFTCard name="Godmode Access Key #001" collection="Genesis Prime" value="150 ETH" image="https://www.transparenttextures.com/patterns/cubes.png" color="from-cyan-500 to-blue-600" />
+                <NFTCard name="Cyber Samurai #888" collection="Neo Tokyo" value="45 ETH" image="https://www.transparenttextures.com/patterns/carbon-fibre.png" color="from-red-500 to-rose-600" />
+                {web3Account && (
+                    <NFTCard name="Bored Ape #9999" collection="BAYC" value="88 ETH" image="https://www.transparenttextures.com/patterns/diagmonds-light.png" color="from-yellow-600 to-orange-700" />
+                )}
+                <NFTCard name="Golden Vault" collection="TKG Assets" value="∞ TKG" image="https://www.transparenttextures.com/patterns/wood-pattern.png" color="from-amber-400 to-yellow-600" />
+                <NFTCard name="Void Walker" collection="Unknown" value="???" image="https://www.transparenttextures.com/patterns/black-scales.png" color="from-purple-500 to-indigo-900" />
+            </div>
+         )
       )}
 
       {/* DeFi VIEW */}
       {activeTab === 'defi' && (
-          <div className="space-y-4 anim-enter-bottom">
-              <div className="p-5 rounded-2xl bg-gradient-to-r from-indigo-900/40 to-slate-900 border border-indigo-500/30">
-                  <div className="flex justify-between items-start mb-4">
-                      <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400">
-                              <Sparkles size={20} />
-                          </div>
-                          <div>
-                              <div className="text-white font-bold">Godmode Staking Pool</div>
-                              <div className="text-xs text-indigo-300">Auto-Compounding</div>
-                          </div>
-                      </div>
-                      <span className="text-2xl font-bold text-green-400 font-mono">9,999% APY</span>
-                  </div>
-                  <div className="bg-black/30 rounded-lg p-3 flex justify-between items-center mb-3">
-                      <span className="text-xs text-slate-400">Staked Amount</span>
-                      <span className="text-sm font-mono font-bold text-white">500,000 TKG</span>
-                  </div>
-                  <div className="bg-black/30 rounded-lg p-3 flex justify-between items-center">
-                      <span className="text-xs text-slate-400">Pending Rewards</span>
-                      <span className="text-sm font-mono font-bold text-amber-400 flex items-center gap-1">
-                          <Zap size={12} fill="currentColor" /> 12,450 TKG
-                      </span>
-                  </div>
-              </div>
-
-              {web3Account && (
-                 <div className="p-5 rounded-2xl bg-gradient-to-r from-purple-900/40 to-slate-900 border border-purple-500/30 border-dashed">
+          isTabLoading ? <SkeletonDeFiList /> : (
+            <div className="space-y-4 anim-enter-bottom">
+                <div className="p-5 rounded-2xl bg-gradient-to-r from-indigo-900/40 to-slate-900 border border-indigo-500/30">
                     <div className="flex justify-between items-start mb-4">
-                      <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
-                              <Link size={20} />
-                          </div>
-                          <div>
-                              <div className="text-white font-bold">Curve.fi Pool</div>
-                              <div className="text-xs text-purple-300">External Web3 Protocol</div>
-                          </div>
-                      </div>
-                      <span className="text-2xl font-bold text-slate-300 font-mono">15% APR</span>
-                  </div>
-                  <div className="bg-black/30 rounded-lg p-3 flex justify-between items-center">
-                      <span className="text-xs text-slate-400">Liquidity Provided</span>
-                      <span className="text-sm font-mono font-bold text-white">$ 125,000</span>
-                  </div>
-                 </div>
-              )}
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+                                <Sparkles size={20} />
+                            </div>
+                            <div>
+                                <div className="text-white font-bold">Godmode Staking Pool</div>
+                                <div className="text-xs text-indigo-300">Auto-Compounding</div>
+                            </div>
+                        </div>
+                        <span className="text-2xl font-bold text-green-400 font-mono">9,999% APY</span>
+                    </div>
+                    <div className="bg-black/30 rounded-lg p-3 flex justify-between items-center mb-3">
+                        <span className="text-xs text-slate-400">Staked Amount</span>
+                        <span className="text-sm font-mono font-bold text-white">500,000 TKG</span>
+                    </div>
+                    <div className="bg-black/30 rounded-lg p-3 flex justify-between items-center">
+                        <span className="text-xs text-slate-400">Pending Rewards</span>
+                        <span className="text-sm font-mono font-bold text-amber-400 flex items-center gap-1">
+                            <Zap size={12} fill="currentColor" /> 12,450 TKG
+                        </span>
+                    </div>
+                </div>
 
-              <div className="p-5 rounded-2xl bg-gradient-to-r from-cyan-900/40 to-slate-900 border border-cyan-500/30">
-                  <div className="flex justify-between items-start mb-4">
-                      <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
-                              <RefreshCw size={20} />
-                          </div>
-                          <div>
-                              <div className="text-white font-bold">ETH / TKG Liquidity</div>
-                              <div className="text-xs text-cyan-300">Uniswap V3 (Godmode)</div>
-                          </div>
-                      </div>
-                      <span className="text-2xl font-bold text-green-400 font-mono">450% APR</span>
-                  </div>
-                  <button className="w-full py-3 bg-cyan-500/10 border border-cyan-500/50 rounded-xl text-cyan-400 font-bold hover:bg-cyan-500/20 transition-colors">
-                      Manage Position
-                  </button>
-              </div>
-          </div>
+                {web3Account && (
+                    <div className="p-5 rounded-2xl bg-gradient-to-r from-purple-900/40 to-slate-900 border border-purple-500/30 border-dashed">
+                        <div className="flex justify-between items-start mb-4">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
+                                <Link size={20} />
+                            </div>
+                            <div>
+                                <div className="text-white font-bold">Curve.fi Pool</div>
+                                <div className="text-xs text-purple-300">External Web3 Protocol</div>
+                            </div>
+                        </div>
+                        <span className="text-2xl font-bold text-slate-300 font-mono">15% APR</span>
+                    </div>
+                    <div className="bg-black/30 rounded-lg p-3 flex justify-between items-center">
+                        <span className="text-xs text-slate-400">Liquidity Provided</span>
+                        <span className="text-sm font-mono font-bold text-white">$ 125,000</span>
+                    </div>
+                    </div>
+                )}
+
+                <div className="p-5 rounded-2xl bg-gradient-to-r from-cyan-900/40 to-slate-900 border border-cyan-500/30">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+                                <RefreshCw size={20} />
+                            </div>
+                            <div>
+                                <div className="text-white font-bold">ETH / TKG Liquidity</div>
+                                <div className="text-xs text-cyan-300">Uniswap V3 (Godmode)</div>
+                            </div>
+                        </div>
+                        <span className="text-2xl font-bold text-green-400 font-mono">450% APR</span>
+                    </div>
+                    <button className="w-full py-3 bg-cyan-500/10 border border-cyan-500/50 rounded-xl text-cyan-400 font-bold hover:bg-cyan-500/20 transition-colors">
+                        Manage Position
+                    </button>
+                </div>
+            </div>
+          )
       )}
 
     </div>
@@ -534,6 +549,25 @@ const SkeletonTokenRow: React.FC = () => (
             <div className="w-20 h-4 bg-slate-800 rounded animate-pulse"></div>
             <div className="w-12 h-3 bg-slate-800 rounded animate-pulse"></div>
         </div>
+    </div>
+);
+
+const SkeletonNFTGrid: React.FC = () => (
+    <div className="grid grid-cols-2 gap-4">
+        {[1,2,3,4].map(i => (
+            <div key={i} className="bg-slate-900 border border-slate-800 rounded-2xl h-56 animate-pulse p-4 flex flex-col justify-end">
+                <div className="h-4 w-1/2 bg-slate-800 rounded mb-2"></div>
+                <div className="h-4 w-3/4 bg-slate-800 rounded"></div>
+            </div>
+        ))}
+    </div>
+);
+
+const SkeletonDeFiList: React.FC = () => (
+    <div className="space-y-4">
+        {[1,2,3].map(i => (
+            <div key={i} className="h-32 bg-slate-900 border border-slate-800 rounded-2xl animate-pulse"></div>
+        ))}
     </div>
 );
 

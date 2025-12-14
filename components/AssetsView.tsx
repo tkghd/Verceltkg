@@ -10,9 +10,16 @@ interface AssetsViewProps {
 }
 
 export const AssetsView: React.FC<AssetsViewProps> = ({ wallet, ownerAccounts, onNavigate }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedWallet, setSelectedWallet] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState('');
   const [showAllTokens, setShowAllTokens] = useState(false);
+
+  useEffect(() => {
+    // Simulate fetching global asset data
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // 20 Proprietary Tokens List
   const proprietaryTokens = [
@@ -43,6 +50,54 @@ export const AssetsView: React.FC<AssetsViewProps> = ({ wallet, ownerAccounts, o
     acc.branchName.toLowerCase().includes(searchQuery.toLowerCase()) ||
     acc.accountName.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  if (isLoading) {
+    return (
+      <div className="space-y-10 animate-in fade-in duration-500">
+        <div className="flex flex-col gap-1">
+           <div className="h-8 w-48 bg-slate-800 rounded-lg animate-pulse mb-2"></div>
+           <div className="h-4 w-64 bg-slate-800/50 rounded-lg animate-pulse"></div>
+        </div>
+
+        {/* Hero Skeleton */}
+        <div className="rounded-[2.5rem] bg-slate-900/50 border border-slate-800 h-80 p-8 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-800/10 to-transparent animate-[shimmer_2s_infinite]"></div>
+            <div className="flex justify-between mb-8 relative z-10">
+               <div className="h-4 w-32 bg-slate-800 rounded animate-pulse"></div>
+               <div className="h-8 w-24 bg-slate-800 rounded-xl animate-pulse"></div>
+            </div>
+            <div className="h-16 w-3/4 bg-slate-800 rounded-2xl animate-pulse mb-8 relative z-10"></div>
+            <div className="grid grid-cols-2 gap-6 border-t border-slate-800 pt-6 relative z-10">
+               <div className="h-12 bg-slate-800 rounded-xl animate-pulse"></div>
+               <div className="h-12 bg-slate-800 rounded-xl animate-pulse"></div>
+            </div>
+        </div>
+
+        {/* Token Grid Skeleton */}
+        <div>
+           <div className="h-6 w-48 bg-slate-800 rounded animate-pulse mb-4"></div>
+           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+              {[...Array(10)].map((_, i) => (
+                  <SkeletonAssetCard key={i} />
+              ))}
+           </div>
+        </div>
+
+        {/* List Skeleton */}
+        <div className="bg-[#0a0a12] border border-slate-800 rounded-[2rem] p-6 h-64">
+            <div className="flex justify-between mb-6">
+               <div className="h-6 w-40 bg-slate-800 rounded animate-pulse"></div>
+               <div className="h-6 w-20 bg-slate-800 rounded animate-pulse"></div>
+            </div>
+            <div className="space-y-3">
+               {[...Array(3)].map((_, i) => (
+                  <div key={i} className="h-14 bg-slate-900/50 rounded-xl animate-pulse"></div>
+               ))}
+            </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-10">
@@ -177,7 +232,28 @@ export const AssetsView: React.FC<AssetsViewProps> = ({ wallet, ownerAccounts, o
   );
 };
 
+const SkeletonAssetCard = () => (
+    <div className="bg-slate-900/50 border border-slate-800 p-3 rounded-xl h-20 animate-pulse">
+        <div className="h-3 w-10 bg-slate-800 rounded mb-2"></div>
+        <div className="h-4 w-20 bg-slate-800 rounded mb-2"></div>
+        <div className="h-3 w-16 bg-slate-800 rounded"></div>
+    </div>
+);
+
 const CorporateSyncRow: React.FC<{ name: string; region: string; balance: string; status: 'active' | 'sync' }> = ({ name, region, balance, status }) => (
     <div className="flex justify-between items-center p-3 bg-slate-900/30 border border-slate-800 rounded-xl hover:bg-slate-800 transition-colors">
         <div className="flex items-center gap-3">
-             <div className="w-
+             <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center">
+                <Globe size={14} className="text-slate-500" />
+             </div>
+             <div>
+                 <div className="text-xs font-bold text-slate-200">{name}</div>
+                 <div className="text-[10px] text-slate-500">{region}</div>
+             </div>
+        </div>
+        <div className="text-right">
+             <div className="text-xs font-mono text-indigo-300 font-bold">{balance}</div>
+             <div className={`text-[8px] uppercase tracking-wide ${status === 'active' ? 'text-green-500' : 'text-amber-500'}`}>{status}</div>
+        </div>
+    </div>
+);
