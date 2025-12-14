@@ -18,13 +18,6 @@ declare const window: {
   };
 };
 
-// Ensure process is defined for TS if @types/node is missing
-declare const process: {
-  env: {
-    API_KEY: string;
-  }
-};
-
 interface AIStudioHUDProps {
   modules: SystemModule[];
 }
@@ -90,8 +83,6 @@ export const AIStudioHUD: React.FC<AIStudioHUDProps> = ({ modules }) => {
     setThinking(true);
 
     try {
-      // Initialize Gemini Client
-      // process.env.API_KEY is replaced by Vite at build time
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       const response = await ai.models.generateContent({
         model: 'gemini-3-pro-preview', 
@@ -112,8 +103,6 @@ export const AIStudioHUD: React.FC<AIStudioHUDProps> = ({ modules }) => {
         setHasApiKeySelected(false); // Reset state to prompt re-selection
       } else if (err.message && err.message.includes("The model is currently unavailable")) {
         errorText = "The AI model is currently unavailable. Please try again in a moment.";
-      } else if (err.message && err.message.includes("API key not valid")) {
-        errorText = "Invalid API Key. Please check your environment settings.";
       }
       const errorMsg: ChatMessage = { id: (Date.now() + 1).toString(), role: 'model', text: errorText, timestamp: new Date() };
       setMessages(prev => [...prev, errorMsg]);
