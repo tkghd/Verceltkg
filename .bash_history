@@ -1,4 +1,3 @@
-  const res = await fetch(rpc, { method:"POST", headers:{'content-type':'application/json'}, body: JSON.stringify(body) });
   const data = await res.json();
   if (data.result && data.result.status === "0x1") {
     return new Response(JSON.stringify({status:"CONFIRMED", block:data.result.blockNumber}), {headers:{'content-type':'application/json'}});
@@ -498,3 +497,4 @@ info "✅ 全自動修正・全API搭載・HUD統合を本番環境へ反映し�
 lsof -i :3000
 # プロセスID (PID) を kill
 kill -9 <PID>
+gcloud config set project studio-9143529927-91d1f
