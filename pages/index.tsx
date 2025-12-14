@@ -1,48 +1,34 @@
 import React, { useState, useEffect } from "react";
 
 export default function Home() {
-  const [balance, setBalance] = useState<any>(null);
-  const [rates, setRates] = useState<any>(null);
+  const [wallet, setWallet] = useState<any>(null);
 
   useEffect(() => {
-    fetch("/api/balance/demoUser").then(r => r.json()).then(setBalance);
-
-    // 外部レート取得 (USD/JPY, BTC)
-    Promise.all([
-      fetch("https://api.coindesk.com/v1/bpi/currentprice/USD.json").then(r => r.json()),
-      fetch("https://api.coindesk.com/v1/bpi/currentprice/JPY.json").then(r => r.json())
-    ]).then(([usd, jpy]) => {
-      setRates({
-        usd: usd.bpi.USD.rate_float,
-        jpy: jpy.bpi.JPY.rate_float
-      });
-    });
+    fetch("/api/wallet").then(r => r.json()).then(setWallet);
   }, []);
 
   return (
     <div style={{ fontFamily: "system-ui", padding: "2rem" }}>
-      <h1>💠 全搭載 HUD — 外部レート統合</h1>
+      <h1>💠 全搭載 HUD — Wallet + NFT</h1>
       <h2>ALL SYSTEMS ONLINE ✅</h2>
 
-      <h3>💰 残高</h3>
+      <h3>💰 全資産一覧</h3>
       <ul>
-        {balance?.accounts?.map((a:any) => (
-          <li key={a.currency}>
-            {a.currency}: {a.balance}
-            {rates && a.currency === "BTC" && (
-              <span> ≈ {(a.balance * rates.usd).toFixed(2)} USD / {(a.balance * rates.jpy).toFixed(0)} JPY</span>
-            )}
-          </li>
+        {wallet?.assets?.filter((a:any) => a.type !== "nft").map((a:any, i:number) => (
+          <li key={i}>{a.type.toUpperCase()} {a.currency}: {a.balance}</li>
         ))}
       </ul>
 
-      <h3>📈 外部レート</h3>
-      {rates ? (
-        <div>
-          <p>BTC/USD: {rates.usd.toFixed(2)}</p>
-          <p>BTC/JPY: {rates.jpy.toFixed(0)}</p>
-        </div>
-      ) : <p>レート取得中...</p>}
+      <h3>🎨 NFTギャラリー</h3>
+      <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+        {wallet?.assets?.filter((a:any) => a.type === "nft").map((nft:any, i:number) => (
+          <div key={i} style={{ border: "1px solid #ccc", padding: "1rem", borderRadius: "8px" }}>
+            <p>ID: {nft.id}</p>
+            <p>Name: {nft.name}</p>
+            <p>Value: {nft.value}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
