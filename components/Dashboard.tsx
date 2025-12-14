@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { Activity, ShieldCheck, Server, Globe, Database, Cpu, Wifi, Lock, Boxes, Zap, TrendingUp, Radio, Wand2, Infinity } from 'lucide-react';
-import { SystemModule, WalletState, QueueState } from '../types';
+import { Activity, ShieldCheck, Server, Globe, Database, Cpu, Wifi, Lock, Boxes, Zap, TrendingUp, Radio, Wand2, Infinity, Terminal, CheckCircle2 } from 'lucide-react';
+import { SystemModule, WalletState, QueueState, ApiHealth, ApiTransaction } from '../types';
 import { MetricsChart } from './MetricsChart';
 import { WorldMapHUD } from './WorldMapHUD';
 import { useTheme } from './ThemeContext';
@@ -12,9 +12,11 @@ interface DashboardProps {
   wallet: WalletState;
   queues: QueueState;
   onNavigate: (tab: any) => void;
+  health?: ApiHealth | null;
+  transactions?: ApiTransaction[];
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({ modules, booted, wallet, queues }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ modules, booted, wallet, queues, health, transactions }) => {
   const { theme } = useTheme();
 
   return (
@@ -32,8 +34,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ modules, booted, wallet, q
         
         <div className="flex flex-col gap-2 mb-4 md:mb-0 relative z-10">
            <div className="flex items-center gap-2 mb-1">
-             <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500 text-black font-bold border border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.5)] animate-pulse">
-                CHEAT ENGINE: ACTIVE
+             <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-green-500 text-black font-bold border border-green-400 shadow-[0_0_15px_rgba(34,197,94,0.5)] animate-pulse">
+                ALL SYSTEMS ONLINE ✅
              </span>
              <span className={`px-2 py-0.5 rounded text-[10px] font-mono bg-${theme.accent}-500/20 text-${theme.accent}-400 border border-${theme.accent}-500/50`}>
                 REALITY: OVERWRITTEN
@@ -87,43 +89,60 @@ export const Dashboard: React.FC<DashboardProps> = ({ modules, booted, wallet, q
         </div>
       </div>
 
-      {/* Task & Operations */}
+      {/* API / Environment Status (New) */}
       <div className="col-span-1 md:col-span-1 lg:col-span-4 flex flex-col gap-6">
-        {/* Security Box */}
-        <div className="bg-[#0a0a12] border border-green-500/20 rounded-[2rem] p-6 shadow-lg flex-1 relative overflow-hidden">
-           <div className="flex justify-between items-start mb-6 relative z-10">
-              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                <Lock size={14} /> Global Vault Status
-              </h3>
-              <span className="px-2 py-0.5 rounded-md bg-green-500/10 text-green-400 text-[10px] border border-green-500/20 font-bold tracking-wider">INVINCIBLE</span>
-           </div>
-           <div className="grid grid-cols-2 gap-4 relative z-10">
-              <div className="bg-white/[0.03] p-5 rounded-2xl border border-green-500/10 hover:bg-green-500/5 transition-colors">
-                 <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">DEX Yield</div>
-                 <div className="text-2xl font-bold text-green-400 font-mono">∞%</div>
-                 <div className="h-1 w-full bg-slate-800 rounded-full mt-3 overflow-hidden">
-                    <div className="h-full bg-green-500 w-full rounded-full animate-pulse"></div>
+        <div className="bg-[#0a0a12] border border-white/5 rounded-[2rem] p-6 shadow-lg relative overflow-hidden flex-1">
+             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-4">
+               <Terminal size={14} /> Production Environment
+             </h3>
+             {health ? (
+               <div className="space-y-3 font-mono text-xs">
+                 <div className="flex justify-between">
+                   <span className="text-slate-500">ENV</span>
+                   <span className="text-white font-bold">{health.environment}</span>
                  </div>
-              </div>
-              <div className={`bg-white/[0.03] p-5 rounded-2xl border border-${theme.accent}-500/10 hover:bg-${theme.accent}-500/5 transition-colors`}>
-                 <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">TX Volume</div>
-                 <div className={`text-2xl font-bold text-${theme.accent}-400 font-mono`}>UNLIMITED</div>
-                 <div className="h-1 w-full bg-slate-800 rounded-full mt-3 overflow-hidden">
-                    <div className={`h-full bg-${theme.accent}-500 w-full rounded-full animate-pulse`}></div>
+                 <div className="flex justify-between">
+                   <span className="text-slate-500">BUILD ID</span>
+                   <span className="text-indigo-400">{health.buildId}</span>
                  </div>
-              </div>
-           </div>
+                 <div className="flex justify-between">
+                   <span className="text-slate-500">API STATUS</span>
+                   <span className="text-green-400 flex items-center gap-1"><CheckCircle2 size={10} /> {health.status}</span>
+                 </div>
+                 <div className="flex justify-between">
+                   <span className="text-slate-500">LICENSE</span>
+                   <span className="text-amber-400">{health.licenseStatus}</span>
+                 </div>
+                 <div className="mt-2 pt-2 border-t border-white/5 text-[10px] text-slate-600 truncate">
+                   CORP: {health.corpId}
+                 </div>
+               </div>
+             ) : (
+               <div className="flex flex-col items-center justify-center h-32 text-slate-500 animate-pulse">
+                 Connecting to Core...
+               </div>
+             )}
         </div>
 
-        {/* Queues Box */}
+        {/* Live Transaction Feed (Replaces Queues) */}
         <div className="bg-[#0a0a12] border border-white/5 rounded-[2rem] p-6 flex-1 shadow-lg relative overflow-hidden">
            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-             <Boxes size={14} /> Auto-Process Queue
+             <Activity size={14} /> Live Transactions (API)
            </h3>
-           <div className="space-y-3">
-              <QueueItem label="Withdrawal Requests" value={0} color="text-green-400" bg="bg-green-400/10" border="border-green-400/20" status="AUTO-CLEARED" />
-              <QueueItem label="NFT Minting" value={queues.nft} color={`text-${theme.accent}-400`} bg={`bg-${theme.accent}-400/10`} border={`border-${theme.accent}-400/20`} />
-              <QueueItem label="Legal Docs (PDF)" value={queues.pdf} color={`text-${theme.secondary}-400`} bg={`bg-${theme.secondary}-400/10`} border={`border-${theme.secondary}-400/20`} />
+           <div className="space-y-2 max-h-40 overflow-y-auto custom-scrollbar">
+              {transactions && transactions.length > 0 ? transactions.map((tx) => (
+                <div key={tx.id} className="flex justify-between items-center p-2 rounded bg-white/5 border border-white/5">
+                   <div className="flex items-center gap-2">
+                      <div className={`w-1.5 h-1.5 rounded-full ${tx.type === 'positive' ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                      <span className="text-xs text-slate-300 truncate max-w-[100px]">{tx.name}</span>
+                   </div>
+                   <span className={`text-xs font-mono font-bold ${tx.type === 'positive' ? 'text-green-400' : 'text-slate-200'}`}>
+                      {tx.type === 'positive' ? '+' : ''}{tx.amount.toLocaleString()} {tx.currency}
+                   </span>
+                </div>
+              )) : (
+                <div className="text-xs text-slate-500 text-center py-4">No recent activity</div>
+              )}
            </div>
         </div>
       </div>

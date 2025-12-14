@@ -6,6 +6,7 @@ import { WalletState, OwnerAccount } from '../types';
 interface TransferViewProps {
   wallet: WalletState;
   ownerAccounts: OwnerAccount[];
+  apiBase: string; // Add API base prop
 }
 
 type TransferStep = 'method_select' | 'bank_select' | 'account_input' | 'amount_input' | 'confirm' | 'processing_auth' | 'complete';
@@ -31,7 +32,7 @@ const MAJOR_BANKS = [
   { id: 'chiba', name: '千葉銀行', short: '千葉', color: 'bg-[#d9000d]' },
 ];
 
-export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccounts }) => {
+export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccounts, apiBase }) => {
   const [step, setStep] = useState<TransferStep>('method_select');
   const [method, setMethod] = useState<TransferMethod>('bank');
   const [selectedSource, setSelectedSource] = useState<OwnerAccount>(ownerAccounts[0]);
@@ -121,24 +122,42 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
     setStep('processing_auth');
     setIsProcessing(true);
     
-    // API Simulation Sequence
-    const apiName = method === 'bank' ? 'Zengin System' : method === 'paypay' ? 'PayPay Gateway' : 'Cotra Hub';
+    setProcessingStage('Handshaking with API...');
     
-    setProcessingStage(`Handshaking with ${apiName}...`);
-    await new Promise(resolve => setTimeout(resolve, 800));
+    try {
+        const response = await fetch(`${apiBase}/api/transfer`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                from: selectedSource.id,
+                to: method === 'bank' ? (selectedBank?.name || manualBankName) : recipientId,
+                amount: parseInt(amount),
+                currency: 'JPY'
+            })
+        });
 
-    setProcessingStage('Verifying Biometrics (Godmode)...');
-    await new Promise(resolve => setTimeout(resolve, 800));
+        const data = await response.json();
 
-    setProcessingStage('Allocating Funds from Infinite Pool...');
-    await new Promise(resolve => setTimeout(resolve, 800));
+        setProcessingStage('Finalizing Instant Settlement...');
+        await new Promise(resolve => setTimeout(resolve, 600));
 
-    setProcessingStage('Finalizing Instant Settlement...');
-    await new Promise(resolve => setTimeout(resolve, 600));
-
-    setTxId(`TX-${Math.floor(Math.random() * 1000000000)}`);
-    setIsProcessing(false);
-    setStep('complete');
+        if (response.ok) {
+            setTxId(data.txId);
+            setIsProcessing(false);
+            setStep('complete');
+        } else {
+            alert("Transaction Failed: " + data.error);
+            setStep('confirm');
+            setIsProcessing(false);
+        }
+    } catch (err) {
+        console.error("Transfer Error", err);
+        setProcessingStage('Error connecting to Core...');
+        setTimeout(() => {
+             setIsProcessing(false);
+             setStep('confirm');
+        }, 1000);
+    }
   };
 
   const autoFillBank = () => {
@@ -152,9 +171,8 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
       setTimeout(() => {
           setVoiceListening(false);
           setShowVoiceModal(false);
-          // Auto-fill and proceed to amount for simplicity, or direct execute
           setMethod('bank');
-          setSelectedBank(MAJOR_BANKS.find(b => emergencyTarget.includes('Mizuho') ? b.id === 'mizuho' : b.id === 'yokohama')); // Dummy match
+          setSelectedBank(MAJOR_BANKS.find(b => emergencyTarget.includes('Mizuho') ? b.id === 'mizuho' : b.id === 'yokohama'));
           setBranchName('Emergency Branch');
           setAccountNumber('9999999');
           setAmount(emergencyTarget.includes('Mizuho') ? '1000000' : '500000');
@@ -696,10 +714,14 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                     </button>
                     <button 
                         onClick={handleTransfer}
-                        className="flex-[2] py-4 relative overflow-hidden bg-slate-900 border border-cyan-500/50 text-white font-bold rounded-xl transition-all hover:scale-[1.02] active:scale-95 shadow-[0_0_30px_rgba(0,191,255,0.3)] group"
+                        disabled={isProcessing}
+                        className="flex-[2] py-4 relative overflow-hidden bg-slate-900 border border-cyan-500/50 text-white font-bold rounded-xl transition-all hover:scale-[1.02] active:scale-95 shadow-[0_0_30px_rgba(0,191,255,0.3)] group disabled:opacity-50"
                     >
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,191,255,0.8)_0%,rgba(0,191,255,0)_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <span className="relative flex items-center justify-center gap-2"><Fingerprint size={20} /> 承認して送金</span>
+                        <span className="relative flex items-center justify-center gap-2">
+                            {isProcessing ? <RefreshCw size={20} className="animate-spin" /> : <Fingerprint size={20} />}
+                            {isProcessing ? 'Processing...' : '承認して送金'}
+                        </span>
                     </button>
                 </div>
              </div>
@@ -762,7 +784,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
      );
   }
 
-  return null; // Should not reach here
+  return null;
 };
 
 const GatewayStatus: React.FC<{ label: string; status: 'online' | 'offline'; ping: string }> = ({ label, status, ping }) => (

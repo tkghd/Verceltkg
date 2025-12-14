@@ -1,5 +1,4 @@
 
-
 import React, { useState } from 'react';
 import { CreditCard, Lock, Eye, EyeOff, ShieldAlert, Wifi, Copy, Globe, ShieldCheck, Zap, Shield } from 'lucide-react';
 
@@ -119,17 +118,19 @@ export const CardView: React.FC = () => {
           {/* Online Payment Toggle */}
           <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                  <div className={`p-2 rounded-lg ${onlinePay ? 'bg-blue-500/20 text-blue-400' : 'bg-slate-800 text-slate-500'}`}>
-                      <Globe size={20} />
+                  <div className={`p-2 rounded-lg transition-colors ${onlinePay ? 'bg-blue-500/20 text-blue-400' : 'bg-red-500/20 text-red-400'}`}>
+                      {onlinePay ? <Globe size={20} /> : <ShieldAlert size={20} />}
                   </div>
                   <div>
                       <div className="text-sm font-bold text-white">Online Payments</div>
-                      <div className="text-[10px] text-slate-500">Enable Global E-Commerce</div>
+                      <div className={`text-[10px] ${onlinePay ? 'text-slate-500' : 'text-red-400 font-bold'}`}>
+                          {onlinePay ? 'Global E-Commerce Enabled' : 'BLOCKED (Security Mode)'}
+                      </div>
                   </div>
               </div>
               <button 
                 onClick={() => toggleSetting(setOnlinePay, onlinePay, "OnlinePay")}
-                className={`w-12 h-6 rounded-full p-1 transition-colors ${onlinePay ? 'bg-blue-500' : 'bg-slate-700'}`}
+                className={`w-12 h-6 rounded-full p-1 transition-colors ${onlinePay ? 'bg-blue-500' : 'bg-slate-700 border border-slate-600'}`}
               >
                   <div className={`w-4 h-4 bg-white rounded-full transition-transform ${onlinePay ? 'translate-x-6' : 'translate-x-0'}`}></div>
               </button>
@@ -139,8 +140,8 @@ export const CardView: React.FC = () => {
           <div>
               <div className="flex justify-between items-end mb-2">
                   <span className="text-xs font-bold text-slate-400">Spending Limit</span>
-                  <span className="text-indigo-400 font-mono font-bold">
-                      {limit >= 100 ? "∞ (GODMODE)" : `¥ ${(limit * 100000).toLocaleString()}`}
+                  <span className={`font-mono font-bold transition-all ${limit >= 100 ? "text-amber-400" : limit === 0 ? "text-red-400" : "text-indigo-400"}`}>
+                      {limit >= 100 ? "∞ (GODMODE)" : limit === 0 ? "🚫 BLOCKED" : `¥ ${(limit * 100000).toLocaleString()}`}
                   </span>
               </div>
               <input 
@@ -152,7 +153,7 @@ export const CardView: React.FC = () => {
                 className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
               />
               <div className="flex justify-between mt-1 text-[10px] text-slate-600">
-                  <span>¥0</span>
+                  <span>Block (¥0)</span>
                   <span>UNLIMITED</span>
               </div>
           </div>

@@ -78,3 +78,25 @@ export interface FxRate {
   prediction: 'up' | 'down';
   confidence: number;
 }
+
+// API Types
+export interface ApiHealth {
+  status: string;
+  service: string;
+  version: string;
+  buildId: string;
+  environment: string;
+  licenseStatus: string;
+  licenseId: string;
+  corpId: string;
+  timestamp: string;
+}
+
+export interface ApiTransaction {
+  id: number;
+  name: string;
+  amount: number;
+  currency: string;
+  type: 'positive' | 'negative';
+  date: string;
+}

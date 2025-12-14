@@ -7,7 +7,7 @@ import { RevenueCounter } from './components/RevenueCounter';
 import { AppMenu } from './components/AppMenu';
 import { NotificationSystem } from './components/NotificationSystem';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
-import { SystemModule, WalletState, QueueState, ActiveTab, OwnerAccount } from './types';
+import { SystemModule, WalletState, QueueState, ActiveTab, OwnerAccount, ApiHealth, ApiTransaction } from './types';
 import { INITIAL_MODULES, STARTUP_LOGS, INITIAL_WALLET, INITIAL_QUEUES, OWNER_ACCOUNTS } from './constants';
 
 // Lazy Load View Components
@@ -33,6 +33,8 @@ const LoadingFallback = () => (
   </div>
 );
 
+const API_BASE = 'http://localhost:3100';
+
 const AppContent: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
@@ -43,11 +45,53 @@ const AppContent: React.FC = () => {
   const [queues, setQueues] = useState<QueueState>(INITIAL_QUEUES);
   const [ownerAccounts] = useState<OwnerAccount[]>(OWNER_ACCOUNTS);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // API Data States
+  const [health, setHealth] = useState<ApiHealth | null>(null);
+  const [transactions, setTransactions] = useState<ApiTransaction[]>([]);
+
   const { theme } = useTheme();
 
   useEffect(() => {
     if (isLoggedIn) {
         setModules(prev => prev.map(m => ({ ...m, status: 'online' })));
+        
+        // Fetch Real-time Data
+        const fetchData = async () => {
+            try {
+                // Health Check
+                const healthRes = await fetch(`${API_BASE}/api/health`);
+                if (healthRes.ok) setHealth(await healthRes.json());
+
+                // Balance Sync
+                const balanceRes = await fetch(`${API_BASE}/api/balance/demoUser`);
+                if (balanceRes.ok) {
+                    const data = await balanceRes.json();
+                    const accounts = data.accounts;
+                    const jpy = accounts.find((a: any) => a.currency === 'JPY')?.balance;
+                    const usd = accounts.find((a: any) => a.currency === 'USD')?.balance;
+                    const btc = accounts.find((a: any) => a.currency === 'BTC')?.balance;
+                    
+                    if (jpy !== undefined) setWallet(prev => ({ ...prev, jpy: jpy.toLocaleString() }));
+                    if (usd !== undefined) setWallet(prev => ({ ...prev, usd: usd.toLocaleString() }));
+                    if (btc !== undefined) setWallet(prev => ({ ...prev, btc: btc.toString() }));
+                }
+
+                // Transaction Sync
+                const txRes = await fetch(`${API_BASE}/api/transactions/demoUser`);
+                if (txRes.ok) {
+                    const data = await txRes.json();
+                    setTransactions(data.transactions);
+                }
+            } catch (error) {
+                console.error("API Sync Error:", error);
+                addLog(`[ERROR] API SYNC FAILED: ${error}`);
+            }
+        };
+
+        fetchData();
+        const interval = setInterval(fetchData, 10000); // Polling every 10s
+        return () => clearInterval(interval);
     }
   }, [isLoggedIn]);
 
@@ -97,7 +141,7 @@ const AppContent: React.FC = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                </span>
-               <span className="text-[10px] text-amber-400 font-mono tracking-wider font-bold">ΩβαMAX ULTIMATE</span>
+               <span className="text-[10px] text-amber-400 font-mono tracking-wider font-bold">ALL SYSTEMS ONLINE</span>
              </div>
            </div>
         </div>
@@ -119,9 +163,9 @@ const AppContent: React.FC = () => {
          <div className="h-full overflow-y-auto custom-scrollbar p-4 pb-24 sm:p-6 sm:pb-6 scroll-smooth">
             <div key={activeTab} className="max-w-7xl mx-auto anim-enter-right h-full">
                <Suspense fallback={<LoadingFallback />}>
-                 {activeTab === 'dashboard' && <Dashboard modules={modules} booted={true} wallet={wallet} queues={queues} onNavigate={handleTabChange} />}
+                 {activeTab === 'dashboard' && <Dashboard modules={modules} booted={true} wallet={wallet} queues={queues} onNavigate={handleTabChange} health={health} transactions={transactions} />}
                  {activeTab === 'assets' && <AssetsView wallet={wallet} ownerAccounts={ownerAccounts} onNavigate={handleTabChange} />}
-                 {activeTab === 'transfer' && <TransferView wallet={wallet} ownerAccounts={ownerAccounts} />}
+                 {activeTab === 'transfer' && <TransferView wallet={wallet} ownerAccounts={ownerAccounts} apiBase={API_BASE} />}
                  {activeTab === 'atm' && <ATMView wallet={wallet} />}
                  {activeTab === 'card' && <CardView />}
                  {activeTab === 'crypto' && <CryptoView wallet={wallet} onUpdateWallet={setWallet} onNavigate={handleTabChange} />}
