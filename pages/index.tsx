@@ -1,4 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Home() {
   const [health, setHealth] = useState<any>(null);
@@ -13,13 +17,11 @@ export default function Home() {
     fetch("/api/balance/demoUser").then(r => r.json()).then(setBalance);
     fetch("/api/transactions/demoUser").then(r => r.json()).then(setTransactions);
 
-    // SSE接続
     const evt = new EventSource("/api/events");
     evt.onmessage = (e) => {
       const msg = JSON.parse(e.data);
       setChatLog((log) => [...log, { system: true, msg }]);
       if (msg.type === "transfer") setTransferResult(msg);
-      if (msg.type === "heartbeat") console.log("heartbeat", msg.ts);
     };
     return () => evt.close();
   }, []);
@@ -43,6 +45,14 @@ export default function Home() {
     if (text.includes("送金") || text.toLowerCase().includes("transfer")) setTransferResult(data.data);
   };
 
+  const balanceData = balance ? {
+    labels: balance.accounts.map((a:any) => a.currency),
+    datasets: [{
+      data: balance.accounts.map((a:any) => a.balance),
+      backgroundColor: ["#36A2EB", "#FF6384", "#FFCE56"],
+    }]
+  } : null;
+
   return (
     <div style={{ fontFamily: "system-ui", padding: "2rem" }}>
       <h1>🤖 AI HUD — 全搭載 永久稼働</h1>
@@ -57,6 +67,7 @@ export default function Home() {
 
       <h3>💰 残高</h3>
       <ul>{balance?.accounts?.map((a:any) => (<li key={a.currency}>{a.currency}: {a.balance}</li>))}</ul>
+      {balanceData && <Doughnut data={balanceData} />}
 
       <h3>📜 取引履歴</h3>
       <table border={1} cellPadding={6}>
