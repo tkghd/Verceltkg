@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Wallet, TrendingUp, DollarSign, Bitcoin, Globe, Gem, Crown, ArrowUpRight, Building, Layers, Link, Loader2, ShieldCheck, CheckCircle2, XCircle, LogOut, Smartphone, HardDrive, Send, ArrowRight, Search, Flame, Zap, Boxes } from 'lucide-react';
 import { WalletState, OwnerAccount, ActiveTab } from '../types';
 
@@ -45,11 +45,11 @@ export const AssetsView: React.FC<AssetsViewProps> = ({ wallet, ownerAccounts, o
     { s: 'GOD', n: 'God Mode', bal: '1' },
   ];
 
-  const filteredAccounts = ownerAccounts.filter(acc => 
+  const filteredAccounts = useMemo(() => ownerAccounts.filter(acc => 
     acc.bankName.toLowerCase().includes(searchQuery.toLowerCase()) ||
     acc.branchName.toLowerCase().includes(searchQuery.toLowerCase()) ||
     acc.accountName.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  ), [ownerAccounts, searchQuery]);
 
   if (isLoading) {
     return (
@@ -232,15 +232,15 @@ export const AssetsView: React.FC<AssetsViewProps> = ({ wallet, ownerAccounts, o
   );
 };
 
-const SkeletonAssetCard = () => (
+const SkeletonAssetCard = React.memo(() => (
     <div className="bg-slate-900/50 border border-slate-800 p-3 rounded-xl h-20 animate-pulse">
         <div className="h-3 w-10 bg-slate-800 rounded mb-2"></div>
         <div className="h-4 w-20 bg-slate-800 rounded mb-2"></div>
         <div className="h-3 w-16 bg-slate-800 rounded"></div>
     </div>
-);
+));
 
-const CorporateSyncRow: React.FC<{ name: string; region: string; balance: string; status: 'active' | 'sync' }> = ({ name, region, balance, status }) => (
+const CorporateSyncRow: React.FC<{ name: string; region: string; balance: string; status: 'active' | 'sync' }> = React.memo(({ name, region, balance, status }) => (
     <div className="flex justify-between items-center p-3 bg-slate-900/30 border border-slate-800 rounded-xl hover:bg-slate-800 transition-colors">
         <div className="flex items-center gap-3">
              <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center">
@@ -256,4 +256,4 @@ const CorporateSyncRow: React.FC<{ name: string; region: string; balance: string
              <div className={`text-[8px] uppercase tracking-wide ${status === 'active' ? 'text-green-500' : 'text-amber-500'}`}>{status}</div>
         </div>
     </div>
-);
+));

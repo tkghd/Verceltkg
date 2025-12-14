@@ -1,25 +1,37 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Wallet, Send, QrCode, CreditCard, Settings, User, Globe, Wifi, Zap, Bot, Crown, Palette, BarChart2, Heart, Building, Scale, ClipboardList, FileText, Smartphone, Grid, X, Coins, Landmark, Menu, Rocket } from 'lucide-react';
 import { LoginScreen } from './components/LoginScreen';
-import { AssetsView } from './components/AssetsView';
-import { TransferView } from './components/TransferView';
-import { ATMView } from './components/ATMView';
-import { CardView } from './components/CardView';
-import { CryptoView } from './components/CryptoView';
-import { CorporateView } from './components/CorporateView';
-import { BankServicesView } from './components/BankServicesView';
-import { AIStudioHUD } from './components/AIStudioHUD';
-import { SettingsView } from './components/SettingsView';
-import { Dashboard } from './components/Dashboard';
 import { ProdBadge } from './components/ProdBadge';
 import { RevenueCounter } from './components/RevenueCounter';
-import { ModuleView } from './components/ModuleView';
 import { AppMenu } from './components/AppMenu';
 import { NotificationSystem } from './components/NotificationSystem';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { SystemModule, WalletState, QueueState, ActiveTab, OwnerAccount } from './types';
 import { INITIAL_MODULES, STARTUP_LOGS, INITIAL_WALLET, INITIAL_QUEUES, OWNER_ACCOUNTS } from './constants';
+
+// Lazy Load View Components
+const Dashboard = React.lazy(() => import('./components/Dashboard').then(m => ({ default: m.Dashboard })));
+const AssetsView = React.lazy(() => import('./components/AssetsView').then(m => ({ default: m.AssetsView })));
+const TransferView = React.lazy(() => import('./components/TransferView').then(m => ({ default: m.TransferView })));
+const ATMView = React.lazy(() => import('./components/ATMView').then(m => ({ default: m.ATMView })));
+const CardView = React.lazy(() => import('./components/CardView').then(m => ({ default: m.CardView })));
+const CryptoView = React.lazy(() => import('./components/CryptoView').then(m => ({ default: m.CryptoView })));
+const CorporateView = React.lazy(() => import('./components/CorporateView').then(m => ({ default: m.CorporateView })));
+const BankServicesView = React.lazy(() => import('./components/BankServicesView').then(m => ({ default: m.BankServicesView })));
+const AIStudioHUD = React.lazy(() => import('./components/AIStudioHUD').then(m => ({ default: m.AIStudioHUD })));
+const SettingsView = React.lazy(() => import('./components/SettingsView').then(m => ({ default: m.SettingsView })));
+const ModuleView = React.lazy(() => import('./components/ModuleView').then(m => ({ default: m.ModuleView })));
+
+const LoadingFallback = () => (
+  <div className="h-full flex flex-col items-center justify-center space-y-4 animate-in fade-in">
+    <div className="relative w-16 h-16">
+      <div className="absolute inset-0 border-4 border-slate-800 rounded-full"></div>
+      <div className="absolute inset-0 border-4 border-t-cyan-500 rounded-full animate-spin"></div>
+    </div>
+    <span className="text-xs font-mono text-cyan-500 animate-pulse">LOADING MODULE...</span>
+  </div>
+);
 
 const AppContent: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -106,34 +118,34 @@ const AppContent: React.FC = () => {
          
          <div className="h-full overflow-y-auto custom-scrollbar p-4 pb-24 sm:p-6 sm:pb-6 scroll-smooth">
             <div key={activeTab} className="max-w-7xl mx-auto anim-enter-right h-full">
-               {activeTab === 'dashboard' && <Dashboard modules={modules} booted={true} wallet={wallet} queues={queues} onNavigate={handleTabChange} />}
-               {activeTab === 'assets' && <AssetsView wallet={wallet} ownerAccounts={ownerAccounts} onNavigate={handleTabChange} />}
-               {activeTab === 'transfer' && <TransferView wallet={wallet} ownerAccounts={ownerAccounts} />}
-               {activeTab === 'atm' && <ATMView wallet={wallet} />}
-               {activeTab === 'card' && <CardView />}
-               {activeTab === 'crypto' && <CryptoView wallet={wallet} onUpdateWallet={setWallet} onNavigate={handleTabChange} />}
-               {activeTab === 'bank_services' && <BankServicesView onNavigate={handleTabChange} />}
-               {activeTab === 'corporate' && <CorporateView wallet={wallet} />}
-               {activeTab === 'ai_hud' && <AIStudioHUD modules={modules} />}
-               
-               {/* Generated UI Modules */}
-               {activeTab === 'pwa' && <ModuleView id="pwa" title="PWA Mobile Core" icon={<Smartphone size={24} />} variant="app" />}
-               {activeTab === 'web' && <ModuleView id="web" title="Web Platform Host" icon={<Globe size={24} />} variant="dev" />}
-               {activeTab === 'uiux' && <ModuleView id="uiux" title="Design System Studio" icon={<Palette size={24} />} variant="design" />}
-               {activeTab === 'health' && <ModuleView id="health" title="System Health Monitor" icon={<Heart size={24} />} variant="admin" />}
-               {activeTab === 'real' && <ModuleView id="real" title="Real-Time API Stream" icon={<Building size={24} />} variant="dev" />}
-               {activeTab === 'compliance' && <ModuleView id="compliance" title="Compliance Officer" icon={<Scale size={24} />} variant="admin" />}
-               {activeTab === 'audit' && <ModuleView id="audit" title="Audit Log Viewer" icon={<ClipboardList size={24} />} variant="admin" />}
-               {activeTab === 'license' && <ModuleView id="license" title="License Manager" icon={<FileText size={24} />} variant="admin" />}
-               {activeTab === 'prod_app' && <ModuleView id="prod" title="Production App (Consumer)" icon={<Rocket size={24} />} variant="app" />}
-               
-               {activeTab === 'settings' && (
-                 <>
+               <Suspense fallback={<LoadingFallback />}>
+                 {activeTab === 'dashboard' && <Dashboard modules={modules} booted={true} wallet={wallet} queues={queues} onNavigate={handleTabChange} />}
+                 {activeTab === 'assets' && <AssetsView wallet={wallet} ownerAccounts={ownerAccounts} onNavigate={handleTabChange} />}
+                 {activeTab === 'transfer' && <TransferView wallet={wallet} ownerAccounts={ownerAccounts} />}
+                 {activeTab === 'atm' && <ATMView wallet={wallet} />}
+                 {activeTab === 'card' && <CardView />}
+                 {activeTab === 'crypto' && <CryptoView wallet={wallet} onUpdateWallet={setWallet} onNavigate={handleTabChange} />}
+                 {activeTab === 'bank_services' && <BankServicesView onNavigate={handleTabChange} />}
+                 {activeTab === 'corporate' && <CorporateView wallet={wallet} />}
+                 {activeTab === 'ai_hud' && <AIStudioHUD modules={modules} />}
+                 
+                 {/* Generated UI Modules */}
+                 {activeTab === 'pwa' && <ModuleView id="pwa" title="PWA Mobile Core" icon={<Smartphone size={24} />} variant="app" />}
+                 {activeTab === 'web' && <ModuleView id="web" title="Web Platform Host" icon={<Globe size={24} />} variant="dev" />}
+                 {activeTab === 'uiux' && <ModuleView id="uiux" title="Design System Studio" icon={<Palette size={24} />} variant="design" />}
+                 {activeTab === 'health' && <ModuleView id="health" title="System Health Monitor" icon={<Heart size={24} />} variant="admin" />}
+                 {activeTab === 'real' && <ModuleView id="real" title="Real-Time API Stream" icon={<Building size={24} />} variant="dev" />}
+                 {activeTab === 'compliance' && <ModuleView id="compliance" title="Compliance Officer" icon={<Scale size={24} />} variant="admin" />}
+                 {activeTab === 'audit' && <ModuleView id="audit" title="Audit Log Viewer" icon={<ClipboardList size={24} />} variant="admin" />}
+                 {activeTab === 'license' && <ModuleView id="license" title="License Manager" icon={<FileText size={24} />} variant="admin" />}
+                 {activeTab === 'prod_app' && <ModuleView id="prod" title="Production App (Consumer)" icon={<Rocket size={24} />} variant="app" />}
+                 
+                 {activeTab === 'settings' && (
                    <div className="mt-8">
                       <SettingsView modules={modules} logs={logs} queues={queues} onRestart={handleRestartModule} />
                    </div>
-                 </>
-               )}
+                 )}
+               </Suspense>
             </div>
          </div>
       </main>

@@ -158,16 +158,16 @@ export const Dashboard: React.FC<DashboardProps> = ({ modules, booted, wallet, q
   );
 };
 
-const QueueItem: React.FC<{ label: string; value: number; color: string; bg: string; border: string; status?: string }> = ({ label, value, color, bg, border, status }) => (
+const QueueItem: React.FC<{ label: string; value: number; color: string; bg: string; border: string; status?: string }> = React.memo(({ label, value, color, bg, border, status }) => (
   <div className={`flex justify-between items-center p-3 rounded-xl border ${border} ${bg} transition-all hover:brightness-110`}>
      <span className="text-xs text-slate-300 font-medium">{label}</span>
      <span className={`font-mono font-bold ${color}`}>{status || value}</span>
   </div>
-);
+));
 
-const BalanceRow: React.FC<{ label: string; value: string; highlight?: boolean; color?: string }> = ({ label, value, highlight, color }) => (
+const BalanceRow: React.FC<{ label: string; value: string; highlight?: boolean; color?: string }> = React.memo(({ label, value, highlight, color }) => (
   <div className="flex justify-between items-end border-b border-white/5 pb-3 group">
      <span className="text-xs font-bold text-slate-500 group-hover:text-slate-400 transition-colors">{label}</span>
      <span className={`font-mono text-xl tracking-tight ${highlight ? (color || 'text-cyan-400') : 'text-slate-200'} drop-shadow-sm`}>{value}</span>
   </div>
-);
+));

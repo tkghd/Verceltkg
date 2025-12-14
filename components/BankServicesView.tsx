@@ -1,9 +1,9 @@
 
-import React, { useState, useEffect } from 'react';
-import { Landmark, Globe, CreditCard, Plus, ArrowRight, ShieldCheck, Banknote, Building2, CheckCircle2, AlertCircle, RefreshCw, Zap, Cpu, Scan, ArrowDownToLine, Settings, Copy, Activity, Server, Radio, Network, Database, Save, Trash2, Hash, FileText, BookOpen } from 'lucide-react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { Landmark, Globe, CreditCard, Plus, ArrowRight, ShieldCheck, Banknote, Building2, CheckCircle2, AlertCircle, RefreshCw, Zap, Cpu, Scan, ArrowDownToLine, Settings, Copy, Activity, Server, Radio, Network, Database, Save, Trash2, Hash, FileText, BookOpen, UserCheck, FileUp, ScanFace, Shield, Upload, Camera, X } from 'lucide-react';
 import { ActiveTab } from '../types';
 
-type ServiceTab = 'accounts' | 'transfer_intl' | 'loans' | 'admin_registry' | 'directory';
+type ServiceTab = 'accounts' | 'transfer_intl' | 'loans' | 'admin_registry' | 'directory' | 'kyc';
 
 interface BankServicesViewProps {
   onNavigate: (tab: ActiveTab) => void;
@@ -149,6 +149,16 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
   // Directory Filter State
   const [filterCountry, setFilterCountry] = useState<string>('ALL');
 
+  // KYC State
+  const [kycStatus, setKycStatus] = useState<'unverified' | 'pending' | 'verified' | 'rejected'>('unverified');
+  const [kycStep, setKycStep] = useState(1);
+  const [kycData, setKycData] = useState({ fullName: '', dob: '', address: '', docType: 'passport' });
+  const [kycUploadProgress, setKycUploadProgress] = useState(0);
+  const [isCameraActive, setIsCameraActive] = useState(false);
+  const [cameraError, setCameraError] = useState('');
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+
   const simulateAiAction = (action: string) => {
     setAiAction(action);
     setTimeout(() => setAiAction(''), 3000);
@@ -223,9 +233,92 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
     }, 1500);
   };
 
-  const filteredBanks = filterCountry === 'ALL' 
-    ? bankList 
-    : bankList.filter(b => b.name === filterCountry);
+  const filteredBanks = useMemo(() => 
+    filterCountry === 'ALL' 
+      ? bankList 
+      : bankList.filter(b => b.name === filterCountry),
+  [filterCountry, bankList]);
+
+  // KYC Flow Handlers
+  const handleKycNext = () => {
+      if (kycStep === 3 && isCameraActive) {
+          stopCamera();
+      }
+      if (kycStep < 4) setKycStep(prev => prev + 1);
+  };
+
+  const handleKycSubmit = () => {
+      setKycStatus('pending');
+      setKycStep(1); // Reset step or go to a specific "processing" view
+      
+      // Simulate verification process
+      simulateAiAction('Uploading encrypted biometric data...');
+      
+      setTimeout(() => {
+          simulateAiAction('Validating against Global Watchlist...');
+      }, 1500);
+
+      setTimeout(() => {
+          setKycStatus('verified');
+          simulateAiAction('Identity Verified (Level 4 clearance granted)');
+      }, 4000);
+  };
+
+  const simulateFileUpload = () => {
+      setKycUploadProgress(0);
+      const interval = setInterval(() => {
+          setKycUploadProgress(prev => {
+              if (prev >= 100) {
+                  clearInterval(interval);
+                  return 100;
+              }
+              return prev + 10;
+          });
+      }, 200);
+  };
+
+  // Camera Logic for KYC Liveness
+  const startCamera = async () => {
+      setIsCameraActive(true);
+      setCameraError('');
+      
+      try {
+          if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+              let stream;
+              try {
+                  // Prefer front camera for liveness check
+                  stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
+              } catch (e) {
+                  console.warn("Front camera not available, falling back.");
+                  stream = await navigator.mediaDevices.getUserMedia({ video: true });
+              }
+              
+              streamRef.current = stream;
+              if (videoRef.current) {
+                  videoRef.current.srcObject = stream;
+                  await videoRef.current.play();
+              }
+          } else {
+              setCameraError('Camera API not supported');
+          }
+      } catch (err: any) {
+          console.error(err);
+          setCameraError('Permission denied or camera missing');
+          setIsCameraActive(false);
+      }
+  };
+
+  const stopCamera = () => {
+      if (streamRef.current) {
+          streamRef.current.getTracks().forEach(track => track.stop());
+          streamRef.current = null;
+      }
+      setIsCameraActive(false);
+  };
+
+  useEffect(() => {
+      return () => stopCamera();
+  }, []);
 
   return (
     <div className="space-y-6 pb-20 animate-in fade-in duration-500">
@@ -240,6 +333,7 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
             <TabButton active={activeTab === 'accounts'} onClick={() => setActiveTab('accounts')} label="Accounts" icon={<Plus size={14} />} />
             <TabButton active={activeTab === 'transfer_intl'} onClick={() => setActiveTab('transfer_intl')} label="Intl. Wire" icon={<Globe size={14} />} />
             <TabButton active={activeTab === 'loans'} onClick={() => setActiveTab('loans')} label="Lending" icon={<Banknote size={14} />} />
+            <TabButton active={activeTab === 'kyc'} onClick={() => setActiveTab('kyc')} label="KYC" icon={<UserCheck size={14} />} />
             <TabButton active={activeTab === 'directory'} onClick={() => setActiveTab('directory')} label="Directory" icon={<BookOpen size={14} />} />
             <TabButton active={activeTab === 'admin_registry'} onClick={() => setActiveTab('admin_registry')} label="Registry" icon={<Database size={14} />} />
         </div>
@@ -554,6 +648,241 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
           </div>
       )}
 
+      {activeTab === 'kyc' && (
+          <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 anim-enter-right">
+              <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                      <ShieldCheck size={24} />
+                  </div>
+                  <div>
+                      <h3 className="text-lg font-bold text-white">KYC Verification</h3>
+                      <p className="text-xs text-slate-400">Identity Protocol & Biometrics</p>
+                  </div>
+                  <div className="ml-auto">
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold border ${
+                          kycStatus === 'verified' ? 'bg-green-900/30 text-green-400 border-green-500/30' : 
+                          kycStatus === 'pending' ? 'bg-yellow-900/30 text-yellow-400 border-yellow-500/30' :
+                          'bg-slate-800 text-slate-400 border-slate-700'
+                      }`}>
+                          STATUS: {kycStatus.toUpperCase()}
+                      </span>
+                  </div>
+              </div>
+
+              {kycStatus === 'verified' ? (
+                  <div className="bg-gradient-to-r from-emerald-900/20 to-slate-900 border border-emerald-500/30 rounded-xl p-8 text-center animate-in zoom-in-95">
+                      <div className="w-20 h-20 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center mb-4 ring-1 ring-emerald-500/50 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                          <ShieldCheck size={40} className="text-emerald-400" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-2">Identity Verified</h3>
+                      <p className="text-slate-400 mb-6 max-w-md mx-auto">You have full access to all global banking features, including unlimited transfers and high-leverage credit.</p>
+                      <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto text-left text-xs bg-black/20 p-4 rounded-xl border border-emerald-500/20">
+                          <div>
+                              <span className="text-slate-500 block">Clearance Level</span>
+                              <span className="text-white font-bold">Level 4 (Godmode)</span>
+                          </div>
+                          <div>
+                              <span className="text-slate-500 block">Biometrics</span>
+                              <span className="text-emerald-400 font-bold">Enrolled</span>
+                          </div>
+                      </div>
+                  </div>
+              ) : kycStatus === 'pending' ? (
+                  <div className="flex flex-col items-center justify-center py-12 text-center">
+                      <RefreshCw size={48} className="text-yellow-500 animate-spin mb-6" />
+                      <h3 className="text-xl font-bold text-white mb-2">Verification in Progress</h3>
+                      <p className="text-slate-400 max-w-sm">The AI Core is analyzing your documents and biometric data. This usually takes less than 5 minutes.</p>
+                  </div>
+              ) : (
+                  <div className="space-y-8">
+                      {/* Progress Stepper */}
+                      <div className="flex items-center justify-between px-4">
+                          {[1, 2, 3, 4].map(step => (
+                              <div key={step} className="flex flex-col items-center relative z-10">
+                                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-500 ${
+                                      kycStep >= step ? 'bg-emerald-500 text-black shadow-lg shadow-emerald-500/30 scale-110' : 'bg-slate-800 text-slate-500 border border-slate-700'
+                                  }`}>
+                                      {step}
+                                  </div>
+                                  <span className={`text-[10px] mt-2 font-medium ${kycStep >= step ? 'text-emerald-400' : 'text-slate-600'}`}>
+                                      {step === 1 ? 'Personal' : step === 2 ? 'Document' : step === 3 ? 'Biometric' : 'Review'}
+                                  </span>
+                              </div>
+                          ))}
+                          <div className="absolute left-0 w-full h-0.5 bg-slate-800 top-4 -z-0 mx-8">
+                              <div 
+                                className="h-full bg-emerald-500 transition-all duration-500" 
+                                style={{ width: `${((kycStep - 1) / 3) * 100}%` }}
+                              ></div>
+                          </div>
+                      </div>
+
+                      <div className="bg-black/20 border border-slate-800 rounded-xl p-6 min-h-[300px]">
+                          {kycStep === 1 && (
+                              <div className="space-y-4 animate-in slide-in-from-right-4 fade-in duration-300">
+                                  <h4 className="font-bold text-white mb-4">Personal Information</h4>
+                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                      <div>
+                                          <label className="text-xs text-slate-400 block mb-1">Full Name</label>
+                                          <input 
+                                            type="text" 
+                                            value={kycData.fullName}
+                                            onChange={e => setKycData({...kycData, fullName: e.target.value})}
+                                            className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:border-emerald-500 outline-none"
+                                            placeholder="John Doe"
+                                          />
+                                      </div>
+                                      <div>
+                                          <label className="text-xs text-slate-400 block mb-1">Date of Birth</label>
+                                          <input 
+                                            type="date" 
+                                            value={kycData.dob}
+                                            onChange={e => setKycData({...kycData, dob: e.target.value})}
+                                            className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:border-emerald-500 outline-none"
+                                          />
+                                      </div>
+                                      <div className="md:col-span-2">
+                                          <label className="text-xs text-slate-400 block mb-1">Residential Address</label>
+                                          <input 
+                                            type="text" 
+                                            value={kycData.address}
+                                            onChange={e => setKycData({...kycData, address: e.target.value})}
+                                            className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:border-emerald-500 outline-none"
+                                            placeholder="123 Cyber Avenue, Neo Tokyo"
+                                          />
+                                      </div>
+                                  </div>
+                              </div>
+                          )}
+
+                          {kycStep === 2 && (
+                              <div className="space-y-4 animate-in slide-in-from-right-4 fade-in duration-300">
+                                  <h4 className="font-bold text-white mb-4">Document Verification</h4>
+                                  
+                                  <div className="flex gap-4 mb-6">
+                                      {['passport', 'id_card', 'driver_license'].map(type => (
+                                          <button 
+                                            key={type}
+                                            onClick={() => setKycData({...kycData, docType: type})}
+                                            className={`flex-1 py-3 rounded-lg border text-xs font-bold transition-all ${
+                                                kycData.docType === type ? 'bg-emerald-900/30 border-emerald-500 text-emerald-400' : 'bg-slate-900 border-slate-700 text-slate-400'
+                                            }`}
+                                          >
+                                              {type === 'passport' ? 'Passport' : type === 'id_card' ? 'National ID' : 'Driver License'}
+                                          </button>
+                                      ))}
+                                  </div>
+
+                                  <div 
+                                    className="border-2 border-dashed border-slate-700 rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500/50 hover:bg-slate-900/50 transition-all group"
+                                    onClick={simulateFileUpload}
+                                  >
+                                      <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                          <FileUp size={24} className="text-slate-400 group-hover:text-emerald-400" />
+                                      </div>
+                                      <span className="text-sm text-slate-300 font-medium">Click to Upload Document Front</span>
+                                      <span className="text-xs text-slate-500 mt-1">JPG, PNG or PDF (Max 5MB)</span>
+                                      
+                                      {kycUploadProgress > 0 && (
+                                          <div className="w-full max-w-xs mt-4 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                              <div 
+                                                className="h-full bg-emerald-500 transition-all duration-200"
+                                                style={{ width: `${kycUploadProgress}%` }}
+                                              ></div>
+                                          </div>
+                                      )}
+                                      {kycUploadProgress === 100 && <span className="text-xs text-emerald-400 font-bold mt-2">Upload Complete</span>}
+                                  </div>
+                              </div>
+                          )}
+
+                          {kycStep === 3 && (
+                              <div className="flex flex-col items-center justify-center h-full animate-in slide-in-from-right-4 fade-in duration-300 py-8">
+                                  {isCameraActive ? (
+                                      <div className="relative w-full max-w-xs aspect-square rounded-2xl overflow-hidden border-2 border-slate-700">
+                                          <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover" />
+                                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                              <div className="w-48 h-64 border-2 border-emerald-500/50 rounded-[50%]"></div>
+                                          </div>
+                                          <button 
+                                            onClick={stopCamera}
+                                            className="absolute top-2 right-2 bg-black/50 text-white p-2 rounded-full"
+                                          >
+                                              <X size={16} />
+                                          </button>
+                                      </div>
+                                  ) : (
+                                      <>
+                                          <div className="relative w-40 h-40 mb-6">
+                                              <div className="absolute inset-0 border-4 border-slate-700 rounded-full"></div>
+                                              <div className="absolute inset-0 border-4 border-t-emerald-500 rounded-full animate-spin"></div>
+                                              <div className="absolute inset-0 flex items-center justify-center">
+                                                  <ScanFace size={64} className="text-emerald-400 animate-pulse" />
+                                              </div>
+                                          </div>
+                                          <h4 className="text-lg font-bold text-white mb-2">Liveness Check</h4>
+                                          <p className="text-sm text-slate-400 text-center max-w-xs mb-6">Please look at the camera and slowly turn your head to the left, then right.</p>
+                                          {cameraError && <p className="text-xs text-red-400 mb-4">{cameraError}</p>}
+                                          <button 
+                                            onClick={startCamera}
+                                            className="px-6 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white text-xs font-bold hover:bg-slate-700 flex items-center gap-2"
+                                          >
+                                              <Camera size={14} /> Start Camera
+                                          </button>
+                                      </>
+                                  )}
+                              </div>
+                          )}
+
+                          {kycStep === 4 && (
+                              <div className="space-y-6 animate-in slide-in-from-right-4 fade-in duration-300">
+                                  <h4 className="font-bold text-white mb-2">Review Information</h4>
+                                  <div className="bg-slate-900 rounded-xl p-4 border border-slate-800 space-y-3">
+                                      <div className="flex justify-between border-b border-slate-800 pb-2">
+                                          <span className="text-xs text-slate-500">Name</span>
+                                          <span className="text-sm text-white">{kycData.fullName || 'Not provided'}</span>
+                                      </div>
+                                      <div className="flex justify-between border-b border-slate-800 pb-2">
+                                          <span className="text-xs text-slate-500">Document</span>
+                                          <span className="text-sm text-white capitalize">{kycData.docType.replace('_', ' ')}</span>
+                                      </div>
+                                      <div className="flex justify-between pb-2">
+                                          <span className="text-xs text-slate-500">Biometrics</span>
+                                          <span className="text-sm text-emerald-400 font-bold flex items-center gap-1"><CheckCircle2 size={12} /> Captured</span>
+                                      </div>
+                                  </div>
+                                  <div className="flex items-start gap-3 p-3 bg-emerald-900/10 border border-emerald-500/20 rounded-lg">
+                                      <Shield size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                                      <p className="text-xs text-emerald-200/80">
+                                          By submitting, you agree to the processing of your personal data for identity verification purposes in accordance with global banking regulations.
+                                      </p>
+                                  </div>
+                              </div>
+                          )}
+                      </div>
+
+                      <div className="flex justify-end pt-4">
+                          {kycStep < 4 ? (
+                              <button 
+                                onClick={handleKycNext}
+                                className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-emerald-900/20 transition-all active:scale-95 flex items-center gap-2"
+                              >
+                                  Next Step <ArrowRight size={18} />
+                              </button>
+                          ) : (
+                              <button 
+                                onClick={handleKycSubmit}
+                                className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-emerald-900/20 transition-all active:scale-95 flex items-center gap-2"
+                              >
+                                  <Upload size={18} /> Submit for Verification
+                              </button>
+                          )}
+                      </div>
+                  </div>
+              )}
+          </div>
+      )}
+
       {activeTab === 'directory' && (
           <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 anim-enter-right">
               <div className="flex items-center gap-3 mb-6">
@@ -740,16 +1069,16 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
   );
 };
 
-const TabButton: React.FC<{ active: boolean; onClick: () => void; label: string; icon: React.ReactNode }> = ({ active, onClick, label, icon }) => (
+const TabButton: React.FC<{ active: boolean; onClick: () => void; label: string; icon: React.ReactNode }> = React.memo(({ active, onClick, label, icon }) => (
     <button 
         onClick={onClick}
         className={`px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-2 transition-all ${active ? 'bg-indigo-600 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
     >
         {icon} {label}
     </button>
-);
+));
 
-const AccountCard: React.FC<{ region: string; iban: string; currency: string; balance: string; bank: string }> = ({ region, iban, currency, balance, bank }) => (
+const AccountCard: React.FC<{ region: string; iban: string; currency: string; balance: string; bank: string }> = React.memo(({ region, iban, currency, balance, bank }) => (
     <div className="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-center justify-between hover:border-cyan-500/30 transition-colors group">
         <div className="flex items-center gap-4">
             <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center font-bold text-slate-400 border border-slate-700 group-hover:bg-cyan-900/20 group-hover:text-cyan-400 group-hover:border-cyan-500/30 transition-colors">
@@ -765,4 +1094,4 @@ const AccountCard: React.FC<{ region: string; iban: string; currency: string; ba
             <div className="text-[10px] text-slate-500">{currency}</div>
         </div>
     </div>
-);
+));

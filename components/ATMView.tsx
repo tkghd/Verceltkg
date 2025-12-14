@@ -57,14 +57,25 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
 
     try {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        const stream = await navigator.mediaDevices.getUserMedia({ 
-          video: { facingMode: 'environment' } 
-        });
+        let stream;
+        try {
+            // First attempt: Request rear camera specifically (Best for ATM/QR)
+            stream = await navigator.mediaDevices.getUserMedia({ 
+              video: { facingMode: 'environment' } 
+            });
+        } catch (err) {
+            console.warn("Rear camera not found or restricted, falling back to any camera.", err);
+            // Fallback: Request any available video input
+            stream = await navigator.mediaDevices.getUserMedia({ 
+              video: true 
+            });
+        }
         
         streamRef.current = stream;
         
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
+          // Ensure video plays on iOS (requires playsInline attribute in JSX)
           await videoRef.current.play().catch(e => {
               console.error("Video play failed", e);
               setErrorMsg("Video stream initialized but failed to render.");
@@ -78,7 +89,15 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
     } catch (err: any) {
       console.warn("Camera access error:", err);
       setHasPermission(false);
-      setErrorMsg(err.message || "Access denied by system policy.");
+      
+      // User-friendly error messages for iPhone/iOS
+      if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+          setErrorMsg("Camera access denied. Please check iPhone Settings > Safari > Camera.");
+      } else if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+          setErrorMsg("Camera device not found.");
+      } else {
+          setErrorMsg(err.message || "Unable to access camera.");
+      }
     }
   };
 
