@@ -1,3 +1,1 @@
-export default function handler(req, res) {
-  res.status(200).json({ status: "ok", service: "TKGHD" });
-}
+export default function handler(req, res) { res.status(200).json({ status: "ok", service: "TKGHD" }); }
