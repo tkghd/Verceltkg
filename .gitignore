@@ -69,3 +69,8 @@ logs/
 builds/
 dist/
 
+.env
+logs/
+*.key
+*.pem
+
