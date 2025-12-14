@@ -1,0 +1,11 @@
+{
+  "name": "godmode-ultra",
+  "version": "1.0.0",
+  "scripts": {
+    "preview": "node server.js",
+    "build": "echo 'build step placeholder'"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
