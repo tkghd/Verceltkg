@@ -1,0 +1,1 @@
+{ "routes": [ { "src": "/api/health", "dest": "/api/health.js", "methods": ["GET"], "headers": { "Cache-Control": "no-cache" } } ] }
