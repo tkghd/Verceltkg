@@ -1,6 +1,7 @@
 export default function handler(req: any, res: any) {
   const apiKey = process.env.REAL_API_KEY;
   if (!apiKey) return res.status(500).json({ status: "error", message: "REAL_API_KEY 未設定" });
+
   res.status(200).json({
     status: "ok",
     service: "Global Corp Banking System",
