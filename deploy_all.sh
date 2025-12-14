@@ -1,0 +1,1 @@
+/home/tkg_h30_2018/tk_global_bank/deploy/deploy_allmodules_one_liner.sh

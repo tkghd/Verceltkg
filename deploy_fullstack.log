@@ -1,0 +1,26 @@
+⚡️==== DEPLOY START: Sun Dec  7 22:22:24 UTC 2025 ====⚡️
+fatal: destination path '/home/tkg_h30_2018/fullstack-uiux' already exists and is not an empty directory.
+
+up to date, audited 76 packages in 696ms
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+[PM2][ERROR] Script already launched, add -f option to force re-execution
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 540332   │ 0s     │ 555  │ online    │ 0%       │ 20.7mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+[PM2] Saving current process list...
+[PM2] Successfully saved in /home/tkg_h30_2018/.pm2/dump.pm2
+[PM2] Init System found: systemd
+[PM2] To setup the Startup Script, copy/paste the following command:
+sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u tkg_h30_2018 --hp /home/tkg_h30_2018
+✅ DEPLOY COMPLETE: Sun Dec  7 22:22:26 UTC 2025
+🌐 API確認: http://localhost:3000/api/godmode/status
+🌐 UI確認: http://localhost:3000/

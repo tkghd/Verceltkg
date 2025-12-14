@@ -1,0 +1,11 @@
+[
+{ "url": "https://tkghd.vercel.app", "code": 200, "status": "online", "time_ms": 117, "content_type": "text/html; charset=utf-8" }
+,
+{ "url": "https://tkghd.vercel.app/manifest.json", "code": 404, "status": "not_found", "time_ms": 217, "content_type": "text/plain; charset=utf-8" }
+,
+{ "url": "https://tkghd.vercel.app/api/health", "code": 404, "status": "not_found", "time_ms": 117, "content_type": "text/plain; charset=utf-8" }
+,
+{ "url": "https://tkghd-git-main-tkgs-projects-14e3028b.vercel.app", "code": 401, "status": "offline", "time_ms": 128, "content_type": "text/html; charset=utf-8" }
+,
+{ "url": "https://tkghd-558g8wiu1-tkgs-projects-14e3028b.vercel.app", "code": 401, "status": "offline", "time_ms": 118, "content_type": "text/html; charset=utf-8" }
+]

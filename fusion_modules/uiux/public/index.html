@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TK Global UI/UX</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "SF Pro Display", -apple-system, sans-serif;
+      background: #0a0a0a;
+      color: #00ff00;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .uiux-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .glass-card {
+      background: rgba(0, 255, 0, 0.05);
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(0, 255, 0, 0.3);
+      border-radius: 30px;
+      padding: 3rem;
+      max-width: 700px;
+      box-shadow: 0 20px 60px rgba(0, 255, 0, 0.2);
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    h1 {
+      font-size: 4rem;
+      background: linear-gradient(45deg, #00ff00, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradient 3s ease infinite;
+      margin-bottom: 1rem;
+    }
+    @keyframes gradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+    .grid-item {
+      background: rgba(0, 255, 0, 0.1);
+      border: 1px solid rgba(0, 255, 0, 0.3);
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .grid-item:hover {
+      background: rgba(0, 255, 0, 0.2);
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 255, 0, 0.3);
+    }
+    .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="uiux-container">
+    <div class="glass-card">
+      <h1>🎨 Ultimate UI/UX</h1>
+      <p style="font-size: 1.2rem; text-align: center; opacity: 0.8;">Glassmorphism • Animations • Perfection</p>
+      <div class="grid">
+        <div class="grid-item">
+          <div class="icon">💎</div>
+          <div>Premium</div>
+        </div>
+        <div class="grid-item">
+          <div class="icon">⚡</div>
+          <div>Fast</div>
+        </div>
+        <div class="grid-item">
+          <div class="icon">🎭</div>
+          <div>Beautiful</div>
+        </div>
+        <div class="grid-item">
+          <div class="icon">🚀</div>
+          <div>Modern</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

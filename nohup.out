@@ -1,0 +1,54 @@
+/home/tkg_h30_2018/godmode_ultra/server.js:1
+const express=require('express');const fetch=require('node-fetch');const app=express();app.use(express.json());
+                                             ^
+
+Error [ERR_REQUIRE_ESM]: require() of ES Module /home/tkg_h30_2018/godmode_ultra/node_modules/node-fetch/src/index.js from /home/tkg_h30_2018/godmode_ultra/server.js not supported.
+Instead change the require of index.js in /home/tkg_h30_2018/godmode_ultra/server.js to a dynamic import() which is available in all CommonJS modules.
+    at Object.<anonymous> (/home/tkg_h30_2018/godmode_ultra/server.js:1:46) {
+  code: 'ERR_REQUIRE_ESM'
+}
+
+Node.js v18.20.4
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission denied
+bash: line 1: /home/tkg_h30_2018/fusion_modules/auto_heal.sh: Permission de

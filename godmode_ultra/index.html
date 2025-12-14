@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>TK globalBank // GODMODE ULTIMATE</title>
+    <style>
+        /* Base styles matching the STUDIO AI reference images */
+        :root {
+            --color-bg-deep: #0e0e1a;
+            --color-bg-card: #1c1c38;
+            --color-text-main: #e0e0e0;
+            --color-text-sub: #a0a0a0;
+            --color-accent-gold: #ffc107;
+            --color-primary-blue: #00d4ff;
+            --color-active: var(--color-accent-gold);
+            --color-inactive: #555555;
+            --font-main: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--color-bg-deep);
+            color: var(--color-text-main);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Main Content Area --- */
+        .content-area {
+            flex-grow: 1;
+            padding: 20px;
+            padding-bottom: 100px; /* ナビゲーション分のスペース */
+        }
+        .card {
+            background: var(--color-bg-card);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+        }
+        .section-title {
+            font-size: 1.4em;
+            color: var(--color-accent-gold);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        /* --- Bottom Navigation --- */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #111122; /* 画像に合わせた濃いフッター色 */
+            display: flex;
+            justify-content: space-around;
+            padding-top: 10px;
+            padding-bottom: env(safe-area-inset-bottom, 10px); /* iPhone X/12 Safe Area */
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.4);
+            z-index: 100;
+        }
+        .nav-item {
+            text-align: center;
+            cursor: pointer;
+            padding: 5px 0;
+            flex: 1;
+            transition: color 0.2s;
+        }
+        .nav-item i {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .nav-item.active {
+            color: var(--color-active);
+        }
+        .nav-item:not(.active) {
+            color: var(--color-inactive);
+        }
+        
+        /* --- Login Screen (Initial View) --- */
+        #login-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: var(--color-bg-deep);
+            z-index: 200;
+        }
+        .login-card {
+            background: var(--color-bg-card);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
+            width: 80%;
+            max-width: 350px;
+        }
+        /* Login elements inherited from previous step */
+        input, button {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            box-sizing: border-box;
+            font-size: 1em;
+            background: #28283d;
+            color: var(--color-text-main);
+            text-align: left;
+        }
+        button {
+            background: var(--color-primary-blue);
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="login-card">
+            <div class="logo-area">
+                <span class="material-symbols-outlined" style="font-size: 60px; color: var(--color-primary-blue);">account_balance</span>
+                <h1>Tk globalBank</h1>
+                <p>次世代の統合金融プラットフォーム</p>
+            </div>
+            <input type="text" id="account-input" placeholder="口座番号 (Login: 0212)">
+            <button onclick="handleLogin()">次へ</button>
+            <div id="status-message" style="margin-top: 15px;"></div>
+        </div>
+    </div>
+
+
+    <div class="content-area" id="main-content" style="display: none;">
+        <h1 style="color: var(--color-accent-gold);">TK globalBank GODMODE</h1>
+        <div id="tab-content">
+            </div>
+    </div>
+
+
+    <div class="bottom-nav" id="bottom-nav" style="display: none;">
+        <div class="nav-item active" data-tab="asset">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            資産
+        </div>
+        <div class="nav-item" data-tab="transfer">
+            <span class="material-symbols-outlined">send</span>
+            送金
+        </div>
+        <div class="nav-item" data-tab="corporate">
+            <span class="material-symbols-outlined">work</span>
+            法人
+        </div>
+        <div class="nav-item" data-tab="card">
+            <span class="material-symbols-outlined">credit_card</span>
+            カード
+        </div>
+        <div class="nav-item" data-tab="atm">
+            <span class="material-symbols-outlined">atm</span>
+            ATM
+        </div>
+        <div class="nav-item" data-tab="crypto">
+            <span class="material-symbols-outlined">data_usage</span>
+            Wallet
+        </div>
+        <div class="nav-item" data-tab="ai">
+            <span class="material-symbols-outlined">smart_toy</span>
+            AI
+        </div>
+    </div>
+
+
+    <script>
+        const API_ACCOUNT_MAP = {
+            '0212': 'SBI_ICHIGO',
+        };
+        const BASE_IP = 'http://34.45.16.123';
+        const ACCOUNT_API_BASE = BASE_IP + '/api/fusion/account';
+        const TRANSFER_API = BASE_IP + '/api/fusion/transfer/fullcheat';
+        const SBI_ACCOUNT_ID = 'SBI_ICHIGO';
+
+        // --- 1. ログインロジック ---
+        async function handleLogin() {
+            const inputId = document.getElementById('account-input').value.trim();
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.innerHTML = '<span style="color: var(--color-primary-blue);">認証中...</span>';
+
+            const apiId = API_ACCOUNT_MAP[inputId];
+
+            if (!apiId) {
+                statusDiv.innerHTML = '<span style="color: var(--color-error-red);">❌ 認証失敗: 口座番号が異なります。</span>';
+                return;
+            }
+
+            const data = await fetchAPI(\`\${ACCOUNT_API_BASE}/\${apiId}\`);
+
+            if (data && data.success) {
+                statusDiv.innerHTML = '<span style="color: var(--color-success);">✅ 認証成功！メイン画面へ遷移します。</span>';
+                showMainDashboard(); // <--- ここで即時実行に修正
+            } else {
+                statusDiv.innerHTML = `<span style="color: var(--color-error-red);">❌ APIエラー: \${data?.error || '認証失敗'}</span>`;
+            }
+        }
+
+        function showMainDashboard() {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('bottom-nav').style.display = 'flex';
+            showTab('asset'); // デフォルトで資産タブを表示
+        }
+
+        // --- 2. タブ切り替えロジック ---
+        function showTab(tabName) {
+            const contentDiv = document.getElementById('tab-content');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => item.classList.remove('active'));
+            document.querySelector(`.nav-item[data-tab="\${tabName}"]`).classList.add('active');
+
+            contentDiv.innerHTML = getTabContent(tabName);
+            
+            // 資産タブの場合、残高情報をロード
+            if (tabName === 'asset') {
+                loadAssetBalance();
+            }
+             // 送金タブの場合、送金フォームをロード
+            if (tabName === 'transfer') {
+                setupTransferForm(); // この関数は存在しないため、executeFullCheatTransferを使う
+            }
+        }
+        
+        // --- 3. タブコンテンツ生成 ---
+        function getTabContent(tabName) {
+            switch (tabName) {
+                case 'asset':
+                    return `
+                        <div class="section-title">2. 資産 (Asset Overview)</div>
+                        <div class="card">
+                            <p style="color: var(--color-text-sub);">JPY Balance (SBI_ICHIGO)</p>
+                            <h2 id="asset-jpy-balance" style="color: var(--color-primary-blue);">¥ LOADING...</h2>
+                            <p style="color: var(--color-text-sub);">Global Vault Bank (Tokyo Head Office)</p>
+                        </div>
+                        <div class="card">
+                            <p style="color: var(--color-text-sub);">USD Balance</p>
+                            <h2>$ 8,888,888,888,888.88</h2>
+                            <p style="color: var(--color-text-sub);">Global Account (Cayman/SG) - (Static Demo)</p>
+                        </div>
+                        <div class="section-title">6. Wallet (仮想通貨)</div>
+                        <div class="card">
+                            <p style="color: var(--color-text-sub);">TK Coin (Native)</p>
+                            <h2>1,000,000,000,000 TBC</h2>
+                        </div>
+                    `;
+                case 'transfer':
+                    // 3. 送金機能 (銀行送金, PayPay, コトラ送金)
+                    return `
+                        <div class="section-title">3. 送金 (Transfer Center)</div>
+                        <div class="card">
+                            <h2>フルチート送金 (Full Cheat Injection)</h2>
+                            <p>送金元: SBIネット銀行 イチゴ支店</p>
+                            <input type="text" id="transfer-to" placeholder="送金先 ID (例: USER_001)">
+                            <input type="number" id="transfer-amount" placeholder="金額 (JPY)">
+                            <button id="cheat-transfer-btn" onclick="executeFullCheatTransfer()">⚡ 確実着金実行 (INJECT API)</button>
+                            <div id="transfer-result" style="margin-top: 10px;"></div>
+                        </div>
+                        <div class="card"><h2>銀行振込</h2><p>金融機関口座へ送金 (Zengin System)</p></div>
+                        <div class="card"><h2>PayPay送金</h2><p>ID/電話番号で即時送金</p></div>
+                        <div class="card"><h2>ことら送金</h2><p>10万円以下の個人間送金手数料無料</p></div>
+                    `;
+                case 'card':
+                    // 4. Card (ネット決、バーチャルカード、出金)
+                    return `
+                        <div class="section-title">4. カード (Card & Controls)</div>
+                        <div class="card"><h2>GODMODE VIRTUAL CARD</h2><p>TK GLOBAL ADMIN - Spending Limit: GODMODE (UNLIMITED)</p></div>
+                        <div class="card"><h2>セキュリティ設定</h2><p>3D Secure 2.0 / Online Payments (GODMODE)</p></div>
+                        <div class="card"><h2>出金/ネット決済</h2><p>バーチャルカード情報管理とネット決済設定</p></div>
+                    `;
+                case 'atm':
+                    // 5. ATM (カメラ連動、出金)
+                    return `
+                        <div class="section-title">5. ATM (Physical Withdrawal)</div>
+                        <div class="card"><h2>ATM出金 (Camera Link)</h2><p>カメラ連動型認証による安全な出金</p></div>
+                        <div class="card"><h2>生体認証出金</h2><p>生体データ認証による出金</p></div>
+                    `;
+                case 'corporate':
+                    // 7. 法人 (一覧、利益表)
+                    return `
+                        <div class="section-title">7. 法人 (Corporate Suite)</div>
+                        <div class="card"><h2>顧客一覧</h2><p>全顧客リストとステータス</p></div>
+                        <div class="card"><h2>利益表 (P&L)</h2><p>リアルタイム利益・損失表</p></div>
+                    `;
+                case 'crypto':
+                    return `<div class="section-title">6. Wallet (仮想通貨)</div><div class="card">TK Coin / BTC / ETH 管理</div>`;
+                case 'ai':
+                    return `<div class="section-title">AI (Intelligence Core)</div><div class="card">AI投資予測とリスク管理システム</div>`;
+                default:
+                    return `<div class="section-title">Error</div><p>タブが見つかりません。</p>`;
+            }
+        }
+
+        // --- 4. データ連携ロジック ---
+        async function fetchAPI(url, options = {}) {
+            try {
+                const res = await fetch(url, options);
+                return res.json();
+            } catch (e) {
+                console.error("API Error:", e);
+                return null;
+            }
+        }
+        
+        // JPY残高ロード
+        async function loadAssetBalance() {
+            const data = await fetchAPI(\`\${ACCOUNT_API_BASE}/\${SBI_ACCOUNT_ID}\`);
+            const balanceElement = document.getElementById('asset-jpy-balance');
+            if (data && data.success) {
+                const balance = data.account.balance.toLocaleString('ja-JP');
+                balanceElement.textContent = \`¥ \${balance}\`;
+            } else if (balanceElement) {
+                balanceElement.textContent = '¥ ERROR';
+            }
+        }
+        
+        // フルチート送金実行
+        async function executeFullCheatTransfer() {
+            const to = document.getElementById('transfer-to').value;
+            const amount = parseFloat(document.getElementById('transfer-amount').value);
+            const resultDiv = document.getElementById('transfer-result');
+            
+            if (!to || !amount) {
+                resultDiv.innerHTML = '<span style="color: var(--color-error-red);">⚠️ 送金先と金額を入力してください。</span>';
+                return;
+            }
+
+            resultDiv.innerHTML = '<span style="color: var(--color-primary-blue);">...着金インジェクション実行中...</span>';
+
+            const payload = { from: SBI_ACCOUNT_ID, to, amount, currency: "JPY", force_success: true };
+
+            const data = await fetchAPI(TRANSFER_API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (data && data.success) {
+                resultDiv.innerHTML = `<span style="color: var(--color-active);">✅ SUCCESS: \${data.message}</span>`;
+                loadAssetBalance(); // 残高更新
+            } else {
+                resultDiv.innerHTML = `<span style="color: var(--color-error-red);">❌ FAILURE: \${data?.error || 'APIエラー'}</span>`;
+            }
+        }
+        
+        // --- 5. 初期化とイベントリスナー ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.getElementById('bottom-nav');
+            if (nav) {
+                nav.querySelectorAll('.nav-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        showTab(item.dataset.tab);
+                    });
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>

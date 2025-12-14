@@ -1,0 +1,14 @@
+npm install @metamask/sdk wagmi viem@2.x 
+@tanstack/react-query vercel web3 && \ 
+mkdir -p 
+app/api/{gateway,events,txstatus,real/{owner-sync,corp-sync,refresh}} 
+app/components app/lib public/data 
+scripts logs && \ echo -e 
+".env\nlogs/\n*.key\n*.pem\n" >> 
+.gitignore && \ git rm --cached 02120212 
+backend/ -r 2>/dev/null || true && \ git 
+add . && git commit -m "刻印: 
+全機能全モジュール全システムフル搭載 + 
+完全修復 + 内部起動" && \ npm audit fix 
+--force && \ npm run build && npm run 
+sta

@@ -1,0 +1,12 @@
+[0;1;32m●[0m pm2-tkg_h30_2018.service - PM2 process manager for tkg_h30_2018
+     Loaded: loaded (]8;;file://instance-20251206-201556/etc/systemd/system/pm2-tkg_h30_2018.service/etc/systemd/system/pm2-tkg_h30_2018.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Tue 2025-12-09 02:37:33 UTC; 29ms ago
+       Docs: ]8;;https://pm2.keymetrics.io/https://pm2.keymetrics.io/]8;;
+   Main PID: 330081 (node)
+      Tasks: 6[0;38;5;245m (limit: 9513)[0m
+     Memory: 4.5M
+        CPU: 21ms
+     CGroup: /system.slice/pm2-tkg_h30_2018.service
+             └─[0;38;5;245m330081 node /usr/bin/pm2 resurrect[0m
+
+Dec 09 02:37:33 instance-20251206-201556 systemd[1]: Started pm2-tkg_h30_2018.service - PM2 process manager for tkg_h30_2018.

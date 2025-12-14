@@ -1,0 +1,10 @@
+.less-history-file:
+.search
+"logs/payments_service.log
+"home/tkg_h30_2018/logs/cpu_status_api.log
+"127.0.0.1/hud/system_badge.json
+"127.0.0.1/hud/balance_badge.json
+"127.0.0.1/hud/audit_badge.json
+.shell
+"/usr/bin/env bash
+"/bin/bash

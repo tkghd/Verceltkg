@@ -1,0 +1,875 @@
+2025/12/10 12:02:57 [emerg] 1089557#1089557: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:03:03 [emerg] 1089797#1089797: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:03:08 [emerg] 1090120#1090120: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:03:14 [emerg] 1090349#1090349: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:03:19 [emerg] 1090552#1090552: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:03:24 [emerg] 1090797#1090797: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:03:29 [emerg] 1091021#1091021: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:03:35 [emerg] 1091274#1091274: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:03:40 [emerg] 1091531#1091531: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:03:45 [emerg] 1091719#1091719: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:03:50 [emerg] 1091954#1091954: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:03:56 [emerg] 1092155#1092155: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:01 [emerg] 1092395#1092395: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:06 [emerg] 1092632#1092632: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:11 [emerg] 1092832#1092832: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:17 [emerg] 1093071#1093071: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:22 [emerg] 1093278#1093278: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:27 [emerg] 1093524#1093524: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:32 [emerg] 1093717#1093717: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:38 [emerg] 1093985#1093985: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:43 [emerg] 1094235#1094235: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:48 [emerg] 1094427#1094427: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:53 [emerg] 1094681#1094681: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:04:59 [emerg] 1094871#1094871: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:05:04 [emerg] 1095128#1095128: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:05:09 [emerg] 1095364#1095364: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:05:15 [emerg] 1095556#1095556: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:05:20 [emerg] 1095790#1095790: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:05:25 [emerg] 1095989#1095989: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:05:30 [emerg] 1096219#1096219: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:05:36 [emerg] 1096482#1096482: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:05:41 [emerg] 1096711#1096711: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:05:46 [emerg] 1096938#1096938: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:05:51 [emerg] 1097134#1097134: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:05:56 [emerg] 1097353#1097353: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:06:02 [emerg] 1097578#1097578: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:06:07 [emerg] 1097795#1097795: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:06:12 [emerg] 1098054#1098054: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:06:18 [emerg] 1098251#1098251: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:06:23 [emerg] 1098502#1098502: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:06:28 [emerg] 1098708#1098708: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:06:33 [emerg] 1098919#1098919: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:06:38 [emerg] 1099216#1099216: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:06:44 [emerg] 1099404#1099404: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:06:49 [emerg] 1099634#1099634: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:06:54 [emerg] 1099855#1099855: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:00 [emerg] 1100073#1100073: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:05 [emerg] 1100314#1100314: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:10 [emerg] 1100494#1100494: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:15 [emerg] 1100696#1100696: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:21 [emerg] 1100922#1100922: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:26 [emerg] 1101087#1101087: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:31 [emerg] 1101330#1101330: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:36 [emerg] 1101575#1101575: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:42 [emerg] 1101799#1101799: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:47 [emerg] 1102040#1102040: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:52 [emerg] 1102233#1102233: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:07:57 [emerg] 1102471#1102471: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:08:03 [emerg] 1102699#1102699: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:08:08 [emerg] 1102904#1102904: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:08:13 [emerg] 1103162#1103162: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:08:18 [emerg] 1103348#1103348: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:08:24 [emerg] 1103595#1103595: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:08:29 [emerg] 1103816#1103816: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:08:34 [emerg] 1104072#1104072: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:08:39 [emerg] 1104315#1104315: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:08:45 [emerg] 1104503#1104503: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:08:50 [emerg] 1104754#1104754: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:08:55 [emerg] 1104968#1104968: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:00 [emerg] 1105207#1105207: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:06 [emerg] 1105439#1105439: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:11 [emerg] 1105656#1105656: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:16 [emerg] 1105900#1105900: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:21 [emerg] 1106112#1106112: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:27 [emerg] 1106349#1106349: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:32 [emerg] 1106555#1106555: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:37 [emerg] 1106799#1106799: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:42 [emerg] 1107040#1107040: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:48 [emerg] 1107246#1107246: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:53 [emerg] 1107473#1107473: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:09:58 [emerg] 1107692#1107692: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:10:03 [emerg] 1107934#1107934: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:10:09 [emerg] 1108168#1108168: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:10:14 [emerg] 1108374#1108374: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:10:19 [emerg] 1108598#1108598: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:10:24 [emerg] 1108809#1108809: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:10:30 [emerg] 1109013#1109013: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:10:35 [emerg] 1109275#1109275: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:10:40 [emerg] 1109501#1109501: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:10:45 [emerg] 1109731#1109731: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:10:51 [emerg] 1109935#1109935: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:10:56 [emerg] 1110170#1110170: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:01 [emerg] 1110417#1110417: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:06 [emerg] 1110631#1110631: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:12 [emerg] 1110867#1110867: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:17 [emerg] 1111053#1111053: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:22 [emerg] 1111280#1111280: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:27 [emerg] 1111496#1111496: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:33 [emerg] 1111712#1111712: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:38 [emerg] 1111989#1111989: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:43 [emerg] 1112175#1112175: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:48 [emerg] 1112403#1112403: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:54 [emerg] 1112628#1112628: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:11:59 [emerg] 1112852#1112852: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:12:04 [emerg] 1113094#1113094: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:12:09 [emerg] 1113301#1113301: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:12:15 [emerg] 1113537#1113537: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:12:20 [emerg] 1113750#1113750: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:12:25 [emerg] 1113979#1113979: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:12:30 [emerg] 1114207#1114207: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:12:36 [emerg] 1114470#1114470: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:12:41 [emerg] 1114735#1114735: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:12:46 [emerg] 1114918#1114918: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:12:51 [emerg] 1115167#1115167: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:12:57 [emerg] 1115381#1115381: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:13:02 [emerg] 1115621#1115621: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:13:07 [emerg] 1115840#1115840: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:13:12 [emerg] 1116064#1116064: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:13:18 [emerg] 1116286#1116286: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:13:23 [emerg] 1116509#1116509: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:13:28 [emerg] 1116744#1116744: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:13:33 [emerg] 1116986#1116986: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:13:39 [emerg] 1117240#1117240: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:13:44 [emerg] 1117456#1117456: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:13:49 [emerg] 1117658#1117658: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:13:54 [emerg] 1117879#1117879: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:00 [emerg] 1118115#1118115: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:05 [emerg] 1118328#1118328: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:10 [emerg] 1118543#1118543: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:15 [emerg] 1118748#1118748: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:21 [emerg] 1118972#1118972: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:26 [emerg] 1119188#1119188: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:31 [emerg] 1119404#1119404: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:36 [emerg] 1119662#1119662: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:42 [emerg] 1119889#1119889: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:47 [emerg] 1120115#1120115: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:52 [emerg] 1120325#1120325: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:14:57 [emerg] 1120518#1120518: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:15:03 [emerg] 1120778#1120778: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:15:08 [emerg] 1120987#1120987: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:15:13 [emerg] 1121216#1121216: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:15:18 [emerg] 1121417#1121417: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:18:15 [emerg] 558#558: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:18:27 [emerg] 1608#1608: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:19:28 [emerg] 546#546: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:19:35 [emerg] 2139#2139: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:19:40 [emerg] 2376#2376: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:19:46 [emerg] 2562#2562: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:19:51 [emerg] 2744#2744: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:19:56 [emerg] 2928#2928: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:01 [emerg] 3133#3133: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:07 [emerg] 3158#3158: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:12 [emerg] 3339#3339: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:17 [emerg] 3521#3521: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:22 [emerg] 3706#3706: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:28 [emerg] 3888#3888: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:33 [emerg] 4103#4103: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:38 [emerg] 4141#4141: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:43 [emerg] 4305#4305: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:49 [emerg] 4490#4490: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:54 [emerg] 4667#4667: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:20:59 [emerg] 4926#4926: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:21:04 [emerg] 6682#6682: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:21:10 [emerg] 8493#8493: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:21:15 [emerg] 10259#10259: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:21:20 [emerg] 12059#12059: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:21:25 [emerg] 13850#13850: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:21:31 [emerg] 15661#15661: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:21:36 [emerg] 17454#17454: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:21:41 [emerg] 19277#19277: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:21:46 [emerg] 21079#21079: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:21:52 [emerg] 22895#22895: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:21:57 [emerg] 24710#24710: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:22:02 [emerg] 26520#26520: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:22:07 [emerg] 28337#28337: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:22:13 [emerg] 30129#30129: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:22:18 [emerg] 31951#31951: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:22:23 [emerg] 33747#33747: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:22:28 [emerg] 35558#35558: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:22:34 [emerg] 37377#37377: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:22:39 [emerg] 39179#39179: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:22:44 [emerg] 41006#41006: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:22:49 [emerg] 42817#42817: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:22:55 [emerg] 44612#44612: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:00 [emerg] 46428#46428: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:05 [emerg] 48201#48201: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:10 [emerg] 50019#50019: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:16 [emerg] 51979#51979: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:21 [emerg] 53663#53663: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:26 [emerg] 55431#55431: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:31 [emerg] 57271#57271: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:37 [emerg] 59111#59111: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:42 [emerg] 60901#60901: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:47 [emerg] 62708#62708: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:52 [emerg] 64497#64497: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:23:57 [emerg] 66260#66260: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:24:03 [emerg] 68062#68062: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:24:08 [emerg] 69857#69857: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:24:13 [emerg] 71612#71612: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:24:18 [emerg] 73357#73357: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:24:23 [emerg] 75136#75136: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:24:29 [emerg] 76916#76916: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:24:34 [emerg] 78741#78741: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:24:39 [emerg] 80557#80557: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:24:44 [emerg] 82403#82403: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:24:50 [emerg] 84190#84190: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:24:55 [emerg] 86016#86016: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:00 [emerg] 87835#87835: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:05 [emerg] 89688#89688: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:11 [emerg] 91490#91490: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:16 [emerg] 93287#93287: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:21 [emerg] 95028#95028: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:26 [emerg] 96828#96828: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:31 [emerg] 98660#98660: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:37 [emerg] 100466#100466: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:42 [emerg] 102276#102276: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:47 [emerg] 104090#104090: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:52 [emerg] 105895#105895: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:25:58 [emerg] 107701#107701: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:26:03 [emerg] 109493#109493: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:26:08 [emerg] 111226#111226: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:26:13 [emerg] 112992#112992: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:26:18 [emerg] 114750#114750: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:26:23 [emerg] 116548#116548: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:26:29 [emerg] 118357#118357: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:26:34 [emerg] 120179#120179: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:26:39 [emerg] 121982#121982: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:26:44 [emerg] 123801#123801: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:26:50 [emerg] 125587#125587: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:26:55 [emerg] 127380#127380: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:00 [emerg] 129160#129160: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:05 [emerg] 130931#130931: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:10 [emerg] 132717#132717: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:15 [emerg] 134495#134495: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:21 [emerg] 136242#136242: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:26 [emerg] 138047#138047: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:31 [emerg] 139890#139890: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:36 [emerg] 141705#141705: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:42 [emerg] 143493#143493: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:47 [emerg] 145236#145236: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:52 [emerg] 147033#147033: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:27:57 [emerg] 148859#148859: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:28:02 [emerg] 150657#150657: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:28:08 [emerg] 152453#152453: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:28:13 [emerg] 154278#154278: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:28:18 [emerg] 156084#156084: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:28:23 [emerg] 157857#157857: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:28:29 [emerg] 159671#159671: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:28:34 [emerg] 161512#161512: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:28:39 [emerg] 163309#163309: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:28:44 [emerg] 165118#165118: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:28:50 [emerg] 166919#166919: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:28:55 [emerg] 168734#168734: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:00 [emerg] 170547#170547: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:05 [emerg] 172431#172431: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:10 [emerg] 174246#174246: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:16 [emerg] 176071#176071: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:21 [emerg] 177880#177880: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:26 [emerg] 179641#179641: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:31 [emerg] 181431#181431: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:37 [emerg] 183355#183355: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:42 [emerg] 185189#185189: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:47 [emerg] 186978#186978: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:52 [emerg] 188611#188611: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:29:58 [emerg] 190449#190449: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:30:03 [emerg] 192313#192313: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:30:08 [emerg] 194116#194116: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:30:13 [emerg] 195928#195928: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:30:19 [emerg] 197744#197744: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:30:24 [emerg] 199538#199538: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:30:29 [emerg] 201349#201349: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:30:34 [emerg] 203172#203172: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:30:40 [emerg] 204975#204975: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:30:45 [emerg] 206762#206762: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:30:55 [emerg] 210293#210293: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:31:05 [emerg] 213793#213793: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:31:16 [emerg] 217351#217351: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:31:26 [emerg] 220854#220854: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:31:36 [emerg] 224405#224405: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:31:46 [emerg] 227952#227952: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:31:57 [emerg] 231472#231472: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:32:07 [emerg] 234992#234992: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:32:17 [emerg] 238511#238511: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:32:27 [emerg] 241959#241959: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:32:37 [emerg] 245548#245548: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:32:48 [emerg] 249093#249093: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:32:58 [emerg] 252617#252617: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:33:08 [emerg] 256131#256131: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:33:18 [emerg] 259640#259640: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:33:29 [emerg] 263197#263197: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:33:39 [emerg] 266701#266701: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:33:49 [emerg] 270334#270334: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:33:59 [emerg] 273937#273937: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:34:09 [emerg] 277392#277392: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:34:20 [emerg] 281093#281093: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:34:30 [emerg] 284646#284646: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:34:40 [emerg] 288133#288133: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:34:50 [emerg] 291604#291604: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:35:01 [emerg] 295137#295137: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:35:11 [emerg] 298601#298601: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:35:21 [emerg] 302052#302052: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:35:31 [emerg] 305557#305557: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:35:42 [emerg] 309058#309058: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:35:52 [emerg] 312584#312584: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:36:02 [emerg] 316111#316111: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:36:12 [emerg] 319630#319630: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:36:23 [emerg] 323156#323156: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:36:33 [emerg] 326679#326679: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:36:43 [emerg] 330189#330189: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:36:53 [emerg] 333693#333693: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:37:04 [emerg] 337171#337171: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:37:14 [emerg] 340664#340664: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:37:24 [emerg] 344139#344139: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:37:34 [emerg] 347681#347681: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:37:45 [emerg] 351141#351141: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:37:55 [emerg] 354512#354512: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:38:05 [emerg] 357932#357932: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:38:15 [emerg] 361379#361379: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:38:25 [emerg] 365083#365083: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:38:36 [emerg] 368579#368579: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:38:46 [emerg] 372030#372030: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:38:56 [emerg] 375515#375515: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:39:06 [emerg] 379008#379008: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:39:17 [emerg] 382524#382524: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:39:27 [emerg] 385966#385966: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:39:37 [emerg] 389492#389492: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:39:47 [emerg] 392855#392855: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:39:58 [emerg] 396241#396241: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:40:08 [emerg] 399716#399716: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:40:18 [emerg] 403171#403171: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:40:28 [emerg] 406586#406586: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:40:39 [emerg] 410003#410003: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:40:49 [emerg] 413401#413401: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:40:59 [emerg] 416790#416790: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:41:09 [emerg] 420213#420213: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:41:20 [emerg] 423602#423602: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:41:30 [emerg] 427025#427025: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:41:40 [emerg] 430358#430358: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:41:50 [emerg] 433745#433745: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:42:00 [emerg] 437172#437172: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:42:11 [emerg] 440645#440645: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:42:21 [emerg] 444061#444061: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:42:31 [emerg] 447465#447465: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:42:41 [emerg] 450887#450887: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:42:52 [emerg] 454333#454333: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:43:02 [emerg] 457815#457815: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:43:12 [emerg] 461247#461247: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:43:22 [emerg] 464684#464684: "server" directive is not allowed here in /etc/nginx/sites-enabled/yourdomain.com.conf:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:43:33 [emerg] 468413#468413: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:43:43 [emerg] 471828#471828: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:43:53 [emerg] 475274#475274: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:44:03 [emerg] 478706#478706: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:44:14 [emerg] 482409#482409: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:44:24 [emerg] 485860#485860: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:44:34 [emerg] 489307#489307: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:44:44 [emerg] 493002#493002: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:44:55 [emerg] 496438#496438: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:45:05 [emerg] 499877#499877: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:45:15 [emerg] 503275#503275: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:45:25 [emerg] 506618#506618: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:45:35 [emerg] 510041#510041: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:45:46 [emerg] 513462#513462: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:45:56 [emerg] 516910#516910: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:46:06 [emerg] 520347#520347: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:46:16 [emerg] 523814#523814: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:46:27 [emerg] 527222#527222: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:46:37 [emerg] 530669#530669: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:46:47 [emerg] 534108#534108: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:46:57 [emerg] 537539#537539: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:47:08 [emerg] 540998#540998: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:47:18 [emerg] 544462#544462: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:47:28 [emerg] 547937#547937: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:47:38 [emerg] 551462#551462: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:47:49 [emerg] 554932#554932: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:47:59 [emerg] 558427#558427: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:48:09 [emerg] 561921#561921: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:48:19 [emerg] 565435#565435: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:48:30 [emerg] 568919#568919: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:48:40 [emerg] 572369#572369: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:48:50 [emerg] 575860#575860: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:49:00 [emerg] 579348#579348: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:49:11 [emerg] 582834#582834: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:49:21 [emerg] 586307#586307: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:49:31 [emerg] 589801#589801: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:49:41 [emerg] 593299#593299: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:49:52 [emerg] 596823#596823: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:50:02 [emerg] 600349#600349: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:50:12 [emerg] 603831#603831: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:50:22 [emerg] 607330#607330: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:50:33 [emerg] 610854#610854: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:50:43 [emerg] 614354#614354: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:50:53 [emerg] 617829#617829: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:51:03 [emerg] 621337#621337: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:51:14 [emerg] 624830#624830: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:51:24 [emerg] 628343#628343: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:51:34 [emerg] 631832#631832: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:51:44 [emerg] 635304#635304: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:51:55 [emerg] 638807#638807: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:52:05 [emerg] 642314#642314: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:52:15 [emerg] 645858#645858: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:52:25 [emerg] 649354#649354: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:52:36 [emerg] 652874#652874: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:52:46 [emerg] 656355#656355: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:52:56 [emerg] 659957#659957: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:53:06 [emerg] 663414#663414: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:53:17 [emerg] 666907#666907: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:53:27 [emerg] 670362#670362: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:53:37 [emerg] 673861#673861: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:53:47 [emerg] 677389#677389: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:53:58 [emerg] 680932#680932: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:54:08 [emerg] 684430#684430: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:54:18 [emerg] 687930#687930: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:54:28 [emerg] 691426#691426: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:54:39 [emerg] 694952#694952: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:54:49 [emerg] 698518#698518: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:54:59 [emerg] 702038#702038: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:55:09 [emerg] 705555#705555: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:55:20 [emerg] 709051#709051: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:55:30 [emerg] 712542#712542: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:55:40 [emerg] 716073#716073: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:55:50 [emerg] 719608#719608: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:56:01 [emerg] 723147#723147: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:56:11 [emerg] 726675#726675: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:56:21 [emerg] 730180#730180: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:56:31 [emerg] 733689#733689: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:56:42 [emerg] 737206#737206: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:56:52 [emerg] 740714#740714: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:57:02 [emerg] 744156#744156: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:57:12 [emerg] 747657#747657: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:57:22 [emerg] 751140#751140: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+2025/12/10 12:57:33 [emerg] 754887#754887: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/vault-modules.conf.disabled:1
+nginx: configuration file /etc/nginx/nginx.conf test failed
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable
+/home/tkg_h30_2018/fusion_modules/auto_heal.sh: line 3: HOME: unbound variable

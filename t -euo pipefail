@@ -1,0 +1,68 @@
+[0;1;32m●[0m cpu_status_api.service - HUD CPU Status API
+     Loaded: loaded (]8;;file://instance-20251206-201556/etc/systemd/system/cpu_status_api.service/etc/systemd/system/cpu_status_api.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Wed 2025-12-10 12:59:52 UTC; 17min ago
+   Main PID: 802810 (bash)
+      Tasks: 2[0;38;5;245m (limit: 38498)[0m
+     Memory: 724.0K
+        CPU: 819ms
+     CGroup: /system.slice/cpu_status_api.service
+             ├─[0;38;5;245m 802810 bash /usr/local/bin/cpu_status_loop.sh[0m
+             └─[0;38;5;245m1156075 sleep 30[0m
+
+Dec 10 12:59:52 instance-20251206-201556 systemd[1]: Stopped cpu_status_api.service - HUD CPU Status API.
+Dec 10 12:59:52 instance-20251206-201556 systemd[1]: Started cpu_status_api.service - HUD CPU Status API.
+
+[0;1;32m●[0m mem_status_api.service - HUD Memory Status API
+     Loaded: loaded (]8;;file://instance-20251206-201556/etc/systemd/system/mem_status_api.service/etc/systemd/system/mem_status_api.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Wed 2025-12-10 12:59:53 UTC; 17min ago
+   Main PID: 802944 (bash)
+      Tasks: 2[0;38;5;245m (limit: 38498)[0m
+     Memory: 1.1M
+        CPU: 495ms
+     CGroup: /system.slice/mem_status_api.service
+             ├─[0;38;5;245m 802944 bash /usr/local/bin/mem_status_loop.sh[0m
+             └─[0;38;5;245m1154280 sleep 30[0m
+
+Dec 10 12:59:53 instance-20251206-201556 systemd[1]: Started mem_status_api.service - HUD Memory Status API.
+
+[0;1;32m●[0m disk_status_api.service - HUD Disk Status API
+     Loaded: loaded (]8;;file://instance-20251206-201556/etc/systemd/system/disk_status_api.service/etc/systemd/system/disk_status_api.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Wed 2025-12-10 12:59:53 UTC; 17min ago
+   Main PID: 802955 (bash)
+      Tasks: 2[0;38;5;245m (limit: 38498)[0m
+     Memory: 668.0K
+        CPU: 134ms
+     CGroup: /system.slice/disk_status_api.service
+             ├─[0;38;5;245m 802955 bash /usr/local/bin/disk_status_loop.sh[0m
+             └─[0;38;5;245m1154163 sleep 60[0m
+
+Dec 10 12:59:53 instance-20251206-201556 systemd[1]: Started disk_status_api.service - HUD Disk Status API.
+
+[0;1;32m●[0m auto_heal.service - Auto Heal Permanent Monitor Service
+     Loaded: loaded (]8;;file://instance-20251206-201556/etc/systemd/system/auto_heal.service/etc/systemd/system/auto_heal.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Wed 2025-12-10 12:59:53 UTC; 17min ago
+   Main PID: 803092 (bash)
+      Tasks: 2[0;38;5;245m (limit: 38498)[0m
+     Memory: 840.0K
+        CPU: 18.515s
+     CGroup: /system.slice/auto_heal.service
+             ├─[0;38;5;245m 803092 bash /usr/local/bin/auto_heal.sh[0m
+             └─[0;38;5;245m1157899 sudo ufw allow "Nginx Full"[0m
+
+Dec 10 13:17:02 instance-20251206-201556 sudo[1157491]: pam_unix(sudo:session): session closed for user root
+Dec 10 13:17:02 instance-20251206-201556 sudo[1157507]: [0;1;39m[0;1;31m[0;1;39m    root : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx[0m
+Dec 10 13:17:02 instance-20251206-201556 sudo[1157507]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=0)
+Dec 10 13:17:03 instance-20251206-201556 sudo[1157507]: pam_unix(sudo:session): session closed for user root
+Dec 10 13:17:03 instance-20251206-201556 sudo[1157541]: [0;1;39m[0;1;31m[0;1;39m    root : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl enable fail2ban[0m
+Dec 10 13:17:03 instance-20251206-201556 sudo[1157541]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=0)
+Dec 10 13:17:04 instance-20251206-201556 sudo[1157541]: pam_unix(sudo:session): session closed for user root
+Dec 10 13:17:04 instance-20251206-201556 sudo[1157888]: [0;1;39m[0;1;31m[0;1;39m    root : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl start fail2ban[0m
+Dec 10 13:17:04 instance-20251206-201556 sudo[1157888]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=0)
+Dec 10 13:17:04 instance-20251206-201556 sudo[1157888]: pam_unix(sudo:session): session closed for user root
+
+● payments.service - Unified Payments Service (safe mode)
+     Loaded: loaded (]8;;file://instance-20251206-201556/etc/systemd/system/payments.service/etc/systemd/system/payments.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: activating (auto-restart) (Result: exit-code) since Wed 2025-12-10 13:17:04 UTC; 15ms ago
+    Process: 1157891 ExecStart=/bin/bash /home/tkg_h30_2018/fusion_modules/payments_service.sh [0;1;31m(code=exited, status=1/FAILURE)[0m
+   Main PID: 1157891 (code=exited, status=1/FAILURE)
+        CPU: 2ms

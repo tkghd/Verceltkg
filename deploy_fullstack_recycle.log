@@ -1,0 +1,41 @@
+♻️==== FULLSTACK RECYCLE DEPLOY START: Sun Dec  7 22:08:35 UTC 2025 ====♻️
+fatal: destination path '.' already exists and is not an empty directory.
+Git clone skipped
+
+up to date, audited 76 packages in 1s
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+No build step
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 532092   │ 0s     │ 97   │ online    │ 0%       │ 18.7mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+[PM2] Saving current process list...
+[PM2] Successfully saved in /home/tkg_h30_2018/.pm2/dump.pm2
+[PM2] Init System found: systemd
+[PM2] To setup the Startup Script, copy/paste the following command:
+sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u tkg_h30_2018 --hp /home/tkg_h30_2018
+🌐 Health check:
+Attempt 1:
+parse error: Invalid numeric literal at line 1, column 10
+API not ready
+Attempt 2:
+parse error: Invalid numeric literal at line 1, column 10
+API not ready
+Attempt 3:
+parse error: Invalid numeric literal at line 1, column 10
+API not ready
+Attempt 4:
+parse error: Invalid numeric literal at line 1, column 10
+API not ready
+Attempt 5:
+parse error: Invalid numeric literal at line 1, column 10
+API not ready
+♻️ FULLSTACK RECYCLE DEPLOY COMPLETE: Sun Dec  7 22:08:49 UTC 2025

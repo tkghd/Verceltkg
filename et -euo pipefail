@@ -1,0 +1,12 @@
+[0;1;31mUnit cpu_status_api.service could not be found.[0m
+[0;1;31mUnit mem_status_api.service could not be found.[0m
+[0;1;31mUnit disk_status_api.service could not be found.[0m
+[0;1;31mUnit payments.service could not be found.[0m
+● auto_heal.service - Auto Heal Service
+     Loaded: loaded (]8;;file://instance-20251206-201556/etc/systemd/system/auto_heal.service/etc/systemd/system/auto_heal.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: activating (auto-restart) since Wed 2025-12-10 12:52:15 UTC; 1s ago
+    Process: 645849 ExecStart=/bin/bash -c sudo nginx -t && sudo systemctl restart nginx || true (code=exited, status=0/SUCCESS)
+   Main PID: 645849 (code=exited, status=0/SUCCESS)
+        CPU: 30ms
+
+Dec 10 12:52:15 instance-20251206-201556 systemd[1]: auto_heal.service: Deactivated successfully.

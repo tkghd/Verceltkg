@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>Chat</title>
+<h1>Chat Room</h1>
+<input id=r placeholder="room" value="general">
+<input id=a placeholder="alias" value="guest">
+<input id=t placeholder="message">
+<button id=j>join</button><button id=l>leave</button><button id=s>send</button>
+<pre id=log></pre>
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script>
+const sock=io("/",{path:"/chat/socket"});
+const log=(m)=>{document.getElementById("log").textContent+=m+"\n";}
+document.getElementById("j").onclick=()=>sock.emit("join",r.value,a.value);
+document.getElementById("l").onclick=()=>sock.emit("leave",r.value);
+document.getElementById("s").onclick=()=>sock.emit("msg",{roomId:r.value,text:t.value});
+sock.on("system",(e)=>log("[system] "+JSON.stringify(e)));
+sock.on("msg",(e)=>log("[msg] "+e.alias+": "+e.text));
+</script>

@@ -1,0 +1,9 @@
+● fusion-sync.service - Ωβα Fusion Auto Sync Engine
+     Loaded: loaded (]8;;file://instance-20251206-201556/etc/systemd/system/fusion-sync.service/etc/systemd/system/fusion-sync.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: activating (auto-restart) (Result: exit-code) since Wed 2025-12-10 05:23:58 UTC; 549ms ago
+    Process: 73389 ExecStart=/usr/bin/node /opt/fusion/sync_engine/bin/engine.js [0;1;31m(code=exited, status=1/FAILURE)[0m
+   Main PID: 73389 (code=exited, status=1/FAILURE)
+        CPU: 103ms
+
+Dec 10 05:23:58 instance-20251206-201556 systemd[1]: [0;1;39m[0;1;31m[0;1;39mfusion-sync.service: Main process exited, code=exited, status=1/FAILURE[0m
+Dec 10 05:23:58 instance-20251206-201556 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mfusion-sync.service: Failed with result 'exit-code'.[0m

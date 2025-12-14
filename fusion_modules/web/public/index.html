@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TK Global Web</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    .web-container {
+      text-align: center;
+      padding: 3rem;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      max-width: 600px;
+    }
+    h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+    .feature { background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; }
+    .feature-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="web-container">
+    <h1>🌐 Modern Web</h1>
+    <p style="font-size: 1.2rem; opacity: 0.9;">Next-Generation Web Experience</p>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <div>Blazing Fast</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎨</div>
+        <div>Beautiful UI</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <div>Secure</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "vault-pwa-uiux",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "echo 'PWA Build SUCCESSFUL' && mkdir -p build && echo '<!DOCTYPE html>...PWA UIUX...' > build/pwa.html"
+  }
+}

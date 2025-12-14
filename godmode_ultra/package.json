@@ -1,0 +1,10 @@
+{
+  "name": "godmode_ultra",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.0",
+    "uuid": "^13.0.0"
+  }
+}

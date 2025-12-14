@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  hsm_vault:
+    image: vault:latest
+    container_name: hsm_vault
+    ports: []
+    volumes:
+      - ./hsm:/vault/data
+    command: server
+  ai_ml_engine:
+    image: python:3.11-slim
+    container_name: ai_ml_engine
+    volumes:
+      - ./ai_ml:/app
+    command: bash -c "while true; do sleep 60; done"
+  tax_report:
+    image: python:3.11-slim
+    container_name: tax_report
+    volumes:
+      - ./tax_report:/app
+    command: bash -c "while true; do sleep 60; done"
+  api_gateway:
+    image: nginx:latest
+    container_name: api_gateway
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./api_gateway:/etc/nginx/conf.d
+  web_portal:
+    image: nginx:latest
+    container_name: web_portal
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - ./web_portal:/usr/share/nginx/html

@@ -1,0 +1,16 @@
+const express = require("express");
+function createApp(name){const app=express();app.get("/",(req,res)=>res.send(name+" OK"));return app;}
+createApp("PWA").listen(3001);
+createApp("Web").listen(3002);
+createApp("UIUX").listen(3003);
+createApp("Dashboard").listen(3010);
+createApp("Health").listen(3099);
+createApp("REAL").listen(3110);
+createApp("Compliance").listen(3111);
+createApp("Audit").listen(3103);
+createApp("License").listen(3120);
+createApp("Bank API").listen(3200);
+createApp("Web3 API").listen(3201);
+createApp("Card API").listen(3202);
+createApp("ATM API").listen(3203);
+createApp("Forex API").listen(3204);

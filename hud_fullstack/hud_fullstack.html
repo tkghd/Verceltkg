@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>GLOBAL HUD FULLSTACK</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;padding:0;background:#0a0a0a;color:#00ffcc;font-family:'Orbitron',sans-serif;}
+.hud-panel{padding:20px;border:2px solid #00ffcc;border-radius:10px;box-shadow:0 0 20px #00ffcc;margin:10px;}
+progress{width:70%;height:16px;margin-right:10px;}
+.cinematic-btn{background:#00ffcc;color:#000;padding:12px 24px;font-size:16px;border:none;border-radius:8px;cursor:pointer;box-shadow:0 0 10px #00ffcc;}
+.section-title{font-size:18px;margin-bottom:8px;font-weight:bold;}
+.link-btn{display:inline-block;padding:8px 12px;margin:5px;background:#00ffcc;color:#000;border-radius:6px;text-decoration:none;box-shadow:0 0 6px #00ffcc;}
+</style>
+</head>
+<body>
+<h1>⚡ GLOBAL HUD FULLSTACK ⚡</h1>
+
+<div class="hud-panel">
+<h2 class="section-title">送金パネル</h2>
+<div>銀行送金: <progress id="bank-progress" value="0" max="100"></progress> <span id="bank-status">待機中</span></div>
+<div>コトラ送金: <progress id="kotra-progress" value="0" max="100"></progress> <span id="kotra-status">待機中</span></div>
+<div>PayPay送金: <progress id="paypay-progress" value="0" max="100"></progress> <span id="paypay-status">待機中</span></div>
+<div style="margin-top:10px;">
+<button onclick="executeCinematicTransfer()" class="cinematic-btn">⚡ 全送金 & 更新</button>
+</div>
+</div>
+
+<div class="hud-panel">
+<h2 class="section-title">残高</h2>
+<div>銀行残高: <span id="bank-balance">--</span></div>
+<div>コトラ残高: <span id="kotra-balance">--</span></div>
+<div>PayPay残高: <span id="paypay-balance">--</span></div>
+</div>
+
+<div class="hud-panel">
+<h2 class="section-title">PDF / EXE / Wallet 出力</h2>
+<a href="/output/pdf_master_global_report.pdf" target="_blank" class="link-btn">📄 PDF レポート</a>
+<a href="/output/exe_package_build.exe" target="_blank" class="link-btn">💻 EXE 出力</a>
+<a href="/output/wallet_sync_all.pkpass" target="_blank" class="link-btn">📱 Wallet 最新</a>
+</div>
+
+<script>
+async function cinematicTransferStep(api, progressEl, statusEl, amount) {
+    statusEl.textContent='実行中...';
+    for(let i=0;i<=100;i+=10){progressEl.value=i;await new Promise(r=>setTimeout(r,50));}
+    const res=await fetch(api,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount})}).then(r=>r.json()).catch(()=>({success:false,error:'通信失敗'}));
+    statusEl.textContent=res.success?'✅ 完了':`❌ ${res.error}`;
+    progressEl.value=100;
+}
+async function updateBalances(){
+    const [bankData,kotraData,paypayData]=await Promise.all([
+        fetch('/api/bank_balance').then(r=>r.json()),
+        fetch('/api/kotra_balance').then(r=>r.json()),
+        fetch('/api/paypay_balance').then(r=>r.json())
+    ]);
+    document.getElementById('bank-balance').textContent=bankData.balance?`¥${bankData.balance.toLocaleString()}`:'--';
+    document.getElementById('kotra-balance').textContent=kotraData.balance?`¥${kotraData.balance.toLocaleString()}`:'--';
+    document.getElementById('paypay-balance').textContent=paypayData.balance?`¥${paypayData.balance.toLocaleString()}`:'--';
+}
+async function executeCinematicTransfer(){
+    const bankEl=document.getElementById('bank-progress'),bankStatus=document.getElementById('bank-status');
+    const kotraEl=document.getElementById('kotra-progress'),kotraStatus=document.getElementById('kotra-status');
+    const paypayEl=document.getElementById('paypay-progress'),paypayStatus=document.getElementById('paypay-status');
+    await Promise.all([
+        cinematicTransferStep('/api/bank_transfer',bankEl,bankStatus,10000),
+        cinematicTransferStep('/api/kotra_transfer',kotraEl,kotraStatus,5000),
+        cinematicTransferStep('/api/paypay_transfer',paypayEl,paypayStatus,2000)
+    ]);
+    await updateBalances();
+}
+updateBalances();
+</script>
+
+</body>
+</html>

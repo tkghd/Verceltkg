@@ -1,0 +1,196 @@
+♻️==== MONITOR DEPLOY START: Sun Dec  7 22:08:35 UTC 2025 ====♻️
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 531986   │ 0s     │ 90   │ online    │ 0%       │ 3.3mb    │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    375 --:--:-- --:--:-- --:--:--   377
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 532506   │ 0s     │ 126  │ online    │ 0%       │ 16.8mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    562 --:--:-- --:--:-- --:--:--   564
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 532936   │ 0s     │ 158  │ online    │ 0%       │ 16.8mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    554 --:--:-- --:--:-- --:--:--   556
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 533364   │ 0s     │ 190  │ online    │ 0%       │ 18.7mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    565 --:--:-- --:--:-- --:--:--   569
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 534014   │ 0s     │ 223  │ online    │ 0%       │ 20.7mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    543 --:--:-- --:--:-- --:--:--   544
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 534683   │ 0s     │ 253  │ online    │ 0%       │ 27.9mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    432 --:--:-- --:--:-- --:--:--   435
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 535111   │ 0s     │ 284  │ online    │ 0%       │ 18.7mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    716 --:--:-- --:--:-- --:--:--   718
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 535498   │ 0s     │ 313  │ online    │ 0%       │ 16.8mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    238 --:--:-- --:--:-- --:--:--   238
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 535910   │ 0s     │ 343  │ online    │ 0%       │ 22.3mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    561 --:--:-- --:--:-- --:--:--   564
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 536350   │ 0s     │ 375  │ online    │ 0%       │ 18.7mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    578 --:--:-- --:--:-- --:--:--   578100    74    0     0  100    74      0    544 --:--:-- --:--:-- --:--:--   544
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 536786   │ 0s     │ 408  │ online    │ 0%       │ 20.7mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    544 --:--:-- --:--:-- --:--:--   548
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 537227   │ 0s     │ 442  │ online    │ 0%       │ 20.3mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    304 --:--:-- --:--:-- --:--:--   304
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 537662   │ 0s     │ 475  │ online    │ 0%       │ 18.7mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    286 --:--:-- --:--:-- --:--:--   286
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 538098   │ 0s     │ 507  │ online    │ 0%       │ 16.8mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    667 --:--:-- --:--:-- --:--:--   672
+parse error: Invalid numeric literal at line 1, column 10
+⚠️ API down, restarting fullstack-uiux
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fullstack-uiux](ids: [ 0 ])
+[PM2] [fullstack-uiux](0) ✓
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ fullstack-uiux    │ default     │ 1.0.0   │ fork    │ 538498   │ 0s     │ 536  │ online    │ 0%       │ 18.7mb   │ tkg_h30… │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    74    0     0  100    74      0    563 --:--:-- --:--:-- --:--:--   564

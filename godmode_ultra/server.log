@@ -1,0 +1,9 @@
+nohup: ignoring input
+npm ERR! code EJSONPARSE
+npm ERR! path /home/tkg_h30_2018/godmode_ultra/package.json
+npm ERR! JSON.parse Unexpected token "c" (0x63) in JSON at position 0 while parsing near "cd /home/tkg_h30_201..."
+npm ERR! JSON.parse Failed to parse JSON data.
+npm ERR! JSON.parse Note: package.json must be actual JSON, not just JavaScript.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/tkg_h30_2018/.npm/_logs/2025-12-07T06_18_03_199Z-debug-0.log

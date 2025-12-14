@@ -1,0 +1,14 @@
+🔐 Global Bank API認証情報
+生成日時: Sat Dec 13 14:25:38 UTC 2025
+
+API Key:
+gb_prod_2024_secure_key_56dfd223b537b4f0f7fbab702a7e8f03
+
+Admin Token:
+admin_token_b7c8f757517c67db91134577ba7e6536
+
+使用方法:
+curl -H 'X-API-Key: gb_prod_2024_secure_key_56dfd223b537b4f0f7fbab702a7e8f03' \
+     http://35.225.221.90/api/balance/1
+
+⚠️ このファイルは安全に保管してください

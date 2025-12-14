@@ -1,0 +1,9 @@
+[Unit]
+Description=TKGHD Auto Repair Timer
+[Timer]
+OnBootSec=30s
+OnUnitActiveSec=5m
+Persistent=true
+Unit=repair-deploy.service
+[Install]
+WantedBy=timers.target
