@@ -1,34 +1,3 @@
-Restart=always
-RestartSec=10
-EnvironmentFile=%h/PROJECT_DIR/.env
-StandardOutput=append:%h/PROJECT_DIR/logs/systemd.out.log
-StandardError=append:%h/PROJECT_DIR/logs/systemd.err.log
-[Install]
-WantedBy=default.target
-UNIT
-
-cat > scripts/repair-deploy.timer <<'TIMER'
-[Unit]
-Description=TKGHD Auto Repair Timer
-[Timer]
-OnBootSec=30s
-OnUnitActiveSec=5m
-Persistent=true
-Unit=repair-deploy.service
-[Install]
-WantedBy=timers.target
-TIMER
-
-PRJ="$(pwd)"; sed -i "s|%h/PROJECT_DIR|$PRJ|g" scripts/repair-deploy.service && for d in $(find . -mindepth 2 -type d -name ".git" -printf '%h\n'); do git rm --cached -r "$d" 2>/dev/null || true; rm -rf "$d"; done && echo -e ".env\nlogs/\n*.key\n*.pem\n" >> .gitignore && mkdir -p ~/.config/systemd/user && cp scripts/repair-deploy.service ~/.config/systemd/user/ && cp scripts/repair-deploy.timer ~/.config/systemd/user/ && systemctl --user daemon-reload && systemctl --user enable --now repair-deploy.timer && git add . && git commit -m "刻印: 永久ワンライナー全搭載 + 自動修復常駐 + 内部起動" && npm audit fix --force && npm run build && npm run start
-npm run build
-npm run start
-npm run build
-npm run start
-# 1. lockを一度整理
-rm -rf node_modules package-lock.json
-npm install
-# 2. forceは使わない
-npm audit fixnpm run start
 → node server.js
 → Server running on port 3000pages/api/health.ts
 gcloud config set project studio-9143529927-91d1f
@@ -498,3 +467,34 @@ export default function handler(req: any, res: any) {
 EOF
 
 rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: ALL SYSTEMS ONLINE 一撃デプロイビルド" && git push origin main
+gcloud config set project studio-9143529927-91d1f
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: ALL SYSTEMS ONLINE ♻️💠⬆️ 一撃デプロイビルド" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: Vaultmaster+GlobalAPI+BankAPI 全搭載HUD 永久稼働" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: ALL SYSTEMS ONLINE + GLOBAL BANK 永久稼働" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: UIUX全搭載 HUD + GLOBAL BANK 永久稼働" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: 全UIUX + Apps連動 + GLOBAL BANK + Vaultmaster HUD 本番デプロイ" && git push origin main
+cat > public/manifest.json <<'EOF' && git add public/manifest.json && git commit -m "刻印: PWA manifest.json 全UIUX HUDアプリ化" && npm run build && git push origin main
+{
+  "name": "TK Global HUD",
+  "short_name": "TK HUD",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00ffff",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+EOF
+
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: 全搭載 HUD + BankAPI + Apps + UIUX 永久稼働" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: 最適化 + チャットルームHUD + Gemini GTP go フル稼働本番デプロイ" && git push origin main
