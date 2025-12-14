@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "build:all": "tsc && vite build",
     "preview": "vite preview",
-    "start": "node front/server.js",
+    "start": "node integrated/server.js",
     "deploy": "npm install && npm run build && pm2 reload ecosystem.config.js"
   },
   "dependencies": {

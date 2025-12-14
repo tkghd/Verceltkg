@@ -1,6 +1,11 @@
 
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3100;
@@ -104,6 +109,19 @@ app.post('/api/transfer', (req, res) => {
 app.get('/status', (req, res) => res.json({ system: 'ΩβαMAX', status: 'ONLINE', latency: 0 }));
 app.get('/api/revenue', (req, res) => res.json({ revenue: 145000000 + Math.floor(Math.random() * 10000) }));
 
+// --- Serve Static Assets (Production) ---
+// Serve built assets from dist (one level up from integrated/)
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// SPA Fallback
+app.get('*', (req, res) => {
+  // If it's an API request that wasn't caught, return 404 JSON
+  if (req.path.startsWith('/api')) {
+      return res.status(404).json({ error: 'API Endpoint Not Found' });
+  }
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
 app.listen(PORT, () => {
-  console.log(`⚡ Integrated Core API running on port ${PORT}`);
+  console.log(`⚡ Integrated Core API & Frontend running on port ${PORT}`);
 });

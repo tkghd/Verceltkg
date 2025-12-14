@@ -33,7 +33,10 @@ const LoadingFallback = () => (
   </div>
 );
 
-const API_BASE = 'http://localhost:3100';
+// Determine API Base URL: Relative for production (same origin), localhost for dev
+// FIX: Safely check for import.meta.env to avoid runtime errors
+const isProduction = import.meta && (import.meta as any).env ? (import.meta as any).env.PROD : false;
+const API_BASE = isProduction ? '' : 'http://localhost:3100';
 
 const AppContent: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -148,7 +151,7 @@ const AppContent: React.FC = () => {
         
         <div className="flex items-center gap-3">
           <div className="hidden md:block">
-             <RevenueCounter apiUrl="https://www.tkglobalbank.com/api/revenue" />
+             <RevenueCounter apiUrl={`${API_BASE}/api/revenue`} />
           </div>
           <button className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:bg-white/10 hover:text-white transition-all relative overflow-hidden">
              <User size={18} />
@@ -275,3 +278,4 @@ const App = () => (
 );
 
 export default App;
+    
