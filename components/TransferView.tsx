@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Send, Building2, Search, ChevronRight, AlertCircle, ArrowRight, CheckCircle2, ChevronDown, RefreshCw, Wallet, ArrowLeft, CreditCard, History, User, Pencil, Landmark, ShieldCheck, Smartphone, Zap, Mail, QrCode, FileText, Fingerprint, Lock, Shield, Scan, Bot, Sparkles, Siren, Mic } from 'lucide-react';
+import { Send, Building2, Search, ChevronRight, AlertCircle, ArrowRight, CheckCircle2, ChevronDown, RefreshCw, Wallet, ArrowLeft, CreditCard, History, User, Pencil, Landmark, ShieldCheck, Smartphone, Zap, Mail, QrCode, FileText, Fingerprint, Lock, Shield, Scan, Bot, Sparkles, Siren, Mic, Network, Server, Globe, Wifi } from 'lucide-react';
 import { WalletState, OwnerAccount } from '../types';
 
 interface TransferViewProps {
@@ -20,15 +20,9 @@ const MAJOR_BANKS = [
   { id: 'mufg', name: '三菱UFJ銀行', short: '三菱UFJ', color: 'bg-[#d7000f]' },
   { id: 'mizuho', name: 'みずほ銀行', short: 'みずほ', color: 'bg-[#00287d]' },
   { id: 'jp', name: 'ゆうちょ銀行', short: 'ゆうちょ', color: 'bg-[#007b43]' },
-  { id: 'resona', name: 'りそな銀行', short: 'りそな', color: 'bg-[#008d4c]' },
-  { id: 'yokohama', name: '横浜銀行', short: '横浜', color: 'bg-[#fbb03b]' },
-  { id: 'chiba', name: '千葉銀行', short: '千葉', color: 'bg-[#e60012]' },
-  { id: 'fukuoka', name: '福岡銀行', short: '福岡', color: 'bg-[#0095d9]' },
-  { id: 'seven', name: 'セブン銀行', short: 'セブン', color: 'bg-[#009b4d]' },
   { id: 'paypay_bank', name: 'PayPay銀行', short: 'PayPay', color: 'bg-[#ff0033]' },
+  { id: 'seven', name: 'セブン銀行', short: 'セブン', color: 'bg-[#009b4d]' },
   { id: 'jibun', name: 'auじぶん銀行', short: 'じぶん', color: 'bg-[#f39800]' },
-  { id: 'aeon', name: 'イオン銀行', short: 'イオン', color: 'bg-[#D0006F]' },
-  { id: 'shinsei', name: 'SBI新生銀行', short: 'SBI新生', color: 'bg-[#004886]' },
   { id: 'gmo', name: 'GMOあおぞら', short: 'GMO', color: 'bg-[#00A1E9]' },
 ];
 
@@ -39,6 +33,8 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
   const [selectedBank, setSelectedBank] = useState<any>(null);
   
   // Account Details (Bank)
+  const [isManualBank, setIsManualBank] = useState(false);
+  const [manualBankName, setManualBankName] = useState('');
   const [branchName, setBranchName] = useState('');
   const [accountType, setAccountType] = useState<'普通' | '当座' | '貯蓄'>('普通');
   const [accountNumber, setAccountNumber] = useState('');
@@ -77,9 +73,14 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
   };
 
   const handleNext = () => {
-    if (step === 'bank_select' && selectedBank) setStep('account_input');
+    if (step === 'bank_select') {
+        if (selectedBank || isManualBank) setStep('account_input');
+    }
     else if (step === 'account_input') {
-        if (method === 'bank' && branchName && accountNumber.length >= 7) setStep('amount_input');
+        if (method === 'bank') {
+            const validBank = isManualBank ? manualBankName.length > 0 : true;
+            if (validBank && branchName && accountNumber.length >= 1) setStep('amount_input');
+        } 
         else if ((method === 'paypay' || method === 'cotra') && recipientId.length > 3) setStep('amount_input');
     }
     else if (step === 'amount_input' && amount) setStep('confirm');
@@ -104,6 +105,8 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
     setAmount('');
     setAccountNumber('');
     setBranchName('');
+    setManualBankName('');
+    setIsManualBank(false);
     setRecipientId('');
     setSelectedBank(null);
     setTxId('');
@@ -113,17 +116,19 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
     setStep('processing_auth');
     setIsProcessing(true);
     
-    // 3-Factor Auth Simulation
-    setProcessingStage('Authenticating Biometrics...');
+    // API Simulation Sequence
+    const apiName = method === 'bank' ? 'Zengin System' : method === 'paypay' ? 'PayPay Gateway' : 'Cotra Hub';
+    
+    setProcessingStage(`Handshaking with ${apiName}...`);
     await new Promise(resolve => setTimeout(resolve, 800));
 
-    setProcessingStage('Verifying Device Security (ΩMAX)...');
+    setProcessingStage('Verifying Biometrics (Godmode)...');
     await new Promise(resolve => setTimeout(resolve, 800));
 
-    setProcessingStage('Signing Digital Certificate...');
+    setProcessingStage('Allocating Funds from Infinite Pool...');
     await new Promise(resolve => setTimeout(resolve, 800));
 
-    setProcessingStage('Executing Instant Settlement...');
+    setProcessingStage('Finalizing Instant Settlement...');
     await new Promise(resolve => setTimeout(resolve, 600));
 
     setTxId(`TX-${Math.floor(Math.random() * 1000000000)}`);
@@ -134,7 +139,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
   const autoFillBank = () => {
       setBranchName('本店営業部 (001)');
       setAccountNumber('1234567');
-      handleNext();
+      if (isManualBank) setManualBankName('Simulated Bank Ltd.');
   };
 
   const handleEmergencyVoiceAuth = () => {
@@ -210,9 +215,12 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                 </div>
                 <div className="flex items-center gap-4 text-slate-400 anim-enter-right anim-delay-300">
                     <div className="w-8 h-8 rounded-full bg-amber-900/30 flex items-center justify-center border border-amber-500/50">
-                        <Scan size={16} className="text-amber-400" />
+                        <Server size={16} className="text-amber-400" />
                     </div>
-                    <span className="text-sm">Device Integrity</span>
+                    <div className="flex flex-col">
+                        <span className="text-sm">Gateway Response</span>
+                        <span className="text-[10px] text-slate-500 font-mono">200 OK (0.02s)</span>
+                    </div>
                     <div className="ml-auto text-green-500 text-xs font-bold">PASSED</div>
                 </div>
             </div>
@@ -224,11 +232,24 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
   if (step === 'method_select') {
     return (
       <div className="anim-enter-right max-w-3xl mx-auto pb-20 relative">
+        {/* Gateway Status Bar */}
+        <div className="flex gap-4 overflow-x-auto pb-4 mb-4 border-b border-slate-800">
+            <GatewayStatus label="Zengin" status="online" ping="4ms" />
+            <GatewayStatus label="PayPay API" status="online" ping="12ms" />
+            <GatewayStatus label="Cotra Hub" status="online" ping="8ms" />
+            <GatewayStatus label="SWIFT gpi" status="online" ping="140ms" />
+        </div>
+
         {renderHeader('送金方法の選択')}
         
         {/* Source Selector */}
-        <div className="mb-8 bg-[#0f0f18] border border-slate-800 rounded-2xl p-5 shadow-lg relative overflow-hidden">
+        <div className="mb-8 bg-[#0f0f18] border border-slate-800 rounded-2xl p-5 shadow-lg relative overflow-hidden group hover:border-indigo-500/30 transition-colors">
             <div className="absolute top-0 left-0 w-1 h-full bg-indigo-500"></div>
+            <div className="absolute right-4 top-4">
+                <span className="flex items-center gap-1 text-[10px] text-green-400 bg-green-900/20 px-2 py-0.5 rounded border border-green-500/30">
+                    <Wifi size={10} /> API LINKED
+                </span>
+            </div>
             <label className="text-xs font-bold text-slate-400 mb-3 flex items-center gap-2 uppercase tracking-wider">
                <Wallet size={14} className="text-indigo-500" /> 出金口座 (Source)
             </label>
@@ -286,7 +307,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                  </div>
                  <div className="text-left">
                     <div className="font-bold text-white text-lg">銀行振込 (Bank)</div>
-                    <div className="text-xs text-slate-400">金融機関口座へ送金 (Zengin System)</div>
+                    <div className="text-xs text-slate-400 flex items-center gap-1"><Server size={10} /> Zengin System API</div>
                  </div>
               </div>
               <ChevronRight size={24} className="text-slate-600 group-hover:text-indigo-400 transition-colors" />
@@ -302,7 +323,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                  </div>
                  <div className="text-left">
                     <div className="font-bold text-white text-lg">ペイペイ送金 (PayPay)</div>
-                    <div className="text-xs text-slate-400">ID / 電話番号で即時送金</div>
+                    <div className="text-xs text-slate-400 flex items-center gap-1"><Globe size={10} /> Connect Gateway</div>
                  </div>
               </div>
               <ChevronRight size={24} className="text-slate-600 group-hover:text-red-400 transition-colors" />
@@ -318,7 +339,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                  </div>
                  <div className="text-left">
                     <div className="font-bold text-white text-lg">ことら送金 (Cotra)</div>
-                    <div className="text-xs text-slate-400">10万円以下の個人間送金手数料無料</div>
+                    <div className="text-xs text-slate-400 flex items-center gap-1"><Network size={10} /> J-Debit Network</div>
                  </div>
               </div>
               <ChevronRight size={24} className="text-slate-600 group-hover:text-green-400 transition-colors" />
@@ -345,27 +366,6 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                 </div>
             </div>
         )}
-
-        {/* Transaction History Teaser */}
-        <div className="mt-8 pt-6 border-t border-slate-800 anim-enter-bottom anim-delay-500">
-            <h3 className="text-sm font-bold text-slate-400 mb-4 flex items-center gap-2">
-                <History size={16} /> Recent Transfers
-            </h3>
-            <div className="space-y-2">
-                {[1,2].map(i => (
-                    <div key={i} className="flex justify-between items-center p-3 rounded-lg bg-white/5 border border-white/5">
-                        <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-xs">TX</div>
-                            <div>
-                                <div className="text-sm text-white font-bold">Transfer #{9000+i}</div>
-                                <div className="text-[10px] text-slate-500">2 mins ago</div>
-                            </div>
-                        </div>
-                        <div className="text-sm font-mono text-indigo-400">-¥10,000</div>
-                    </div>
-                ))}
-            </div>
-        </div>
       </div>
     );
   }
@@ -380,7 +380,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
            {MAJOR_BANKS.map(bank => (
              <button 
                key={bank.id}
-               onClick={() => { setSelectedBank(bank); handleNext(); }}
+               onClick={() => { setSelectedBank(bank); setIsManualBank(false); handleNext(); }}
                className="p-4 rounded-xl border border-slate-800 bg-[#0f0f18] hover:bg-slate-800 hover:border-indigo-500/50 transition-all flex flex-col items-center gap-3 group h-28 justify-center active:scale-95"
              >
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white text-xs font-bold ${bank.color} shadow-lg group-hover:scale-110 transition-transform`}>
@@ -389,9 +389,12 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                 <span className="text-xs font-bold text-slate-300 group-hover:text-white">{bank.short}</span>
              </button>
            ))}
-           <button className="p-4 rounded-xl border border-dashed border-slate-700 hover:border-indigo-500 hover:bg-slate-800/50 transition-all flex flex-col items-center justify-center gap-2 group h-28">
-              <Search size={24} className="text-slate-500 group-hover:text-indigo-400" />
-              <span className="text-xs text-slate-500 group-hover:text-indigo-400">検索・その他</span>
+           <button 
+             onClick={() => { setSelectedBank(null); setIsManualBank(true); handleNext(); }}
+             className="p-4 rounded-xl border border-dashed border-indigo-500/30 hover:border-indigo-500 hover:bg-slate-800/50 transition-all flex flex-col items-center justify-center gap-2 group h-28 bg-indigo-900/10"
+           >
+              <Pencil size={24} className="text-indigo-400 group-hover:scale-110 transition-transform" />
+              <span className="text-xs text-indigo-400 font-bold">直接入力 (Free Input)</span>
            </button>
         </div>
 
@@ -400,7 +403,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
         </h3>
         <div className="space-y-2">
            {[1, 2].map(i => (
-              <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-[#0f0f18] border border-slate-800 hover:bg-slate-800 cursor-pointer transition-colors" onClick={() => { setSelectedBank(MAJOR_BANKS[0]); handleNext(); }}>
+              <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-[#0f0f18] border border-slate-800 hover:bg-slate-800 cursor-pointer transition-colors" onClick={() => { setSelectedBank(MAJOR_BANKS[0]); setIsManualBank(false); handleNext(); }}>
                  <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[10px] text-slate-400">
                        履歴
@@ -429,14 +432,14 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
              {/* Method Indicator */}
              <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-900 border border-slate-800">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg ${
-                    method === 'bank' ? selectedBank?.color : 
+                    method === 'bank' ? (isManualBank ? 'bg-indigo-600' : selectedBank?.color) : 
                     method === 'paypay' ? 'bg-red-500' : 'bg-green-500'
                 }`}>
-                    {method === 'bank' ? selectedBank?.short.substring(0,2) : method === 'paypay' ? 'P' : 'C'}
+                    {method === 'bank' ? (isManualBank ? 'M' : selectedBank?.short.substring(0,2)) : method === 'paypay' ? 'P' : 'C'}
                 </div>
                 <div>
                    <div className="font-bold text-white">
-                       {method === 'bank' ? selectedBank?.name : method === 'paypay' ? 'PayPay残高送金' : 'ことら送金 (10万円以下)'}
+                       {method === 'bank' ? (isManualBank ? 'その他金融機関 (Manual)' : selectedBank?.name) : method === 'paypay' ? 'PayPay残高送金' : 'ことら送金 (10万円以下)'}
                    </div>
                    <div className="text-xs text-slate-500">への送金</div>
                 </div>
@@ -445,6 +448,20 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
              {/* BANK INPUTS */}
              {method === 'bank' && (
                  <div className="space-y-4">
+                    {/* Manual Bank Name Input if selected */}
+                    {isManualBank && (
+                       <div>
+                           <label className="text-xs font-bold text-slate-400 mb-2 block">金融機関名</label>
+                           <input 
+                              type="text" 
+                              value={manualBankName}
+                              onChange={(e) => setManualBankName(e.target.value)}
+                              placeholder="例：JPモルガン・チェース銀行"
+                              className="w-full bg-black/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors"
+                           />
+                       </div>
+                    )}
+
                     <div>
                        <div className="flex justify-between">
                            <label className="text-xs font-bold text-slate-400 mb-2 block">支店名・支店番号</label>
@@ -520,7 +537,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
              <button 
                onClick={handleNext}
                disabled={
-                   (method === 'bank' && (!branchName || accountNumber.length < 7)) ||
+                   (method === 'bank' && (!branchName || accountNumber.length < 1)) ||
                    ((method === 'paypay' || method === 'cotra') && recipientId.length < 3)
                }
                className="w-full py-4 mt-4 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 disabled:bg-slate-800 disabled:text-slate-500 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 active:scale-95 shadow-lg shadow-indigo-500/20"
@@ -622,16 +639,16 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                        <div className="flex gap-4">
                           <div className="flex flex-col items-center gap-1 min-w-[60px]">
                              <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shadow-lg ${
-                                 method === 'bank' ? selectedBank?.color : method === 'paypay' ? 'bg-red-500' : 'bg-green-500'
+                                 method === 'bank' ? (isManualBank ? 'bg-indigo-600' : selectedBank?.color) : method === 'paypay' ? 'bg-red-500' : 'bg-green-500'
                              }`}>
-                                 {method === 'bank' ? selectedBank?.short.substring(0,1) : method === 'paypay' ? 'P' : 'C'}
+                                 {method === 'bank' ? (isManualBank ? 'M' : selectedBank?.short.substring(0,1)) : method === 'paypay' ? 'P' : 'C'}
                              </div>
                              <span className="text-[10px] font-bold text-slate-500">TO</span>
                           </div>
                           <div className="flex-1 border-l-2 border-slate-800 pl-4">
                              <div className="text-xs font-bold text-slate-500 uppercase mb-1">Recipient (送金先)</div>
                              <div className="font-bold text-white text-lg leading-tight">
-                                {method === 'bank' ? selectedBank?.name : method === 'paypay' ? 'PayPay ID' : 'Contact'}
+                                {method === 'bank' ? (isManualBank ? manualBankName : selectedBank?.name) : method === 'paypay' ? 'PayPay ID' : 'Contact'}
                              </div>
                              <div className="text-sm text-indigo-400 font-mono mt-1">
                                 {method === 'bank' ? `${branchName} / ${accountType} / ${accountNumber}` : recipientId}
@@ -719,7 +736,7 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
                     </div>
                     <div className="flex justify-between">
                         <span className="font-bold text-slate-600">Recipient</span>
-                        <span className="text-right max-w-[150px] truncate">{method === 'bank' ? selectedBank?.short : 'Contact'}</span>
+                        <span className="text-right max-w-[150px] truncate">{method === 'bank' ? (isManualBank ? manualBankName : selectedBank?.short) : 'Contact'}</span>
                     </div>
                 </div>
 
@@ -742,3 +759,11 @@ export const TransferView: React.FC<TransferViewProps> = ({ wallet, ownerAccount
 
   return null; // Should not reach here
 };
+
+const GatewayStatus: React.FC<{ label: string; status: 'online' | 'offline'; ping: string }> = ({ label, status, ping }) => (
+    <div className="flex-shrink-0 flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-full px-3 py-1.5 text-[10px]">
+        <span className={`w-1.5 h-1.5 rounded-full ${status === 'online' ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}></span>
+        <span className="font-bold text-slate-300">{label}</span>
+        <span className="font-mono text-slate-500 border-l border-slate-700 pl-2 ml-1">{ping}</span>
+    </div>
+);

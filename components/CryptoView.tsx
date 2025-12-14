@@ -1,16 +1,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, TrendingDown, ArrowUpRight, ArrowDownLeft, RefreshCw, Wallet, Zap, Copy, ExternalLink, Box, Crown, Sparkles, Loader2, ArrowDown, Settings2, History, Link, CheckCircle2, ShieldCheck } from 'lucide-react';
-import { WalletState } from '../types';
+import { WalletState, ActiveTab } from '../types';
 
 interface CryptoViewProps {
   wallet: WalletState;
   onUpdateWallet: React.Dispatch<React.SetStateAction<WalletState>>;
+  onNavigate: (tab: ActiveTab) => void;
 }
 
 type TokenSymbol = 'BTC' | 'ETH' | 'USDT' | 'TKG';
 
-export const CryptoView: React.FC<CryptoViewProps> = ({ wallet, onUpdateWallet }) => {
+export const CryptoView: React.FC<CryptoViewProps> = ({ wallet, onUpdateWallet, onNavigate }) => {
   const [activeTab, setActiveTab] = useState<'tokens' | 'nfts' | 'defi' | 'swap'>('tokens');
   const [prices, setPrices] = useState({
     BTC: 65432.10,
@@ -213,8 +214,8 @@ export const CryptoView: React.FC<CryptoViewProps> = ({ wallet, onUpdateWallet }
 
       {/* Action Buttons */}
       <div className="grid grid-cols-4 gap-3">
-         <ActionButton icon={<ArrowUpRight size={24} />} label="Send" color="text-cyan-400" onClick={() => {}} />
-         <ActionButton icon={<ArrowDownLeft size={24} />} label="Receive" color="text-green-400" onClick={() => {}} />
+         <ActionButton icon={<ArrowUpRight size={24} />} label="Send" color="text-cyan-400" onClick={() => onNavigate('transfer')} />
+         <ActionButton icon={<ArrowDownLeft size={24} />} label="Receive" color="text-green-400" onClick={() => onNavigate('transfer')} />
          <ActionButton 
             icon={<RefreshCw size={24} />} 
             label="Swap" 

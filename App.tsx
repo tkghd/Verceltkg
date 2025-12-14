@@ -7,6 +7,7 @@ import { TransferView } from './components/TransferView';
 import { ATMView } from './components/ATMView';
 import { CardView } from './components/CardView';
 import { CryptoView } from './components/CryptoView';
+import { CorporateView } from './components/CorporateView';
 import { BankServicesView } from './components/BankServicesView';
 import { AIStudioHUD } from './components/AIStudioHUD';
 import { SettingsView } from './components/SettingsView';
@@ -103,13 +104,14 @@ const App: React.FC = () => {
          
          <div className="h-full overflow-y-auto custom-scrollbar p-4 pb-24 sm:p-6 sm:pb-6 scroll-smooth">
             <div key={activeTab} className="max-w-7xl mx-auto anim-enter-right">
-               {activeTab === 'dashboard' && <Dashboard modules={modules} booted={true} wallet={wallet} queues={queues} />}
-               {activeTab === 'assets' && <AssetsView wallet={wallet} ownerAccounts={ownerAccounts} />}
+               {activeTab === 'dashboard' && <Dashboard modules={modules} booted={true} wallet={wallet} queues={queues} onNavigate={handleTabChange} />}
+               {activeTab === 'assets' && <AssetsView wallet={wallet} ownerAccounts={ownerAccounts} onNavigate={handleTabChange} />}
                {activeTab === 'transfer' && <TransferView wallet={wallet} ownerAccounts={ownerAccounts} />}
                {activeTab === 'atm' && <ATMView wallet={wallet} />}
                {activeTab === 'card' && <CardView />}
-               {activeTab === 'crypto' && <CryptoView wallet={wallet} onUpdateWallet={setWallet} />}
-               {activeTab === 'bank_services' && <BankServicesView />}
+               {activeTab === 'crypto' && <CryptoView wallet={wallet} onUpdateWallet={setWallet} onNavigate={handleTabChange} />}
+               {activeTab === 'bank_services' && <BankServicesView onNavigate={handleTabChange} />}
+               {activeTab === 'corporate' && <CorporateView wallet={wallet} />}
                {activeTab === 'ai_hud' && <AIStudioHUD modules={modules} />}
                
                {/* Modules */}

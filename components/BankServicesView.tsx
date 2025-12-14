@@ -1,8 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { Landmark, Globe, CreditCard, Plus, ArrowRight, ShieldCheck, Banknote, Building2, CheckCircle2, AlertCircle, RefreshCw, Zap, Cpu, Scan, ArrowDownToLine, Settings, Copy, Activity, Server, Radio, Network, Database, Save, Trash2, Hash, FileText } from 'lucide-react';
+import { ActiveTab } from '../types';
 
 type ServiceTab = 'accounts' | 'transfer_intl' | 'loans' | 'admin_registry';
+
+interface BankServicesViewProps {
+  onNavigate: (tab: ActiveTab) => void;
+}
 
 interface BankInfo {
   code: string;
@@ -113,7 +118,7 @@ const MockBankGenerator = {
     }
 };
 
-export const BankServicesView: React.FC = () => {
+export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }) => {
   const [activeTab, setActiveTab] = useState<ServiceTab>('accounts');
   const [loanProcessing, setLoanProcessing] = useState(false);
   const [loanApproved, setLoanApproved] = useState(false);
@@ -272,7 +277,7 @@ export const BankServicesView: React.FC = () => {
               </button>
 
               <button 
-                onClick={() => window.location.hash = '#/atm'} 
+                onClick={() => onNavigate('atm')}
                 className="p-3 bg-indigo-900/20 border border-indigo-500/30 rounded-xl hover:bg-indigo-900/40 transition-colors flex flex-col items-center gap-2 group/btn"
               >
                   <Scan size={20} className="text-indigo-400 group-hover/btn:scale-110 transition-transform" />

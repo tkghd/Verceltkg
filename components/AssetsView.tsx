@@ -1,14 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { Wallet, TrendingUp, DollarSign, Bitcoin, Globe, Gem, Crown, ArrowUpRight, Building, Layers, Link, Loader2, ShieldCheck, CheckCircle2, XCircle, LogOut, Smartphone, HardDrive, Send, ArrowRight, Search, Flame, Zap, Boxes } from 'lucide-react';
-import { WalletState, OwnerAccount } from '../types';
+import { WalletState, OwnerAccount, ActiveTab } from '../types';
 
 interface AssetsViewProps {
   wallet: WalletState;
   ownerAccounts: OwnerAccount[];
+  onNavigate: (tab: ActiveTab) => void;
 }
 
-export const AssetsView: React.FC<AssetsViewProps> = ({ wallet, ownerAccounts }) => {
+export const AssetsView: React.FC<AssetsViewProps> = ({ wallet, ownerAccounts, onNavigate }) => {
   const [selectedWallet, setSelectedWallet] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState('');
   const [showAllTokens, setShowAllTokens] = useState(false);
@@ -63,9 +64,17 @@ export const AssetsView: React.FC<AssetsViewProps> = ({ wallet, ownerAccounts })
              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
              
              <div className="relative z-10">
-                 <h3 className="text-cyan-500 font-bold uppercase tracking-[0.2em] text-xs mb-4 flex items-center gap-2">
-                    <Crown size={14} /> オーナー自由用途資産 (Personal Vault)
-                 </h3>
+                 <div className="flex justify-between items-start">
+                    <h3 className="text-cyan-500 font-bold uppercase tracking-[0.2em] text-xs mb-4 flex items-center gap-2">
+                        <Crown size={14} /> オーナー自由用途資産 (Personal Vault)
+                    </h3>
+                    <button 
+                        onClick={() => onNavigate('transfer')}
+                        className="flex items-center gap-2 px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 text-xs font-bold rounded-xl border border-cyan-500/50 transition-colors"
+                    >
+                        <Send size={14} /> Quick Transfer
+                    </button>
+                 </div>
                  <div className="text-4xl sm:text-5xl lg:text-6xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-cyan-400 tracking-tight drop-shadow-2xl my-6">
                     ¥ 2,000,000,000,000
                  </div>
@@ -171,17 +180,4 @@ export const AssetsView: React.FC<AssetsViewProps> = ({ wallet, ownerAccounts })
 const CorporateSyncRow: React.FC<{ name: string; region: string; balance: string; status: 'active' | 'sync' }> = ({ name, region, balance, status }) => (
     <div className="flex justify-between items-center p-3 bg-slate-900/30 border border-slate-800 rounded-xl hover:bg-slate-800 transition-colors">
         <div className="flex items-center gap-3">
-             <div className="w-8 h-8 rounded-full bg-indigo-900/20 flex items-center justify-center text-indigo-400">
-                 <Globe size={14} />
-             </div>
-             <div>
-                 <div className="text-sm font-bold text-white">{name}</div>
-                 <div className="text-[10px] text-slate-500">{region}</div>
-             </div>
-        </div>
-        <div className="text-right">
-             <div className="font-mono text-white text-sm font-bold">{balance}</div>
-             <div className={`text-[9px] uppercase font-bold ${status === 'active' ? 'text-green-500' : 'text-amber-500'}`}>{status}</div>
-        </div>
-    </div>
-);
+             <div className="w-

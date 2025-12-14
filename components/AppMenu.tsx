@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Smartphone, Globe, Palette, BarChart2, Heart, Building, Scale, ClipboardList, FileText, CreditCard, Settings, Coins, Wallet } from 'lucide-react';
+import { Smartphone, Globe, Palette, BarChart2, Heart, Building, Scale, ClipboardList, FileText, CreditCard, Settings, Coins, Wallet, Briefcase, Send, Banknote } from 'lucide-react';
 import { ActiveTab } from '../types';
 
 interface AppMenuProps {
@@ -33,18 +33,21 @@ export const AppMenu: React.FC<AppMenuProps> = ({ isOpen, onClose, activeTab, on
         </div>
 
         <div className="grid grid-cols-4 sm:grid-cols-5 gap-3 sm:gap-4">
+            <MenuIcon onClick={() => onNavigate('corporate')} icon={<Briefcase size={22} />} label="Corp." color="text-indigo-400" bg="bg-indigo-500/10" active={activeTab === 'corporate'} />
+            <MenuIcon onClick={() => onNavigate('transfer')} icon={<Send size={22} />} label="Send" color="text-cyan-400" bg="bg-cyan-500/10" active={activeTab === 'transfer'} />
+            <MenuIcon onClick={() => onNavigate('atm')} icon={<Banknote size={22} />} label="ATM" color="text-emerald-400" bg="bg-emerald-500/10" active={activeTab === 'atm'} />
             <MenuIcon onClick={() => onNavigate('card')} icon={<CreditCard size={22} />} label="Cards" color="text-violet-400" bg="bg-violet-500/10" active={activeTab === 'card'} />
             <MenuIcon onClick={() => onNavigate('crypto')} icon={<Coins size={22} />} label="Crypto" color="text-amber-400" bg="bg-amber-500/10" active={activeTab === 'crypto'} />
-            <MenuIcon onClick={() => onNavigate('pwa')} icon={<Smartphone size={22} />} label="PWA" color="text-blue-400" bg="bg-blue-500/10" active={activeTab === 'pwa'} />
-            <MenuIcon onClick={() => onNavigate('web')} icon={<Globe size={22} />} label="Web" color="text-cyan-400" bg="bg-cyan-500/10" active={activeTab === 'web'} />
-            <MenuIcon onClick={() => onNavigate('uiux')} icon={<Palette size={22} />} label="UI/UX" color="text-pink-400" bg="bg-pink-500/10" active={activeTab === 'uiux'} />
             
+            <MenuIcon onClick={() => onNavigate('pwa')} icon={<Smartphone size={22} />} label="PWA" color="text-blue-400" bg="bg-blue-500/10" active={activeTab === 'pwa'} />
+            <MenuIcon onClick={() => onNavigate('web')} icon={<Globe size={22} />} label="Web" color="text-sky-400" bg="bg-sky-500/10" active={activeTab === 'web'} />
             <MenuIcon onClick={() => onNavigate('dashboard')} icon={<BarChart2 size={22} />} label="Data" color="text-green-400" bg="bg-green-500/10" active={activeTab === 'dashboard'} />
+            <MenuIcon onClick={() => onNavigate('uiux')} icon={<Palette size={22} />} label="UI/UX" color="text-pink-400" bg="bg-pink-500/10" active={activeTab === 'uiux'} />
             <MenuIcon onClick={() => onNavigate('health')} icon={<Heart size={22} />} label="Health" color="text-red-400" bg="bg-red-500/10" active={activeTab === 'health'} />
+            
             <MenuIcon onClick={() => onNavigate('real')} icon={<Building size={22} />} label="Real API" color="text-emerald-400" bg="bg-emerald-500/10" active={activeTab === 'real'} />
             <MenuIcon onClick={() => onNavigate('compliance')} icon={<Scale size={22} />} label="Legal" color="text-slate-300" bg="bg-slate-500/10" active={activeTab === 'compliance'} />
             <MenuIcon onClick={() => onNavigate('audit')} icon={<ClipboardList size={22} />} label="Audit" color="text-indigo-300" bg="bg-indigo-500/10" active={activeTab === 'audit'} />
-            
             <MenuIcon onClick={() => onNavigate('license')} icon={<FileText size={22} />} label="License" color="text-orange-300" bg="bg-orange-500/10" active={activeTab === 'license'} />
             <MenuIcon onClick={() => onNavigate('settings')} icon={<Settings size={22} />} label="Admin" color="text-slate-400" bg="bg-slate-800" active={activeTab === 'settings'} />
         </div>

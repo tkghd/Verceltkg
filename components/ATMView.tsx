@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { QrCode, Copy, CheckCircle, Camera, Receipt, ArrowRight, ShieldCheck, AlertTriangle, Calculator, RefreshCw, X, Banknote, Timer, MapPin, Smartphone } from 'lucide-react';
+import { QrCode, Copy, CheckCircle, Camera, Receipt, ArrowRight, ShieldCheck, AlertTriangle, Calculator, RefreshCw, X, Banknote, Timer, MapPin, Smartphone, Scan } from 'lucide-react';
 import { WalletState } from '../types';
 
 interface ATMViewProps {
@@ -145,7 +145,7 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
   if (scanStep === 'success' && txData) {
     return (
       <div className="h-full flex flex-col items-center justify-center p-4 anim-enter-bottom">
-         <div className="w-full max-w-sm bg-slate-950 border border-green-500/30 rounded-2xl p-8 shadow-[0_0_50px_rgba(34,197,94,0.1)] relative overflow-hidden">
+         <div className="w-full max-w-sm bg-slate-950 border border-green-500/30 rounded-3xl p-8 shadow-[0_0_50px_rgba(34,197,94,0.2)] relative overflow-hidden">
            {/* Success Header */}
            <div className="flex flex-col items-center mb-8">
               <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-4 ring-2 ring-green-500/50 shadow-[0_0_30px_rgba(34,197,94,0.4)] animate-pulse">
@@ -159,7 +159,7 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
            </div>
 
            {/* Receipt Card */}
-           <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 space-y-4 font-mono text-sm relative">
+           <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 space-y-4 font-mono text-sm relative backdrop-blur-md">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-slate-950 rounded-full border border-slate-800"></div>
               
               <div className="flex justify-between items-center pb-3 border-b border-dashed border-slate-700">
@@ -204,12 +204,12 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
   // --- RENDER: Processing State ---
   if (scanStep === 'processing') {
     return (
-      <div className="h-full flex flex-col items-center justify-center">
+      <div className="h-full flex flex-col items-center justify-center bg-[#05050a]">
         <div className="relative">
             <div className="w-24 h-24 border-4 border-slate-800 border-t-indigo-500 rounded-full animate-spin"></div>
             <div className="w-16 h-16 border-4 border-slate-800 border-b-purple-500 rounded-full animate-spin absolute top-4 left-4 direction-reverse"></div>
         </div>
-        <div className="font-mono text-indigo-400 animate-pulse mt-8 text-lg font-bold">PROCESSING TRANSACTION</div>
+        <div className="font-mono text-indigo-400 animate-pulse mt-8 text-lg font-bold tracking-widest">PROCESSING TRANSACTION</div>
         <div className="text-xs text-slate-500 mt-2 font-mono">Syncing with Global Vault (Rust Core)</div>
       </div>
     );
@@ -218,15 +218,15 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
   // --- RENDER: Manual Input State ---
   if (scanStep === 'manual') {
       return (
-          <div className="h-full p-6 anim-enter-bottom">
-              <div className="max-w-md mx-auto">
+          <div className="h-full p-6 anim-enter-bottom flex flex-col justify-center">
+              <div className="max-w-md mx-auto w-full">
                   <button onClick={() => setScanStep('camera')} className="mb-6 text-slate-400 hover:text-white flex items-center gap-2 transition-colors">
                       <X size={20} /> Cancel
                   </button>
                   <h2 className="text-2xl font-bold text-white mb-2">Manual Entry</h2>
                   <p className="text-sm text-slate-400 mb-8">Enter the 8-digit token ID from the ATM screen.</p>
 
-                  <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 mb-8">
+                  <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 mb-8 shadow-inner">
                       <input 
                         type="text" 
                         value={manualCode}
@@ -264,22 +264,22 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
   return (
     <div className="h-full flex flex-col space-y-4 anim-enter-right">
       {/* Mode Switcher */}
-      <div className="flex bg-slate-900 p-1.5 rounded-xl border border-slate-800 shrink-0 shadow-lg">
+      <div className="flex bg-slate-900 p-1.5 rounded-2xl border border-slate-800 shrink-0 shadow-lg">
         <button 
           onClick={() => setMode('scan')}
-          className={`flex-1 py-3 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-all ${mode === 'scan' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+          className={`flex-1 py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-all duration-300 ${mode === 'scan' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-900/20' : 'text-slate-500 hover:text-slate-300'}`}
         >
           <Camera size={18} /> SCAN
         </button>
         <button 
           onClick={() => { setMode('withdraw'); setWithdrawStep('input'); }}
-          className={`flex-1 py-3 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-all ${mode === 'withdraw' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+          className={`flex-1 py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-all duration-300 ${mode === 'withdraw' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-900/20' : 'text-slate-500 hover:text-slate-300'}`}
         >
           <Banknote size={18} /> ATM CASH OUT
         </button>
       </div>
 
-      <div className="flex-1 bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden relative shadow-2xl">
+      <div className="flex-1 bg-slate-950 border border-slate-800 rounded-3xl overflow-hidden relative shadow-2xl">
          {mode === 'scan' ? (
              <>
                 {/* Camera View */}
@@ -311,10 +311,12 @@ export const ATMView: React.FC<ATMViewProps> = ({ wallet }) => {
                       </div>
 
                       {/* Manual Trigger */}
-                      <div className="absolute bottom-10 w-full flex justify-center z-30 pointer-events-none">
+                      <div className="absolute bottom-10 w-full flex justify-center z-30 pointer-events-auto">
                          <div className="flex gap-4 pointer-events-auto">
-                            <button onClick={handleProcessTransaction} className="bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-400 border border-indigo-500/50 p-4 rounded-full backdrop-blur-md transition-all active:scale-95">
-                                <div className="w-12 h-12 bg-indigo-500 rounded-full shadow-[0_0_20px_rgba(79,70,229,0.6)]"></div>
+                            <button onClick={handleProcessTransaction} className="bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-400 border border-indigo-500/50 p-4 rounded-full backdrop-blur-md transition-all active:scale-95 group">
+                                <div className="w-16 h-16 bg-indigo-500 rounded-full shadow-[0_0_30px_rgba(79,70,229,0.6)] flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <Scan size={32} className="text-white" />
+                                </div>
                             </button>
                          </div>
                       </div>
