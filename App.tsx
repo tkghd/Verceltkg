@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Wallet, Send, QrCode, CreditCard, Settings, User, Globe, Wifi, Zap, Bot, Crown, Palette, BarChart2, Heart, Building, Scale, ClipboardList, FileText, Smartphone, Grid, X, Coins, Landmark, Menu } from 'lucide-react';
+import { Wallet, Send, QrCode, CreditCard, Settings, User, Globe, Wifi, Zap, Bot, Crown, Palette, BarChart2, Heart, Building, Scale, ClipboardList, FileText, Smartphone, Grid, X, Coins, Landmark, Menu, Rocket } from 'lucide-react';
 import { LoginScreen } from './components/LoginScreen';
 import { AssetsView } from './components/AssetsView';
 import { TransferView } from './components/TransferView';
@@ -14,13 +14,14 @@ import { SettingsView } from './components/SettingsView';
 import { Dashboard } from './components/Dashboard';
 import { ProdBadge } from './components/ProdBadge';
 import { RevenueCounter } from './components/RevenueCounter';
-import { ModuleLinker } from './components/ModuleLinker';
+import { ModuleView } from './components/ModuleView';
 import { AppMenu } from './components/AppMenu';
 import { NotificationSystem } from './components/NotificationSystem';
+import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { SystemModule, WalletState, QueueState, ActiveTab, OwnerAccount } from './types';
 import { INITIAL_MODULES, STARTUP_LOGS, INITIAL_WALLET, INITIAL_QUEUES, OWNER_ACCOUNTS } from './constants';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
   const [modules, setModules] = useState<SystemModule[]>(INITIAL_MODULES);
@@ -30,6 +31,7 @@ const App: React.FC = () => {
   const [queues, setQueues] = useState<QueueState>(INITIAL_QUEUES);
   const [ownerAccounts] = useState<OwnerAccount[]>(OWNER_ACCOUNTS);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -60,7 +62,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="flex h-screen flex-col bg-[#05050a] text-slate-100 font-sans overflow-hidden shadow-[inset_0_0_100px_rgba(6,182,212,0.1)]">
+    <div className="flex h-screen flex-col bg-[#05050a] text-slate-100 font-sans overflow-hidden shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]" style={{boxShadow: `inset 0 0 100px rgba(${theme.glow}, 0.1)`}}>
       
       {/* Real-time Notification Overlay */}
       <NotificationSystem />
@@ -69,8 +71,8 @@ const App: React.FC = () => {
       <header className="flex-none flex items-center justify-between bg-[#080812]/80 backdrop-blur-md px-5 py-4 z-30 border-b border-white/5 relative">
         <div className="flex items-center gap-3">
            <div className="relative group cursor-pointer" onClick={() => setActiveTab('settings')}>
-             <div className="absolute inset-0 bg-cyan-500 blur-md opacity-20 rounded-full animate-pulse"></div>
-             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-900 to-indigo-950 flex items-center justify-center text-lg text-cyan-400 border border-cyan-500/30 relative z-10 shadow-lg">
+             <div className={`absolute inset-0 bg-${theme.primary}-500 blur-md opacity-20 rounded-full animate-pulse`}></div>
+             <div className={`w-9 h-9 rounded-xl bg-gradient-to-tr from-${theme.primary}-900 to-${theme.secondary}-950 flex items-center justify-center text-lg text-${theme.primary}-400 border border-${theme.primary}-500/30 relative z-10 shadow-lg`}>
                💠
              </div>
            </div>
@@ -103,7 +105,7 @@ const App: React.FC = () => {
          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
          
          <div className="h-full overflow-y-auto custom-scrollbar p-4 pb-24 sm:p-6 sm:pb-6 scroll-smooth">
-            <div key={activeTab} className="max-w-7xl mx-auto anim-enter-right">
+            <div key={activeTab} className="max-w-7xl mx-auto anim-enter-right h-full">
                {activeTab === 'dashboard' && <Dashboard modules={modules} booted={true} wallet={wallet} queues={queues} onNavigate={handleTabChange} />}
                {activeTab === 'assets' && <AssetsView wallet={wallet} ownerAccounts={ownerAccounts} onNavigate={handleTabChange} />}
                {activeTab === 'transfer' && <TransferView wallet={wallet} ownerAccounts={ownerAccounts} />}
@@ -114,15 +116,16 @@ const App: React.FC = () => {
                {activeTab === 'corporate' && <CorporateView wallet={wallet} />}
                {activeTab === 'ai_hud' && <AIStudioHUD modules={modules} />}
                
-               {/* Modules */}
-               {activeTab === 'pwa' && <ModuleLinker modulePath="pwa" label="PWA Module" icon={<Smartphone size={48} />} />}
-               {activeTab === 'web' && <ModuleLinker modulePath="web" label="Web Module" icon={<Globe size={48} />} />}
-               {activeTab === 'uiux' && <ModuleLinker modulePath="uiux" label="UI/UX Module" icon={<Palette size={48} />} />}
-               {activeTab === 'health' && <ModuleLinker modulePath="health" label="Health Module" icon={<Heart size={48} />} />}
-               {activeTab === 'real' && <ModuleLinker modulePath="real" label="Real API Module" icon={<Building size={48} />} />}
-               {activeTab === 'compliance' && <ModuleLinker modulePath="compliance" label="Compliance Module" icon={<Scale size={48} />} />}
-               {activeTab === 'audit' && <ModuleLinker modulePath="audit" label="Audit Module" icon={<ClipboardList size={48} />} />}
-               {activeTab === 'license' && <ModuleLinker modulePath="license" label="License Module" icon={<FileText size={48} />} />}
+               {/* Generated UI Modules */}
+               {activeTab === 'pwa' && <ModuleView id="pwa" title="PWA Mobile Core" icon={<Smartphone size={24} />} variant="app" />}
+               {activeTab === 'web' && <ModuleView id="web" title="Web Platform Host" icon={<Globe size={24} />} variant="dev" />}
+               {activeTab === 'uiux' && <ModuleView id="uiux" title="Design System Studio" icon={<Palette size={24} />} variant="design" />}
+               {activeTab === 'health' && <ModuleView id="health" title="System Health Monitor" icon={<Heart size={24} />} variant="admin" />}
+               {activeTab === 'real' && <ModuleView id="real" title="Real-Time API Stream" icon={<Building size={24} />} variant="dev" />}
+               {activeTab === 'compliance' && <ModuleView id="compliance" title="Compliance Officer" icon={<Scale size={24} />} variant="admin" />}
+               {activeTab === 'audit' && <ModuleView id="audit" title="Audit Log Viewer" icon={<ClipboardList size={24} />} variant="admin" />}
+               {activeTab === 'license' && <ModuleView id="license" title="License Manager" icon={<FileText size={24} />} variant="admin" />}
+               {activeTab === 'prod_app' && <ModuleView id="prod" title="Production App (Consumer)" icon={<Rocket size={24} />} variant="app" />}
                
                {activeTab === 'settings' && (
                  <>
@@ -147,25 +150,43 @@ const App: React.FC = () => {
       <nav className="flex-none bg-[#080812]/90 backdrop-blur-xl border-t border-white/5 px-4 pb-safe z-40 relative">
         <div className="flex justify-between items-end h-[70px] max-w-7xl mx-auto pb-2 relative">
            
-           <NavButton active={activeTab === 'dashboard'} onClick={() => handleTabChange('dashboard')} icon={<Globe size={24} />} label="World" />
-           <NavButton active={activeTab === 'assets'} onClick={() => handleTabChange('assets')} icon={<Wallet size={24} />} label="Vault" />
+           <NavButton 
+                active={activeTab === 'dashboard'} 
+                onClick={() => handleTabChange('dashboard')} 
+                icon={<Globe size={24} />} 
+                label="World"
+                color={`text-${theme.primary}-400`} 
+           />
+           <NavButton 
+                active={activeTab === 'assets'} 
+                onClick={() => handleTabChange('assets')} 
+                icon={<Wallet size={24} />} 
+                label="Vault" 
+                color={`text-${theme.primary}-400`}
+           />
            
            {/* Center FAB */}
            <div className="relative -top-8 mx-2">
               <button 
                 onClick={() => handleTabChange('bank_services')}
-                className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white shadow-[0_10px_30px_rgba(6,182,212,0.4)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 border-[4px] border-[#05050a] group rotate-3 hover:rotate-0"
+                className={`w-16 h-16 rounded-2xl bg-gradient-to-tr ${theme.gradient} flex items-center justify-center text-white shadow-[0_10px_30px_rgba(${theme.glow},0.4)] hover:scale-105 hover:-translate-y-1 transition-all duration-300 border-[4px] border-[#05050a] group rotate-3 hover:rotate-0`}
               >
                 <Landmark size={28} className="group-hover:scale-110 transition-transform duration-300" />
               </button>
            </div>
            
-           <NavButton active={activeTab === 'ai_hud'} onClick={() => handleTabChange('ai_hud')} icon={<Bot size={24} />} label="AI HUD" />
+           <NavButton 
+                active={activeTab === 'ai_hud'} 
+                onClick={() => handleTabChange('ai_hud')} 
+                icon={<Bot size={24} />} 
+                label="AI HUD" 
+                color={`text-${theme.primary}-400`}
+           />
            
            {/* Apps Trigger */}
            <button 
              onClick={() => setIsMenuOpen(!isMenuOpen)}
-             className={`flex flex-col items-center justify-center gap-1 w-16 h-14 transition-all duration-300 active:scale-95 ${isMenuOpen ? 'text-cyan-400' : 'text-slate-500 hover:text-slate-300'}`}
+             className={`flex flex-col items-center justify-center gap-1 w-16 h-14 transition-all duration-300 active:scale-95 ${isMenuOpen ? `text-${theme.primary}-400` : 'text-slate-500 hover:text-slate-300'}`}
            >
               <div className={`p-1 transition-all duration-300 ${isMenuOpen ? 'scale-110' : ''}`}>
                  {isMenuOpen ? <X size={24} /> : <Grid size={24} />}
@@ -179,16 +200,22 @@ const App: React.FC = () => {
   );
 };
 
-const NavButton: React.FC<{ active: boolean; onClick: () => void; icon: React.ReactNode; label: string }> = ({ active, onClick, icon, label }) => (
+const NavButton: React.FC<{ active: boolean; onClick: () => void; icon: React.ReactNode; label: string; color: string }> = ({ active, onClick, icon, label, color }) => (
   <button 
     onClick={onClick}
-    className={`flex flex-col items-center justify-center gap-1 w-16 h-14 transition-all duration-300 active:scale-95 ${active ? 'text-cyan-400' : 'text-slate-500 hover:text-slate-300'}`}
+    className={`flex flex-col items-center justify-center gap-1 w-16 h-14 transition-all duration-300 active:scale-95 ${active ? color : 'text-slate-500 hover:text-slate-300'}`}
   >
-    <div className={`p-1 transition-all duration-300 ${active ? 'scale-110 drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]' : ''}`}>
+    <div className={`p-1 transition-all duration-300 ${active ? 'scale-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]' : ''}`}>
       {icon}
     </div>
     <span className="text-xs font-medium tracking-tight">{label}</span>
   </button>
+);
+
+const App = () => (
+  <ThemeProvider>
+    <AppContent />
+  </ThemeProvider>
 );
 
 export default App;

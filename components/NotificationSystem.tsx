@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import { ShieldAlert, Zap, Globe, Lock, Wallet, CheckCircle2, X } from 'lucide-react';
+import { ShieldAlert, Zap, Globe, Lock, Wallet, CheckCircle2, X, BellRing, Server } from 'lucide-react';
 
-export type NotificationType = 'security' | 'finance' | 'system' | 'success';
+export type NotificationType = 'security' | 'finance' | 'system' | 'success' | 'module';
 
 export interface Notification {
   id: string;
@@ -21,6 +21,7 @@ const SAMPLE_EVENTS: Omit<Notification, 'id' | 'timestamp'>[] = [
   { type: 'success', title: 'Asset Secured', message: 'Cold storage backup completed successfully' },
   { type: 'finance', title: 'Dividend Payout', message: 'TKG Staking rewards distributed' },
   { type: 'security', title: 'Encryption Rotation', message: 'Quantum keys updated for Vault #7' },
+  { type: 'module', title: 'Production App', message: 'New build deployed to global edge network.' },
 ];
 
 export const NotificationSystem: React.FC = () => {
@@ -34,12 +35,12 @@ export const NotificationSystem: React.FC = () => {
       timestamp: new Date(),
     };
 
-    setNotifications((prev) => [newNote, ...prev].slice(0, 4)); // Keep max 4 visible
+    setNotifications((prev) => [newNote, ...prev].slice(0, 3)); // Keep max 3 visible for subtlety
 
     // Auto dismiss
     setTimeout(() => {
       removeNotification(newNote.id);
-    }, 5000);
+    }, 6000);
   };
 
   const removeNotification = (id: string) => {
@@ -54,26 +55,27 @@ export const NotificationSystem: React.FC = () => {
     }, 1000);
 
     const interval = setInterval(() => {
-      // 30% chance to trigger an event every 4 seconds
-      if (Math.random() > 0.7) {
+      // 25% chance to trigger an event every 5 seconds
+      if (Math.random() > 0.75) {
         const randomEvent = SAMPLE_EVENTS[Math.floor(Math.random() * SAMPLE_EVENTS.length)];
         addNotification(randomEvent);
       }
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="fixed top-20 right-4 z-50 flex flex-col gap-3 w-80 pointer-events-none">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[60] flex flex-col gap-2 w-[90%] max-w-sm pointer-events-none">
       {notifications.map((note) => (
         <div 
           key={note.id}
-          className={`pointer-events-auto relative overflow-hidden rounded-xl border p-4 shadow-2xl backdrop-blur-md transition-all duration-500 animate-in slide-in-from-right-10 fade-in ${
-            note.type === 'security' ? 'bg-red-950/80 border-red-500/50 shadow-red-900/20' :
-            note.type === 'finance' ? 'bg-emerald-950/80 border-emerald-500/50 shadow-emerald-900/20' :
-            note.type === 'success' ? 'bg-indigo-950/80 border-indigo-500/50 shadow-indigo-900/20' :
-            'bg-slate-900/90 border-slate-700 shadow-slate-900/50'
+          className={`pointer-events-auto relative overflow-hidden rounded-xl border p-3 shadow-2xl backdrop-blur-md transition-all duration-500 animate-in slide-in-from-top-5 fade-in ${
+            note.type === 'security' ? 'bg-red-950/90 border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.3)]' :
+            note.type === 'finance' ? 'bg-emerald-950/90 border-emerald-500/50 shadow-[0_0_20px_rgba(16,185,129,0.3)]' :
+            note.type === 'success' ? 'bg-indigo-950/90 border-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.3)]' :
+            note.type === 'module' ? 'bg-amber-950/90 border-amber-500/50 shadow-[0_0_20px_rgba(245,158,11,0.3)]' :
+            'bg-slate-900/95 border-slate-700 shadow-slate-900/50'
           }`}
         >
             {/* Type Indicator Bar */}
@@ -81,35 +83,38 @@ export const NotificationSystem: React.FC = () => {
                note.type === 'security' ? 'bg-red-500' :
                note.type === 'finance' ? 'bg-emerald-500' :
                note.type === 'success' ? 'bg-indigo-500' :
+               note.type === 'module' ? 'bg-amber-500' :
                'bg-slate-500'
             }`}></div>
 
             <div className="flex justify-between items-start">
-                <div className="flex items-center gap-2 mb-1">
+                <div className="flex items-center gap-2 mb-0.5">
                     {note.type === 'security' && <ShieldAlert size={14} className="text-red-400 animate-pulse" />}
                     {note.type === 'finance' && <Zap size={14} className="text-emerald-400" />}
                     {note.type === 'success' && <CheckCircle2 size={14} className="text-indigo-400" />}
                     {note.type === 'system' && <Globe size={14} className="text-slate-400" />}
+                    {note.type === 'module' && <Server size={14} className="text-amber-400" />}
                     
-                    <span className={`text-xs font-bold uppercase tracking-wider ${
+                    <span className={`text-[10px] font-bold uppercase tracking-wider ${
                         note.type === 'security' ? 'text-red-400' :
                         note.type === 'finance' ? 'text-emerald-400' :
                         note.type === 'success' ? 'text-indigo-400' :
+                        note.type === 'module' ? 'text-amber-400' :
                         'text-slate-400'
                     }`}>
                         {note.title}
                     </span>
                 </div>
                 <button onClick={() => removeNotification(note.id)} className="text-slate-500 hover:text-white transition-colors">
-                    <X size={14} />
+                    <X size={12} />
                 </button>
             </div>
             
-            <p className="text-sm font-medium text-slate-200 pl-1 leading-snug">
+            <p className="text-xs font-medium text-slate-200 pl-1 leading-snug opacity-90">
                 {note.message}
             </p>
             
-            <div className="mt-2 text-[9px] text-slate-500 font-mono text-right pl-1">
+            <div className="mt-1.5 text-[8px] text-slate-500 font-mono text-right pl-1">
                 {note.timestamp.toLocaleTimeString()} • GOD_NET
             </div>
         </div>

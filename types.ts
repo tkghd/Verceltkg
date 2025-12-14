@@ -1,6 +1,6 @@
 
 export type ServiceStatus = 'offline' | 'booting' | 'online' | 'error';
-export type ActiveTab = 'assets' | 'transfer' | 'atm' | 'card' | 'crypto' | 'bank_services' | 'corporate' | 'ai_hud' | 'settings' | 'pwa' | 'web' | 'uiux' | 'dashboard' | 'health' | 'real' | 'compliance' | 'audit' | 'license';
+export type ActiveTab = 'assets' | 'transfer' | 'atm' | 'card' | 'crypto' | 'bank_services' | 'corporate' | 'ai_hud' | 'settings' | 'pwa' | 'web' | 'uiux' | 'dashboard' | 'health' | 'real' | 'compliance' | 'audit' | 'license' | 'prod_app';
 
 export interface SystemModule {
   id: string;

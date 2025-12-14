@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { Settings, Server, Database, Terminal, Shield, Cpu, Play, FileCode, Lock, RotateCw, Globe, Copy, ExternalLink, Zap, Box, Gauge, Activity, Radio, Command, Heart, Eye, Gem, Hammer, RefreshCw, Network, Scan, Fingerprint, Smartphone, CheckCircle2 } from 'lucide-react';
+import { Settings, Server, Database, Terminal, Shield, Cpu, Play, FileCode, Lock, RotateCw, Globe, Copy, ExternalLink, Zap, Box, Gauge, Activity, Radio, Command, Heart, Eye, Gem, Hammer, RefreshCw, Network, Scan, Fingerprint, Smartphone, CheckCircle2, Palette } from 'lucide-react';
 import { SystemModule, QueueState } from '../types';
 import { LogConsole } from './LogConsole';
 import { BusinessChecklist } from './BusinessChecklist';
+import { useTheme, ThemeName } from './ThemeContext';
 
 interface SettingsViewProps {
   modules: SystemModule[];
@@ -19,6 +20,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
       biometric: true,
       behavioral: true
   });
+  const { theme, setThemeName, themes } = useTheme();
 
   // Force ultra-low latency
   useEffect(() => {
@@ -35,8 +37,31 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
   return (
     <div className="space-y-8 animate-in fade-in duration-500 pb-20">
       <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-        <Settings className="text-indigo-500" /> System Control Center
+        <Settings className={`text-${theme.secondary}-500`} /> System Control Center
       </h2>
+
+      {/* UI THEME SELECTOR */}
+      <section>
+         <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2 mb-4">
+             <Palette size={16} /> UI Theme Matrix
+         </h3>
+         <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 relative overflow-hidden">
+             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                 {(Object.keys(themes) as ThemeName[]).map((t) => (
+                     <button
+                        key={t}
+                        onClick={() => setThemeName(t)}
+                        className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all active:scale-95 hover:bg-slate-800 ${theme.name === t ? `border-${themes[t].primary}-500 bg-${themes[t].primary}-900/20` : 'border-slate-800 bg-slate-950'}`}
+                     >
+                         <div className={`w-8 h-8 rounded-full mb-2 bg-gradient-to-br ${themes[t].gradient} shadow-lg`}></div>
+                         <span className={`text-xs font-bold uppercase tracking-wider ${theme.name === t ? 'text-white' : 'text-slate-500'}`}>
+                             {t}
+                         </span>
+                     </button>
+                 ))}
+             </div>
+         </div>
+      </section>
 
       {/* Production Access - MOVED TO TOP & ACTIVATED */}
       <section>
@@ -73,7 +98,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
                   {/* Toggle 1 */}
                   <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                          <div className={`p-3 rounded-xl ${securityConfig.quantum ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-800 text-slate-500'}`}>
+                          <div className={`p-3 rounded-xl ${securityConfig.quantum ? `bg-${theme.secondary}-500/20 text-${theme.secondary}-400` : 'bg-slate-800 text-slate-500'}`}>
                               <Lock size={20} />
                           </div>
                           <div>
@@ -83,7 +108,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
                       </div>
                       <button 
                         onClick={() => toggleSecurity('quantum')} 
-                        className={`w-12 h-6 rounded-full p-1 transition-colors ${securityConfig.quantum ? 'bg-indigo-500' : 'bg-slate-700'}`}
+                        className={`w-12 h-6 rounded-full p-1 transition-colors ${securityConfig.quantum ? `bg-${theme.secondary}-500` : 'bg-slate-700'}`}
                       >
                           <div className={`w-4 h-4 bg-white rounded-full transition-transform ${securityConfig.quantum ? 'translate-x-6' : 'translate-x-0'}`}></div>
                       </button>
@@ -92,7 +117,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
                   {/* Toggle 2 */}
                   <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                          <div className={`p-3 rounded-xl ${securityConfig.biometric ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-800 text-slate-500'}`}>
+                          <div className={`p-3 rounded-xl ${securityConfig.biometric ? `bg-${theme.secondary}-500/20 text-${theme.secondary}-400` : 'bg-slate-800 text-slate-500'}`}>
                               <Fingerprint size={20} />
                           </div>
                           <div>
@@ -102,7 +127,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
                       </div>
                       <button 
                         onClick={() => toggleSecurity('biometric')} 
-                        className={`w-12 h-6 rounded-full p-1 transition-colors ${securityConfig.biometric ? 'bg-indigo-500' : 'bg-slate-700'}`}
+                        className={`w-12 h-6 rounded-full p-1 transition-colors ${securityConfig.biometric ? `bg-${theme.secondary}-500` : 'bg-slate-700'}`}
                       >
                           <div className={`w-4 h-4 bg-white rounded-full transition-transform ${securityConfig.biometric ? 'translate-x-6' : 'translate-x-0'}`}></div>
                       </button>
@@ -111,7 +136,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
                   {/* Toggle 3 */}
                   <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                          <div className={`p-3 rounded-xl ${securityConfig.behavioral ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-800 text-slate-500'}`}>
+                          <div className={`p-3 rounded-xl ${securityConfig.behavioral ? `bg-${theme.secondary}-500/20 text-${theme.secondary}-400` : 'bg-slate-800 text-slate-500'}`}>
                               <Activity size={20} />
                           </div>
                           <div>
@@ -121,7 +146,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
                       </div>
                       <button 
                         onClick={() => toggleSecurity('behavioral')} 
-                        className={`w-12 h-6 rounded-full p-1 transition-colors ${securityConfig.behavioral ? 'bg-indigo-500' : 'bg-slate-700'}`}
+                        className={`w-12 h-6 rounded-full p-1 transition-colors ${securityConfig.behavioral ? `bg-${theme.secondary}-500` : 'bg-slate-700'}`}
                       >
                           <div className={`w-4 h-4 bg-white rounded-full transition-transform ${securityConfig.behavioral ? 'translate-x-6' : 'translate-x-0'}`}></div>
                       </button>
@@ -186,37 +211,21 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
         <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2 mb-4">
             <Network size={16} /> Global Infinity Mesh
         </h3>
-        <div className="bg-slate-900/50 border border-indigo-500/20 rounded-xl p-5 relative overflow-hidden">
+        <div className={`bg-slate-900/50 border border-${theme.secondary}-500/20 rounded-xl p-5 relative overflow-hidden`}>
              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
                  <Globe size={120} />
              </div>
              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
-                 <GlobalNodeCard region="EU1" name="London Prime" latency="0.04ms" status="synced" />
-                 <GlobalNodeCard region="US1" name="NYC Core" latency="0.08ms" status="synced" />
-                 <GlobalNodeCard region="SG1" name="Singapore Hub" latency="0.02ms" status="synced" />
-                 <GlobalNodeCard region="UAE1" name="Dubai Vault" latency="0.05ms" status="synced" />
+                 <GlobalNodeCard region="EU1" name="London Prime" latency="0.04ms" status="synced" theme={theme.secondary} />
+                 <GlobalNodeCard region="US1" name="NYC Core" latency="0.08ms" status="synced" theme={theme.secondary} />
+                 <GlobalNodeCard region="SG1" name="Singapore Hub" latency="0.02ms" status="synced" theme={theme.secondary} />
+                 <GlobalNodeCard region="UAE1" name="Dubai Vault" latency="0.05ms" status="synced" theme={theme.secondary} />
              </div>
-             <div className="mt-4 flex items-center gap-2 text-[10px] text-indigo-400 font-mono">
-                 <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse"></div>
+             <div className={`mt-4 flex items-center gap-2 text-[10px] text-${theme.secondary}-400 font-mono`}>
+                 <div className={`w-1.5 h-1.5 bg-${theme.secondary}-500 rounded-full animate-pulse`}></div>
                  ∞ BOOST CORE: ACTIVE • GLOBAL LOAD BALANCING ENABLED
              </div>
         </div>
-      </section>
-
-      {/* ONE-LINER DEPLOY STATUS */}
-      <section>
-         <div className="bg-black border border-slate-800 rounded-xl p-4 font-mono text-xs shadow-lg relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-2 opacity-50">
-               <Command size={24} className="text-slate-600" />
-            </div>
-            <div className="text-slate-500 mb-2">root@godmode:~$ <span className="text-green-400">./deploy_godmode_ultimate.sh --force --cheat-engine --production</span></div>
-            <div className="space-y-1 pl-4 border-l-2 border-slate-800">
-               <div className="text-green-600">>> EXECUTION STARTED [IMMEDIATE]</div>
-               <div className="text-green-600">>> RUST KERNEL: OPTIMIZED</div>
-               <div className="text-green-600">>> SECURITY GATES: OPEN</div>
-               <div className="text-amber-400 font-bold">>> DEPLOYMENT FINALIZED. SYSTEM IS LIVE.</div>
-            </div>
-         </div>
       </section>
 
       {/* RUST KERNEL DIAGNOSTICS */}
@@ -231,41 +240,9 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
          </div>
          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
              <MetricCard label="Core Latency" value={`${latency.toFixed(2)}ms`} color="text-green-400" icon={<Activity size={16} />} />
-             <MetricCard label="Throughput" value="∞ TPS" color="text-indigo-400" icon={<Gauge size={16} />} />
-             <MetricCard label="Uptime" value="100.000%" color="text-purple-400" icon={<Server size={16} />} />
+             <MetricCard label="Throughput" value="∞ TPS" color={`text-${theme.secondary}-400`} icon={<Gauge size={16} />} />
+             <MetricCard label="Uptime" value="100.000%" color={`text-${theme.accent}-400`} icon={<Server size={16} />} />
              <MetricCard label="Security" value="GODMODE" color="text-amber-400" icon={<Shield size={16} />} />
-         </div>
-      </section>
-
-      {/* Embedded Godmode Dashboard */}
-      <section>
-         <div className="bg-slate-950 border border-slate-800 rounded-xl p-5 shadow-inner">
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {modules.map(m => (
-                   <div key={m.id} className="flex justify-between items-center p-3 bg-slate-900/50 rounded-lg border border-slate-800 hover:border-slate-700 transition-colors">
-                      <div className="flex items-center gap-3">
-                         <div className={`relative w-2.5 h-2.5 flex items-center justify-center`}>
-                             {m.status === 'online' && <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>}
-                             <div className={`relative w-2 h-2 rounded-full ${m.status === 'online' ? 'bg-green-500' : m.status === 'booting' ? 'bg-yellow-500' : 'bg-red-500'}`}></div>
-                         </div>
-                         <span className="text-xs font-bold text-slate-300 font-mono">{m.name}</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <span className={`text-[10px] font-mono font-bold ${m.status === 'online' ? 'text-green-500' : 'text-indigo-500'}`}>{m.status.toUpperCase()}</span>
-                        {onRestart && (
-                          <button 
-                            onClick={() => onRestart(m.id)}
-                            disabled={true}
-                            className="p-1.5 bg-slate-800 text-slate-600 rounded cursor-not-allowed opacity-50"
-                            title="Restart Locked (Production)"
-                          >
-                            <RotateCw size={12} />
-                          </button>
-                        )}
-                      </div>
-                   </div>
-                ))}
-             </div>
          </div>
       </section>
 
@@ -331,10 +308,10 @@ const ElementCard: React.FC<{ icon: React.ReactNode; label: string; desc: string
     </div>
 );
 
-const GlobalNodeCard: React.FC<{ region: string; name: string; latency: string; status: 'synced' | 'syncing' | 'offline' }> = ({ region, name, latency, status }) => (
-    <div className="bg-black/30 border border-slate-800 rounded-lg p-3 hover:border-indigo-500/30 transition-colors">
+const GlobalNodeCard: React.FC<{ region: string; name: string; latency: string; status: 'synced' | 'syncing' | 'offline'; theme: string }> = ({ region, name, latency, status, theme }) => (
+    <div className={`bg-black/30 border border-slate-800 rounded-lg p-3 hover:border-${theme}-500/30 transition-colors`}>
         <div className="flex justify-between items-start mb-2">
-            <span className="text-[10px] font-bold text-indigo-400 bg-indigo-900/20 px-1.5 py-0.5 rounded">{region}</span>
+            <span className={`text-[10px] font-bold text-${theme}-400 bg-${theme}-900/20 px-1.5 py-0.5 rounded`}>{region}</span>
             <div className={`w-1.5 h-1.5 rounded-full ${status === 'synced' ? 'bg-green-500 shadow-[0_0_5px_rgba(34,197,94,0.6)] animate-pulse' : 'bg-slate-600'}`}></div>
         </div>
         <div className="text-xs font-bold text-white mb-0.5">{name}</div>

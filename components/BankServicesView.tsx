@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { Landmark, Globe, CreditCard, Plus, ArrowRight, ShieldCheck, Banknote, Building2, CheckCircle2, AlertCircle, RefreshCw, Zap, Cpu, Scan, ArrowDownToLine, Settings, Copy, Activity, Server, Radio, Network, Database, Save, Trash2, Hash, FileText } from 'lucide-react';
+import { Landmark, Globe, CreditCard, Plus, ArrowRight, ShieldCheck, Banknote, Building2, CheckCircle2, AlertCircle, RefreshCw, Zap, Cpu, Scan, ArrowDownToLine, Settings, Copy, Activity, Server, Radio, Network, Database, Save, Trash2, Hash, FileText, BookOpen } from 'lucide-react';
 import { ActiveTab } from '../types';
 
-type ServiceTab = 'accounts' | 'transfer_intl' | 'loans' | 'admin_registry';
+type ServiceTab = 'accounts' | 'transfer_intl' | 'loans' | 'admin_registry' | 'directory';
 
 interface BankServicesViewProps {
   onNavigate: (tab: ActiveTab) => void;
@@ -146,6 +146,9 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
       code: '', name: '', flag: '🏳️', currency: '', swift: 'TKGB', format: '', desc: ''
   });
 
+  // Directory Filter State
+  const [filterCountry, setFilterCountry] = useState<string>('ALL');
+
   const simulateAiAction = (action: string) => {
     setAiAction(action);
     setTimeout(() => setAiAction(''), 3000);
@@ -220,6 +223,10 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
     }, 1500);
   };
 
+  const filteredBanks = filterCountry === 'ALL' 
+    ? bankList 
+    : bankList.filter(b => b.name === filterCountry);
+
   return (
     <div className="space-y-6 pb-20 animate-in fade-in duration-500">
       <div className="flex justify-between items-center mb-4">
@@ -233,6 +240,7 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
             <TabButton active={activeTab === 'accounts'} onClick={() => setActiveTab('accounts')} label="Accounts" icon={<Plus size={14} />} />
             <TabButton active={activeTab === 'transfer_intl'} onClick={() => setActiveTab('transfer_intl')} label="Intl. Wire" icon={<Globe size={14} />} />
             <TabButton active={activeTab === 'loans'} onClick={() => setActiveTab('loans')} label="Lending" icon={<Banknote size={14} />} />
+            <TabButton active={activeTab === 'directory'} onClick={() => setActiveTab('directory')} label="Directory" icon={<BookOpen size={14} />} />
             <TabButton active={activeTab === 'admin_registry'} onClick={() => setActiveTab('admin_registry')} label="Registry" icon={<Database size={14} />} />
         </div>
       </div>
@@ -542,6 +550,55 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
                           <div className="text-xs text-green-400">Active</div>
                       </div>
                   </div>
+              </div>
+          </div>
+      )}
+
+      {activeTab === 'directory' && (
+          <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 anim-enter-right">
+              <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-400 border border-blue-500/20">
+                      <BookOpen size={24} />
+                  </div>
+                  <div>
+                      <h3 className="text-lg font-bold text-white">Global Bank Directory</h3>
+                      <p className="text-xs text-slate-400">Reference list of supported banking entities</p>
+                  </div>
+              </div>
+
+              <div className="mb-6">
+                  <label className="text-xs font-bold text-slate-400 mb-2 block">Filter by Country</label>
+                  <select
+                      className="w-full bg-black/40 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+                      value={filterCountry}
+                      onChange={(e) => setFilterCountry(e.target.value)}
+                  >
+                      <option value="ALL">All Countries</option>
+                      {Array.from(new Set(bankList.map(b => b.name))).sort().map(countryName => (
+                          <option key={countryName} value={countryName}>{countryName}</option>
+                      ))}
+                  </select>
+              </div>
+
+              <div className="space-y-3">
+                  {filteredBanks.map((bank) => (
+                      <div key={bank.code} className="flex items-center justify-between p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-600 transition-colors">
+                          <div className="flex items-center gap-4">
+                              <div className="text-2xl">{bank.flag}</div>
+                              <div>
+                                  <div className="text-sm font-bold text-white">{bank.name}</div>
+                                  <div className="text-xs text-slate-500">{bank.desc}</div>
+                              </div>
+                          </div>
+                          <div className="text-right">
+                              <div className="text-sm font-mono font-bold text-blue-400">{bank.swift}</div>
+                              <div className="text-xs text-slate-500 font-mono">{bank.currency}</div>
+                          </div>
+                      </div>
+                  ))}
+                  {filteredBanks.length === 0 && (
+                      <div className="text-center py-8 text-slate-500 text-sm">No banks found for this filter.</div>
+                  )}
               </div>
           </div>
       )}

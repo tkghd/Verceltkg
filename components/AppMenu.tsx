@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Smartphone, Globe, Palette, BarChart2, Heart, Building, Scale, ClipboardList, FileText, CreditCard, Settings, Coins, Wallet, Briefcase, Send, Banknote } from 'lucide-react';
+import { Smartphone, Globe, Palette, BarChart2, Heart, Building, Scale, ClipboardList, FileText, CreditCard, Settings, Coins, Wallet, Briefcase, Send, Banknote, Rocket } from 'lucide-react';
 import { ActiveTab } from '../types';
+import { useTheme } from './ThemeContext';
 
 interface AppMenuProps {
   isOpen: boolean;
@@ -11,6 +12,8 @@ interface AppMenuProps {
 }
 
 export const AppMenu: React.FC<AppMenuProps> = ({ isOpen, onClose, activeTab, onNavigate }) => {
+  const { theme } = useTheme();
+
   return (
     <>
       {/* Backdrop */}
@@ -24,7 +27,7 @@ export const AppMenu: React.FC<AppMenuProps> = ({ isOpen, onClose, activeTab, on
         
         <div className="flex justify-between items-center mb-6">
             <h3 className="text-white font-bold text-lg flex items-center gap-2">
-               <span className="w-1 h-6 bg-gradient-to-b from-cyan-500 to-indigo-600 rounded-full"></span>
+               <span className={`w-1 h-6 bg-gradient-to-b from-${theme.primary}-500 to-${theme.secondary}-600 rounded-full`}></span>
                System Modules
             </h3>
             <span className="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded border border-slate-700">
@@ -33,10 +36,10 @@ export const AppMenu: React.FC<AppMenuProps> = ({ isOpen, onClose, activeTab, on
         </div>
 
         <div className="grid grid-cols-4 sm:grid-cols-5 gap-3 sm:gap-4">
-            <MenuIcon onClick={() => onNavigate('corporate')} icon={<Briefcase size={22} />} label="Corp." color="text-indigo-400" bg="bg-indigo-500/10" active={activeTab === 'corporate'} />
-            <MenuIcon onClick={() => onNavigate('transfer')} icon={<Send size={22} />} label="Send" color="text-cyan-400" bg="bg-cyan-500/10" active={activeTab === 'transfer'} />
+            <MenuIcon onClick={() => onNavigate('corporate')} icon={<Briefcase size={22} />} label="Corp." color={`text-${theme.secondary}-400`} bg={`bg-${theme.secondary}-500/10`} active={activeTab === 'corporate'} />
+            <MenuIcon onClick={() => onNavigate('transfer')} icon={<Send size={22} />} label="Send" color={`text-${theme.primary}-400`} bg={`bg-${theme.primary}-500/10`} active={activeTab === 'transfer'} />
             <MenuIcon onClick={() => onNavigate('atm')} icon={<Banknote size={22} />} label="ATM" color="text-emerald-400" bg="bg-emerald-500/10" active={activeTab === 'atm'} />
-            <MenuIcon onClick={() => onNavigate('card')} icon={<CreditCard size={22} />} label="Cards" color="text-violet-400" bg="bg-violet-500/10" active={activeTab === 'card'} />
+            <MenuIcon onClick={() => onNavigate('card')} icon={<CreditCard size={22} />} label="Cards" color={`text-${theme.accent}-400`} bg={`bg-${theme.accent}-500/10`} active={activeTab === 'card'} />
             <MenuIcon onClick={() => onNavigate('crypto')} icon={<Coins size={22} />} label="Crypto" color="text-amber-400" bg="bg-amber-500/10" active={activeTab === 'crypto'} />
             
             <MenuIcon onClick={() => onNavigate('pwa')} icon={<Smartphone size={22} />} label="PWA" color="text-blue-400" bg="bg-blue-500/10" active={activeTab === 'pwa'} />
@@ -47,8 +50,11 @@ export const AppMenu: React.FC<AppMenuProps> = ({ isOpen, onClose, activeTab, on
             
             <MenuIcon onClick={() => onNavigate('real')} icon={<Building size={22} />} label="Real API" color="text-emerald-400" bg="bg-emerald-500/10" active={activeTab === 'real'} />
             <MenuIcon onClick={() => onNavigate('compliance')} icon={<Scale size={22} />} label="Legal" color="text-slate-300" bg="bg-slate-500/10" active={activeTab === 'compliance'} />
-            <MenuIcon onClick={() => onNavigate('audit')} icon={<ClipboardList size={22} />} label="Audit" color="text-indigo-300" bg="bg-indigo-500/10" active={activeTab === 'audit'} />
+            <MenuIcon onClick={() => onNavigate('audit')} icon={<ClipboardList size={22} />} label="Audit" color={`text-${theme.secondary}-300`} bg={`bg-${theme.secondary}-500/10`} active={activeTab === 'audit'} />
             <MenuIcon onClick={() => onNavigate('license')} icon={<FileText size={22} />} label="License" color="text-orange-300" bg="bg-orange-500/10" active={activeTab === 'license'} />
+            
+            <MenuIcon onClick={() => onNavigate('prod_app')} icon={<Rocket size={22} />} label="本番アプリ" color="text-red-500" bg="bg-red-500/10" active={activeTab === 'prod_app'} />
+            
             <MenuIcon onClick={() => onNavigate('settings')} icon={<Settings size={22} />} label="Admin" color="text-slate-400" bg="bg-slate-800" active={activeTab === 'settings'} />
         </div>
 
@@ -59,14 +65,17 @@ export const AppMenu: React.FC<AppMenuProps> = ({ isOpen, onClose, activeTab, on
   );
 };
 
-const MenuIcon: React.FC<{ onClick: () => void; icon: React.ReactNode; label: string; color: string; bg: string; active?: boolean }> = ({ onClick, icon, label, color, bg, active }) => (
-    <button 
-        onClick={onClick}
-        className={`flex flex-col items-center justify-center gap-2 p-3 rounded-2xl transition-all duration-200 active:scale-95 group ${active ? 'bg-white/10 ring-1 ring-white/20' : 'hover:bg-white/5'}`}
-    >
-        <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-lg transition-transform group-hover:scale-105 ${bg} ${color} ${active ? 'ring-2 ring-cyan-500/50 shadow-cyan-500/20' : ''}`}>
-            {icon}
-        </div>
-        <span className={`text-[10px] font-medium tracking-wide ${active ? 'text-white' : 'text-slate-400'}`}>{label}</span>
-    </button>
-);
+const MenuIcon: React.FC<{ onClick: () => void; icon: React.ReactNode; label: string; color: string; bg: string; active?: boolean }> = ({ onClick, icon, label, color, bg, active }) => {
+    const { theme } = useTheme();
+    return (
+        <button 
+            onClick={onClick}
+            className={`flex flex-col items-center justify-center gap-2 p-3 rounded-2xl transition-all duration-200 active:scale-95 group ${active ? 'bg-white/10 ring-1 ring-white/20' : 'hover:bg-white/5'}`}
+        >
+            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-lg transition-transform group-hover:scale-105 ${bg} ${color} ${active ? `ring-2 ring-${theme.primary}-500/50 shadow-${theme.primary}-500/20` : ''}`}>
+                {icon}
+            </div>
+            <span className={`text-[10px] font-medium tracking-wide ${active ? 'text-white' : 'text-slate-400'}`}>{label}</span>
+        </button>
+    );
+};
