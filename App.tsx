@@ -34,7 +34,8 @@ const LoadingFallback = () => (
 );
 
 // Determine API Base URL: Relative for production (same origin), localhost for dev
-const API_BASE = import.meta.env.PROD ? '' : 'http://localhost:3100';
+// Safely access import.meta.env to prevent runtime errors
+const API_BASE = (import.meta as any).env?.PROD ? '' : 'http://localhost:3100';
 
 const AppContent: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
