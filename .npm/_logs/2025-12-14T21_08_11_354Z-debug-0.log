@@ -1,0 +1,993 @@
+0 verbose cli /usr/bin/node /usr/bin/npm
+1 info using npm@10.8.2
+2 info using node@v20.19.6
+3 silly config load:file:/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/home/tkg_h30_2018/.npmrc
+5 silly config load:file:/usr/etc/npmrc
+6 verbose title npm ci
+7 verbose argv "ci"
+8 verbose logfile logs-max:10 dir:/home/tkg_h30_2018/.npm/_logs/2025-12-14T21_08_11_354Z-
+9 verbose logfile /home/tkg_h30_2018/.npm/_logs/2025-12-14T21_08_11_354Z-debug-0.log
+10 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+11 silly logfile start cleaning logs, removing 1 files
+12 silly logfile done cleaning log files
+13 silly idealTree buildDeps
+14 silly reify moves {}
+15 silly audit bulk request {
+15 silly audit   '@adraffy/ens-normalize': [ '1.11.1' ],
+15 silly audit   '@babel/runtime': [ '7.28.4' ],
+15 silly audit   '@cspotcode/source-map-support': [ '0.8.1' ],
+15 silly audit   '@ecies/ciphers': [ '0.2.5' ],
+15 silly audit   '@edge-runtime/format': [ '2.2.1' ],
+15 silly audit   '@edge-runtime/node-utils': [ '2.3.0' ],
+15 silly audit   '@edge-runtime/ponyfill': [ '2.4.2' ],
+15 silly audit   '@edge-runtime/primitives': [ '4.1.0' ],
+15 silly audit   '@edge-runtime/vm': [ '3.2.0' ],
+15 silly audit   '@ethereumjs/common': [ '3.2.0' ],
+15 silly audit   '@ethereumjs/rlp': [ '4.0.1', '5.0.2' ],
+15 silly audit   '@ethereumjs/tx': [ '4.2.0' ],
+15 silly audit   '@ethereumjs/util': [ '8.1.0' ],
+15 silly audit   '@fastify/busboy': [ '2.1.1' ],
+15 silly audit   '@isaacs/cliui': [ '8.0.2' ],
+15 silly audit   '@isaacs/fs-minipass': [ '4.0.1' ],
+15 silly audit   '@jridgewell/resolve-uri': [ '3.1.2' ],
+15 silly audit   '@jridgewell/sourcemap-codec': [ '1.5.5' ],
+15 silly audit   '@jridgewell/trace-mapping': [ '0.3.9' ],
+15 silly audit   '@mapbox/node-pre-gyp': [ '2.0.3' ],
+15 silly audit   chownr: [ '3.0.0', '2.0.0' ],
+15 silly audit   minizlib: [ '3.1.0', '2.1.2' ],
+15 silly audit   tar: [ '7.5.2', '6.2.1' ],
+15 silly audit   yallist: [ '5.0.0', '4.0.0' ],
+15 silly audit   '@metamask/json-rpc-engine': [ '8.0.2' ],
+15 silly audit   '@metamask/json-rpc-middleware-stream': [ '7.0.2' ],
+15 silly audit   '@metamask/object-multiplex': [ '2.1.0' ],
+15 silly audit   '@metamask/onboarding': [ '1.0.1' ],
+15 silly audit   '@metamask/providers': [ '16.1.0' ],
+15 silly audit   '@metamask/rpc-errors': [ '6.4.0' ],
+15 silly audit   '@metamask/utils': [ '9.3.0', '8.5.0' ],
+15 silly audit   uuid: [ '9.0.1', '8.3.2' ],
+15 silly audit   '@metamask/safe-event-emitter': [ '3.1.2' ],
+15 silly audit   '@metamask/sdk': [ '0.33.1' ],
+15 silly audit   '@metamask/sdk-analytics': [ '0.0.5' ],
+15 silly audit   '@metamask/sdk-communication-layer': [ '0.33.1' ],
+15 silly audit   '@metamask/sdk-install-modal-web': [ '0.32.1' ],
+15 silly audit   '@metamask/superstruct': [ '3.2.1' ],
+15 silly audit   '@noble/ciphers': [ '1.3.0' ],
+15 silly audit   '@noble/curves': [ '1.9.7', '1.4.2', '1.9.1' ],
+15 silly audit   '@noble/hashes': [ '1.8.0', '1.4.0' ],
+15 silly audit   '@nodelib/fs.scandir': [ '2.1.5' ],
+15 silly audit   '@nodelib/fs.stat': [ '2.0.5' ],
+15 silly audit   '@nodelib/fs.walk': [ '1.2.8' ],
+15 silly audit   '@paulmillr/qr': [ '0.2.1' ],
+15 silly audit   '@pkgjs/parseargs': [ '0.11.0' ],
+15 silly audit   '@rollup/pluginutils': [ '5.3.0' ],
+15 silly audit   '@scure/base': [ '1.2.6', '1.1.9' ],
+15 silly audit   '@scure/bip32': [ '1.4.0', '1.7.0' ],
+15 silly audit   '@scure/bip39': [ '1.3.0', '1.6.0' ],
+15 silly audit   '@sinclair/typebox': [ '0.25.24' ],
+15 silly audit   '@socket.io/component-emitter': [ '3.1.2' ],
+15 silly audit   '@tanstack/query-core': [ '5.90.12' ],
+15 silly audit   '@tanstack/react-query': [ '5.90.12' ],
+15 silly audit   '@tootallnate/once': [ '2.0.0' ],
+15 silly audit   '@ts-morph/common': [ '0.11.1' ],
+15 silly audit   'brace-expansion': [ '1.1.12', '2.0.2' ],
+15 silly audit   minimatch: [ '3.1.2', '9.0.5' ],
+15 silly audit   '@tsconfig/node10': [ '1.0.12' ],
+15 silly audit   '@tsconfig/node12': [ '1.0.11' ],
+15 silly audit   '@tsconfig/node14': [ '1.0.3' ],
+15 silly audit   '@tsconfig/node16': [ '1.0.4' ],
+15 silly audit   '@types/debug': [ '4.1.12' ],
+15 silly audit   '@types/estree': [ '1.0.8' ],
+15 silly audit   '@types/json-schema': [ '7.0.15' ],
+15 silly audit   '@types/ms': [ '2.1.0' ],
+15 silly audit   '@types/node': [ '16.18.11' ],
+15 silly audit   '@types/ws': [ '8.5.3' ],
+15 silly audit   '@vercel/build-utils': [ '10.5.1' ],
+15 silly audit   '@vercel/error-utils': [ '2.0.3' ],
+15 silly audit   '@vercel/fun': [ '1.1.6' ],
+15 silly audit   'lru-cache': [ '6.0.0', '10.4.3' ],
+15 silly audit   ms: [ '2.1.1', '2.0.0', '2.1.2', '2.1.3' ],
+15 silly audit   'node-fetch': [ '2.6.7', '2.6.9', '2.7.0' ],
+15 silly audit   semver: [ '7.5.4', '6.3.1', '7.7.3' ],
+15 silly audit   '@vercel/gatsby-plugin-vercel-analytics': [ '1.0.11' ],
+15 silly audit   '@vercel/gatsby-plugin-vercel-builder': [ '2.0.81' ],
+15 silly audit   '@vercel/go': [ '3.2.1' ],
+15 silly audit   '@vercel/hydrogen': [ '1.2.0' ],
+15 silly audit   '@vercel/next': [ '4.7.11' ],
+15 silly audit   '@vercel/nft': [ '0.29.2' ],
+15 silly audit   '@vercel/node': [ '5.1.16' ],
+15 silly audit   'async-listen': [ '3.0.0', '1.2.0', '3.0.1' ],
+15 silly audit   'path-to-regexp': [ '6.1.0', '1.9.0', '0.1.12', '6.3.0' ],
+15 silly audit   typescript: [ '4.9.5', '5.9.3' ],
+15 silly audit   '@vercel/python': [ '4.7.2' ],
+15 silly audit   '@vercel/redwood': [ '2.3.1' ],
+15 silly audit   '@vercel/remix-builder': [ '5.4.6' ],
+15 silly audit   '@vercel/ruby': [ '2.2.0' ],
+15 silly audit   '@vercel/static-build': [ '2.7.7' ],
+15 silly audit   '@vercel/static-config': [ '3.0.0' ],
+15 silly audit   '@wagmi/connectors': [ '7.0.2' ],
+15 silly audit   '@wagmi/core': [ '3.0.0' ],
+15 silly audit   abbrev: [ '3.0.1' ],
+15 silly audit   abitype: [ '1.1.0', '0.7.1' ],
+15 silly audit   accepts: [ '1.3.8' ],
+15 silly audit   acorn: [ '8.15.0' ],
+15 silly audit   'acorn-import-attributes': [ '1.9.5' ],
+15 silly audit   'acorn-walk': [ '8.3.4' ],
+15 silly audit   'agent-base': [ '7.1.4' ],
+15 silly audit   ajv: [ '8.6.3' ],
+15 silly audit   'ansi-regex': [ '6.2.2', '5.0.1' ],
+15 silly audit   'ansi-styles': [ '6.2.3', '4.3.0' ],
+15 silly audit   'any-promise': [ '1.3.0' ],
+15 silly audit   arg: [ '4.1.0' ],
+15 silly audit   'array-flatten': [ '1.1.1' ],
+15 silly audit   'async-sema': [ '3.1.1' ],
+15 silly audit   'available-typed-arrays': [ '1.0.7' ],
+15 silly audit   'balanced-match': [ '1.0.2' ],
+15 silly audit   bindings: [ '1.5.0' ],
+15 silly audit   'body-parser': [ '1.20.4' ],
+15 silly audit   debug: [ '2.6.9', '4.3.4' ],
+15 silly audit   bowser: [ '2.13.1' ],
+15 silly audit   braces: [ '3.0.3' ],
+15 silly audit   'buffer-crc32': [ '0.2.13' ],
+15 silly audit   bufferutil: [ '4.0.9' ],
+15 silly audit   bytes: [ '3.1.2', '3.1.0' ],
+15 silly audit   'call-bind': [ '1.0.8' ],
+15 silly audit   'call-bind-apply-helpers': [ '1.0.2' ],
+15 silly audit   'call-bound': [ '1.0.4' ],
+15 silly audit   chokidar: [ '4.0.0' ],
+15 silly audit   'cjs-module-lexer': [ '1.2.3' ],
+15 silly audit   'code-block-writer': [ '10.1.1' ],
+15 silly audit   'color-convert': [ '2.0.1' ],
+15 silly audit   'color-name': [ '1.1.4' ],
+15 silly audit   'concat-map': [ '0.0.1' ],
+15 silly audit   consola: [ '3.4.2' ],
+15 silly audit   'content-disposition': [ '0.5.4' ],
+15 silly audit   'content-type': [ '1.0.5', '1.0.4' ],
+15 silly audit   'convert-hrtime': [ '3.0.0' ],
+15 silly audit   cookie: [ '0.7.2' ],
+15 silly audit   'cookie-signature': [ '1.0.7' ],
+15 silly audit   'core-util-is': [ '1.0.3' ],
+15 silly audit   'crc-32': [ '1.2.2' ],
+15 silly audit   'create-require': [ '1.1.1' ],
+15 silly audit   'cross-fetch': [ '4.1.0' ],
+15 silly audit   'cross-spawn': [ '7.0.6' ],
+15 silly audit   'date-fns': [ '2.30.0' ],
+15 silly audit   'define-data-property': [ '1.1.4' ],
+15 silly audit   depd: [ '2.0.0', '1.1.2' ],
+15 silly audit   destroy: [ '1.2.0' ],
+15 silly audit   'detect-browser': [ '5.3.0' ],
+15 silly audit   'detect-libc': [ '2.1.2' ],
+15 silly audit   diff: [ '4.0.2' ],
+15 silly audit   'dunder-proto': [ '1.0.1' ],
+15 silly audit   eastasianwidth: [ '0.2.0' ],
+15 silly audit   eciesjs: [ '0.4.16' ],
+15 silly audit   'edge-runtime': [ '2.5.9' ],
+15 silly audit   'ee-first': [ '1.1.1' ],
+15 silly audit   'emoji-regex': [ '9.2.2', '8.0.0' ],
+15 silly audit   encodeurl: [ '2.0.0', '1.0.2' ],
+15 silly audit   'end-of-stream': [ '1.4.5', '1.1.0' ],
+15 silly audit   'engine.io-client': [ '6.6.3' ],
+15 silly audit   'engine.io-parser': [ '5.2.3' ],
+15 silly audit   'es-define-property': [ '1.0.1' ],
+15 silly audit   'es-errors': [ '1.3.0' ],
+15 silly audit   'es-module-lexer': [ '1.4.1' ],
+15 silly audit   'es-object-atoms': [ '1.1.1' ],
+15 silly audit   esbuild: [ '0.14.47' ],
+15 silly audit   'esbuild-android-64': [ '0.14.47' ],
+15 silly audit   'esbuild-android-arm64': [ '0.14.47' ],
+15 silly audit   'esbuild-darwin-64': [ '0.14.47' ],
+15 silly audit   'esbuild-darwin-arm64': [ '0.14.47' ],
+15 silly audit   'esbuild-freebsd-64': [ '0.14.47' ],
+15 silly audit   'esbuild-freebsd-arm64': [ '0.14.47' ],
+15 silly audit   'esbuild-linux-32': [ '0.14.47' ],
+15 silly audit   'esbuild-linux-64': [ '0.14.47' ],
+15 silly audit   'esbuild-linux-arm': [ '0.14.47' ],
+15 silly audit   'esbuild-linux-arm64': [ '0.14.47' ],
+15 silly audit   'esbuild-linux-mips64le': [ '0.14.47' ],
+15 silly audit   'esbuild-linux-ppc64le': [ '0.14.47' ],
+15 silly audit   'esbuild-linux-riscv64': [ '0.14.47' ],
+15 silly audit   'esbuild-linux-s390x': [ '0.14.47' ],
+15 silly audit   'esbuild-netbsd-64': [ '0.14.47' ],
+15 silly audit   'esbuild-openbsd-64': [ '0.14.47' ],
+15 silly audit   'esbuild-sunos-64': [ '0.14.47' ],
+15 silly audit   'esbuild-windows-32': [ '0.14.47' ],
+15 silly audit   'esbuild-windows-64': [ '0.14.47' ],
+15 silly audit   'esbuild-windows-arm64': [ '0.14.47' ],
+15 silly audit   'escape-html': [ '1.0.3' ],
+15 silly audit   'estree-walker': [ '2.0.2' ],
+15 silly audit   etag: [ '1.8.1' ],
+15 silly audit   'eth-rpc-errors': [ '4.0.3' ],
+15 silly audit   'ethereum-cryptography': [ '2.2.1' ],
+15 silly audit   eventemitter2: [ '6.4.9' ],
+15 silly audit   eventemitter3: [ '5.0.1' ],
+15 silly audit   'events-intercept': [ '2.0.0' ],
+15 silly audit   express: [ '4.22.1' ],
+15 silly audit   'extension-port-stream': [ '3.0.0' ],
+15 silly audit   'fast-deep-equal': [ '3.1.3' ],
+15 silly audit   'fast-glob': [ '3.3.3' ],
+15 silly audit   'fast-safe-stringify': [ '2.1.1' ],
+15 silly audit   fastq: [ '1.19.1' ],
+15 silly audit   'fd-slicer': [ '1.1.0' ],
+15 silly audit   'file-uri-to-path': [ '1.0.0' ],
+15 silly audit   'fill-range': [ '7.1.1' ],
+15 silly audit   finalhandler: [ '1.3.2' ],
+15 silly audit   'for-each': [ '0.3.5' ],
+15 silly audit   'foreground-child': [ '3.3.1' ],
+15 silly audit   forwarded: [ '0.2.0' ],
+15 silly audit   fresh: [ '0.5.2' ],
+15 silly audit   'fs-extra': [ '11.1.0' ],
+15 silly audit   'fs-minipass': [ '2.1.0' ],
+15 silly audit   minipass: [ '3.3.6', '7.1.2', '5.0.0' ],
+15 silly audit   'function-bind': [ '1.1.2' ],
+15 silly audit   'generator-function': [ '2.0.1' ],
+15 silly audit   'generic-pool': [ '3.4.2' ],
+15 silly audit   'get-intrinsic': [ '1.3.0' ],
+15 silly audit   'get-proto': [ '1.0.1' ],
+15 silly audit   glob: [ '10.5.0' ],
+15 silly audit   'glob-parent': [ '5.1.2' ],
+15 silly audit   gopd: [ '1.2.0' ],
+15 silly audit   'graceful-fs': [ '4.2.11' ],
+15 silly audit   'has-property-descriptors': [ '1.0.2' ],
+15 silly audit   'has-symbols': [ '1.1.0' ],
+15 silly audit   'has-tostringtag': [ '1.0.2' ],
+15 silly audit   hasown: [ '2.0.2' ],
+15 silly audit   'http-errors': [ '2.0.1', '1.7.3', '1.4.0', '2.0.0' ],
+15 silly audit   'https-proxy-agent': [ '7.0.6' ],
+15 silly audit   'iconv-lite': [ '0.4.24' ],
+15 silly audit   inherits: [ '2.0.4', '2.0.1' ],
+15 silly audit   'ipaddr.js': [ '1.9.1' ],
+15 silly audit   'is-arguments': [ '1.2.0' ],
+15 silly audit   'is-callable': [ '1.2.7' ],
+15 silly audit   'is-extglob': [ '2.1.1' ],
+15 silly audit   'is-fullwidth-code-point': [ '3.0.0' ],
+15 silly audit   'is-generator-function': [ '1.1.2' ],
+15 silly audit   'is-glob': [ '4.0.3' ],
+15 silly audit   'is-number': [ '7.0.0' ],
+15 silly audit   'is-regex': [ '1.2.1' ],
+15 silly audit   'is-stream': [ '2.0.1' ],
+15 silly audit   'is-typed-array': [ '1.1.15' ],
+15 silly audit   isarray: [ '1.0.0', '0.0.1' ],
+15 silly audit   isexe: [ '2.0.0' ],
+15 silly audit   'isomorphic-ws': [ '5.0.0' ],
+15 silly audit   isows: [ '1.0.7' ],
+15 silly audit   jackspeak: [ '3.4.3' ],
+15 silly audit   jose: [ '5.9.6' ],
+15 silly audit   'json-schema-to-ts': [ '1.6.4' ],
+15 silly audit   'json-schema-traverse': [ '1.0.0' ],
+15 silly audit   jsonfile: [ '6.2.0' ],
+15 silly audit   'make-error': [ '1.3.6' ],
+15 silly audit   'math-intrinsics': [ '1.1.0' ],
+15 silly audit   'media-typer': [ '0.3.0' ],
+15 silly audit   'merge-descriptors': [ '1.0.3' ],
+15 silly audit   merge2: [ '1.4.1' ],
+15 silly audit   methods: [ '1.1.2' ],
+15 silly audit   micro: [ '9.3.5-canary.3' ],
+15 silly audit   'micro-ftch': [ '0.3.1' ],
+15 silly audit   'raw-body': [ '2.4.1', '2.5.3' ],
+15 silly audit   setprototypeof: [ '1.1.1', '1.2.0' ],
+15 silly audit   statuses: [ '1.5.0', '2.0.1', '2.0.2' ],
+15 silly audit   toidentifier: [ '1.0.0', '1.0.1' ],
+15 silly audit   micromatch: [ '4.0.8' ],
+15 silly audit   picomatch: [ '2.3.1', '4.0.3' ],
+15 silly audit   mime: [ '1.6.0' ],
+15 silly audit   'mime-db': [ '1.52.0' ],
+15 silly audit   'mime-types': [ '2.1.35' ],
+15 silly audit   mipd: [ '0.0.7' ],
+15 silly audit   mkdirp: [ '1.0.4' ],
+15 silly audit   mri: [ '1.2.0' ],
+15 silly audit   negotiator: [ '0.6.3' ],
+15 silly audit   'node-gyp-build': [ '4.8.4' ],
+15 silly audit   nopt: [ '8.1.0' ],
+15 silly audit   'obj-multiplex': [ '1.0.0' ],
+15 silly audit   'readable-stream': [ '2.3.8', '3.6.2' ],
+15 silly audit   'safe-buffer': [ '5.1.2', '5.2.1' ],
+15 silly audit   string_decoder: [ '1.1.1', '1.3.0' ],
+15 silly audit   'object-inspect': [ '1.13.4' ],
+15 silly audit   'on-finished': [ '2.4.1' ],
+15 silly audit   once: [ '1.4.0', '1.3.3' ],
+15 silly audit   'openapi-fetch': [ '0.13.8' ],
+15 silly audit   'openapi-typescript-helpers': [ '0.0.15' ],
+15 silly audit   'os-paths': [ '4.4.0' ],
+15 silly audit   ox: [ '0.9.6' ],
+15 silly audit   'package-json-from-dist': [ '1.0.1' ],
+15 silly audit   'parse-ms': [ '2.1.0' ],
+15 silly audit   parseurl: [ '1.3.3' ],
+15 silly audit   'path-browserify': [ '1.0.1' ],
+15 silly audit   'path-key': [ '3.1.1' ],
+15 silly audit   'path-match': [ '1.2.4' ],
+15 silly audit   'path-scurry': [ '1.11.1' ],
+15 silly audit   pend: [ '1.2.0' ],
+15 silly audit   picocolors: [ '1.0.0' ],
+15 silly audit   'pony-cause': [ '2.1.11' ],
+15 silly audit   'possible-typed-array-names': [ '1.1.0' ],
+15 silly audit   'pretty-ms': [ '7.0.1' ],
+15 silly audit   'process-nextick-args': [ '2.0.1' ],
+15 silly audit   promisepipe: [ '3.0.0' ],
+15 silly audit   'proxy-addr': [ '2.0.7' ],
+15 silly audit   pump: [ '3.0.3' ],
+15 silly audit   punycode: [ '2.3.1' ],
+15 silly audit   qs: [ '6.14.0' ],
+15 silly audit   'queue-microtask': [ '1.2.3' ],
+15 silly audit   'range-parser': [ '1.2.1' ],
+15 silly audit   react: [ '19.2.3' ],
+15 silly audit   readdirp: [ '4.1.2' ],
+15 silly audit   'require-from-string': [ '2.0.2' ],
+15 silly audit   'resolve-from': [ '5.0.0' ],
+15 silly audit   reusify: [ '1.1.0' ],
+15 silly audit   'run-parallel': [ '1.2.0' ],
+15 silly audit   'safe-regex-test': [ '1.1.0' ],
+15 silly audit   'safer-buffer': [ '2.1.2' ],
+15 silly audit   send: [ '0.19.1', '0.19.0' ],
+15 silly audit   'serve-static': [ '1.16.2' ],
+15 silly audit   'set-function-length': [ '1.2.2' ],
+15 silly audit   setimmediate: [ '1.0.5' ],
+15 silly audit   'shebang-command': [ '2.0.0' ],
+15 silly audit   'shebang-regex': [ '3.0.0' ],
+15 silly audit   'side-channel': [ '1.1.0' ],
+15 silly audit   'side-channel-list': [ '1.0.0' ],
+15 silly audit   'side-channel-map': [ '1.0.1' ],
+15 silly audit   'side-channel-weakmap': [ '1.0.2' ],
+15 silly audit   'signal-exit': [ '4.0.2' ],
+15 silly audit   'socket.io-client': [ '4.8.1' ],
+15 silly audit   'socket.io-parser': [ '4.2.4' ],
+15 silly audit   'stat-mode': [ '0.3.0' ],
+15 silly audit   'stream-to-array': [ '2.3.0' ],
+15 silly audit   'stream-to-promise': [ '2.2.0' ],
+15 silly audit   'string-width': [ '5.1.2', '4.2.3' ],
+15 silly audit   'strip-ansi': [ '6.0.1', '7.1.2' ],
+15 silly audit   'time-span': [ '4.0.0' ],
+15 silly audit   tinyexec: [ '0.3.2' ],
+15 silly audit   'to-regex-range': [ '5.0.1' ],
+15 silly audit   tr46: [ '0.0.3' ],
+15 silly audit   'tree-kill': [ '1.2.2' ],
+15 silly audit   'ts-morph': [ '12.0.0' ],
+15 silly audit   'ts-node': [ '10.9.1' ],
+15 silly audit   'ts-toolbelt': [ '6.15.5' ],
+15 silly audit   tslib: [ '2.8.1' ],
+15 silly audit   'type-is': [ '1.6.18' ],
+15 silly audit   'uid-promise': [ '1.0.0' ],
+15 silly audit   undici: [ '5.28.4' ],
+15 silly audit   universalify: [ '2.0.1' ],
+15 silly audit   unpipe: [ '1.0.0' ],
+15 silly audit   'uri-js': [ '4.4.1' ],
+15 silly audit   'use-sync-external-store': [ '1.4.0' ],
+15 silly audit   'utf-8-validate': [ '5.0.10' ],
+15 silly audit   util: [ '0.12.5' ],
+15 silly audit   'util-deprecate': [ '1.0.2' ],
+15 silly audit   'utils-merge': [ '1.0.1' ],
+15 silly audit   'v8-compile-cache-lib': [ '3.0.1' ],
+15 silly audit   vary: [ '1.1.2' ],
+15 silly audit   vercel: [ '41.7.8' ],
+15 silly audit   viem: [ '2.42.0' ],
+15 silly audit   ws: [ '8.18.3', '8.17.1' ],
+15 silly audit   wagmi: [ '3.1.0' ],
+15 silly audit   'web-vitals': [ '0.2.4' ],
+15 silly audit   web3: [ '4.16.0' ],
+15 silly audit   'web3-core': [ '4.7.1' ],
+15 silly audit   'web3-errors': [ '1.3.1' ],
+15 silly audit   'web3-eth': [ '4.11.1' ],
+15 silly audit   'web3-eth-abi': [ '4.4.1' ],
+15 silly audit   'web3-eth-accounts': [ '4.3.1' ],
+15 silly audit   'web3-eth-contract': [ '4.7.2' ],
+15 silly audit   'web3-eth-ens': [ '4.4.0' ],
+15 silly audit   'web3-eth-iban': [ '4.0.7' ],
+15 silly audit   'web3-eth-personal': [ '4.1.0' ],
+15 silly audit   'web3-net': [ '4.1.0' ],
+15 silly audit   'web3-providers-http': [ '4.2.0' ],
+15 silly audit   'web3-providers-ipc': [ '4.0.7' ],
+15 silly audit   'web3-providers-ws': [ '4.0.8' ],
+15 silly audit   'web3-rpc-methods': [ '1.3.0' ],
+15 silly audit   'web3-rpc-providers': [ '1.0.0-rc.4' ],
+15 silly audit   'web3-types': [ '1.10.0' ],
+15 silly audit   'web3-utils': [ '4.3.3' ],
+15 silly audit   'web3-validator': [ '2.0.6' ],
+15 silly audit   'webextension-polyfill': [ '0.10.0' ],
+15 silly audit   'webidl-conversions': [ '3.0.1' ],
+15 silly audit   'whatwg-url': [ '5.0.0' ],
+15 silly audit   which: [ '2.0.2' ],
+15 silly audit   'which-typed-array': [ '1.1.19' ],
+15 silly audit   'wrap-ansi': [ '8.1.0', '7.0.0' ],
+15 silly audit   wrappy: [ '1.0.2' ],
+15 silly audit   'xdg-app-paths': [ '5.1.0' ],
+15 silly audit   'xdg-portable': [ '7.3.0' ],
+15 silly audit   'xmlhttprequest-ssl': [ '2.1.2' ],
+15 silly audit   yauzl: [ '2.10.0' ],
+15 silly audit   'yauzl-clone': [ '1.0.4' ],
+15 silly audit   'yauzl-promise': [ '2.1.3' ],
+15 silly audit   yn: [ '3.1.1' ],
+15 silly audit   zod: [ '3.25.76' ],
+15 silly audit   zustand: [ '5.0.0' ]
+15 silly audit }
+16 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-windows-arm64
+17 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-windows-arm64' ]
+18 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-windows-64
+19 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-windows-64' ]
+20 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-windows-32
+21 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-windows-32' ]
+22 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-sunos-64
+23 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-sunos-64' ]
+24 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-openbsd-64
+25 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-openbsd-64' ]
+26 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-netbsd-64
+27 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-netbsd-64' ]
+28 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-linux-s390x
+29 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-linux-s390x' ]
+30 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-linux-riscv64
+31 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-linux-riscv64' ]
+32 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-linux-ppc64le
+33 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-linux-ppc64le' ]
+34 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-linux-mips64le
+35 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-linux-mips64le' ]
+36 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-linux-arm64
+37 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-linux-arm64' ]
+38 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-linux-arm
+39 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-linux-arm' ]
+40 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-linux-32
+41 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-linux-32' ]
+42 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-freebsd-arm64
+43 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-freebsd-arm64' ]
+44 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-freebsd-64
+45 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-freebsd-64' ]
+46 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-darwin-arm64
+47 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-darwin-arm64' ]
+48 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-darwin-64
+49 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-darwin-64' ]
+50 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-android-arm64
+51 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-android-arm64' ]
+52 verbose reify failed optional dependency /home/tkg_h30_2018/node_modules/esbuild-android-64
+53 silly reify mark deleted [ '/home/tkg_h30_2018/node_modules/esbuild-android-64' ]
+54 warn deprecated path-match@1.2.4: This package is archived and no longer maintained. For support, visit https://github.com/expressjs/express/discussions
+55 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 2103ms
+56 silly audit report {
+56 silly audit report   'path-to-regexp': [
+56 silly audit report     {
+56 silly audit report       id: 1101846,
+56 silly audit report       url: 'https://github.com/advisories/GHSA-9wv6-86v2-598j',
+56 silly audit report       title: 'path-to-regexp outputs backtracking regular expressions',
+56 silly audit report       severity: 'high',
+56 silly audit report       vulnerable_versions: '>=4.0.0 <6.3.0',
+56 silly audit report       cwe: [Array],
+56 silly audit report       cvss: [Object]
+56 silly audit report     }
+56 silly audit report   ],
+56 silly audit report   esbuild: [
+56 silly audit report     {
+56 silly audit report       id: 1102341,
+56 silly audit report       url: 'https://github.com/advisories/GHSA-67mh-4wv8-2f99',
+56 silly audit report       title: 'esbuild enables any website to send any requests to the development server and read the response',
+56 silly audit report       severity: 'moderate',
+56 silly audit report       vulnerable_versions: '<=0.24.2',
+56 silly audit report       cwe: [Array],
+56 silly audit report       cvss: [Object]
+56 silly audit report     }
+56 silly audit report   ],
+56 silly audit report   undici: [
+56 silly audit report     {
+56 silly audit report       id: 1101610,
+56 silly audit report       url: 'https://github.com/advisories/GHSA-c76h-2ccp-4975',
+56 silly audit report       title: 'Use of Insufficiently Random Values in undici',
+56 silly audit report       severity: 'moderate',
+56 silly audit report       vulnerable_versions: '>=4.5.0 <5.28.5',
+56 silly audit report       cwe: [Array],
+56 silly audit report       cvss: [Object]
+56 silly audit report     },
+56 silly audit report     {
+56 silly audit report       id: 1104501,
+56 silly audit report       url: 'https://github.com/advisories/GHSA-cxrh-j4jr-qwg3',
+56 silly audit report       title: 'undici Denial of Service attack via bad certificate data',
+56 silly audit report       severity: 'low',
+56 silly audit report       vulnerable_versions: '<5.29.0',
+56 silly audit report       cwe: [Array],
+56 silly audit report       cvss: [Object]
+56 silly audit report     }
+56 silly audit report   ]
+56 silly audit report }
+57 silly packumentCache corgi:https://registry.npmjs.org/path-to-regexp cache-miss
+58 silly packumentCache corgi:https://registry.npmjs.org/esbuild cache-miss
+59 silly packumentCache corgi:https://registry.npmjs.org/undici cache-miss
+60 http fetch GET 200 https://registry.npmjs.org/path-to-regexp 374ms (cache hit)
+61 silly packumentCache corgi:https://registry.npmjs.org/path-to-regexp set size:63416 disposed:false
+62 http fetch GET 200 https://registry.npmjs.org/esbuild 376ms (cache hit)
+63 silly packumentCache corgi:https://registry.npmjs.org/esbuild set size:876133 disposed:false
+64 http fetch GET 200 https://registry.npmjs.org/undici 386ms (cache hit)
+65 silly packumentCache corgi:https://registry.npmjs.org/undici set size:395956 disposed:false
+66 silly packumentCache corgi:https://registry.npmjs.org/@vercel%2fnode cache-miss
+67 silly packumentCache corgi:https://registry.npmjs.org/@vercel%2fremix-builder cache-miss
+68 warn deprecated @paulmillr/qr@0.2.1: The package is now available as "qr": npm install qr
+69 http fetch GET 200 https://registry.npmjs.org/@vercel%2fremix-builder 174ms (cache hit)
+70 silly packumentCache corgi:https://registry.npmjs.org/@vercel%2fremix-builder set size:125424 disposed:false
+71 http fetch GET 200 https://registry.npmjs.org/@vercel%2fnode 177ms (cache hit)
+72 silly packumentCache corgi:https://registry.npmjs.org/@vercel%2fnode set size:725630 disposed:false
+73 silly packumentCache corgi:https://registry.npmjs.org/@vercel%2fgatsby-plugin-vercel-builder cache-miss
+74 http fetch GET 200 https://registry.npmjs.org/@vercel%2fgatsby-plugin-vercel-builder 125ms (cache hit)
+75 silly packumentCache corgi:https://registry.npmjs.org/@vercel%2fgatsby-plugin-vercel-builder set size:205741 disposed:false
+76 silly packumentCache corgi:https://registry.npmjs.org/vercel cache-miss
+77 http fetch GET 200 https://registry.npmjs.org/vercel 116ms (cache hit)
+78 silly packumentCache corgi:https://registry.npmjs.org/vercel set size:3591904 disposed:false
+79 silly packumentCache corgi:https://registry.npmjs.org/@vercel%2fstatic-build cache-miss
+80 http fetch GET 200 https://registry.npmjs.org/@vercel%2fstatic-build 84ms (cache hit)
+81 silly packumentCache corgi:https://registry.npmjs.org/@vercel%2fstatic-build set size:540916 disposed:false
+82 info run bufferutil@4.0.9 install node_modules/bufferutil node-gyp-build
+83 info run utf-8-validate@5.0.10 install node_modules/utf-8-validate node-gyp-build
+84 info run bufferutil@4.0.9 install { code: 0, signal: null }
+85 info run utf-8-validate@5.0.10 install { code: 0, signal: null }
+86 info run esbuild@0.14.47 postinstall node_modules/esbuild node install.js
+87 info run esbuild@0.14.47 postinstall { code: 0, signal: null }
+88 silly ADD node_modules/zustand
+89 silly ADD node_modules/zod
+90 silly ADD node_modules/yn
+91 silly ADD node_modules/yauzl-promise
+92 silly ADD node_modules/yauzl-clone
+93 silly ADD node_modules/yauzl
+94 silly ADD node_modules/yallist
+95 silly ADD node_modules/xmlhttprequest-ssl
+96 silly ADD node_modules/xdg-portable
+97 silly ADD node_modules/xdg-app-paths
+98 silly ADD node_modules/ws
+99 silly ADD node_modules/wrappy
+100 silly ADD node_modules/wrap-ansi-cjs
+101 silly ADD node_modules/wrap-ansi-cjs/node_modules/strip-ansi
+102 silly ADD node_modules/wrap-ansi-cjs/node_modules/string-width
+103 silly ADD node_modules/wrap-ansi-cjs/node_modules/emoji-regex
+104 silly ADD node_modules/wrap-ansi-cjs/node_modules/ansi-styles
+105 silly ADD node_modules/wrap-ansi-cjs/node_modules/ansi-regex
+106 silly ADD node_modules/wrap-ansi
+107 silly ADD node_modules/which-typed-array
+108 silly ADD node_modules/which
+109 silly ADD node_modules/whatwg-url
+110 silly ADD node_modules/webidl-conversions
+111 silly ADD node_modules/webextension-polyfill
+112 silly ADD node_modules/web3-validator
+113 silly ADD node_modules/web3-utils
+114 silly ADD node_modules/web3-types
+115 silly ADD node_modules/web3-rpc-providers
+116 silly ADD node_modules/web3-rpc-methods
+117 silly ADD node_modules/web3-providers-ws
+118 silly ADD node_modules/web3-providers-ipc
+119 silly ADD node_modules/web3-providers-http
+120 silly ADD node_modules/web3-net
+121 silly ADD node_modules/web3-eth-personal
+122 silly ADD node_modules/web3-eth-iban
+123 silly ADD node_modules/web3-eth-ens
+124 silly ADD node_modules/web3-eth-contract
+125 silly ADD node_modules/web3-eth-contract/node_modules/@ethereumjs/rlp
+126 silly ADD node_modules/web3-eth-accounts
+127 silly ADD node_modules/web3-eth-abi
+128 silly ADD node_modules/web3-eth-abi/node_modules/abitype
+129 silly ADD node_modules/web3-eth
+130 silly ADD node_modules/web3-errors
+131 silly ADD node_modules/web3-core
+132 silly ADD node_modules/web3
+133 silly ADD node_modules/web-vitals
+134 silly ADD node_modules/wagmi
+135 silly ADD node_modules/viem
+136 silly ADD node_modules/viem/node_modules/ws
+137 silly ADD node_modules/viem/node_modules/@scure/bip39
+138 silly ADD node_modules/viem/node_modules/@scure/bip32
+139 silly ADD node_modules/viem/node_modules/@noble/curves
+140 silly ADD node_modules/vercel
+141 silly ADD node_modules/vary
+142 silly ADD node_modules/v8-compile-cache-lib
+143 silly ADD node_modules/uuid
+144 silly ADD node_modules/utils-merge
+145 silly ADD node_modules/util-deprecate
+146 silly ADD node_modules/util
+147 silly ADD node_modules/utf-8-validate
+148 silly ADD node_modules/use-sync-external-store
+149 silly ADD node_modules/uri-js
+150 silly ADD node_modules/unpipe
+151 silly ADD node_modules/universalify
+152 silly ADD node_modules/undici
+153 silly ADD node_modules/uid-promise
+154 silly ADD node_modules/typescript
+155 silly ADD node_modules/type-is
+156 silly ADD node_modules/tslib
+157 silly ADD node_modules/ts-toolbelt
+158 silly ADD node_modules/ts-node
+159 silly ADD node_modules/ts-morph
+160 silly ADD node_modules/tree-kill
+161 silly ADD node_modules/tr46
+162 silly ADD node_modules/toidentifier
+163 silly ADD node_modules/to-regex-range
+164 silly ADD node_modules/tinyexec
+165 silly ADD node_modules/time-span
+166 silly ADD node_modules/tar
+167 silly ADD node_modules/tar/node_modules/minipass
+168 silly ADD node_modules/strip-ansi-cjs
+169 silly ADD node_modules/strip-ansi-cjs/node_modules/ansi-regex
+170 silly ADD node_modules/strip-ansi
+171 silly ADD node_modules/string-width-cjs
+172 silly ADD node_modules/string-width-cjs/node_modules/strip-ansi
+173 silly ADD node_modules/string-width-cjs/node_modules/emoji-regex
+174 silly ADD node_modules/string-width-cjs/node_modules/ansi-regex
+175 silly ADD node_modules/string-width
+176 silly ADD node_modules/string_decoder
+177 silly ADD node_modules/stream-to-promise
+178 silly ADD node_modules/stream-to-promise/node_modules/once
+179 silly ADD node_modules/stream-to-promise/node_modules/end-of-stream
+180 silly ADD node_modules/stream-to-array
+181 silly ADD node_modules/statuses
+182 silly ADD node_modules/stat-mode
+183 silly ADD node_modules/socket.io-parser
+184 silly ADD node_modules/socket.io-client
+185 silly ADD node_modules/signal-exit
+186 silly ADD node_modules/side-channel-weakmap
+187 silly ADD node_modules/side-channel-map
+188 silly ADD node_modules/side-channel-list
+189 silly ADD node_modules/side-channel
+190 silly ADD node_modules/shebang-regex
+191 silly ADD node_modules/shebang-command
+192 silly ADD node_modules/setprototypeof
+193 silly ADD node_modules/setimmediate
+194 silly ADD node_modules/set-function-length
+195 silly ADD node_modules/serve-static
+196 silly ADD node_modules/serve-static/node_modules/statuses
+197 silly ADD node_modules/serve-static/node_modules/send
+198 silly ADD node_modules/serve-static/node_modules/send/node_modules/encodeurl
+199 silly ADD node_modules/serve-static/node_modules/ms
+200 silly ADD node_modules/serve-static/node_modules/http-errors
+201 silly ADD node_modules/serve-static/node_modules/debug
+202 silly ADD node_modules/serve-static/node_modules/debug/node_modules/ms
+203 silly ADD node_modules/send
+204 silly ADD node_modules/send/node_modules/statuses
+205 silly ADD node_modules/send/node_modules/ms
+206 silly ADD node_modules/send/node_modules/http-errors
+207 silly ADD node_modules/send/node_modules/debug
+208 silly ADD node_modules/send/node_modules/debug/node_modules/ms
+209 silly ADD node_modules/semver
+210 silly ADD node_modules/safer-buffer
+211 silly ADD node_modules/safe-regex-test
+212 silly ADD node_modules/safe-buffer
+213 silly ADD node_modules/run-parallel
+214 silly ADD node_modules/reusify
+215 silly ADD node_modules/resolve-from
+216 silly ADD node_modules/require-from-string
+217 silly ADD node_modules/readdirp
+218 silly ADD node_modules/readable-stream
+219 silly ADD node_modules/react
+220 silly ADD node_modules/raw-body
+221 silly ADD node_modules/range-parser
+222 silly ADD node_modules/queue-microtask
+223 silly ADD node_modules/qs
+224 silly ADD node_modules/punycode
+225 silly ADD node_modules/pump
+226 silly ADD node_modules/proxy-addr
+227 silly ADD node_modules/promisepipe
+228 silly ADD node_modules/process-nextick-args
+229 silly ADD node_modules/pretty-ms
+230 silly ADD node_modules/possible-typed-array-names
+231 silly ADD node_modules/pony-cause
+232 silly ADD node_modules/picomatch
+233 silly ADD node_modules/picocolors
+234 silly ADD node_modules/pend
+235 silly ADD node_modules/path-to-regexp-updated
+236 silly ADD node_modules/path-to-regexp
+237 silly ADD node_modules/path-scurry
+238 silly ADD node_modules/path-match
+239 silly ADD node_modules/path-match/node_modules/statuses
+240 silly ADD node_modules/path-match/node_modules/path-to-regexp
+241 silly ADD node_modules/path-match/node_modules/isarray
+242 silly ADD node_modules/path-match/node_modules/inherits
+243 silly ADD node_modules/path-match/node_modules/http-errors
+244 silly ADD node_modules/path-key
+245 silly ADD node_modules/path-browserify
+246 silly ADD node_modules/parseurl
+247 silly ADD node_modules/parse-ms
+248 silly ADD node_modules/package-json-from-dist
+249 silly ADD node_modules/ox
+250 silly ADD node_modules/ox/node_modules/@scure/bip39
+251 silly ADD node_modules/ox/node_modules/@scure/bip32
+252 silly ADD node_modules/ox/node_modules/@noble/curves
+253 silly ADD node_modules/os-paths
+254 silly ADD node_modules/openapi-typescript-helpers
+255 silly ADD node_modules/openapi-fetch
+256 silly ADD node_modules/once
+257 silly ADD node_modules/on-finished
+258 silly ADD node_modules/object-inspect
+259 silly ADD node_modules/obj-multiplex
+260 silly ADD node_modules/obj-multiplex/node_modules/string_decoder
+261 silly ADD node_modules/obj-multiplex/node_modules/safe-buffer
+262 silly ADD node_modules/obj-multiplex/node_modules/readable-stream
+263 silly ADD node_modules/nopt
+264 silly ADD node_modules/node-gyp-build
+265 silly ADD node_modules/node-fetch
+266 silly ADD node_modules/negotiator
+267 silly ADD node_modules/ms
+268 silly ADD node_modules/mri
+269 silly ADD node_modules/mkdirp
+270 silly ADD node_modules/mipd
+271 silly ADD node_modules/minizlib
+272 silly ADD node_modules/minizlib/node_modules/minipass
+273 silly ADD node_modules/minipass
+274 silly ADD node_modules/minimatch
+275 silly ADD node_modules/mime-types
+276 silly ADD node_modules/mime-db
+277 silly ADD node_modules/mime
+278 silly ADD node_modules/micromatch
+279 silly ADD node_modules/micromatch/node_modules/picomatch
+280 silly ADD node_modules/micro-ftch
+281 silly ADD node_modules/micro
+282 silly ADD node_modules/micro/node_modules/toidentifier
+283 silly ADD node_modules/micro/node_modules/statuses
+284 silly ADD node_modules/micro/node_modules/setprototypeof
+285 silly ADD node_modules/micro/node_modules/raw-body
+286 silly ADD node_modules/micro/node_modules/http-errors
+287 silly ADD node_modules/micro/node_modules/depd
+288 silly ADD node_modules/micro/node_modules/content-type
+289 silly ADD node_modules/micro/node_modules/bytes
+290 silly ADD node_modules/methods
+291 silly ADD node_modules/merge2
+292 silly ADD node_modules/merge-descriptors
+293 silly ADD node_modules/media-typer
+294 silly ADD node_modules/math-intrinsics
+295 silly ADD node_modules/make-error
+296 silly ADD node_modules/lru-cache
+297 silly ADD node_modules/jsonfile
+298 silly ADD node_modules/json-schema-traverse
+299 silly ADD node_modules/json-schema-to-ts
+300 silly ADD node_modules/jose
+301 silly ADD node_modules/jackspeak
+302 silly ADD node_modules/isows
+303 silly ADD node_modules/isomorphic-ws
+304 silly ADD node_modules/isexe
+305 silly ADD node_modules/isarray
+306 silly ADD node_modules/is-typed-array
+307 silly ADD node_modules/is-stream
+308 silly ADD node_modules/is-regex
+309 silly ADD node_modules/is-number
+310 silly ADD node_modules/is-glob
+311 silly ADD node_modules/is-generator-function
+312 silly ADD node_modules/is-fullwidth-code-point
+313 silly ADD node_modules/is-extglob
+314 silly ADD node_modules/is-callable
+315 silly ADD node_modules/is-arguments
+316 silly ADD node_modules/ipaddr.js
+317 silly ADD node_modules/inherits
+318 silly ADD node_modules/iconv-lite
+319 silly ADD node_modules/https-proxy-agent
+320 silly ADD node_modules/http-errors
+321 silly ADD node_modules/hasown
+322 silly ADD node_modules/has-tostringtag
+323 silly ADD node_modules/has-symbols
+324 silly ADD node_modules/has-property-descriptors
+325 silly ADD node_modules/graceful-fs
+326 silly ADD node_modules/gopd
+327 silly ADD node_modules/glob-parent
+328 silly ADD node_modules/glob
+329 silly ADD node_modules/get-proto
+330 silly ADD node_modules/get-intrinsic
+331 silly ADD node_modules/generic-pool
+332 silly ADD node_modules/generator-function
+333 silly ADD node_modules/function-bind
+334 silly ADD node_modules/fs-minipass
+335 silly ADD node_modules/fs-minipass/node_modules/minipass
+336 silly ADD node_modules/fs-extra
+337 silly ADD node_modules/fresh
+338 silly ADD node_modules/forwarded
+339 silly ADD node_modules/foreground-child
+340 silly ADD node_modules/for-each
+341 silly ADD node_modules/finalhandler
+342 silly ADD node_modules/finalhandler/node_modules/ms
+343 silly ADD node_modules/finalhandler/node_modules/debug
+344 silly ADD node_modules/fill-range
+345 silly ADD node_modules/file-uri-to-path
+346 silly ADD node_modules/fd-slicer
+347 silly ADD node_modules/fastq
+348 silly ADD node_modules/fast-safe-stringify
+349 silly ADD node_modules/fast-glob
+350 silly ADD node_modules/fast-deep-equal
+351 silly ADD node_modules/extension-port-stream
+352 silly ADD node_modules/express
+353 silly ADD node_modules/express/node_modules/ms
+354 silly ADD node_modules/express/node_modules/debug
+355 silly ADD node_modules/events-intercept
+356 silly ADD node_modules/eventemitter3
+357 silly ADD node_modules/eventemitter2
+358 silly ADD node_modules/ethereum-cryptography
+359 silly ADD node_modules/ethereum-cryptography/node_modules/@noble/hashes
+360 silly ADD node_modules/ethereum-cryptography/node_modules/@noble/curves
+361 silly ADD node_modules/eth-rpc-errors
+362 silly ADD node_modules/etag
+363 silly ADD node_modules/estree-walker
+364 silly ADD node_modules/escape-html
+365 silly ADD
+366 silly ADD
+367 silly ADD
+368 silly ADD
+369 silly ADD
+370 silly ADD
+371 silly ADD
+372 silly ADD
+373 silly ADD
+374 silly ADD
+375 silly ADD
+376 silly ADD
+377 silly ADD node_modules/esbuild-linux-64
+378 silly ADD
+379 silly ADD
+380 silly ADD
+381 silly ADD
+382 silly ADD
+383 silly ADD
+384 silly ADD
+385 silly ADD node_modules/esbuild
+386 silly ADD node_modules/es-object-atoms
+387 silly ADD node_modules/es-module-lexer
+388 silly ADD node_modules/es-errors
+389 silly ADD node_modules/es-define-property
+390 silly ADD node_modules/engine.io-parser
+391 silly ADD node_modules/engine.io-client
+392 silly ADD node_modules/end-of-stream
+393 silly ADD node_modules/encodeurl
+394 silly ADD node_modules/emoji-regex
+395 silly ADD node_modules/ee-first
+396 silly ADD node_modules/edge-runtime
+397 silly ADD node_modules/edge-runtime/node_modules/async-listen
+398 silly ADD node_modules/eciesjs
+399 silly ADD node_modules/eastasianwidth
+400 silly ADD node_modules/dunder-proto
+401 silly ADD node_modules/diff
+402 silly ADD node_modules/detect-libc
+403 silly ADD node_modules/detect-browser
+404 silly ADD node_modules/destroy
+405 silly ADD node_modules/depd
+406 silly ADD node_modules/define-data-property
+407 silly ADD node_modules/debug
+408 silly ADD node_modules/date-fns
+409 silly ADD node_modules/cross-spawn
+410 silly ADD node_modules/cross-fetch
+411 silly ADD node_modules/create-require
+412 silly ADD node_modules/crc-32
+413 silly ADD node_modules/core-util-is
+414 silly ADD node_modules/cookie-signature
+415 silly ADD node_modules/cookie
+416 silly ADD node_modules/convert-hrtime
+417 silly ADD node_modules/content-type
+418 silly ADD node_modules/content-disposition
+419 silly ADD node_modules/consola
+420 silly ADD node_modules/concat-map
+421 silly ADD node_modules/color-name
+422 silly ADD node_modules/color-convert
+423 silly ADD node_modules/code-block-writer
+424 silly ADD node_modules/cjs-module-lexer
+425 silly ADD node_modules/chownr
+426 silly ADD node_modules/chokidar
+427 silly ADD node_modules/call-bound
+428 silly ADD node_modules/call-bind-apply-helpers
+429 silly ADD node_modules/call-bind
+430 silly ADD node_modules/bytes
+431 silly ADD node_modules/bufferutil
+432 silly ADD node_modules/buffer-crc32
+433 silly ADD node_modules/braces
+434 silly ADD node_modules/brace-expansion
+435 silly ADD node_modules/bowser
+436 silly ADD node_modules/body-parser
+437 silly ADD node_modules/body-parser/node_modules/ms
+438 silly ADD node_modules/body-parser/node_modules/debug
+439 silly ADD node_modules/bindings
+440 silly ADD node_modules/balanced-match
+441 silly ADD node_modules/available-typed-arrays
+442 silly ADD node_modules/async-sema
+443 silly ADD node_modules/async-listen
+444 silly ADD node_modules/array-flatten
+445 silly ADD node_modules/arg
+446 silly ADD node_modules/any-promise
+447 silly ADD node_modules/ansi-styles
+448 silly ADD node_modules/ansi-regex
+449 silly ADD node_modules/ajv
+450 silly ADD node_modules/agent-base
+451 silly ADD node_modules/acorn-walk
+452 silly ADD node_modules/acorn-import-attributes
+453 silly ADD node_modules/acorn
+454 silly ADD node_modules/accepts
+455 silly ADD node_modules/abitype
+456 silly ADD node_modules/abbrev
+457 silly ADD node_modules/@wagmi/core
+458 silly ADD node_modules/@wagmi/connectors
+459 silly ADD node_modules/@vercel/static-config
+460 silly ADD node_modules/@vercel/static-build
+461 silly ADD node_modules/@vercel/ruby
+462 silly ADD node_modules/@vercel/remix-builder
+463 silly ADD node_modules/@vercel/remix-builder/node_modules/path-to-regexp
+464 silly ADD node_modules/@vercel/redwood
+465 silly ADD node_modules/@vercel/redwood/node_modules/semver
+466 silly ADD node_modules/@vercel/python
+467 silly ADD node_modules/@vercel/node
+468 silly ADD node_modules/@vercel/node/node_modules/typescript
+469 silly ADD node_modules/@vercel/node/node_modules/path-to-regexp
+470 silly ADD node_modules/@vercel/node/node_modules/node-fetch
+471 silly ADD node_modules/@vercel/node/node_modules/async-listen
+472 silly ADD node_modules/@vercel/nft
+473 silly ADD node_modules/@vercel/next
+474 silly ADD node_modules/@vercel/hydrogen
+475 silly ADD node_modules/@vercel/go
+476 silly ADD node_modules/@vercel/gatsby-plugin-vercel-builder
+477 silly ADD node_modules/@vercel/gatsby-plugin-vercel-analytics
+478 silly ADD node_modules/@vercel/fun
+479 silly ADD node_modules/@vercel/fun/node_modules/semver
+480 silly ADD node_modules/@vercel/fun/node_modules/node-fetch
+481 silly ADD node_modules/@vercel/fun/node_modules/ms
+482 silly ADD node_modules/@vercel/fun/node_modules/lru-cache
+483 silly ADD node_modules/@vercel/error-utils
+484 silly ADD node_modules/@vercel/build-utils
+485 silly ADD node_modules/@types/ws
+486 silly ADD node_modules/@types/node
+487 silly ADD node_modules/@types/ms
+488 silly ADD node_modules/@types/json-schema
+489 silly ADD node_modules/@types/estree
+490 silly ADD node_modules/@types/debug
+491 silly ADD node_modules/@tsconfig/node16
+492 silly ADD node_modules/@tsconfig/node14
+493 silly ADD node_modules/@tsconfig/node12
+494 silly ADD node_modules/@tsconfig/node10
+495 silly ADD node_modules/@ts-morph/common
+496 silly ADD node_modules/@ts-morph/common/node_modules/minimatch
+497 silly ADD node_modules/@ts-morph/common/node_modules/brace-expansion
+498 silly ADD node_modules/@tootallnate/once
+499 silly ADD node_modules/@tanstack/react-query
+500 silly ADD node_modules/@tanstack/query-core
+501 silly ADD node_modules/@socket.io/component-emitter
+502 silly ADD node_modules/@sinclair/typebox
+503 silly ADD node_modules/@scure/bip39
+504 silly ADD node_modules/@scure/bip39/node_modules/@scure/base
+505 silly ADD node_modules/@scure/bip39/node_modules/@noble/hashes
+506 silly ADD node_modules/@scure/bip32
+507 silly ADD node_modules/@scure/bip32/node_modules/@scure/base
+508 silly ADD node_modules/@scure/bip32/node_modules/@noble/hashes
+509 silly ADD node_modules/@scure/bip32/node_modules/@noble/curves
+510 silly ADD node_modules/@scure/base
+511 silly ADD node_modules/@rollup/pluginutils
+512 silly ADD node_modules/@pkgjs/parseargs
+513 silly ADD node_modules/@paulmillr/qr
+514 silly ADD node_modules/@nodelib/fs.walk
+515 silly ADD node_modules/@nodelib/fs.stat
+516 silly ADD node_modules/@nodelib/fs.scandir
+517 silly ADD node_modules/@noble/hashes
+518 silly ADD node_modules/@noble/curves
+519 silly ADD node_modules/@noble/ciphers
+520 silly ADD node_modules/@metamask/utils
+521 silly ADD node_modules/@metamask/utils/node_modules/uuid
+522 silly ADD node_modules/@metamask/superstruct
+523 silly ADD node_modules/@metamask/sdk-install-modal-web
+524 silly ADD node_modules/@metamask/sdk-communication-layer
+525 silly ADD node_modules/@metamask/sdk-analytics
+526 silly ADD node_modules/@metamask/sdk
+527 silly ADD node_modules/@metamask/safe-event-emitter
+528 silly ADD node_modules/@metamask/rpc-errors
+529 silly ADD node_modules/@metamask/rpc-errors/node_modules/uuid
+530 silly ADD node_modules/@metamask/rpc-errors/node_modules/@metamask/utils
+531 silly ADD node_modules/@metamask/providers
+532 silly ADD node_modules/@metamask/onboarding
+533 silly ADD node_modules/@metamask/object-multiplex
+534 silly ADD node_modules/@metamask/json-rpc-middleware-stream
+535 silly ADD node_modules/@metamask/json-rpc-engine
+536 silly ADD node_modules/@mapbox/node-pre-gyp
+537 silly ADD node_modules/@mapbox/node-pre-gyp/node_modules/yallist
+538 silly ADD node_modules/@mapbox/node-pre-gyp/node_modules/tar
+539 silly ADD node_modules/@mapbox/node-pre-gyp/node_modules/minizlib
+540 silly ADD node_modules/@mapbox/node-pre-gyp/node_modules/chownr
+541 silly ADD node_modules/@jridgewell/trace-mapping
+542 silly ADD node_modules/@jridgewell/sourcemap-codec
+543 silly ADD node_modules/@jridgewell/resolve-uri
+544 silly ADD node_modules/@isaacs/fs-minipass
+545 silly ADD node_modules/@isaacs/cliui
+546 silly ADD node_modules/@fastify/busboy
+547 silly ADD node_modules/@ethereumjs/util
+548 silly ADD node_modules/@ethereumjs/tx
+549 silly ADD node_modules/@ethereumjs/rlp
+550 silly ADD node_modules/@ethereumjs/common
+551 silly ADD node_modules/@edge-runtime/vm
+552 silly ADD node_modules/@edge-runtime/primitives
+553 silly ADD node_modules/@edge-runtime/ponyfill
+554 silly ADD node_modules/@edge-runtime/node-utils
+555 silly ADD node_modules/@edge-runtime/format
+556 silly ADD node_modules/@ecies/ciphers
+557 silly ADD node_modules/@cspotcode/source-map-support
+558 silly ADD node_modules/@babel/runtime
+559 silly ADD node_modules/@adraffy/ens-normalize
+560 verbose cwd /home/tkg_h30_2018
+561 verbose os Linux 6.1.0-41-cloud-amd64
+562 verbose node v20.19.6
+563 verbose npm  v10.8.2
+564 verbose exit 0
+565 info ok
