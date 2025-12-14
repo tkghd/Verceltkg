@@ -56,3 +56,8 @@ logs/
 *.key
 *.pem
 
+.env
+logs/
+*.key
+*.pem
+

@@ -7,8 +7,8 @@ WorkingDirectory=/home/tkg_h30_2018
 ExecStart=/home/tkg_h30_2018/scripts/repair-deploy.sh
 Restart=always
 RestartSec=10
+EnvironmentFile=/home/tkg_h30_2018/.env
 StandardOutput=append:/home/tkg_h30_2018/logs/systemd.out.log
 StandardError=append:/home/tkg_h30_2018/logs/systemd.err.log
-EnvironmentFile=/home/tkg_h30_2018/.env
 [Install]
 WantedBy=default.target
