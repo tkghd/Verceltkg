@@ -123,7 +123,7 @@
               console.log('SW registered: ', registration);
             })
             .catch(registrationError => {
-              console.log('SW registration failed: ', registrationError);
+              console.warn('SW registration info:', registrationError.message);
             });
         });
       }

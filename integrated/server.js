@@ -44,7 +44,7 @@ app.get('/api/health', (req, res) => {
     environment: process.env.NODE_ENV === 'production' ? 'PRODUCTION' : 'DEV',
     licenseStatus: "VALID (CORP-001)",
     licenseId: process.env.LICENSE_ID || "corp-license-001",
-    corpId: process.env.CORP_ID || "corp-xyz",
+    corpId: process.env.CORP_ID || "team_y4Iet78sTSfhEyA4qzPLybxz",
     timestamp: new Date().toISOString(),
   });
 });

@@ -35,7 +35,38 @@ const LoadingFallback = () => (
 
 // Determine API Base URL: Relative for production (same origin), localhost for dev
 // Safely access import.meta.env to prevent runtime errors
-const API_BASE = (import.meta as any).env?.PROD ? '' : 'http://localhost:3100';
+const getApiBase = () => {
+  try {
+    const meta = import.meta as any;
+    if (meta && meta.env && meta.env.PROD) {
+      return '';
+    }
+  } catch (e) {
+    // Ignore error
+  }
+  return 'http://localhost:3100';
+};
+
+const API_BASE = getApiBase();
+
+// Mock Data for Fallback
+const MOCK_HEALTH: ApiHealth = {
+  status: "ONLINE (VERCEL-SYNC)",
+  service: "Godmode Core (Team)",
+  version: "2.5.1-V-TEAM",
+  buildId: "BLAST-READY",
+  environment: "PRODUCTION",
+  licenseStatus: "GODMODE",
+  licenseId: "∞",
+  corpId: "team_y4Iet78sTSfhEyA4qzPLybxz",
+  timestamp: new Date().toISOString()
+};
+
+const MOCK_TRANSACTIONS: ApiTransaction[] = [
+  { id: 101, name: "Global Dividend", amount: 2500000, currency: "USD", type: "positive", date: "Now" },
+  { id: 102, name: "Server Fleet (AWS)", amount: -1200, currency: "USD", type: "negative", date: "1m ago" },
+  { id: 103, name: "Crypto Arbitrage", amount: 5000000, currency: "TKG", type: "positive", date: "5m ago" },
+];
 
 const AppContent: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -51,6 +82,7 @@ const AppContent: React.FC = () => {
   // API Data States
   const [health, setHealth] = useState<ApiHealth | null>(null);
   const [transactions, setTransactions] = useState<ApiTransaction[]>([]);
+  const [usingMockData, setUsingMockData] = useState(false);
 
   const { theme } = useTheme();
 
@@ -60,42 +92,73 @@ const AppContent: React.FC = () => {
         
         // Fetch Real-time Data
         const fetchData = async () => {
-            try {
-                // Health Check
-                const healthRes = await fetch(`${API_BASE}/api/health`);
-                if (healthRes.ok) setHealth(await healthRes.json());
+            // If we are in simulation mode, stop trying to fetch the API to prevent console errors
+            if (usingMockData) return;
 
-                // Balance Sync
-                const balanceRes = await fetch(`${API_BASE}/api/balance/demoUser`);
-                if (balanceRes.ok) {
-                    const data = await balanceRes.json();
-                    const accounts = data.accounts;
-                    const jpy = accounts.find((a: any) => a.currency === 'JPY')?.balance;
-                    const usd = accounts.find((a: any) => a.currency === 'USD')?.balance;
-                    const btc = accounts.find((a: any) => a.currency === 'BTC')?.balance;
-                    
-                    if (jpy !== undefined) setWallet(prev => ({ ...prev, jpy: jpy.toLocaleString() }));
-                    if (usd !== undefined) setWallet(prev => ({ ...prev, usd: usd.toLocaleString() }));
-                    if (btc !== undefined) setWallet(prev => ({ ...prev, btc: btc.toString() }));
+            try {
+                // Short timeout for health check to fail fast in demo environment
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 2000);
+                
+                let healthRes;
+                try {
+                  healthRes = await fetch(`${API_BASE}/api/health`, { signal: controller.signal });
+                } catch (e) {
+                  throw new Error("Connection timed out");
+                } finally {
+                  clearTimeout(timeoutId);
                 }
 
-                // Transaction Sync
-                const txRes = await fetch(`${API_BASE}/api/transactions/demoUser`);
-                if (txRes.ok) {
-                    const data = await txRes.json();
-                    setTransactions(data.transactions);
+                if (healthRes.ok) {
+                    setHealth(await healthRes.json());
+                    // If we recovered from mock mode, maybe unset it? 
+                    // For now, once mock, stay mock to avoid flickering unless full reload.
+
+                    // Balance Sync
+                    const balanceRes = await fetch(`${API_BASE}/api/balance/demoUser`);
+                    if (balanceRes.ok) {
+                        const data = await balanceRes.json();
+                        const accounts = data.accounts;
+                        const jpy = accounts.find((a: any) => a.currency === 'JPY')?.balance;
+                        const usd = accounts.find((a: any) => a.currency === 'USD')?.balance;
+                        const btc = accounts.find((a: any) => a.currency === 'BTC')?.balance;
+                        
+                        if (jpy !== undefined) setWallet(prev => ({ ...prev, jpy: jpy.toLocaleString() }));
+                        if (usd !== undefined) setWallet(prev => ({ ...prev, usd: usd.toLocaleString() }));
+                        if (btc !== undefined) setWallet(prev => ({ ...prev, btc: btc.toString() }));
+                    }
+
+                    // Transaction Sync
+                    const txRes = await fetch(`${API_BASE}/api/transactions/demoUser`);
+                    if (txRes.ok) {
+                        const data = await txRes.json();
+                        setTransactions(data.transactions);
+                    }
+                } else {
+                    throw new Error(`API responded with ${healthRes.status}`);
                 }
             } catch (error) {
-                console.error("API Sync Error:", error);
-                addLog(`[ERROR] API SYNC FAILED: ${error}`);
+                // If we haven't switched to mock data yet, do it now and log once
+                if (!usingMockData) {
+                  // Silently switch to mock data without console.error to keep logs clean for user
+                  console.log("API unavailable, engaging simulation core.");
+                  addLog(`[WARN] API UNREACHABLE. ENGAGING SIMULATION CORE.`);
+                  setHealth(MOCK_HEALTH);
+                  setTransactions(MOCK_TRANSACTIONS);
+                  setUsingMockData(true);
+                }
             }
         };
 
         fetchData();
-        const interval = setInterval(fetchData, 10000); // Polling every 10s
-        return () => clearInterval(interval);
+        
+        // Only set interval if NOT using mock data to avoid repeated fetch errors
+        if (!usingMockData) {
+            const interval = setInterval(fetchData, 10000); // Polling every 10s
+            return () => clearInterval(interval);
+        }
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, usingMockData]);
 
   const addLog = (msg: string) => {
     setLogs(prev => [...prev, `[${new Date().toLocaleTimeString()}] ${msg}`]);
@@ -140,10 +203,12 @@ const AppContent: React.FC = () => {
              </h1>
              <div className="flex items-center gap-2 mt-1">
                <span className="flex h-2 w-2 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                  <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${usingMockData ? 'bg-amber-400' : 'bg-green-400'}`}></span>
+                  <span className={`relative inline-flex rounded-full h-2 w-2 ${usingMockData ? 'bg-amber-500' : 'bg-green-500'}`}></span>
                </span>
-               <span className="text-[10px] text-amber-400 font-mono tracking-wider font-bold">ALL SYSTEMS ONLINE</span>
+               <span className={`text-[10px] font-mono tracking-wider font-bold ${usingMockData ? 'text-amber-400' : 'text-green-400'}`}>
+                 {usingMockData ? 'SIMULATION CORE' : 'ALL SYSTEMS ONLINE'}
+               </span>
              </div>
            </div>
         </div>

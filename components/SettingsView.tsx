@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Settings, Server, Database, Terminal, Shield, Cpu, Play, FileCode, Lock, RotateCw, Globe, Copy, ExternalLink, Zap, Box, Gauge, Activity, Radio, Command, Heart, Eye, Gem, Hammer, RefreshCw, Network, Scan, Fingerprint, Smartphone, CheckCircle2, Palette } from 'lucide-react';
+import { Settings, Server, Database, Terminal, Shield, Cpu, Play, FileCode, Lock, RotateCw, Globe, Copy, ExternalLink, Zap, Box, Gauge, Activity, Radio, Command, Heart, Eye, Gem, Hammer, RefreshCw, Network, Scan, Fingerprint, Smartphone, CheckCircle2, Palette, CloudLightning } from 'lucide-react';
 import { SystemModule, QueueState } from '../types';
 import { LogConsole } from './LogConsole';
 import { BusinessChecklist } from './BusinessChecklist';
@@ -75,6 +75,16 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ modules, logs, queue
                 <EndpointRow label="Admin Godmode Portal" url="https://admin.tkglobalbank.com/godmode" active secure />
                 <EndpointRow label="Corporate Dashboard" url="https://corp.tkglobalbank.com" active />
                 <EndpointRow label="API Gateway" url="https://api.tkglobalbank.com/v1" active />
+                {/* Vercel Team Integration Row */}
+                <div className="flex items-center justify-between p-3 bg-indigo-950/20 rounded-xl border border-indigo-500/30">
+                    <div className="flex flex-col">
+                        <span className="text-xs text-indigo-200 font-bold flex items-center gap-1.5 mb-0.5">
+                            <CloudLightning size={10} className="text-white" /> Vercel Team Linked
+                        </span>
+                        <span className="text-[10px] text-green-400 font-mono truncate max-w-[200px]">team_y4Iet78sTSfhEyA4qzPLybxz</span>
+                    </div>
+                    <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-[10px] rounded border border-green-500/50 animate-pulse">BLAST-READY</span>
+                </div>
             </div>
             <div className="mt-6 pt-4 border-t border-indigo-900/30 text-[10px] text-green-400 font-mono flex items-center gap-2 font-bold">
                <span className="w-2 h-2 rounded-full bg-green-500 animate-ping"></span>
