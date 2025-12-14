@@ -7,7 +7,7 @@ interface LoginProps {
 }
 
 export const LoginScreen: React.FC<LoginProps> = ({ onLogin }) => {
-  const [account, setAccount] = useState('');
+  const [account, setAccount] = useState('1190212');
   const [isScanning, setIsScanning] = useState(false);
   const [status, setStatus] = useState('Secure Connection Est.');
 
@@ -101,7 +101,7 @@ export const LoginScreen: React.FC<LoginProps> = ({ onLogin }) => {
                             <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-xl opacity-0 group-hover:opacity-30 transition duration-500"></div>
                             <input 
                                 className="relative w-full bg-slate-950/80 border border-slate-700 rounded-xl px-4 py-4 text-white placeholder-slate-600 outline-none focus:border-cyan-500/50 transition-all font-mono tracking-widest text-lg" 
-                                placeholder="0000-0000" 
+                                placeholder="1190212" 
                                 value={account}
                                 onChange={(e) => setAccount(e.target.value)}
                                 autoFocus
