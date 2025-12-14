@@ -1,297 +1,3 @@
-  const [transactions, setTransactions] = useState<any>(null);
-  const [transferResult, setTransferResult] = useState<any>(null);
-  useEffect(() => {
-    fetch("/api/health").then(r => r.json()).then(setHealth);
-    fetch("/api/balance/demoUser").then(r => r.json()).then(setBalance);
-    fetch("/api/transactions/demoUser").then(r => r.json()).then(setTransactions);
-  }, []);
-  const handleTransfer = async () => {
-    const res = await fetch("/api/transfer", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ from: "demoUser", to: "targetUser", amount: 10000 })
-    });
-    const data = await res.json();
-    setTransferResult(data);
-  };
-  return (
-    <div style={{ fontFamily: "system-ui", padding: "2rem" }}>
-      <h1>🚀 全搭載 — 統合本番システム</h1>
-      <h2>ALL SYSTEMS ONLINE ✅</h2>
-      <div style={{ background: "#222", color: "#fff", padding: "1rem", borderRadius: "8px" }}>
-        <p>環境: {process.env.NEXT_PUBLIC_ENV}</p>
-        <p>ビルドID: {process.env.NEXT_PUBLIC_BUILD_ID}</p>
-        <p>APIステータス: {health?.status}</p>
-        <p>ライセンス: {health?.licenseStatus}</p>
-      </div>
-      <h3>💰 残高</h3>
-      <ul>
-        {balance?.accounts?.map((a:any) => (
-          <li key={a.currency}>{a.currency}: {a.balance}</li>
-        ))}
-      </ul>
-      <h3>📜 取引履歴</h3>
-      <table border={1} cellPadding={6}>
-        <thead>
-          <tr><th>ID</th><th>内容</th><th>金額</th><th>通貨</th></tr>
-        </thead>
-        <tbody>
-          {transactions?.transactions?.map((t:any) => (
-            <tr key={t.id}>
-              <td>{t.id}</td><td>{t.name}</td><td>{t.amount}</td><td>{t.currency}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <h3>💸 送金</h3>
-      <button onClick={handleTransfer}>送金実行 (demoUser → targetUser, 10000)</button>
-      {transferResult && (         <p style={{ marginTop: "1rem", color: "green" }}>
-          送金結果: {transferResult.ok ? `成功 (TxID: ${transferResult.txId})` : "失敗"}
-        </p>
-      )}
-    </div>
-  );
-}
-import React, { useState, useEffect } from "react";
-export default function Home() {
-  const [health, setHealth] = useState<any>(null);
-  const [balance, setBalance] = useState<any>(null);
-  const [transactions, setTransactions] = useState<any>(null);
-  const [transferResult, setTransferResult] = useState<any>(null);
-  useEffect(() => {
-    fetch("/api/health").then(r => r.json()).then(setHealth);
-    fetch("/api/balance/demoUser").then(r => r.json()).then(setBalance);
-    fetch("/api/transactions/demoUser").then(r => r.json()).then(setTransactions);
-  }, []);
-  const handleTransfer = async () => {
-    const res = await fetch("/api/transfer", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ from: "demoUser", to: "targetUser", amount: 10000 })
-    });
-    const data = await res.json();
-    setTransferResult(data);
-  };
-  return (
-    <div style={{ fontFamily: "system-ui", padding: "2rem" }}>
-      <h1>🚀 全搭載 — 統合本番システム</h1>
-      <h2>ALL SYSTEMS ONLINE ✅</h2>
-      <div style={{ background: "#222", color: "#fff", padding: "1rem", borderRadius: "8px" }}>
-        <p>環境: {process.env.NEXT_PUBLIC_ENV}</p>
-        <p>ビルドID: {process.env.NEXT_PUBLIC_BUILD_ID}</p>
-        <p>APIステータス: {health?.status}</p>
-        <p>ライセンス: {health?.licenseStatus}</p>
-      </div>
-      <h3>💰 残高</h3>
-      <ul>
-        {balance?.accounts?.map((a:any) => (
-          <li key={a.currency}>{a.currency}: {a.balance}</li>
-        ))}
-      </ul>
-      <h3>📜 取引履歴</h3>
-      <table border={1} cellPadding={6}>
-        <thead>
-          <tr><th>ID</th><th>内容</th><th>金額</th><th>通貨</th></tr>
-        </thead>
-        <tbody>
-          {transactions?.transactions?.map((t:any) => (
-            <tr key={t.id}>
-              <td>{t.id}</td><td>{t.name}</td><td>{t.amount}</td><td>{t.currency}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <h3>💸 送金</h3>
-      <button onClick={handleTransfer}>送金実行 (demoUser → targetUser, 10000)</button>
-      {transferResult && (         <p style={{ marginTop: "1rem", color: "green" }}>
-          送金結果: {transferResult.ok ? `成功 (TxID: ${transferResult.txId})` : "失敗"}
-        </p>
-      )}
-    </div>
-  );
-}
-git add pages/index.tsx pages/api/*
-git commit -m "HUD + API 完成版"
-git push origin main
-import React, { useState, useEffect } from "react";
-export default function Home() {
-  const [health, setHealth] = useState<any>(null);
-  const [balance, setBalance] = useState<any>(null);
-  const [transactions, setTransactions] = useState<any>(null);
-  const [transferResult, setTransferResult] = useState<any>(null);
-  useEffect(() => {
-    fetch("/api/health").then(r => r.json()).then(setHealth);
-    fetch("/api/balance/demoUser").then(r => r.json()).then(setBalance);
-    fetch("/api/transactions/demoUser").then(r => r.json()).then(setTransactions);
-  }, []);
-  const handleTransfer = async () => {
-    const res = await fetch("/api/transfer", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ from: "demoUser", to: "targetUser", amount: 10000 })
-    });
-    const data = await res.json();
-    setTransferResult(data);
-  };
-  return (
-    <div style={{ fontFamily: "system-ui", padding: "2rem" }}>
-      <h1>🚀 全搭載 — 統合本番システム</h1>
-      <h2>ALL SYSTEMS ONLINE ✅</h2>
-      <div style={{ background: "#222", color: "#fff", padding: "1rem", borderRadius: "8px" }}>
-        <p>環境: {process.env.NEXT_PUBLIC_ENV}</p>
-        <p>ビルドID: {process.env.NEXT_PUBLIC_BUILD_ID}</p>
-        <p>APIステータス: {health?.status}</p>
-        <p>ライセンス: {health?.licenseStatus}</p>
-      </div>
-      <h3>💰 残高</h3>
-      <ul>
-        {balance?.accounts?.map((a:any) => (
-          <li key={a.currency}>{a.currency}: {a.balance}</li>
-        ))}
-      </ul>
-      <h3>📜 取引履歴</h3>
-      <table border={1} cellPadding={6}>
-        <thead>
-          <tr><th>ID</th><th>内容</th><th>金額</th><th>通貨</th></tr>
-        </thead>
-        <tbody>
-          {transactions?.transactions?.map((t:any) => (
-            <tr key={t.id}>
-              <td>{t.id}</td><td>{t.name}</td><td>{t.amount}</td><td>{t.currency}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <h3>💸 送金</h3>
-      <button onClick={handleTransfer}>送金実行 (demoUser → targetUser, 10000)</button>
-      {transferResult && (         <p style={{ marginTop: "1rem", color: "green" }}>
-          送金結果: {transferResult.ok ? `成功 (TxID: ${transferResult.txId})` : "失敗"}
-        </p>
-      )}
-    </div>
-  );
-}
-cat > pages/index.tsx <<'EOF' && git add pages/index.tsx && git commit -m "HUD完成版: 全搭載UI+送金ボタン" && git push origin main
-import React, { useState, useEffect } from "react";
-
-export default function Home() {
-  const [health, setHealth] = useState<any>(null);
-  const [balance, setBalance] = useState<any>(null);
-  const [transactions, setTransactions] = useState<any>(null);
-  const [transferResult, setTransferResult] = useState<any>(null);
-
-  useEffect(() => {
-    fetch("/api/health").then(r => r.json()).then(setHealth);
-    fetch("/api/balance/demoUser").then(r => r.json()).then(setBalance);
-    fetch("/api/transactions/demoUser").then(r => r.json()).then(setTransactions);
-  }, []);
-
-  const handleTransfer = async () => {
-    const res = await fetch("/api/transfer", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ from: "demoUser", to: "targetUser", amount: 10000 })
-    });
-    const data = await res.json();
-    setTransferResult(data);
-  };
-
-  return (
-    <div style={{ fontFamily: "system-ui", padding: "2rem" }}>
-      <h1>🚀 全搭載 — 統合本番システム</h1>
-      <h2>ALL SYSTEMS ONLINE ✅</h2>
-
-      <div style={{ background: "#222", color: "#fff", padding: "1rem", borderRadius: "8px" }}>
-        <p>環境: {process.env.NEXT_PUBLIC_ENV}</p>
-        <p>ビルドID: {process.env.NEXT_PUBLIC_BUILD_ID}</p>
-        <p>APIステータス: {health?.status}</p>
-        <p>ライセンス: {health?.licenseStatus}</p>
-      </div>
-
-      <h3>💰 残高</h3>
-      <ul>
-        {balance?.accounts?.map((a:any) => (
-          <li key={a.currency}>{a.currency}: {a.balance}</li>
-        ))}
-      </ul>
-
-      <h3>📜 取引履歴</h3>
-      <table border={1} cellPadding={6}>
-        <thead>
-          <tr><th>ID</th><th>内容</th><th>金額</th><th>通貨</th></tr>
-        </thead>
-        <tbody>
-          {transactions?.transactions?.map((t:any) => (
-            <tr key={t.id}>
-              <td>{t.id}</td><td>{t.name}</td><td>{t.amount}</td><td>{t.currency}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <h3>💸 送金</h3>
-      <button onClick={handleTransfer}>送金実行 (demoUser → targetUser, 10000)</button>
-      {transferResult && (
-        <p style={{ marginTop: "1rem", color: "green" }}>
-          送金結果: {transferResult.ok ? `成功 (TxID: ${transferResult.txId})` : "失敗"}
-        </p>
-      )}
-    </div>
-  );
-}
-EOF
-
-cat > pages/api/transfer.ts <<'EOF' && git add pages/api/transfer.ts && git commit -m "API追加: transfer送金処理" && git push origin main
-export default function handler(req: any, res: any) {
-  if (!process.env.REAL_API_KEY) return res.status(401).json({ error: "Unauthorized" });
-  if (req.method !== "POST") return res.status(405).json({ error: "Method Not Allowed" });
-
-  const { from, to, amount } = req.body;
-  if (!from || !to || !amount || amount <= 0) return res.status(400).json({ error: "Invalid request" });
-
-  res.status(200).json({ ok: true, txId: "TX" + Date.now() });
-}
-EOF
-
-cat > pages/api/transfer.ts <<'EOF' && git add pages/api/transfer.ts && git commit -m "API追加: transfer送金処理" && git push origin main
-export default function handler(req: any, res: any) {
-  if (!process.env.REAL_API_KEY) return res.status(401).json({ error: "Unauthorized" });
-  if (req.method !== "POST") return res.status(405).json({ error: "Method Not Allowed" });
-
-  const { from, to, amount } = req.body;
-  if (!from || !to || !amount || amount <= 0) return res.status(400).json({ error: "Invalid request" });
-
-  res.status(200).json({ ok: true, txId: "TX" + Date.now() });
-}
-EOF
-
-mkdir -p pages/api/transactions && cat > pages/api/transactions/[userId].ts <<'EOF' && git add pages/api/transactions/[userId].ts && git commit -m "API追加: transactions取引履歴" && git push origin main
-export default function handler(req: any, res: any) {
-  if (!process.env.REAL_API_KEY) return res.status(401).json({ error: "Unauthorized" });
-
-  const { userId } = req.query;
-  const txs = [
-    { id: 1, name: "給与振込", amount: 350000, currency: "JPY", type: "positive" },
-    { id: 2, name: "Amazon決済", amount: -12500, currency: "JPY", type: "negative" },
-  ];
-
-  res.status(200).json({ userId, transactions: txs });
-}
-EOF
-
-mkdir -p pages/api/transactions && cat > pages/api/transactions/[userId].ts <<'EOF' && git add pages/api/transactions/[userId].ts && git commit -m "API追加: transactions取引履歴" && git push origin main
-export default function handler(req: any, res: any) {
-  if (!process.env.REAL_API_KEY) return res.status(401).json({ error: "Unauthorized" });
-
-  const { userId } = req.query;
-  const txs = [
-    { id: 1, name: "給与振込", amount: 350000, currency: "JPY", type: "positive" },
-    { id: 2, name: "Amazon決済", amount: -12500, currency: "JPY", type: "negative" },
-  ];
-
-  res.status(200).json({ userId, transactions: txs });
-}
-EOF
 
 mkdir -p pages/api/transactions && cat > pages/api/transactions/[userId].ts <<'EOF' && git add pages/api/transactions/[userId].ts && git commit -m "API追加: transactions取引履歴" && git push origin main
 export default function handler(req: any, res: any) {
@@ -498,3 +204,297 @@ npm install
 npm audit fixnpm run start
 → node server.js
 → Server running on port 3000pages/api/health.ts
+gcloud config set project studio-9143529927-91d1f
+cat > pages/index.tsx <<'EOF' && git add pages/index.tsx && git commit -m "HUD拡張: チャットルーム連動" && git push origin main
+import React, { useState, useEffect, useRef } from "react";
+
+export default function Home() {
+  const [health, setHealth] = useState<any>(null);
+  const [balance, setBalance] = useState<any>(null);
+  const [transactions, setTransactions] = useState<any>(null);
+  const [transferResult, setTransferResult] = useState<any>(null);
+  const [chatLog, setChatLog] = useState<any[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    fetch("/api/health").then(r => r.json()).then(setHealth);
+    fetch("/api/balance/demoUser").then(r => r.json()).then(setBalance);
+    fetch("/api/transactions/demoUser").then(r => r.json()).then(setTransactions);
+  }, []);
+
+  const sendCommand = async () => {
+    const text = inputRef.current?.value?.trim();
+    if (!text) return;
+    setChatLog((log) => [...log, { user: true, msg: text }]);
+    inputRef.current!.value = "";
+    const res = await fetch("/api/command", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-base-url": window.location.origin },
+      body: JSON.stringify({ message: text })
+    });
+    const data = await res.json();
+    setChatLog((log) => [...log, { ai: true, msg: data.reply }]);
+
+    // HUD反映
+    if (text.includes("残高")) setBalance(data.data);
+    if (text.includes("履歴")) setTransactions(data.data);
+    if (text.includes("稼働") || text.toLowerCase().includes("health")) setHealth(data.data);
+    if (text.includes("送金") || text.toLowerCase().includes("transfer")) setTransferResult(data.data);
+  };
+
+  return (
+    <div style={{ fontFamily: "system-ui", padding: "2rem" }}>
+      <h1>🤖 AI HUD — 全搭載</h1>
+      <h2>ALL SYSTEMS ONLINE ✅</h2>
+
+      <div style={{ background: "#222", color: "#fff", padding: "1rem", borderRadius: "8px" }}>
+        <p>環境: {process.env.NEXT_PUBLIC_ENV}</p>
+        <p>ビルドID: {process.env.NEXT_PUBLIC_BUILD_ID}</p>
+        <p>APIステータス: {health?.status}</p>
+        <p>ライセンス: {health?.licenseStatus}</p>
+      </div>
+
+      <h3>💰 残高</h3>
+      <ul>{balance?.accounts?.map((a:any) => (<li key={a.currency}>{a.currency}: {a.balance}</li>))}</ul>
+
+      <h3>📜 取引履歴</h3>
+      <table border={1} cellPadding={6}>
+        <thead><tr><th>ID</th><th>内容</th><th>金額</th><th>通貨</th></tr></thead>
+        <tbody>{transactions?.transactions?.map((t:any) => (
+          <tr key={t.id}><td>{t.id}</td><td>{t.name}</td><td>{t.amount}</td><td>{t.currency}</td></tr>
+        ))}</tbody>
+      </table>
+
+      <h3>💸 送金</h3>
+      {transferResult && <p style={{ color: "green" }}>送金結果: {transferResult.ok ? `成功 (TxID: ${transferResult.txId})` : "失敗"}</p>}
+
+      <h3>🗨️ チャットルーム</h3>
+      <div style={{ border: "1px solid #ccc", padding: "1rem", borderRadius: "8px", marginBottom: "1rem", maxHeight: 200, overflowY: "auto" }}>
+        {chatLog.map((c, i) => (
+          <div key={i}><b>{c.user ? "You" : "AI"}:</b> {c.msg}</div>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: "0.5rem" }}>
+        <input ref={inputRef} placeholder="例: 残高 / 履歴 / 送金 / 稼働" style={{ flex: 1, padding: "0.5rem" }} />
+        <button onClick={sendCommand}>送信</button>
+      </div>
+    </div>
+  );
+}
+EOF
+
+cat > pages/api/events.ts <<'EOF' && git add pages/api/events.ts && git commit -m "API追加: events SSEリアルタイム反映" && git push origin main
+export default function handler(req: any, res: any) {
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.flushHeaders?.();
+
+  const send = (event: any) => {
+    res.write(`data: ${JSON.stringify(event)}\n\n`);
+  };
+
+  send({ type: "hello", ts: Date.now() });
+
+  const interval = setInterval(() => {
+    globalThis.__EVENTS__ = globalThis.__EVENTS__ || [];
+    let ev;
+    while ((ev = (globalThis.__EVENTS__ as any[]).shift())) {
+      send(ev);
+    }
+    send({ type: "heartbeat", ts: Date.now() });
+  }, 2000);
+
+  req.on("close", () => {
+    clearInterval(interval);
+    res.end();
+  });
+}
+EOF
+
+cat > pages/index.tsx <<'EOF' && git add pages/index.tsx && git commit -m "HUD拡張: SSEリアルタイム反映" && git push origin main
+import React, { useState, useEffect, useRef } from "react";
+
+export default function Home() {
+  const [health, setHealth] = useState<any>(null);
+  const [balance, setBalance] = useState<any>(null);
+  const [transactions, setTransactions] = useState<any>(null);
+  const [transferResult, setTransferResult] = useState<any>(null);
+  const [chatLog, setChatLog] = useState<any[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    fetch("/api/health").then(r => r.json()).then(setHealth);
+    fetch("/api/balance/demoUser").then(r => r.json()).then(setBalance);
+    fetch("/api/transactions/demoUser").then(r => r.json()).then(setTransactions);
+
+    // SSE接続
+    const evt = new EventSource("/api/events");
+    evt.onmessage = (e) => {
+      const msg = JSON.parse(e.data);
+      setChatLog((log) => [...log, { system: true, msg }]);
+      if (msg.type === "transfer") setTransferResult(msg);
+      if (msg.type === "heartbeat") console.log("heartbeat", msg.ts);
+    };
+    return () => evt.close();
+  }, []);
+
+  const sendCommand = async () => {
+    const text = inputRef.current?.value?.trim();
+    if (!text) return;
+    setChatLog((log) => [...log, { user: true, msg: text }]);
+    inputRef.current!.value = "";
+    const res = await fetch("/api/command", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-base-url": window.location.origin },
+      body: JSON.stringify({ message: text })
+    });
+    const data = await res.json();
+    setChatLog((log) => [...log, { ai: true, msg: data.reply }]);
+
+    if (text.includes("残高")) setBalance(data.data);
+    if (text.includes("履歴")) setTransactions(data.data);
+    if (text.includes("稼働") || text.toLowerCase().includes("health")) setHealth(data.data);
+    if (text.includes("送金") || text.toLowerCase().includes("transfer")) setTransferResult(data.data);
+  };
+
+  return (
+    <div style={{ fontFamily: "system-ui", padding: "2rem" }}>
+      <h1>🤖 AI HUD — 全搭載 永久稼働</h1>
+      <h2>ALL SYSTEMS ONLINE ✅</h2>
+
+      <div style={{ background: "#222", color: "#fff", padding: "1rem", borderRadius: "8px" }}>
+        <p>環境: {process.env.NEXT_PUBLIC_ENV}</p>
+        <p>ビルドID: {process.env.NEXT_PUBLIC_BUILD_ID}</p>
+        <p>APIステータス: {health?.status}</p>
+        <p>ライセンス: {health?.licenseStatus}</p>
+      </div>
+
+      <h3>💰 残高</h3>
+      <ul>{balance?.accounts?.map((a:any) => (<li key={a.currency}>{a.currency}: {a.balance}</li>))}</ul>
+
+      <h3>📜 取引履歴</h3>
+      <table border={1} cellPadding={6}>
+        <thead><tr><th>ID</th><th>内容</th><th>金額</th><th>通貨</th></tr></thead>
+        <tbody>{transactions?.transactions?.map((t:any) => (
+          <tr key={t.id}><td>{t.id}</td><td>{t.name}</td><td>{t.amount}</td><td>{t.currency}</td></tr>
+        ))}</tbody>
+      </table>
+
+      <h3>💸 送金</h3>
+      {transferResult && <p style={{ color: "green" }}>送金結果: {transferResult.ok ? `成功 (TxID: ${transferResult.txId})` : "通知受信"}</p>}
+
+      <h3>🗨️ チャットルーム</h3>
+      <div style={{ border: "1px solid #ccc", padding: "1rem", borderRadius: "8px", marginBottom: "1rem", maxHeight: 200, overflowY: "auto" }}>
+        {chatLog.map((c, i) => (
+          <div key={i}><b>{c.user ? "You" : c.ai ? "AI" : "System"}:</b> {typeof c.msg === "string" ? c.msg : JSON.stringify(c.msg)}</div>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: "0.5rem" }}>
+        <input ref={inputRef} placeholder="例: 残高 / 履歴 / 送金 / 稼働" style={{ flex: 1, padding: "0.5rem" }} />
+        <button onClick={sendCommand}>送信</button>
+      </div>
+    </div>
+  );
+}
+EOF
+
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "ALL SYSTEMS ONLINE: 永久ビルドデプロイ" && git push origin main
+cat > pages/index.tsx <<'EOF' && git add pages/index.tsx && git commit -m "HUD拡張: Chart.js残高グラフ追加" && git push origin main
+import React, { useState, useEffect, useRef } from "react";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+export default function Home() {
+  const [health, setHealth] = useState<any>(null);
+  const [balance, setBalance] = useState<any>(null);
+  const [transactions, setTransactions] = useState<any>(null);
+  const [transferResult, setTransferResult] = useState<any>(null);
+  const [chatLog, setChatLog] = useState<any[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    fetch("/api/health").then(r => r.json()).then(setHealth);
+    fetch("/api/balance/demoUser").then(r => r.json()).then(setBalance);
+    fetch("/api/transactions/demoUser").then(r => r.json()).then(setTransactions);
+
+    const evt = new EventSource("/api/events");
+    evt.onmessage = (e) => {
+      const msg = JSON.parse(e.data);
+      setChatLog((log) => [...log, { system: true, msg }]);
+      if (msg.type === "transfer") setTransferResult(msg);
+    };
+    return () => evt.close();
+  }, []);
+
+  const sendCommand = async () => {
+    const text = inputRef.current?.value?.trim();
+    if (!text) return;
+    setChatLog((log) => [...log, { user: true, msg: text }]);
+    inputRef.current!.value = "";
+    const res = await fetch("/api/command", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-base-url": window.location.origin },
+      body: JSON.stringify({ message: text })
+    });
+    const data = await res.json();
+    setChatLog((log) => [...log, { ai: true, msg: data.reply }]);
+
+    if (text.includes("残高")) setBalance(data.data);
+    if (text.includes("履歴")) setTransactions(data.data);
+    if (text.includes("稼働") || text.toLowerCase().includes("health")) setHealth(data.data);
+    if (text.includes("送金") || text.toLowerCase().includes("transfer")) setTransferResult(data.data);
+  };
+
+  const balanceData = balance ? {
+    labels: balance.accounts.map((a:any) => a.currency),
+    datasets: [{
+      data: balance.accounts.map((a:any) => a.balance),
+      backgroundColor: ["#36A2EB", "#FF6384", "#FFCE56"],
+    }]
+  } : null;
+
+  return (
+    <div style={{ fontFamily: "system-ui", padding: "2rem" }}>
+      <h1>🤖 AI HUD — 全搭載 永久稼働</h1>
+      <h2>ALL SYSTEMS ONLINE ✅</h2>
+
+      <div style={{ background: "#222", color: "#fff", padding: "1rem", borderRadius: "8px" }}>
+        <p>環境: {process.env.NEXT_PUBLIC_ENV}</p>
+        <p>ビルドID: {process.env.NEXT_PUBLIC_BUILD_ID}</p>
+        <p>APIステータス: {health?.status}</p>
+        <p>ライセンス: {health?.licenseStatus}</p>
+      </div>
+
+      <h3>💰 残高</h3>
+      <ul>{balance?.accounts?.map((a:any) => (<li key={a.currency}>{a.currency}: {a.balance}</li>))}</ul>
+      {balanceData && <Doughnut data={balanceData} />}
+
+      <h3>📜 取引履歴</h3>
+      <table border={1} cellPadding={6}>
+        <thead><tr><th>ID</th><th>内容</th><th>金額</th><th>通貨</th></tr></thead>
+        <tbody>{transactions?.transactions?.map((t:any) => (
+          <tr key={t.id}><td>{t.id}</td><td>{t.name}</td><td>{t.amount}</td><td>{t.currency}</td></tr>
+        ))}</tbody>
+      </table>
+
+      <h3>💸 送金</h3>
+      {transferResult && <p style={{ color: "green" }}>送金結果: {transferResult.ok ? `成功 (TxID: ${transferResult.txId})` : "通知受信"}</p>}
+
+      <h3>🗨️ チャットルーム</h3>
+      <div style={{ border: "1px solid #ccc", padding: "1rem", borderRadius: "8px", marginBottom: "1rem", maxHeight: 200, overflowY: "auto" }}>
+        {chatLog.map((c, i) => (
+          <div key={i}><b>{c.user ? "You" : c.ai ? "AI" : "System"}:</b> {typeof c.msg === "string" ? c.msg : JSON.stringify(c.msg)}</div>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: "0.5rem" }}>
+        <input ref={inputRef} placeholder="例: 残高 / 履歴 / 送金 / 稼働" style={{ flex: 1, padding: "0.5rem" }} />
+        <button onClick={sendCommand}>送信</button>
+      </div>
+    </div>
+  );
+}
+EOF
+
