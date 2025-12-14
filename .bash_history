@@ -1,31 +1,3 @@
-    if (text.includes("履歴")) setTransactions(data.data);
-    if (text.includes("稼働") || text.toLowerCase().includes("health")) setHealth(data.data);
-    if (text.includes("送金") || text.toLowerCase().includes("transfer")) setTransferResult(data.data);
-  };
-
-  return (
-    <div style={{ fontFamily: "system-ui", padding: "2rem" }}>
-      <h1>🤖 AI HUD — 全搭載</h1>
-      <h2>ALL SYSTEMS ONLINE ✅</h2>
-
-      <div style={{ background: "#222", color: "#fff", padding: "1rem", borderRadius: "8px" }}>
-        <p>環境: {process.env.NEXT_PUBLIC_ENV}</p>
-        <p>ビルドID: {process.env.NEXT_PUBLIC_BUILD_ID}</p>
-        <p>APIステータス: {health?.status}</p>
-        <p>ライセンス: {health?.licenseStatus}</p>
-      </div>
-
-      <h3>💰 残高</h3>
-      <ul>{balance?.accounts?.map((a:any) => (<li key={a.currency}>{a.currency}: {a.balance}</li>))}</ul>
-
-      <h3>📜 取引履歴</h3>
-      <table border={1} cellPadding={6}>
-        <thead><tr><th>ID</th><th>内容</th><th>金額</th><th>通貨</th></tr></thead>
-        <tbody>{transactions?.transactions?.map((t:any) => (
-          <tr key={t.id}><td>{t.id}</td><td>{t.name}</td><td>{t.amount}</td><td>{t.currency}</td></tr>
-        ))}</tbody>
-      </table>
-
       <h3>💸 送金</h3>
       {transferResult && <p style={{ color: "green" }}>送金結果: {transferResult.ok ? `成功 (TxID: ${transferResult.txId})` : "失敗"}</p>}
 
@@ -498,3 +470,31 @@ npm rebuild bufferutil utf-8-validate
 npm run build && npm run lint
 # 刻印コミット & デプロイ
 git add -A && git commit -m "刻印: viem依存修復 + 永久ビルド起動 本番デプロイ" && git push origin main
+gcloud config set project studio-9143529927-91d1f
+rm -rf node_modules package-lock.json && npm ci && npm rebuild && npm run build && npm run lint && git add -A && git commit -m "刻印: 🔥🌎💎 国際資産HUD 永久稼働 外部公開 着金確実" && git push origin main
+# 依存関係完全リセット
+rm -rf node_modules package-lock.json ~/.npm/_cacache
+# lockfileを新規生成
+npm install --legacy-peer-deps
+# lockfileが生成されたらクリーンインストール可能
+npm ci
+# ネイティブモジュール再ビルド
+npm rebuild bufferutil utf-8-validate
+# ビルド & テスト
+npm run build && npm run lint
+# 刻印コミット & デプロイ
+git add -A && git commit -m "刻印: HUD/Bank/Apps 永久稼働 lockfile修復 本番デプロイ" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add -A && git commit -m "刻印: HUD補填モジュール作成 + 永久稼働 本番反映" && git push origin main
+rm -rf node_modules package-lock.json ~/.npm/_cacache && npm install --legacy-peer-deps && npm run build && npm run lint && git add -A && git commit -m "刻印: ワンライナーデプロイビルド 永久稼働 本番反映" && git push origin main
+rm -rf node_modules package-lock.json ~/.npm/_cacache && npm install --legacy-peer-deps && npm run build && npm run lint && git add -A && git commit -m "刻印: エンドポイントデプロイビルド 永久稼働 本番反映" && git push origin main
+rm -rf node_modules package-lock.json ~/.npm/_cacache && npm install --legacy-peer-deps && npm run build && npm run lint && git add -A && git commit -m "刻印: エンドポイントデプロイビルド 永久稼働 本番反映" && git push origin main
+# 依存関係完全リセット
+rm -rf node_modules package-lock.json ~/.npm/_cacache
+# 安定化オプション付きで再インストール
+npm install --legacy-peer-deps --prefer-offline --no-audit --progress=false
+# ネイティブモジュール再ビルド
+npm rebuild bufferutil utf-8-validate
+# ビルド & テスト
+npm run build && npm run lint
+# 刻印コミット & デプロイ
+git add -A && git commit -m "刻印: エンドポイントデプロイビルド 永久稼働 本番反映 修復" && git push origin main
