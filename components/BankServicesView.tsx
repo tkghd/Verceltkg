@@ -134,7 +134,7 @@ export const BankServicesView: React.FC<BankServicesViewProps> = ({ onNavigate }
   
   // Fetching State
   const [isFetchingInfo, setIsFetchingInfo] = useState(false);
-  const [bankNetworkStatus, setBankNetworkStatus] = useState<any>({
+  const [bankNetworkStatus, setBankNetworkStatus] = useState<{clearing: string; latency: string; status: string; settlement: string}>({
      clearing: 'SEPA Instant',
      latency: '12ms',
      status: 'OPERATIONAL',
