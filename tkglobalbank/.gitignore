@@ -1,2 +1,6 @@
 .vercel
 .ssh/
+.ssh/
+.env
+*.key
+*.pem
