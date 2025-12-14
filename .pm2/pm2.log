@@ -29868,3 +29868,91 @@
 2025-12-14T21:24:33: PM2 log: App [verceltkg-app:1] online
 2025-12-14T21:24:33: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
 2025-12-14T21:24:33: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:24:48: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:24:48: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:24:48: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:24:48: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:25:03: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:25:03: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:25:03: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:25:03: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:25:18: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:25:18: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:25:18: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:25:18: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:25:33: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:25:33: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:25:33: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:25:33: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:25:48: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:25:48: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:25:49: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:25:49: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:26:04: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:26:04: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:26:04: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:26:04: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:26:19: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:26:19: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:26:19: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:26:19: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:26:34: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:26:34: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:26:34: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:26:34: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:26:49: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:26:49: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:26:49: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:26:49: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:27:04: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:27:04: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:27:04: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:27:04: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:27:19: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:27:19: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:27:19: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:27:19: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:27:34: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:27:34: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:27:34: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:27:34: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:27:49: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:27:49: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:27:50: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:27:50: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:28:05: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:28:05: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:28:05: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:28:05: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:28:20: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:28:20: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:28:20: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:28:20: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:28:35: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:28:35: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:28:35: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:28:35: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:28:50: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:28:50: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:28:50: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:28:50: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:29:05: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:29:05: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:29:05: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:29:05: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:29:20: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:29:20: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:29:20: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:29:20: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:29:35: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:29:35: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:29:35: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:29:35: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:29:50: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:29:50: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:29:51: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:29:51: PM2 log: App [verceltkg-app:1] will restart in 15000ms
+2025-12-14T21:30:06: PM2 log: App [verceltkg-app:1] starting in -fork mode-
+2025-12-14T21:30:06: PM2 log: App [verceltkg-app:1] online
+2025-12-14T21:30:06: PM2 log: App [verceltkg-app:1] exited with code [1] via signal [SIGINT]
+2025-12-14T21:30:06: PM2 log: App [verceltkg-app:1] will restart in 15000ms
