@@ -12,6 +12,16 @@ export default function Home() {
     fetch("/api/health").then(r => r.json()).then(setHealth);
     fetch("/api/balance/demoUser").then(r => r.json()).then(setBalance);
     fetch("/api/transactions/demoUser").then(r => r.json()).then(setTransactions);
+
+    // SSE接続
+    const evt = new EventSource("/api/events");
+    evt.onmessage = (e) => {
+      const msg = JSON.parse(e.data);
+      setChatLog((log) => [...log, { system: true, msg }]);
+      if (msg.type === "transfer") setTransferResult(msg);
+      if (msg.type === "heartbeat") console.log("heartbeat", msg.ts);
+    };
+    return () => evt.close();
   }, []);
 
   const sendCommand = async () => {
@@ -27,7 +37,6 @@ export default function Home() {
     const data = await res.json();
     setChatLog((log) => [...log, { ai: true, msg: data.reply }]);
 
-    // HUD反映
     if (text.includes("残高")) setBalance(data.data);
     if (text.includes("履歴")) setTransactions(data.data);
     if (text.includes("稼働") || text.toLowerCase().includes("health")) setHealth(data.data);
@@ -36,7 +45,7 @@ export default function Home() {
 
   return (
     <div style={{ fontFamily: "system-ui", padding: "2rem" }}>
-      <h1>🤖 AI HUD — 全搭載</h1>
+      <h1>🤖 AI HUD — 全搭載 永久稼働</h1>
       <h2>ALL SYSTEMS ONLINE ✅</h2>
 
       <div style={{ background: "#222", color: "#fff", padding: "1rem", borderRadius: "8px" }}>
@@ -58,12 +67,12 @@ export default function Home() {
       </table>
 
       <h3>💸 送金</h3>
-      {transferResult && <p style={{ color: "green" }}>送金結果: {transferResult.ok ? `成功 (TxID: ${transferResult.txId})` : "失敗"}</p>}
+      {transferResult && <p style={{ color: "green" }}>送金結果: {transferResult.ok ? `成功 (TxID: ${transferResult.txId})` : "通知受信"}</p>}
 
       <h3>🗨️ チャットルーム</h3>
       <div style={{ border: "1px solid #ccc", padding: "1rem", borderRadius: "8px", marginBottom: "1rem", maxHeight: 200, overflowY: "auto" }}>
         {chatLog.map((c, i) => (
-          <div key={i}><b>{c.user ? "You" : "AI"}:</b> {c.msg}</div>
+          <div key={i}><b>{c.user ? "You" : c.ai ? "AI" : "System"}:</b> {typeof c.msg === "string" ? c.msg : JSON.stringify(c.msg)}</div>
         ))}
       </div>
       <div style={{ display: "flex", gap: "0.5rem" }}>
