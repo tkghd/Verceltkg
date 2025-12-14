@@ -1,38 +1,3 @@
-→ node server.js
-→ Server running on port 3000pages/api/health.ts
-gcloud config set project studio-9143529927-91d1f
-cat > pages/index.tsx <<'EOF' && git add pages/index.tsx && git commit -m "HUD拡張: チャットルーム連動" && git push origin main
-import React, { useState, useEffect, useRef } from "react";
-
-export default function Home() {
-  const [health, setHealth] = useState<any>(null);
-  const [balance, setBalance] = useState<any>(null);
-  const [transactions, setTransactions] = useState<any>(null);
-  const [transferResult, setTransferResult] = useState<any>(null);
-  const [chatLog, setChatLog] = useState<any[]>([]);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    fetch("/api/health").then(r => r.json()).then(setHealth);
-    fetch("/api/balance/demoUser").then(r => r.json()).then(setBalance);
-    fetch("/api/transactions/demoUser").then(r => r.json()).then(setTransactions);
-  }, []);
-
-  const sendCommand = async () => {
-    const text = inputRef.current?.value?.trim();
-    if (!text) return;
-    setChatLog((log) => [...log, { user: true, msg: text }]);
-    inputRef.current!.value = "";
-    const res = await fetch("/api/command", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-base-url": window.location.origin },
-      body: JSON.stringify({ message: text })
-    });
-    const data = await res.json();
-    setChatLog((log) => [...log, { ai: true, msg: data.reply }]);
-
-    // HUD反映
-    if (text.includes("残高")) setBalance(data.data);
     if (text.includes("履歴")) setTransactions(data.data);
     if (text.includes("稼働") || text.toLowerCase().includes("health")) setHealth(data.data);
     if (text.includes("送金") || text.toLowerCase().includes("transfer")) setTransferResult(data.data);
@@ -498,3 +463,38 @@ EOF
 
 rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: 全搭載 HUD + BankAPI + Apps + UIUX 永久稼働" && git push origin main
 rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: 最適化 + チャットルームHUD + Gemini GTP go フル稼働本番デプロイ" && git push origin main
+gcloud config set project studio-9143529927-91d1f
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: ai spikedy統合 + HUD + Gemini GTP go フル稼働本番デプロイ" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: 全搭載HUD + BankAPI + Apps + UIUX ビルド解放 外部公開可能" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: ♻️🔥🚀♾️🛰️💠⚡️📤🌎💎 全搭載HUD 永久稼働 外部公開解放" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: 国際HUD + GlobalAPI + BankAPI + UIUX + Apps 永久稼働 外部公開" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: ワンライナーHUDビルド起動 + 全搭載 永久稼働" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: ALL SYSTEMS ONLINE + GLOBAL BANK + UIUX FULL BUILD 永久稼働 外部公開" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: ALL SYSTEMS ONLINE + GLOBAL BANK + UIUX FULL BUILD 永久稼働 外部公開" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: 着金確実 + 出金 + Wallet + Card + ATM + カメラ連動 確実宣言 本番デプロイ" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: Card バーチャル決済API強化 + REALタイムリー決済 永久稼働" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add . && git commit -m "刻印: 国際全銀HUD + GlobalAPI + BankAPI + UIUX + Apps 永久稼働 外部公開" && git push origin main
+rm -rf node_modules package-lock.json && npm install --prefer-offline && npm run build && npm run lint && git add -A && git commit -m "刻印: 統合 + 永久ビルド起動 + 本番デプロイ (HUD/Bank/Apps/PWA/Health)" && git push origin main
+npm ci && npm run build && git add -A && git commit -m "刻印: HUD/Bank/Apps 統合 + 永久稼働 v2.0.5" && git push origin main
+rm -rf node_modules package-lock.json && npm install && npm run build && git add -A && git commit -m "刻印: 💠🔥🌎 国際HUD 永久稼働 外部公開" && git push origin main
+# 1. 依存関係を完全リセット
+rm -rf node_modules package-lock.json
+# 2. 最新依存関係を再インストール
+npm install --legacy-peer-deps
+# 3. ネイティブモジュールを再ビルド
+npm rebuild bufferutil utf-8-validate
+# 4. ビルド & テスト
+npm run build && npm run lint
+# 5. 刻印コミット & デプロイ
+git add -A && git commit -m "刻印: 統合 + 永久ビルド起動 修復デプロイ" && git push origin main
+export NODE_ENV=production NEXT_PUBLIC_HUD_MODE=online BANK_API_KEY=$BANK_API_KEY && rm -rf node_modules package-lock.json && npm ci && npm rebuild && npm run build && npm run lint && git add -A && git commit -m "刻印: 環境可変設定 + 依存モジュール自動化 + UIUX補填 永久稼働 REALTIME送金反映" && git push origin main
+# 依存関係完全リセット
+rm -rf node_modules package-lock.json ~/.npm/_cacache
+# viem を明示的に再インストール
+npm install viem@latest --legacy-peer-deps
+# ネイティブモジュール再ビルド
+npm rebuild bufferutil utf-8-validate
+# ビルド & テスト
+npm run build && npm run lint
+# 刻印コミット & デプロイ
+git add -A && git commit -m "刻印: viem依存修復 + 永久ビルド起動 本番デプロイ" && git push origin main
