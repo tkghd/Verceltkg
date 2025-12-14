@@ -1,12 +1,1 @@
-{
-  "id": "/?source=pwa",
-  "scope": "/",
-  "name": "Godmode Ultra Bank",
-  "short_name": "Godmode",
-  "description": "Next-gen integrated banking platform with AI core.",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#05050a",
-  "theme_color": "#0891b2",
-  "orientation": "portrait-primary"
-}
+{"name":"TKGHD","short_name":"TKGHD","start_url":"/","display":"standalone","background_color":"#000000","theme_color":"#000000","icons":[{"src":"/icon-192.png","sizes":"192x192","type":"image/png"}]}
