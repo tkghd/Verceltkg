@@ -6,8 +6,8 @@
 5 silly config load:file:/usr/etc/npmrc
 6 verbose title npm ci
 7 verbose argv "ci"
-8 verbose logfile logs-max:10 dir:/home/tkg_h30_2018/.npm/_logs/2025-12-14T21_01_32_121Z-
-9 verbose logfile /home/tkg_h30_2018/.npm/_logs/2025-12-14T21_01_32_121Z-debug-0.log
+8 verbose logfile logs-max:10 dir:/home/tkg_h30_2018/.npm/_logs/2025-12-14T21_02_40_841Z-
+9 verbose logfile /home/tkg_h30_2018/.npm/_logs/2025-12-14T21_02_40_841Z-debug-0.log
 10 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
 11 silly logfile start cleaning logs, removing 1 files
 12 verbose loadVirtual Error: loadVirtual requires existing shrinkwrap file
@@ -72,4 +72,4 @@
 20 verbose npm  v10.8.2
 21 verbose exit 1
 22 verbose code 1
-23 error A complete log of this run can be found in: /home/tkg_h30_2018/.npm/_logs/2025-12-14T21_01_32_121Z-debug-0.log
+23 error A complete log of this run can be found in: /home/tkg_h30_2018/.npm/_logs/2025-12-14T21_02_40_841Z-debug-0.log
