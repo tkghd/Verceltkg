@@ -1,7 +1,3 @@
 {
-  "functions": {
-    "api/transfer/*.ts": {
-      "maxDuration": 10
-    }
-  }
+  "version": 2
 }
