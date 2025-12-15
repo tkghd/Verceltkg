@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/transfer/*.ts": {
+      "maxDuration": 10
+    }
+  }
+}

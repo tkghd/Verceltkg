@@ -1,0 +1,23 @@
+{
+  "hud": {"manifest":"/manifest.json","events":"/api/events","gateway":"/api/gateway"},
+  "assets": {
+    "currencies": [
+      {"name":"TKG Coin","url":"https://tkg-wallet.tech/card/TKG.pkpass"},
+      {"name":"TK Coin","url":"https://tkg-wallet.tech/card/TK.pkpass"},
+      {"name":"LUSTRA Coin","url":"https://tkg-wallet.tech/card/LUSTRA.pkpass"},
+      {"name":"RUBISS Coin","url":"https://tkg-wallet.tech/card/RUBISS.pkpass"},
+      {"name":"DIAMUSE Coin","url":"https://tkg-wallet.tech/card/DIAMUSE.pkpass"},
+      {"name":"SERAPHINA Coin","url":"https://tkg-wallet.tech/card/SERAPHINA.pkpass"},
+      {"name":"NOIR DE LUNE","url":"https://tkg-wallet.tech/card/NOIR.pkpass"}
+    ],
+    "nfts": [
+      {"name":"HellCard Series","sale_url":"https://tkg-wallet.tech/nft/hellcard-sale","mint_url":"https://tkg-wallet.tech/nft/hellcard-mint"},
+      {"name":"LUX Vault Edition","sale_url":"https://tkg-wallet.tech/nft/luxvault-sale","mint_url":"https://tkg-wallet.tech/nft/luxvault-mint"},
+      {"name":"RUBISS Premium","sale_url":"https://tkg-wallet.tech/nft/rubiss-sale","mint_url":"https://tkg-wallet.tech/nft/rubiss-mint"},
+      {"name":"SERAPHINA Master","sale_url":"https://tkg-wallet.tech/nft/seraphina-sale","mint_url":"https://tkg-wallet.tech/nft/seraphina-mint"},
+      {"name":"NOIR DE LUNE Art","sale_url":"https://tkg-wallet.tech/nft/noir-sale","mint_url":"https://tkg-wallet.tech/nft/noir-mint"}
+    ],
+    "dex_assets_url":"https://tkg-wallet.tech/dex-assets",
+    "washout_url":"https://tkg-wallet.tech/washout"
+  }
+}
